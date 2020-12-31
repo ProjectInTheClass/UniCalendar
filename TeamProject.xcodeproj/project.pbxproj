@@ -13,7 +13,9 @@
 		5B14471B259DB3E700968770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B144719259DB3E700968770 /* Main.storyboard */; };
 		5B14471D259DB3E900968770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B14471C259DB3E900968770 /* Assets.xcassets */; };
 		5B144720259DB3E900968770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B14471E259DB3E900968770 /* LaunchScreen.storyboard */; };
-		5B14472A259DB51900968770 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B144729259DB51900968770 /* Storyboard.storyboard */; };
+		5B14472D259DC1C600968770 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B14472C259DC1C600968770 /* Calendar.storyboard */; };
+		5B144731259DC1E300968770 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B144730259DC1E300968770 /* Home.storyboard */; };
+		5B144734259DC26700968770 /* Graph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B144733259DC26700968770 /* Graph.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +27,9 @@
 		5B14471C259DB3E900968770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B14471F259DB3E900968770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B144721259DB3E900968770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B144729259DB51900968770 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		5B14472C259DC1C600968770 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		5B144730259DC1E300968770 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		5B144733259DC26700968770 /* Graph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graph.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,9 @@
 				5B144715259DB3E700968770 /* SceneDelegate.swift */,
 				5B144717259DB3E700968770 /* ViewController.swift */,
 				5B144719259DB3E700968770 /* Main.storyboard */,
-				5B144729259DB51900968770 /* Storyboard.storyboard */,
+				5B144730259DC1E300968770 /* Home.storyboard */,
+				5B14472C259DC1C600968770 /* Calendar.storyboard */,
+				5B144733259DC26700968770 /* Graph.storyboard */,
 				5B14471C259DB3E900968770 /* Assets.xcassets */,
 				5B14471E259DB3E900968770 /* LaunchScreen.storyboard */,
 				5B144721259DB3E900968770 /* Info.plist */,
@@ -128,9 +134,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B144720259DB3E900968770 /* LaunchScreen.storyboard in Resources */,
-				5B14472A259DB51900968770 /* Storyboard.storyboard in Resources */,
+				5B144734259DC26700968770 /* Graph.storyboard in Resources */,
 				5B14471D259DB3E900968770 /* Assets.xcassets in Resources */,
 				5B14471B259DB3E700968770 /* Main.storyboard in Resources */,
+				5B14472D259DC1C600968770 /* Calendar.storyboard in Resources */,
+				5B144731259DC1E300968770 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,15 +6,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings-->
+        <!--CALENDAR-->
         <scene sceneID="Z7M-Gp-waQ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Storyboard" referencedIdentifier="Settings" id="EB7-oT-R2L" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Calendar" referencedIdentifier="CALENDAR" id="EB7-oT-R2L" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Rph-1C-G1W"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qua-n6-I03" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="242" y="-317"/>
+        </scene>
+        <!--GRAPH-->
+        <scene sceneID="hIW-O0-xUt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Graph" referencedIdentifier="GRAPH" id="kvm-cT-wSr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="RsT-VQ-0nt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ACh-pF-1n2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="492" y="-126"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="HDn-9v-Rj1">
@@ -26,18 +36,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="EB7-oT-R2L" kind="relationship" relationship="viewControllers" id="Jtc-Bl-Cke"/>
-                        <segue destination="iLM-6l-L0N" kind="relationship" relationship="viewControllers" id="LBJ-mW-Hxk"/>
+                        <segue destination="iLM-6l-L0N" kind="relationship" relationship="viewControllers" id="rWg-cT-BCC"/>
+                        <segue destination="EB7-oT-R2L" kind="relationship" relationship="viewControllers" id="E6f-Pf-Tp4"/>
+                        <segue destination="kvm-cT-wSr" kind="relationship" relationship="viewControllers" id="OYP-4W-ln1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o9R-qZ-x7s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="77.678571428571431"/>
         </scene>
-        <!--Storyboard-->
+        <!--HOME-->
         <scene sceneID="fSh-kk-stJ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Storyboard" referencedIdentifier="Storyboard" id="iLM-6l-L0N" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="HOME" id="iLM-6l-L0N" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="vf5-Kp-5rd"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vh4-52-EwE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
