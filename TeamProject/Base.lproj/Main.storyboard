@@ -32,6 +32,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="x7b-Ap-XqL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Io4-yg-UHf">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -39,6 +40,7 @@
                         <segue destination="iLM-6l-L0N" kind="relationship" relationship="viewControllers" id="rWg-cT-BCC"/>
                         <segue destination="EB7-oT-R2L" kind="relationship" relationship="viewControllers" id="E6f-Pf-Tp4"/>
                         <segue destination="kvm-cT-wSr" kind="relationship" relationship="viewControllers" id="OYP-4W-ln1"/>
+                        <segue destination="v9F-1P-S4x" kind="relationship" relationship="viewControllers" id="KUC-rk-tXV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o9R-qZ-x7s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -54,6 +56,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vh4-52-EwE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="725" y="159"/>
+        </scene>
+        <!--SETTING-->
+        <scene sceneID="qla-Rz-427">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setting" referencedIdentifier="SETTING" id="v9F-1P-S4x" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="S9S-hD-tEh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vqe-hh-iIV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="693" y="278"/>
         </scene>
     </scenes>
 </document>
