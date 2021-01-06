@@ -11,7 +11,7 @@
         <!--Item-->
         <scene sceneID="40t-r8-jdN">
             <objects>
-                <viewController storyboardIdentifier="HOME" id="rfE-Ug-8Qq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HOME" id="rfE-Ug-8Qq" customClass="HomeViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YxK-PZ-t02" customClass="HomeViewController">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
