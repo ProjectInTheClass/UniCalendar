@@ -17,6 +17,7 @@
 		5B144731259DC1E300968770 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B144730259DC1E300968770 /* Home.storyboard */; };
 		5B144734259DC26700968770 /* Graph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B144733259DC26700968770 /* Graph.storyboard */; };
 		5B2841E625A45D8100FA63BD /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B2841E525A45D8100FA63BD /* Setting.storyboard */; };
+		5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2841F825A577F500FA63BD /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		5B144730259DC1E300968770 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		5B144733259DC26700968770 /* Graph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graph.storyboard; sourceTree = "<group>"; };
 		5B2841E525A45D8100FA63BD /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		5B2841F825A577F500FA63BD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,15 +70,48 @@
 				5B144715259DB3E700968770 /* SceneDelegate.swift */,
 				5B144717259DB3E700968770 /* ViewController.swift */,
 				5B144719259DB3E700968770 /* Main.storyboard */,
-				5B144730259DC1E300968770 /* Home.storyboard */,
-				5B14472C259DC1C600968770 /* Calendar.storyboard */,
-				5B144733259DC26700968770 /* Graph.storyboard */,
-				5B2841E525A45D8100FA63BD /* Setting.storyboard */,
+				5B2841FC25A57A7300FA63BD /* Home */,
+				5B28420025A57ACB00FA63BD /* Calender */,
+				5B2841FF25A57AA900FA63BD /* Graph */,
+				5B28420125A57AF300FA63BD /* Setting */,
 				5B14471C259DB3E900968770 /* Assets.xcassets */,
 				5B14471E259DB3E900968770 /* LaunchScreen.storyboard */,
 				5B144721259DB3E900968770 /* Info.plist */,
 			);
 			path = TeamProject;
+			sourceTree = "<group>";
+		};
+		5B2841FC25A57A7300FA63BD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5B144730259DC1E300968770 /* Home.storyboard */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		5B2841FF25A57AA900FA63BD /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				5B144733259DC26700968770 /* Graph.storyboard */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		5B28420025A57ACB00FA63BD /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				5B14472C259DC1C600968770 /* Calendar.storyboard */,
+			);
+			name = Calender;
+			sourceTree = "<group>";
+		};
+		5B28420125A57AF300FA63BD /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5B2841E525A45D8100FA63BD /* Setting.storyboard */,
+				5B2841F825A577F500FA63BD /* SettingViewController.swift */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +191,7 @@
 				5B144718259DB3E700968770 /* ViewController.swift in Sources */,
 				5B144714259DB3E700968770 /* AppDelegate.swift in Sources */,
 				5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */,
+				5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

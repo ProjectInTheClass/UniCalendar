@@ -1,21 +1,20 @@
 //
-//  ViewController.swift
+//  SettingViewController.swift
 //  TeamProject
 //
-//  Created by Nayeon Kim on 2020/12/31.
+//  Created by Nayeon Kim on 2021/01/06.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
-
+class SettingViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
 
 
 }
-
-
