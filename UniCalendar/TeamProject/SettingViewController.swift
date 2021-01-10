@@ -8,7 +8,23 @@
 import Foundation
 import UIKit
 
-class SettingViewController: UITableViewController {
+//extension SettingViewController: UITableViewDataSource{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+//
+//
+//}
+
+class SettingViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    //@IBOutlet weak var label: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
