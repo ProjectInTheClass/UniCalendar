@@ -45,14 +45,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="BbD-1U-LVC">
+                                                    <rect key="frame" x="5" y="5" width="404" height="151"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="151" id="OEw-eU-Gjr"/>
+                                                        <constraint firstAttribute="width" constant="404" id="ONq-cl-qzd"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="BbD-1U-LVC" secondAttribute="bottom" constant="5" id="0zj-BD-FWk"/>
                                                 <constraint firstItem="hQH-Vs-Oqu" firstAttribute="leading" secondItem="XUl-HV-S52" secondAttribute="leading" constant="10" id="9z6-3N-h9v"/>
+                                                <constraint firstItem="BbD-1U-LVC" firstAttribute="leading" secondItem="XUl-HV-S52" secondAttribute="leading" constant="5" id="Fnj-vH-dpP"/>
                                                 <constraint firstItem="3St-na-q3C" firstAttribute="trailing" secondItem="XUl-HV-S52" secondAttribute="trailingMargin" constant="10" id="i9z-Gd-amZ"/>
                                                 <constraint firstItem="hQH-Vs-Oqu" firstAttribute="centerY" secondItem="XUl-HV-S52" secondAttribute="centerY" id="kJ2-jt-Ldb"/>
                                                 <constraint firstItem="WKS-03-aX5" firstAttribute="centerY" secondItem="XUl-HV-S52" secondAttribute="centerY" id="lPI-uB-pLI"/>
+                                                <constraint firstAttribute="trailing" secondItem="BbD-1U-LVC" secondAttribute="trailing" constant="5" id="ltK-J1-gzh"/>
                                                 <constraint firstItem="WKS-03-aX5" firstAttribute="centerX" secondItem="XUl-HV-S52" secondAttribute="centerX" id="mQs-MO-lwO"/>
                                                 <constraint firstItem="3St-na-q3C" firstAttribute="centerY" secondItem="XUl-HV-S52" secondAttribute="centerY" id="qbA-Gs-U4I"/>
+                                                <constraint firstItem="BbD-1U-LVC" firstAttribute="top" secondItem="XUl-HV-S52" secondAttribute="top" constant="5" id="xyQ-3u-jyb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -86,6 +97,7 @@
     </scenes>
     <resources>
         <image name="house" catalog="system" width="128" height="106"/>
+        <image name="selectionBox" width="226" height="78"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
