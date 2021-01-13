@@ -9,6 +9,7 @@ import UIKit
 
 class ThemeCell: UITableViewCell {
 
+    @IBOutlet weak var themeName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
