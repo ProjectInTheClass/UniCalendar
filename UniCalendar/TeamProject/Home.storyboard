@@ -97,7 +97,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="zdT-58-KSk" id="en8-6Z-EnN"/>
+                        <outlet property="tableView" destination="zdT-58-KSk" id="qHC-RW-Isu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="838-cJ-Jpe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
