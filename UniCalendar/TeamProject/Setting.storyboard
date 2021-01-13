@@ -12,7 +12,7 @@
         <!--환경설정-->
         <scene sceneID="RFX-bV-Mfc">
             <objects>
-                <viewController storyboardIdentifier="SETTING" id="cQI-cg-aDB" customClass="SettingViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cQI-cg-aDB" customClass="SettingViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VC2-JN-YFT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="WFg-Iz-zc8" style="IBUITableViewCellStyleDefault" id="NmN-Sr-Hh4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="WFg-Iz-zc8" style="IBUITableViewCellStyleDefault" id="NmN-Sr-Hh4" userLabel="ThemeCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NmN-Sr-Hh4" id="C2d-Cj-kY6">
@@ -150,14 +150,17 @@
         <!--Setting-->
         <scene sceneID="wqR-4m-Rra">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MuO-at-0si" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SETTING" automaticallyAdjustsScrollViewInsets="NO" id="MuO-at-0si" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Setting" id="nOe-Ho-1Qu">
                         <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bUk-al-Oa5">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="bUk-al-Oa5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="0.92062606292517002" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
