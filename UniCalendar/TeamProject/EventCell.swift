@@ -12,7 +12,13 @@ class EventCell: UITableViewCell {
 
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var dDay: UILabel!
+    
     @IBOutlet weak var importance: UILabel!
+    @IBOutlet weak var importanceImage: UILabel!
+    
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressPercent: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -11,11 +11,12 @@ struct EventItem {
     var eventName: String
     var dDay: String
     var importance: Int
+    var importanceImage: String
+    var progressPercent: Double
 }
 let eventItems: [EventItem] = [
-    EventItem(eventName: "알고리즘 과제", dDay: "D-4", importance: 4),
-    EventItem(eventName: "연합 동아리 지원 마감", dDay: "D-7", importance: 3),
-    EventItem(eventName: "컴퓨터 그래픽스 시험", dDay: "D-20", importance: 5)
+    EventItem(eventName: "알고리즘 과제", dDay: "D-4", importance: 4, importanceImage: "OOOO", progressPercent: 0.8),
+    EventItem(eventName: "연합 동아리 지원 마감", dDay: "D-7", importance: 3, importanceImage: "OOO", progressPercent: 0.5),
 ]
 
 class HomeViewController: UIViewController, UITableViewDataSource {
@@ -34,7 +35,13 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         let event = eventItems[indexPath.row]
         cell.eventName.text = event.eventName
         cell.dDay.text = event.dDay
-        cell.importance.text = "중요해요: \(event.importance)"
+        
+        cell.importance.text = "중요해요: "
+        cell.importanceImage.text = event.importanceImage
+        
+        cell.progressLabel.text = "영차영차"
+        cell.progressView.setProgress(Float(event.progressPercent), animated: false)
+        cell.progressPercent.text = "\(event.progressPercent*100)%"
         return cell
     }
     
