@@ -5,11 +5,11 @@
       "scale" : "1x"
     },
     {
+      "filename" : "launchScreen.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "prototype_Unicalender.001.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }
