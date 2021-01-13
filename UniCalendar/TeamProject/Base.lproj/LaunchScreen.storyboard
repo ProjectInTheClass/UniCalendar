@@ -16,18 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prototype_Unicalender.001" translatesAutoresizingMaskIntoConstraints="NO" id="7LX-rU-QVw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="wdU-BW-mFQ">
+                                <rect key="frame" x="3" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7LX-rU-QVw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3Zz-lm-CfP"/>
-                            <constraint firstItem="7LX-rU-QVw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="c5D-vn-JpF"/>
-                            <constraint firstItem="7LX-rU-QVw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xhZ-w6-iRJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7LX-rU-QVw" secondAttribute="trailing" id="yp9-gP-gxO"/>
-                            <constraint firstItem="7LX-rU-QVw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zw4-f0-a4p"/>
+                            <constraint firstItem="wdU-BW-mFQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Bbb-OR-LCU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wdU-BW-mFQ" secondAttribute="trailing" id="YJh-bh-3Bl"/>
+                            <constraint firstItem="wdU-BW-mFQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fa5-4a-vDs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wdU-BW-mFQ" secondAttribute="bottom" id="s2W-EZ-3Jc"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,7 +36,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="prototype_Unicalender.001" width="125" height="270.66665649414062"/>
+        <image name="launchScreen" width="362" height="646"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

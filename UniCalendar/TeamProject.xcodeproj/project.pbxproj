@@ -20,6 +20,7 @@
 		5B144734259DC26700968770 /* Graph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B144733259DC26700968770 /* Graph.storyboard */; };
 		5B2841E625A45D8100FA63BD /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B2841E525A45D8100FA63BD /* Setting.storyboard */; };
 		5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2841F825A577F500FA63BD /* SettingViewController.swift */; };
+		5B35DCB625AEC0CD00A73E9E /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCB525AEC0CD00A73E9E /* ThemeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		5B144733259DC26700968770 /* Graph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graph.storyboard; sourceTree = "<group>"; };
 		5B2841E525A45D8100FA63BD /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		5B2841F825A577F500FA63BD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		5B35DCB525AEC0CD00A73E9E /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +77,7 @@
 				5B144717259DB3E700968770 /* ViewController.swift */,
 				5B144719259DB3E700968770 /* Main.storyboard */,
 				5B2841FC25A57A7300FA63BD /* Home */,
-				5B28420025A57ACB00FA63BD /* Calender */,
+				5B28420025A57ACB00FA63BD /* Calendar */,
 				5B2841FF25A57AA900FA63BD /* Graph */,
 				5B28420125A57AF300FA63BD /* Setting */,
 				5B14471C259DB3E900968770 /* Assets.xcassets */,
@@ -103,18 +105,19 @@
 			path = Graph;
 			sourceTree = "<group>";
 		};
-		5B28420025A57ACB00FA63BD /* Calender */ = {
+		5B28420025A57ACB00FA63BD /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 				5B14472C259DC1C600968770 /* Calendar.storyboard */,
 			);
-			name = Calender;
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 		5B28420125A57AF300FA63BD /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				5B2841E525A45D8100FA63BD /* Setting.storyboard */,
+				5B35DCB525AEC0CD00A73E9E /* ThemeCell.swift */,
 				5B2841F825A577F500FA63BD /* SettingViewController.swift */,
 			);
 			name = Setting;
@@ -200,6 +203,7 @@
 				5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */,
 				18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */,
 				5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */,
+				5B35DCB625AEC0CD00A73E9E /* ThemeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
