@@ -19,13 +19,10 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
 
     }
     
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return ""
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0){
-            return category.count
+            return category.count+1
         } else {
             return 1
         }
@@ -33,11 +30,21 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
+            if(indexPath.row < category.count){
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
+                                
+                cell.categoryName.text = category[indexPath.row]
+                    
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AddCategoryCell", for: indexPath) as! AddCategoryCell
                 
-            cell.categoryName.text = category[indexPath.row]
+                cell.addLabel.text = add
+                cell.addLabel.textColor = UIColor.blue
                 
-            return cell
+                return cell
+            }
+            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for:indexPath) as! AboutCell
             
@@ -56,6 +63,7 @@ class SettingViewController: UIViewController {
     
     let sectionName: [String] = ["카테고리 관리🔨", "우리 앱은요🔖"]
     let about = "앱을 소개합니다👐🏻"
+    let add = "카테고리 추가"
     
     
     override func viewDidLoad() {
