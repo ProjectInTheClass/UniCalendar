@@ -20,7 +20,8 @@
 		5B144734259DC26700968770 /* Graph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B144733259DC26700968770 /* Graph.storyboard */; };
 		5B2841E625A45D8100FA63BD /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B2841E525A45D8100FA63BD /* Setting.storyboard */; };
 		5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2841F825A577F500FA63BD /* SettingViewController.swift */; };
-		5B35DCB625AEC0CD00A73E9E /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCB525AEC0CD00A73E9E /* ThemeCell.swift */; };
+		5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCB525AEC0CD00A73E9E /* CategoryCell.swift */; };
+		5B35DCC025B086C300A73E9E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCBF25B086C300A73E9E /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +40,8 @@
 		5B144733259DC26700968770 /* Graph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graph.storyboard; sourceTree = "<group>"; };
 		5B2841E525A45D8100FA63BD /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		5B2841F825A577F500FA63BD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		5B35DCB525AEC0CD00A73E9E /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
+		5B35DCB525AEC0CD00A73E9E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		5B35DCBF25B086C300A73E9E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				5B2841E525A45D8100FA63BD /* Setting.storyboard */,
-				5B35DCB525AEC0CD00A73E9E /* ThemeCell.swift */,
+				5B35DCB525AEC0CD00A73E9E /* CategoryCell.swift */,
 				5B2841F825A577F500FA63BD /* SettingViewController.swift */,
+				5B35DCBF25B086C300A73E9E /* Category.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -203,7 +206,8 @@
 				5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */,
 				18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */,
 				5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */,
-				5B35DCB625AEC0CD00A73E9E /* ThemeCell.swift in Sources */,
+				5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */,
+				5B35DCC025B086C300A73E9E /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
