@@ -1,16 +1,15 @@
 //
-//  ThemeCell.swift
+//  AboutCell.swift
 //  TeamProject
 //
-//  Created by Nayeon Kim on 2021/01/13.
+//  Created by Nayeon Kim on 2021/01/14.
 //
 
 import UIKit
 
-class CategoryCell: UITableViewCell {
+class AboutCell: UITableViewCell {
 
-    
-    @IBOutlet weak var categoryName: UILabel!
+    @IBOutlet weak var aboutLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
