@@ -40,7 +40,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddCategoryCell", for: indexPath) as! AddCategoryCell
                 
                 cell.addLabel.text = add
-                cell.addLabel.textColor = UIColor.blue
+                cell.addLabel.textColor = UIColor.init(red: 0, green: 0, blue: 1, alpha: 1)
                 
                 return cell
             }
