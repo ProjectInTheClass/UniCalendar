@@ -54,6 +54,26 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row{
+            case category.count:
+                self.performSegue(withIdentifier: "addCategoryModal", sender: nil)
+            default:
+                    break
+            }
+            
+        default:
+            self.performSegue(withIdentifier: "moveToAboutPage", sender: nil)
+        }
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let aboutVC = segue.destination as!
+//    }
 }
 
 class SettingViewController: UIViewController {
@@ -72,6 +92,5 @@ class SettingViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-
 
 }
