@@ -7,9 +7,11 @@
 
 import UIKit
 
-class ModalTableViewController: UITableViewController {
+
+class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
     
+    @IBOutlet weak var nameTextField: UITextField!
     @IBAction func completeModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -18,8 +20,10 @@ class ModalTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextField.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -27,18 +31,44 @@ class ModalTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.nameTextField.becomeFirstResponder()
+        
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.nameTextField.resignFirstResponder()
+        self.dismiss(animated: true, completion: nil)
+        return true
+    }
+//
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        if textField.text != "" {return true}
+//        else {
+//            textField.placeholder = "카테고리 이름"
+//            return false
+//        }
+//    }
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        textField.text = ""
+//    }
+    
+    
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 3
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 2
+//    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
