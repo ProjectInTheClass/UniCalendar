@@ -25,6 +25,7 @@
 		5B35DCC425B08C1F00A73E9E /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCC325B08C1F00A73E9E /* AboutCell.swift */; };
 		5B35DCC825B0981100A73E9E /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */; };
 		5B35DCE125B1C81E00A73E9E /* ModalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */; };
+		5B35DCE725B1F0BA00A73E9E /* CategoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		5B35DCC325B08C1F00A73E9E /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
 		5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTableViewController.swift; sourceTree = "<group>"; };
+		5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				5B2841E525A45D8100FA63BD /* Setting.storyboard */,
 				5B35DCBF25B086C300A73E9E /* Category.swift */,
 				5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */,
+				5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			files = (
 				18B9DF2925A6DE6200F05FFB /* HomeViewController.swift in Sources */,
 				5B144718259DB3E700968770 /* ViewController.swift in Sources */,
+				5B35DCE725B1F0BA00A73E9E /* CategoryDetailTableViewController.swift in Sources */,
 				5B35DCC425B08C1F00A73E9E /* AboutCell.swift in Sources */,
 				5B144714259DB3E700968770 /* AppDelegate.swift in Sources */,
 				5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */,

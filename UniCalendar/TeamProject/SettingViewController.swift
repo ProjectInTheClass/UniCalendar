@@ -63,6 +63,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
             case category.count:
                 self.performSegue(withIdentifier: "addCategoryModal", sender: nil)
             default:
+                self.performSegue(withIdentifier: "moveToDetail", sender: nil)
                     break
             }
             
