@@ -24,6 +24,7 @@
 		5B35DCC025B086C300A73E9E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCBF25B086C300A73E9E /* Category.swift */; };
 		5B35DCC425B08C1F00A73E9E /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCC325B08C1F00A73E9E /* AboutCell.swift */; };
 		5B35DCC825B0981100A73E9E /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */; };
+		5B35DCD225B1BA3500A73E9E /* AddModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCD125B1BA3500A73E9E /* AddModalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		5B35DCBF25B086C300A73E9E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5B35DCC325B08C1F00A73E9E /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
+		5B35DCD125B1BA3500A73E9E /* AddModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				5B2841F825A577F500FA63BD /* SettingViewController.swift */,
+				5B35DCD125B1BA3500A73E9E /* AddModalViewController.swift */,
 				5B2841E525A45D8100FA63BD /* Setting.storyboard */,
 				5B35DCB525AEC0CD00A73E9E /* CategoryCell.swift */,
 				5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */,
@@ -206,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B35DCD225B1BA3500A73E9E /* AddModalViewController.swift in Sources */,
 				18B9DF2925A6DE6200F05FFB /* HomeViewController.swift in Sources */,
 				5B144718259DB3E700968770 /* ViewController.swift in Sources */,
 				5B35DCC425B08C1F00A73E9E /* AboutCell.swift in Sources */,

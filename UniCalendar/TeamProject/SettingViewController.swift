@@ -92,5 +92,9 @@ class SettingViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        
+    }
 
 }
