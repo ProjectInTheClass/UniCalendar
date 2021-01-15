@@ -62,7 +62,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addLabel" destination="b8k-YI-NN9" id="RpF-yi-xw1"/>
-                                            <segue destination="UoZ-6F-dug" kind="presentation" identifier="addCategoryModal" trigger="accessoryAction" id="o47-5W-kqZ"/>
+                                            <segue destination="MT5-CP-i8b" kind="presentation" identifier="addCategoryModal" id="FWV-QW-vaT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutCell" textLabel="tgh-AE-k9A" style="IBUITableViewCellStyleDefault" id="cgS-j5-IKY" userLabel="AboutCell" customClass="AboutCell" customModule="TeamProject" customModuleProvider="target">
@@ -115,56 +115,62 @@
             <point key="canvasLocation" x="1459" y="52"/>
         </scene>
         <!--카테고리 추가-->
-        <scene sceneID="CFs-sN-0x2">
+        <scene sceneID="MlN-u3-oH0">
             <objects>
-                <viewController id="Sqx-GQ-u06" customClass="AddModalViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aKa-cN-2CW">
+                <tableViewController id="8Ni-FS-e5Q" customClass="ModalTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="c4L-Mp-fjF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZKP-V0-3wS">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="A74-1D-yhn">
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="H8U-TN-xbS">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cVO-sd-HAu">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A74-1D-yhn" id="R9k-gV-Sme">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cVO-sd-HAu" id="rE9-1t-kRW">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="cG2-Bd-oe9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="cG2-Bd-oe9" firstAttribute="bottom" secondItem="ZKP-V0-3wS" secondAttribute="bottom" id="Pu3-xE-io2"/>
-                            <constraint firstItem="ZKP-V0-3wS" firstAttribute="leading" secondItem="cG2-Bd-oe9" secondAttribute="leading" id="RqW-1h-L2J"/>
-                            <constraint firstItem="cG2-Bd-oe9" firstAttribute="trailing" secondItem="ZKP-V0-3wS" secondAttribute="trailing" id="Yq3-fJ-6E6"/>
-                            <constraint firstItem="ZKP-V0-3wS" firstAttribute="top" secondItem="cG2-Bd-oe9" secondAttribute="top" id="sOE-5i-hIH"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="카테고리 추가" id="MII-dx-ogN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="U0V-ko-a2Q">
+                                        <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U0V-ko-a2Q" id="O9O-Fx-jSV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="eJ0-KW-DCe">
+                                        <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJ0-KW-DCe" id="IhO-BG-a3K">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="카테고리 추가" id="DFB-H2-dTk">
                         <barButtonItem key="leftBarButtonItem" title="취소" id="krI-js-PM4">
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="cancelModal:" destination="Sqx-GQ-u06" id="gRU-JW-fy7"/>
+                                <action selector="cancelModal:" destination="8Ni-FS-e5Q" id="Wcb-zl-rDK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="완료" id="vWA-9L-6tp">
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="completeModal:" destination="Sqx-GQ-u06" id="jGa-oO-5wW"/>
+                                <action selector="completeModal:" destination="8Ni-FS-e5Q" id="4Io-XX-ejl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QWG-Xc-iJ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKh-3r-oiV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2987" y="-359"/>
+            <point key="canvasLocation" x="3177" y="-468"/>
         </scene>
         <!--aboutPage-->
         <scene sceneID="o8Z-xj-bBN">
@@ -217,22 +223,22 @@
             <point key="canvasLocation" x="630.43478260869574" y="92.410714285714278"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="GFD-BZ-aqz">
+        <scene sceneID="xo7-rm-MiQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UoZ-6F-dug" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MT5-CP-i8b" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PHd-ho-U8J">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ixP-bq-qT5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Sqx-GQ-u06" kind="relationship" relationship="rootViewController" id="Qux-ot-bU7"/>
+                        <segue destination="8Ni-FS-e5Q" kind="relationship" relationship="rootViewController" id="NHL-jU-BQV"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9QT-Fo-Dzd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EmB-fD-gJl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2272" y="-346"/>
+            <point key="canvasLocation" x="2207" y="-442"/>
         </scene>
     </scenes>
     <resources>
