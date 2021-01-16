@@ -1,36 +1,20 @@
 //
-//  ModalTableViewController.swift
+//  ColorTableViewController.swift
 //  TeamProject
 //
-//  Created by Nayeon Kim on 2021/01/15.
+//  Created by Nayeon Kim on 2021/01/16.
 //
 
 import UIKit
 
+class ColorTableViewController: UITableViewController {
 
-class ModalTableViewController: UITableViewController, UITextFieldDelegate {
-    
-    
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBAction func completeModal(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    @IBAction func cancelModal(_ sender: Any) {
+    @IBAction func completeColorModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-            self.nameTextField.becomeFirstResponder()
-    }
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,35 +22,6 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    
-    
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.nameTextField.resignFirstResponder()
-        self.dismiss(animated: true, completion: nil)
-        return true
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            self.performSegue(withIdentifier: "chooseColor", sender: nil)
-        }
-    }
-//
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        if textField.text != "" {return true}
-//        else {
-//            textField.placeholder = "카테고리 이름"
-//            return false
-//        }
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        textField.text = ""
-//    }
-    
-    
 
     // MARK: - Table view data source
 
@@ -77,7 +32,7 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
 //
 //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        // #warning Incomplete implementation, return the number of rows
-//        return 2
+//        return 0
 //    }
 
     /*
