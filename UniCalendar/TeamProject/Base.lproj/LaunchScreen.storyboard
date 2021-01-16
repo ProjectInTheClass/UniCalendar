@@ -36,7 +36,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchScreen" width="362" height="646"/>
+        <image name="launchScreen" width="241.33332824707031" height="430.66665649414062"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
