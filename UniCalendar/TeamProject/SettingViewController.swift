@@ -8,6 +8,16 @@
 import Foundation
 import UIKit
 
+
+struct CategoryItem {
+    enum Color {
+           case red, yellow, orange, green, blue, purple
+    }
+    
+    var categoryName: String
+    var categoryColor: Color
+}
+
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
     //section count
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -23,7 +33,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
     //rows in each section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0){ //category section
-            return category.count+1
+            return items.count+1
         } else { //about app section
             return 1
         }
@@ -33,11 +43,13 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0){
             //category seciton
-            if(indexPath.row < category.count){
+            if(indexPath.row < items.count){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
                                 
-                cell.categoryName.text = category[indexPath.row]
+                let category = items[indexPath.row]
                     
+                cell.categoryName.text = category.categoryName
+                
                 return cell
             } else {
                 //add category row
@@ -66,7 +78,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         switch indexPath.section {
         case 0:
             switch indexPath.row{
-            case category.count:
+            case items.count:
                 self.performSegue(withIdentifier: "addCategoryModal", sender: nil)
             default:
                 self.performSegue(withIdentifier: "moveToDetail", sender: nil)
@@ -88,12 +100,20 @@ class SettingViewController: UIViewController {
     let about = "앱을 소개합니다👐🏻"
     let add = "카테고리 추가"
     
+    var items: [CategoryItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Category.shared.getCategoryItems(completion: { category in
+            self.items = category
+            self.tableView.reloadData()
+        })
     }
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {

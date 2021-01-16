@@ -9,9 +9,13 @@ import UIKit
 
 class ColorTableViewController: UITableViewController {
 
+    var confirmedColor: Int = 0
+    
     @IBAction func completeColorModal(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +27,24 @@ class ColorTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    //show checkmark for selected row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        
+        confirmedColor = indexPath.row
+        //print(confirmedColor)
     }
     
+    //deselect the row as we only need SINGLE checkmark
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         print(indexPath)
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
+    
+    
+    
+    
 
     // MARK: - Table view data source
 

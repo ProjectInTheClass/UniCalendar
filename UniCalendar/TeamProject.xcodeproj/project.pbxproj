@@ -21,7 +21,7 @@
 		5B2841E625A45D8100FA63BD /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B2841E525A45D8100FA63BD /* Setting.storyboard */; };
 		5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2841F825A577F500FA63BD /* SettingViewController.swift */; };
 		5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCB525AEC0CD00A73E9E /* CategoryCell.swift */; };
-		5B35DCC025B086C300A73E9E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCBF25B086C300A73E9E /* Category.swift */; };
+		5B35DCC025B086C300A73E9E /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCBF25B086C300A73E9E /* CategoryAPI.swift */; };
 		5B35DCC425B08C1F00A73E9E /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCC325B08C1F00A73E9E /* AboutCell.swift */; };
 		5B35DCC825B0981100A73E9E /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */; };
 		5B35DCE125B1C81E00A73E9E /* ModalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */; };
@@ -46,7 +46,7 @@
 		5B2841E525A45D8100FA63BD /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		5B2841F825A577F500FA63BD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5B35DCB525AEC0CD00A73E9E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		5B35DCBF25B086C300A73E9E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		5B35DCBF25B086C300A73E9E /* CategoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPI.swift; sourceTree = "<group>"; };
 		5B35DCC325B08C1F00A73E9E /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
 		5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTableViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 				5B35DCDA25B1C27300A73E9E /* SettingCells */,
 				5B2841F825A577F500FA63BD /* SettingViewController.swift */,
 				5B2841E525A45D8100FA63BD /* Setting.storyboard */,
-				5B35DCBF25B086C300A73E9E /* Category.swift */,
+				5B35DCBF25B086C300A73E9E /* CategoryAPI.swift */,
 				5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */,
 				5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */,
 				5B35DCE925B284DF00A73E9E /* ColorTableViewController.swift */,
@@ -242,7 +242,7 @@
 				5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */,
 				5B35DCEA25B284DF00A73E9E /* ColorTableViewController.swift in Sources */,
 				5B35DCE125B1C81E00A73E9E /* ModalTableViewController.swift in Sources */,
-				5B35DCC025B086C300A73E9E /* Category.swift in Sources */,
+				5B35DCC025B086C300A73E9E /* CategoryAPI.swift in Sources */,
 				5B35DCC825B0981100A73E9E /* AddCategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
