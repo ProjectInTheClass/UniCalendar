@@ -13,13 +13,14 @@ class ColorTableViewController: UITableViewController {
     
     @IBAction func completeColorModal(_ sender: UIBarButtonItem) {
         
-//        guard let backToAddModal = self.storyboard?.instantiateViewController(identifier: "AddCategory") as? ModalTableViewController else {
-//            return
-//        }
-//        backToAddModal.getImageChange = calculateColor(color: confirmedColor)
+        guard let backToAddModal = self.storyboard?.instantiateViewController(identifier: "AddCategory") as? ModalTableViewController else {
+            return
+        }
+        backToAddModal.getImageChange = calculateColor(color: confirmedColor)
+        
         
         self.dismiss(animated: true, completion: nil)
-        
+        self.present(backToAddModal, animated: true)
     }
     
     

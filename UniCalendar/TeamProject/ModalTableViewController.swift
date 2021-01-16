@@ -26,15 +26,6 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
             self.nameTextField.becomeFirstResponder()
-            
-        print("View Will Appear")
-        updateViewConstraints()
-        
-    }
-    
-    override func updateViewConstraints() {
-        print(getImageChange)
-        self.showColorImage.image = UIImage(named: getImageChange)
     }
     
     
@@ -42,8 +33,8 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         nameTextField.delegate = self
         
-        print("View Did Load")
-        updateViewConstraints()
+        self.showColorImage.image = UIImage(named: getImageChange)
+        
 //       self.showColorImage.image?.accessibilityIdentifier =         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
