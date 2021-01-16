@@ -10,24 +10,31 @@ import UIKit
 class ColorTableViewController: UITableViewController {
 
     var confirmedColor: Int = 0
+    //var colors : [CategoryItem.Color]
     
-    @IBAction func completeColorModal(_ sender: UIBarButtonItem) {
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBAction func unwindToCategoryModal(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
         
-        guard let backToAddModal = self.storyboard?.instantiateViewController(identifier: "AddCategory") as? ModalTableViewController else {
-            return
-        }
-        backToAddModal.getImageChange = calculateColor(color: confirmedColor)
-        
-        
-        self.dismiss(animated: true, completion: nil)
-        self.present(backToAddModal, animated: true)
     }
+//    @IBAction func completeColorModal(_ sender: UIBarButtonItem) {
+//
+//        guard let backToAddModal = self.storyboard?.instantiateViewController(identifier: "AddCategory") as? ModalTableViewController else {
+//            return
+//        }
+//        backToAddModal.getImageChange = calculateColor(color: confirmedColor)
+//
+//
+//        self.dismiss(animated: true, completion: nil)
+//        self.present(backToAddModal, animated: true)
+//    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.updateCompleteButton()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -67,6 +74,10 @@ class ColorTableViewController: UITableViewController {
         default:
             return ""
         }
+    }
+    
+    func updateCompleteButton() {
+        
     }
     
     

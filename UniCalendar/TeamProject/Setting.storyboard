@@ -356,13 +356,17 @@
                         <barButtonItem key="rightBarButtonItem" title="완료" id="H7L-ga-HQH">
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="completeColorModal:" destination="AWy-Em-giW" id="mla-6R-ac0"/>
+                                <segue destination="uAR-wJ-ixt" kind="unwind" identifier="ToCategoryModal" unwindAction="unwindToCategoryModal:" id="03L-OS-U31"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="doneButton" destination="H7L-ga-HQH" id="xOw-3P-yZs"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CvG-LI-Bvi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="uAR-wJ-ixt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4684.057971014493" y="51.5625"/>
         </scene>
