@@ -1,14 +1,15 @@
 //
-//  ThemeCell.swift
+//  AddCategoryCell.swift
 //  TeamProject
 //
-//  Created by Nayeon Kim on 2021/01/13.
+//  Created by Nayeon Kim on 2021/01/15.
 //
 
 import UIKit
 
-class ThemeCell: UITableViewCell {
+class AddCategoryCell: UITableViewCell {
 
+    @IBOutlet weak var addLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

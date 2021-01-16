@@ -20,7 +20,13 @@
 		5B144734259DC26700968770 /* Graph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B144733259DC26700968770 /* Graph.storyboard */; };
 		5B2841E625A45D8100FA63BD /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B2841E525A45D8100FA63BD /* Setting.storyboard */; };
 		5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2841F825A577F500FA63BD /* SettingViewController.swift */; };
-		5B35DCB625AEC0CD00A73E9E /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCB525AEC0CD00A73E9E /* ThemeCell.swift */; };
+		5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCB525AEC0CD00A73E9E /* CategoryCell.swift */; };
+		5B35DCC025B086C300A73E9E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCBF25B086C300A73E9E /* Category.swift */; };
+		5B35DCC425B08C1F00A73E9E /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCC325B08C1F00A73E9E /* AboutCell.swift */; };
+		5B35DCC825B0981100A73E9E /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */; };
+		5B35DCE125B1C81E00A73E9E /* ModalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */; };
+		5B35DCE725B1F0BA00A73E9E /* CategoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */; };
+		5B35DCEA25B284DF00A73E9E /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B35DCE925B284DF00A73E9E /* ColorTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +45,13 @@
 		5B144733259DC26700968770 /* Graph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graph.storyboard; sourceTree = "<group>"; };
 		5B2841E525A45D8100FA63BD /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		5B2841F825A577F500FA63BD /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		5B35DCB525AEC0CD00A73E9E /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
+		5B35DCB525AEC0CD00A73E9E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		5B35DCBF25B086C300A73E9E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		5B35DCC325B08C1F00A73E9E /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
+		5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
+		5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTableViewController.swift; sourceTree = "<group>"; };
+		5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableViewController.swift; sourceTree = "<group>"; };
+		5B35DCE925B284DF00A73E9E /* ColorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,11 +128,33 @@
 		5B28420125A57AF300FA63BD /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				5B2841E525A45D8100FA63BD /* Setting.storyboard */,
-				5B35DCB525AEC0CD00A73E9E /* ThemeCell.swift */,
+				5B35DCDB25B1C29A00A73E9E /* ModalCells */,
+				5B35DCDA25B1C27300A73E9E /* SettingCells */,
 				5B2841F825A577F500FA63BD /* SettingViewController.swift */,
+				5B2841E525A45D8100FA63BD /* Setting.storyboard */,
+				5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */,
+				5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */,
+				5B35DCE925B284DF00A73E9E /* ColorTableViewController.swift */,
+				5B35DCBF25B086C300A73E9E /* Category.swift */,
 			);
 			name = Setting;
+			sourceTree = "<group>";
+		};
+		5B35DCDA25B1C27300A73E9E /* SettingCells */ = {
+			isa = PBXGroup;
+			children = (
+				5B35DCB525AEC0CD00A73E9E /* CategoryCell.swift */,
+				5B35DCC725B0981100A73E9E /* AddCategoryCell.swift */,
+				5B35DCC325B08C1F00A73E9E /* AboutCell.swift */,
+			);
+			name = SettingCells;
+			sourceTree = "<group>";
+		};
+		5B35DCDB25B1C29A00A73E9E /* ModalCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ModalCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,11 +233,17 @@
 			files = (
 				18B9DF2925A6DE6200F05FFB /* HomeViewController.swift in Sources */,
 				5B144718259DB3E700968770 /* ViewController.swift in Sources */,
+				5B35DCE725B1F0BA00A73E9E /* CategoryDetailTableViewController.swift in Sources */,
+				5B35DCC425B08C1F00A73E9E /* AboutCell.swift in Sources */,
 				5B144714259DB3E700968770 /* AppDelegate.swift in Sources */,
 				5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */,
 				18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */,
 				5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */,
-				5B35DCB625AEC0CD00A73E9E /* ThemeCell.swift in Sources */,
+				5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */,
+				5B35DCEA25B284DF00A73E9E /* ColorTableViewController.swift in Sources */,
+				5B35DCE125B1C81E00A73E9E /* ModalTableViewController.swift in Sources */,
+				5B35DCC025B086C300A73E9E /* Category.swift in Sources */,
+				5B35DCC825B0981100A73E9E /* AddCategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
