@@ -12,7 +12,6 @@ class ColorTableViewController: UITableViewController {
     var confirmedColor: Int = 0
     
     @IBAction func completeColorModal(_ sender: Any) {
-        
         self.dismiss(animated: true, completion: nil)
     }
     
