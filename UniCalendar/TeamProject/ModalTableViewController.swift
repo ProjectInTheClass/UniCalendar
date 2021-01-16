@@ -11,6 +11,7 @@ import UIKit
 class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
     
+    @IBOutlet weak var showColorImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBAction func completeModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

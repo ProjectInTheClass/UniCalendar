@@ -24,9 +24,9 @@ class ColorTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+        print(indexPath)
     }
+    
 
     // MARK: - Table view data source
 

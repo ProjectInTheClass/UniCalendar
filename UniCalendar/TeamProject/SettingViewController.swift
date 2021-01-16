@@ -14,22 +14,25 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         return 2
     }
 
+    //sections' name
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionName[section]
 
     }
     
-
+    //rows in each section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0){
+        if (section == 0){ //category section
             return category.count+1
-        } else {
+        } else { //about app section
             return 1
         }
     }
 
+    //add contents for rows
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0){
+            //category seciton
             if(indexPath.row < category.count){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
                                 
@@ -37,6 +40,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
                     
                 return cell
             } else {
+                //add category row
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddCategoryCell", for: indexPath) as! AddCategoryCell
                 
                 cell.addLabel.text = add
@@ -46,6 +50,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
             }
             
         } else {
+            //about app section
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for:indexPath) as! AboutCell
             
             cell.aboutLabel.text = about
@@ -55,6 +60,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         
     }
     
+    //if selected -> perform segue to move to another view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
@@ -72,15 +78,11 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let aboutVC = segue.destination as!
-//    }
 }
 
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    //@IBOutlet weak var label: UILabel!
     
     let sectionName: [String] = ["카테고리 관리🔨", "우리 앱은요🔖"]
     let about = "앱을 소개합니다👐🏻"
