@@ -54,6 +54,10 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
             self.performSegue(withIdentifier: "chooseColor", sender: nil)
         }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let colorCell = segue.destination as!
+//    }
 //
 //    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
 //        if textField.text != "" {return true}

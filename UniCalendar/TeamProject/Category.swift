@@ -23,6 +23,7 @@ class Category {
     func getCategoryItems(completion: ([CategoryItem]) -> Void){
         completion(self.categories)
     }
+
 }
 
 

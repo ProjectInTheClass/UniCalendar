@@ -12,6 +12,7 @@ class ColorTableViewController: UITableViewController {
     var confirmedColor: Int = 0
     
     @IBAction func completeColorModal(_ sender: Any) {
+        calculateColor(color: confirmedColor)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -41,7 +42,22 @@ class ColorTableViewController: UITableViewController {
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     
-    
+    func calculateColor(color: Int){
+        switch color {
+        case 0: 
+            break
+        case 1:
+            break
+        case 2:
+            break
+        case 3:
+            break
+        case 4:
+            break
+        default:
+            break
+        }
+    }
     
     
 
