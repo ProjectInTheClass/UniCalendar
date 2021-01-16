@@ -25,8 +25,13 @@ class ColorTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
     }
     
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print(indexPath)
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+    }
 
     // MARK: - Table view data source
 
