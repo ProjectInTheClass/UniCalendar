@@ -11,10 +11,17 @@ class ColorTableViewController: UITableViewController {
 
     var confirmedColor: Int = 0
     
-    @IBAction func completeColorModal(_ sender: Any) {
-        calculateColor(color: confirmedColor)
+    @IBAction func completeColorModal(_ sender: UIBarButtonItem) {
+        
+//        guard let backToAddModal = self.storyboard?.instantiateViewController(identifier: "AddCategory") as? ModalTableViewController else {
+//            return
+//        }
+//        backToAddModal.getImageChange = calculateColor(color: confirmedColor)
+        
         self.dismiss(animated: true, completion: nil)
+        
     }
+    
     
     
     override func viewDidLoad() {
@@ -42,20 +49,22 @@ class ColorTableViewController: UITableViewController {
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     
-    func calculateColor(color: Int){
+    func calculateColor(color: Int) -> String{
         switch color {
-        case 0: 
-            break
+        case 0:
+            return "category_purple"
         case 1:
-            break
+            return "category_blue"
         case 2:
-            break
+            return "category_red"
         case 3:
-            break
+            return "category_yellow"
         case 4:
-            break
+            return "category_green"
+        case 5:
+            return "category_orange"
         default:
-            break
+            return ""
         }
     }
     

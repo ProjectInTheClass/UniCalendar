@@ -118,7 +118,7 @@
         <!--카테고리 추가-->
         <scene sceneID="MlN-u3-oH0">
             <objects>
-                <tableViewController id="8Ni-FS-e5Q" customClass="ModalTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddCategory" id="8Ni-FS-e5Q" customClass="ModalTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="c4L-Mp-fjF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +163,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_purple" translatesAutoresizingMaskIntoConstraints="NO" id="Ja3-5r-1cj">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_purple" translatesAutoresizingMaskIntoConstraints="NO" id="Ja3-5r-1cj">
                                                     <rect key="frame" x="337" y="16" width="13" height="12"/>
                                                 </imageView>
                                             </subviews>

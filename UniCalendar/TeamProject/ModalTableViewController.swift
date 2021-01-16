@@ -10,6 +10,7 @@ import UIKit
 
 class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
+    var getImageChange: String = "category_purple"
     
     @IBOutlet weak var showColorImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -25,15 +26,25 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
             self.nameTextField.becomeFirstResponder()
+            
+        print("View Will Appear")
+        updateViewConstraints()
+        
+    }
+    
+    override func updateViewConstraints() {
+        print(getImageChange)
+        self.showColorImage.image = UIImage(named: getImageChange)
     }
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
-
-        // Uncomment the following line to preserve selection between presentations
+        
+        print("View Did Load")
+        updateViewConstraints()
+//       self.showColorImage.image?.accessibilityIdentifier =         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
