@@ -15,8 +15,16 @@ struct EventItem {
     var progressPercent: Double
 }
 let eventItems: [EventItem] = [
-    EventItem(eventName: "알고리즘 과제", dDay: "D-4", importance: 4, importanceImage: "OOOO", progressPercent: 0.8),
-    EventItem(eventName: "연합 동아리 지원 마감", dDay: "D-7", importance: 3, importanceImage: "OOO", progressPercent: 0.5),
+    EventItem(eventName: "알고리즘 과제",
+              dDay: "D-4",
+              importance: 4,
+              importanceImage: "OOOO",
+              progressPercent: 0.8),
+    EventItem(eventName: "연합 동아리 지원 마감",
+              dDay: "D-7",
+              importance: 3,
+              importanceImage: "OOO",
+              progressPercent: 0.5),
 ]
 
 class HomeViewController: UIViewController, UITableViewDataSource {
