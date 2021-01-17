@@ -100,7 +100,7 @@
                             <constraint firstItem="fOu-Vi-ErV" firstAttribute="trailing" secondItem="iT1-Ud-3AF" secondAttribute="trailing" id="yOE-Pn-UJ6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Setting" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="lYK-AT-QLT">
+                    <tabBarItem key="tabBarItem" title="환경설정" image="gearshape" catalog="system" selectedImage="gearshape.fill" id="lYK-AT-QLT">
                         <color key="badgeColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="환경설정" largeTitleDisplayMode="always" id="lPw-Rf-aIH">
@@ -396,12 +396,13 @@
             </objects>
             <point key="canvasLocation" x="2206" y="686"/>
         </scene>
-        <!--Setting-->
+        <!--환경설정-->
         <scene sceneID="wqR-4m-Rra">
             <objects>
                 <navigationController storyboardIdentifier="SETTING" automaticallyAdjustsScrollViewInsets="NO" id="MuO-at-0si" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Setting" id="nOe-Ho-1Qu">
+                    <tabBarItem key="tabBarItem" title="환경설정" selectedImage="gearshape.fill" catalog="system" id="nOe-Ho-1Qu">
                         <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
+                        <color key="badgeColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="bUk-al-Oa5">

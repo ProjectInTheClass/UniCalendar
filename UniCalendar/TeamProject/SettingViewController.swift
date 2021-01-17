@@ -107,6 +107,9 @@ class SettingViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+//        for count in items {
+//
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

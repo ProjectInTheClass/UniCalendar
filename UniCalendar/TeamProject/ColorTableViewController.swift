@@ -26,12 +26,6 @@ class ColorTableViewController: UITableViewController {
     
     
     @IBAction func goTo(_ sender: Any) {
-       
-//        guard let backToAddModal = self.storyboard?.instantiateViewController(identifier: "AddCategory") as? ModalTableViewController else {
-//            return
-//        }
-//
-//        backToAddModal.getImageChange = calculateColor(color: confirmedColor)
         performSegue(withIdentifier: "unwindToAddModal", sender: self)
     }
     

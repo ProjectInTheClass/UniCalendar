@@ -172,11 +172,11 @@
             </objects>
             <point key="canvasLocation" x="2537.68115942029" y="-13.392857142857142"/>
         </scene>
-        <!--Home-->
+        <!--홈-->
         <scene sceneID="qoG-Dt-REq">
             <objects>
                 <navigationController storyboardIdentifier="HOME" automaticallyAdjustsScrollViewInsets="NO" id="2ZK-Wm-MZI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="f2u-7P-g0d"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="house" catalog="system" selectedImage="house.fill" id="f2u-7P-g0d"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="kFz-JQ-dW6">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>

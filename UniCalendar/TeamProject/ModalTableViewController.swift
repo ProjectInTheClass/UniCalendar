@@ -21,6 +21,9 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func completeModal(_ sender: Any) {
+        //Category.shared.categories.append(CategoryItem(categoryName: nameTextField.text!, categoryColor: getEnumColor(color: getImageChange)))
+        items.append(CategoryItem(categoryName: nameTextField.text!, categoryColor: getEnumColor(color: getImageChange)))
+        
         self.dismiss(animated: true, completion: nil)
         
     }
@@ -30,12 +33,20 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-            
-            self.nameTextField.becomeFirstResponder()
-            //print("Category Add Modal appeared")
+    override func viewWillAppear(_ animated: Bool){
+        self.nameTextField.becomeFirstResponder()
+        //print("Category Add Modal appeared")
     }
     
+    var items: [CategoryItem] = []
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Category.shared.getCategoryItems(completion: {
+            category in
+            self.items = category
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +56,32 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.nameTextField.resignFirstResponder()
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
         return true
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
             self.performSegue(withIdentifier: "chooseColor", sender: nil)
+        }
+    }
+    
+    func getEnumColor(color: String) -> CategoryItem.Color{
+        switch color{
+        case "category_purple":
+            return CategoryItem.Color.purple
+        case "category_blue":
+            return CategoryItem.Color.blue
+        case "category_red":
+            return CategoryItem.Color.red
+        case "category_yellow":
+            return CategoryItem.Color.yellow
+        case "category_orange":
+            return CategoryItem.Color.orange
+        case "category_green":
+            return CategoryItem.Color.green
+        default:
+            return CategoryItem.Color.purple
         }
     }
     
