@@ -10,15 +10,26 @@ import UIKit
 class EventCell: UITableViewCell {
     
 
-    @IBOutlet weak var eventName: UILabel!
-    @IBOutlet weak var dDay: UILabel!
+//    @IBOutlet weak var eventNameLabel: UILabel!
+//    @IBOutlet weak var dDayLabel: UILabel!
+//
+//    @IBOutlet weak var importanceLabel: UILabel!
+//    @IBOutlet weak var importanceImageLabel: UILabel!
+//
+//    @IBOutlet weak var progressLabel: UILabel!
+//    @IBOutlet weak var progressView: UIProgressView!
+//    @IBOutlet weak var progressPercentLabel: UILabel!
+//
+    @IBOutlet weak var dDayLabel: UILabel!
+    @IBOutlet weak var eventNameLabel: UILabel!
     
-    @IBOutlet weak var importance: UILabel!
-    @IBOutlet weak var importanceImage: UILabel!
+    
+    @IBOutlet weak var importanceLabel: UILabel!
+    @IBOutlet weak var importanceImageLabel: UILabel!
     
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var progressPercent: UILabel!
+    @IBOutlet weak var progressPercentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

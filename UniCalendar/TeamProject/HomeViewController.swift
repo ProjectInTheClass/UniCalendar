@@ -12,7 +12,7 @@ struct EventItem {
     var dDay: String
     var importance: Int
     var importanceImage: String
-    var progressPercent: Double
+    var progressPercent: Float
 }
 let eventItems: [EventItem] = [
     EventItem(eventName: "알고리즘 과제",
@@ -27,7 +27,7 @@ let eventItems: [EventItem] = [
               progressPercent: 0.5),
 ]
 
-class HomeViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -41,25 +41,34 @@ class HomeViewController: UIViewController, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
         let event = eventItems[indexPath.row]
-        cell.eventName.text = event.eventName
-        cell.dDay.text = event.dDay
+        cell.eventNameLabel.text = event.eventName
+        cell.dDayLabel.text = event.dDay
         
-        cell.importance.text = "중요해요: "
-        cell.importanceImage.text = event.importanceImage
+        cell.importanceLabel.text = "중요해요"
+        cell.importanceImageLabel.text = event.importanceImage
         
         cell.progressLabel.text = "영차영차"
-        cell.progressView.setProgress(Float(event.progressPercent), animated: false)
-        cell.progressPercent.text = "\(event.progressPercent*100)%"
+        cell.progressView.setProgress(event.progressPercent, animated: false)
+        cell.progressPercentLabel.text = "\(event.progressPercent*100)%"
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
+        guard let cell: EventCell = sender as? EventCell else { return }
+        
+        destinationController.dDay = cell.dDayLabel.text!
+        destinationController.eventName = cell.eventNameLabel.text!
+        destinationController.progressPercent = cell.progressView.progress
+        
+        // TODO: 디테일 탭으로 소목표 넘기기
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
 }
