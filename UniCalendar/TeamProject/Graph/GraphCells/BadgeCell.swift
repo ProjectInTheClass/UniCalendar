@@ -9,6 +9,9 @@ import UIKit
 
 class BadgeCell: UITableViewCell {
 
+    @IBOutlet weak var badgeLabel: UILabel!
+    @IBOutlet weak var allButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -16,22 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dlO-vd-exn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dlO-vd-exn">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="188" id="uOz-2A-WVF" userLabel="BadgeCell" customClass="BadgeCell" customModule="TeamProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="188"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BadgeCell" rowHeight="188" id="uOz-2A-WVF" userLabel="BadgeCell" customClass="BadgeCell" customModule="TeamProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="188"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uOz-2A-WVF" id="DVl-2m-ywC">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="188"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="nfD-Ta-djQ">
-                                                    <rect key="frame" x="11" y="22" width="393" height="166"/>
+                                                    <rect key="frame" x="10" y="39" width="394" height="149"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="393" id="Lvy-wc-ZGS"/>
+                                                        <constraint firstAttribute="height" constant="155" id="zj1-xd-Pct"/>
+                                                    </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배지🎖" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxj-aW-Y7j">
+                                                    <rect key="frame" x="20" y="16" width="53" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seI-hA-41J">
-                                                    <rect key="frame" x="323" y="6" width="81" height="30"/>
+                                                    <rect key="frame" x="313" y="11" width="81" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="77K-hg-nGr"/>
                                                     </constraints>
@@ -39,36 +49,36 @@
                                                         <color key="titleColor" systemColor="opaqueSeparatorColor"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배지🎖" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxj-aW-Y7j">
-                                                    <rect key="frame" x="20" y="11" width="53" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="nfD-Ta-djQ" firstAttribute="top" secondItem="seI-hA-41J" secondAttribute="bottom" constant="-2" id="1XN-Yb-Vrw"/>
                                                 <constraint firstItem="mxj-aW-Y7j" firstAttribute="leading" secondItem="DVl-2m-ywC" secondAttribute="leadingMargin" id="3il-9K-3mx"/>
-                                                <constraint firstItem="seI-hA-41J" firstAttribute="trailing" secondItem="nfD-Ta-djQ" secondAttribute="trailing" id="DqN-NL-Pmj"/>
+                                                <constraint firstItem="seI-hA-41J" firstAttribute="trailing" secondItem="nfD-Ta-djQ" secondAttribute="trailing" constant="-10" id="DqN-NL-Pmj"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="nfD-Ta-djQ" secondAttribute="bottom" constant="-11" id="Gam-OZ-BrZ"/>
-                                                <constraint firstItem="mxj-aW-Y7j" firstAttribute="top" secondItem="DVl-2m-ywC" secondAttribute="topMargin" id="HWc-5N-1MC"/>
-                                                <constraint firstItem="nfD-Ta-djQ" firstAttribute="top" secondItem="DVl-2m-ywC" secondAttribute="topMargin" constant="11" id="I5Y-86-pMb"/>
-                                                <constraint firstItem="nfD-Ta-djQ" firstAttribute="leading" secondItem="DVl-2m-ywC" secondAttribute="leadingMargin" constant="-9" id="ays-Qa-vWr"/>
+                                                <constraint firstItem="mxj-aW-Y7j" firstAttribute="top" secondItem="DVl-2m-ywC" secondAttribute="topMargin" constant="5" id="HWc-5N-1MC"/>
+                                                <constraint firstAttribute="bottom" secondItem="nfD-Ta-djQ" secondAttribute="bottom" id="RPK-DG-S1H"/>
+                                                <constraint firstItem="nfD-Ta-djQ" firstAttribute="leading" secondItem="DVl-2m-ywC" secondAttribute="leading" constant="10" id="VoQ-Rz-0gX"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="nfD-Ta-djQ" secondAttribute="trailing" constant="-10" id="orY-mr-s3y"/>
                                                 <constraint firstItem="mxj-aW-Y7j" firstAttribute="centerY" secondItem="seI-hA-41J" secondAttribute="centerY" id="vho-ks-zvH"/>
-                                                <constraint firstItem="seI-hA-41J" firstAttribute="top" secondItem="DVl-2m-ywC" secondAttribute="topMargin" constant="-5" id="vnS-Pt-PXi"/>
+                                                <constraint firstItem="seI-hA-41J" firstAttribute="top" secondItem="DVl-2m-ywC" secondAttribute="topMargin" id="vnS-Pt-PXi"/>
+                                                <constraint firstAttribute="trailing" secondItem="nfD-Ta-djQ" secondAttribute="trailing" constant="10" id="wmc-OD-IUH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="allButton" destination="seI-hA-41J" id="2rB-cS-sN7"/>
+                                            <outlet property="badgeLabel" destination="mxj-aW-Y7j" id="pez-Nh-1Hf"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="349" id="7QE-sj-xTf" userLabel="PatternCell" customClass="PatternCell" customModule="TeamProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="216" width="414" height="349"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatternCell" rowHeight="349" id="7QE-sj-xTf" userLabel="PatternCell" customClass="PatternCell" customModule="TeamProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="243.5" width="414" height="349"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7QE-sj-xTf" id="bJ4-vv-E8u">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="349"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="342" id="VNF-Q2-SCV" userLabel="CompleteDegreeCell" customClass="CompleteDegreeCell" customModule="TeamProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="565" width="414" height="342"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompleteDegreeCell" rowHeight="342" id="VNF-Q2-SCV" userLabel="CompleteDegreeCell" customClass="CompleteDegreeCell" customModule="TeamProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="592.5" width="414" height="342"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VNF-Q2-SCV" id="rpS-ng-vuL">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="342"/>
@@ -92,6 +102,9 @@
                         <barButtonItem key="backBarButtonItem" title="성취도 분석" id="bAb-82-dhD"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="dlO-vd-exn" id="kD2-wg-FNL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVl-4S-nVP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

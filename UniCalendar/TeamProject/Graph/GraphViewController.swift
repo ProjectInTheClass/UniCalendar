@@ -9,11 +9,14 @@ import UIKit
 
 class GraphViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     let semiSection : [String] = ["배지🎖", "전체 보기▶️", "대학 생활 패턴 분석🔍", "완료도 분석📊"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -36,8 +39,23 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-    }
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BadgeCell", for: indexPath) as! BadgeCell
+            
+            cell.badgeLabel.text = semiSection[0]
+            cell.allButton.titleLabel!.text = semiSection[1]
+            
+            return cell
+        }
+        else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PatternCell", for: indexPath) as! PatternCell
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CompleteDegreeCell", for: indexPath) as! CompleteDegreeCell
+            return cell
+        }
     
+    }
     
 }
