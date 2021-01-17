@@ -53,6 +53,9 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
