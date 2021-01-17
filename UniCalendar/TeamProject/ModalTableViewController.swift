@@ -14,6 +14,12 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var showColorImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBAction func unwind (segue: UIStoryboardSegue) {
+        print(getImageChange)
+        showColorImage.image = UIImage(named: getImageChange)
+    }
+    
     @IBAction func completeModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         
@@ -25,21 +31,15 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
+            
             self.nameTextField.becomeFirstResponder()
+            //print("Category Add Modal appeared")
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
-        
-        self.showColorImage.image = UIImage(named: getImageChange)
-        
-//       self.showColorImage.image?.accessibilityIdentifier =         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
 
@@ -54,6 +54,7 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
             self.performSegue(withIdentifier: "chooseColor", sender: nil)
         }
     }
+    
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let colorCell = segue.destination as!

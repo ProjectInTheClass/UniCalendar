@@ -13,11 +13,28 @@ class ColorTableViewController: UITableViewController {
     //var colors : [CategoryItem.Color]
     
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBAction func unwindToCategoryModal(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destView = segue.destination
         
+        guard let vc = destView as? ModalTableViewController else {
+            return
+        }
+        
+        vc.getImageChange = self.calculateColor(color: confirmedColor)
     }
+    
+    
+    @IBAction func goTo(_ sender: Any) {
+       
+//        guard let backToAddModal = self.storyboard?.instantiateViewController(identifier: "AddCategory") as? ModalTableViewController else {
+//            return
+//        }
+//
+//        backToAddModal.getImageChange = calculateColor(color: confirmedColor)
+        performSegue(withIdentifier: "unwindToAddModal", sender: self)
+    }
+    
 //    @IBAction func completeColorModal(_ sender: UIBarButtonItem) {
 //
 //        guard let backToAddModal = self.storyboard?.instantiateViewController(identifier: "AddCategory") as? ModalTableViewController else {
@@ -30,11 +47,13 @@ class ColorTableViewController: UITableViewController {
 //        self.present(backToAddModal, animated: true)
 //    }
     
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("Color Modal disappeared")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateCompleteButton()
+        //self.updateCompleteButton()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -204,6 +204,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKh-3r-oiV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="BWk-MW-AW0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2957.971014492754" y="51.5625"/>
         </scene>
@@ -356,17 +357,17 @@
                         <barButtonItem key="rightBarButtonItem" title="완료" id="H7L-ga-HQH">
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="uAR-wJ-ixt" kind="unwind" identifier="ToCategoryModal" unwindAction="unwindToCategoryModal:" id="03L-OS-U31"/>
+                                <action selector="goTo:" destination="AWy-Em-giW" id="IXw-PT-OEM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="doneButton" destination="H7L-ga-HQH" id="xOw-3P-yZs"/>
+                        <segue destination="BWk-MW-AW0" kind="unwind" identifier="unwindToAddModal" unwindAction="unwindWithSegue:" id="Uem-OV-qkF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CvG-LI-Bvi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="uAR-wJ-ixt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4684.057971014493" y="51.5625"/>
         </scene>
