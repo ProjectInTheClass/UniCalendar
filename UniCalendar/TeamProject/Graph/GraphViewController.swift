@@ -49,6 +49,9 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PatternCell", for: indexPath) as! PatternCell
+            
+            cell.patternLabel.text = semiSection[2]
+            
             return cell
         }
         else {

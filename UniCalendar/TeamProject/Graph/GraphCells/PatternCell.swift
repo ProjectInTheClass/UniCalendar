@@ -9,6 +9,8 @@ import UIKit
 
 class PatternCell: UITableViewCell {
 
+    
+    @IBOutlet weak var patternLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
