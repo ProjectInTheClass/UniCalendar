@@ -11,6 +11,7 @@
 // getX, setX
 
 import Foundation
+import RealmSwift
 
 class API {
     static let shared = API()
