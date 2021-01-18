@@ -16,12 +16,14 @@ class API {
     static let shared = API()
     
     var eventInfo: EventInfo? = nil
+
     var categoryInfo: Category? = nil
     // var userDatabase = UserDefaults.standard
     
     func initDatabase() {
         // User Default에서 가져오는 코드
         // self.eventInfo = EventInfo(events: [])
+
         
         /*
           // set Info
