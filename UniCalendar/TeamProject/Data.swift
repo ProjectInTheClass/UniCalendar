@@ -10,11 +10,13 @@ import Foundation
 class API {
     static let shared = API()
     
-   var eventInfo: EventInfo? = nil
+    var eventInfo: EventInfo? = nil
+    //var event:EventInfo(events: [])
     
     func initDatabase() {
         // User Default에서 가져오는 코드
-        //self.eventInfo = EventInfo(events: [])
+        self.eventInfo = EventInfo(events: [])
+        //completion(self.eventInfo!)
         
     }
     
