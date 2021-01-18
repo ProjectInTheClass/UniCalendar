@@ -13,6 +13,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var calendarView: FSCalendar!
     
     let dateFormatter = DateFormatter()
+    var events = [Date]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,12 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         calendarView.delegate = self
         calendarView.dataSource = self
         
+        calendarView.appearance.eventDefaultColor = UIColor.green
+        calendarView.appearance.eventSelectionColor = UIColor.green
+        
+        let xmas = dateFormatter.date(from: "2021-01-22")
+        let sampledate = dateFormatter.date(from: "2021-01-26")
+        events = [xmas!, sampledate!]
         // calendarView.appearance.borderRadius = 0
         // 스와이프 스크롤 작동 여부 ( 활성화하면 좌측 우측 상단에 다음달 살짝 보임, 비활성화하면 사라짐 )
         // calendarView.scrollEnabled = true
@@ -69,7 +76,14 @@ extension CalendarViewController : FSCalendarDelegateAppearance {
         }
 
     
-    
+    //이벤트 표시 개수
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+    if self.events.contains(date) {
+    return 1
+    } else {
+    return 0
+    }
+    }
 }
 
 
