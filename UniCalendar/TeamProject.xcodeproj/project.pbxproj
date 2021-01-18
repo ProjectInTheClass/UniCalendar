@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B4D006325B55C6400437BEB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4D006225B55C6400437BEB /* CalendarViewController.swift */; };
 		18B9DF2925A6DE6200F05FFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */; };
 		18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9DF3E25A6F17B00F05FFB /* EventCell.swift */; };
 		18E4DD2425B4409700876183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4DD2325B4409700876183 /* HomeDetailViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		00831C2CA960C3C579C4CB39 /* Pods-TeamProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamProject.debug.xcconfig"; path = "Target Support Files/Pods-TeamProject/Pods-TeamProject.debug.xcconfig"; sourceTree = "<group>"; };
+		0B4D006225B55C6400437BEB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18B9DF3E25A6F17B00F05FFB /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		18E4DD2325B4409700876183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				5B14472C259DC1C600968770 /* Calendar.storyboard */,
+				0B4D006225B55C6400437BEB /* CalendarViewController.swift */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -201,7 +204,6 @@
 				00831C2CA960C3C579C4CB39 /* Pods-TeamProject.debug.xcconfig */,
 				50D17F45F44776D1A3AF1C30 /* Pods-TeamProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -333,6 +335,7 @@
 				5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */,
 				18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */,
 				5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */,
+				0B4D006325B55C6400437BEB /* CalendarViewController.swift in Sources */,
 				5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */,
 				5B4ED58C25B41B6A00852B04 /* PatternCell.swift in Sources */,
 				18E4DD2425B4409700876183 /* HomeDetailViewController.swift in Sources */,
