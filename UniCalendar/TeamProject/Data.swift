@@ -11,21 +11,21 @@
 // getX, setX
 
 import Foundation
-import RealmSwift
+
 
 class API {
     static let shared = API()
-    
+
     var eventInfo: EventInfo? = nil
 
     var categoryInfo: Category? = nil
     // var userDatabase = UserDefaults.standard
-    
+
     func initDatabase() {
         // User Default에서 가져오는 코드
         // self.eventInfo = EventInfo(events: [])
 
-        
+
         /*
           // set Info
           eventInfo = UserDefaults.object(forKey: "eventInfo")
@@ -33,18 +33,18 @@ class API {
         */
 
     }
-    
+
     func saveDatabase() {
         // User Default로 저장
-        
+
         /*
            // get Info
            let encoder = JSONEncoder()
            var encodedEventInfo = encoder.encode(eventInfo)
-         
+
            userDatabase.set(encodedEventInfo, forKey: "eventInfo")
            userDatabase.set(encodedCategoryInfo
-         
+
         */
     }
 }
@@ -59,7 +59,7 @@ struct CategoryInfo: Codable {
 struct Event: Codable {
     var category: Category
     var subEvent: [SubEvent]
-    
+
     var eventName: String
     var eventDday: Date
     var Importance: Int
