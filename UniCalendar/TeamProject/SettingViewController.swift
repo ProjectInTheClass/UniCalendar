@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 
-struct CategoryItem {
-    enum Color {
-           case red, yellow, orange, green, blue, purple
-    }
-    
-    var categoryName: String
-    var categoryColor: Color
-}
+//struct CategoryItem {
+//    enum Color {
+//           case red, yellow, orange, green, blue, purple
+//    }
+//    
+//    var categoryName: String
+//    var categoryColor: Color
+//}
 
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
     //section count
@@ -113,6 +113,7 @@ class SettingViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //API.shared.initDatabase()
         Category.shared.getCategoryItems(completion: { category in
             self.items = category
             self.tableView.reloadData()

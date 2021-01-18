@@ -108,6 +108,7 @@
 				5B144713259DB3E700968770 /* AppDelegate.swift */,
 				5B144715259DB3E700968770 /* SceneDelegate.swift */,
 				5B144717259DB3E700968770 /* ViewController.swift */,
+				5B4ED5BA25B561F800852B04 /* Data.swift */,
 				5B144719259DB3E700968770 /* Main.storyboard */,
 				5B2841FC25A57A7300FA63BD /* Home */,
 				5B28420025A57ACB00FA63BD /* Calendar */,
@@ -116,7 +117,6 @@
 				5B14471C259DB3E900968770 /* Assets.xcassets */,
 				5B14471E259DB3E900968770 /* LaunchScreen.storyboard */,
 				5B144721259DB3E900968770 /* Info.plist */,
-				5B4ED5BA25B561F800852B04 /* Data.swift */,
 			);
 			path = TeamProject;
 			sourceTree = "<group>";
