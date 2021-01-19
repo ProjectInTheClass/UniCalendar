@@ -284,12 +284,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vO5-u3-keC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2537" y="-23"/>
+            <point key="canvasLocation" x="2597" y="864"/>
         </scene>
         <!--일정 추가-->
         <scene sceneID="g3j-TV-LPX">
             <objects>
-                <tableViewController id="JIC-6f-RIu" sceneMemberID="viewController">
+                <tableViewController id="JIC-6f-RIu" customClass="EventAddTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qvq-CR-YJU">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -436,18 +436,26 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="일정 추가" id="Va5-mJ-Llz">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6t0-XN-gh7"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Jza-fX-hhl"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6t0-XN-gh7">
+                            <connections>
+                                <action selector="cancelModal:" destination="JIC-6f-RIu" id="FYn-bo-7ny"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Jza-fX-hhl">
+                            <connections>
+                                <action selector="completeModal:" destination="JIC-6f-RIu" id="ABY-0r-aRH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZy-kG-jHt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3361.5384615384614" y="678.19905213270135"/>
+            <point key="canvasLocation" x="3366" y="114"/>
         </scene>
         <!--카테고리 선택-->
         <scene sceneID="cCx-SJ-YDr">
             <objects>
-                <tableViewController id="lxv-fW-GRz" sceneMemberID="viewController">
+                <tableViewController id="lxv-fW-GRz" customClass="CategorySelectionTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HYZ-Fl-0Ak">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -467,11 +475,22 @@
                             <outlet property="delegate" destination="lxv-fW-GRz" id="RWS-C4-qst"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="카테고리 선택" id="8TQ-Uq-09e"/>
+                    <navigationItem key="navigationItem" title="카테고리 선택" id="8TQ-Uq-09e">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="EyX-9D-O30">
+                            <connections>
+                                <action selector="cancelModal:" destination="lxv-fW-GRz" id="KvZ-IR-Omi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="BtP-LI-mJt">
+                            <connections>
+                                <action selector="completeModal:" destination="lxv-fW-GRz" id="WHt-6P-SQ4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FLk-Ck-68n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5046" y="679"/>
+            <point key="canvasLocation" x="4991" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aLM-lr-kcK">
@@ -487,7 +506,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npG-qb-oFw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4138" y="679"/>
+            <point key="canvasLocation" x="4155" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wQp-7l-vSo">
@@ -503,7 +522,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goY-0t-PsW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2537" y="679"/>
+            <point key="canvasLocation" x="2597" y="115"/>
         </scene>
         <!--홈-->
         <scene sceneID="qoG-Dt-REq">
