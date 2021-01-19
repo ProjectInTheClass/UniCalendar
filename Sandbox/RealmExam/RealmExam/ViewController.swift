@@ -8,40 +8,53 @@
 import UIKit
 import RealmSwift
 
-class Cart: Object {
-    @objc dynamic var name = ""
-}
-
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-     
-    @IBOutlet weak var textField: UITextField!
-    @IBAction func button(_ sender: Any) {
-    }
-    @IBOutlet weak var tableView: UITableView!
+class ViewController: UIViewController {
     
-    var notificationToken : NotificationToken?
-    var realm: Realm?
-    var items: Results<Cart>?
+    let realm = try! Realm()
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return (items?.count)!
-    }
-        
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = items![indexPath.row].name
-            
-        return cell
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-        Realm.Configuration.defaultConfiguration = config
-        realm = tryㅆ
+        
+//        realm.begzinWrite()
+//     
+//        realm.delete(realm.objects(Person.self))
+//        try! realm.commitWrite()
+//        
+//        save()
+        
+        render()
+        
+    }
+    
+    func render(){
+        let people = realm.objects(Person.self)
+        for person in people {
+            let firstName = person.firstName
+            let lastName = person.lastName
+            let fullName = "\(firstName) \(lastName)"
+            
+            print("\(fullName)")
+            
+        }
+    }
+    
+    func save(){
+        let joe = Person()
+        joe.firstName = "Jenny"
+        joe.lastName = "S"
+        
+        realm.beginWrite()
+        realm.add(joe)
+        try! realm.commitWrite()
         
     }
 
 
 }
 
+class Person: Object {
+    @objc dynamic var firstName: String = ""
+    @objc dynamic var lastName: String = ""
+    @objc dynamic var age: Int = 0
+}

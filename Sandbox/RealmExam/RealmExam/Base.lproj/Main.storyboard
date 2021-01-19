@@ -15,52 +15,9 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LL-e1-v7G">
-                                <rect key="frame" x="348" y="44" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="Blg-rK-iu9"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kwa-mK-YRX"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Hj-z1-vpe">
-                                <rect key="frame" x="20" y="44" width="320" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="R4X-MW-LYg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sas-Or-V4R">
-                                <rect key="frame" x="0.0" y="86" width="414" height="776"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="776" id="vnz-D8-ADP"/>
-                                </constraints>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1LL-e1-v7G" secondAttribute="trailing" constant="20" id="8np-OE-LrF"/>
-                            <constraint firstItem="sas-Or-V4R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Yd-Ho-mpe"/>
-                            <constraint firstItem="sas-Or-V4R" firstAttribute="top" secondItem="7Hj-z1-vpe" secondAttribute="bottom" constant="8" symbolic="YES" id="CPY-I5-um7"/>
-                            <constraint firstItem="7Hj-z1-vpe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MXW-mP-7Oa"/>
-                            <constraint firstItem="7Hj-z1-vpe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PGp-zs-c6L"/>
-                            <constraint firstItem="1LL-e1-v7G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QGe-K3-IjC"/>
-                            <constraint firstItem="1LL-e1-v7G" firstAttribute="leading" secondItem="7Hj-z1-vpe" secondAttribute="trailing" constant="8" symbolic="YES" id="fZA-5I-oVs"/>
-                            <constraint firstItem="1LL-e1-v7G" firstAttribute="leading" secondItem="7Hj-z1-vpe" secondAttribute="trailing" constant="8" symbolic="YES" id="ng8-29-PpK"/>
-                            <constraint firstItem="sas-Or-V4R" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="rqq-vz-E8E"/>
-                            <constraint firstItem="sas-Or-V4R" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xAl-Rl-YcI"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="tableView" destination="sas-Or-V4R" id="y5N-XA-mot"/>
-                        <outlet property="textField" destination="7Hj-z1-vpe" id="Z8M-UM-ja4"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
