@@ -21,7 +21,6 @@ class HomeDetailViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var eventNameLabel: UILabel!
     
     @IBOutlet weak var progressView: UIProgressView!
-
     @IBOutlet weak var progressPercentLabel: UILabel!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
