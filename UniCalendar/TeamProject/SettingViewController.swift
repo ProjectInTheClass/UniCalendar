@@ -10,8 +10,12 @@ import UIKit
 
 
 struct CategoryItem {
+    enum Color {
+        case red, yellow, orange, green, blue, purple
+    }
+    
     var categoryName: String
-    var categoryColor: Int
+    var categoryColor: Color
 }
 
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
@@ -109,12 +113,12 @@ class SettingViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        Category.shared.getCategoryItems(completion: { category in
-//            self.items = category
-//            self.tableView.reloadData()
-//        })
+        Category.shared.getCategoryItems(completion: { category in
+            self.items = category
+            self.tableView.reloadData()
+        })
         
-        API.shared.
+        //API.shared.
     }
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
