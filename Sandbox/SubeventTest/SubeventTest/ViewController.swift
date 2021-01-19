@@ -18,13 +18,24 @@ class ViewController: UIViewController {
     var eventIsDone = false
     var mySubEventName = "집에 가고싶다"
     var importance = 3
+    
     let realm = try! Realm()
+    let myEvent = Event()
+    let mySubEvent = SubEvent()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         makeEvent()
         //makeSubEvent()
+        let savedData = realm.objects(Event.self)
+        
+        realm.beginWrite()
+        realm.add(myEvent)
+        realm.add(mySubEvent)
+        //realm.delete(realm.objects(Event.self))
+        //realm.delete(realm.objects(SubEvent.self))
+        try? realm.commitWrite()
         
         print(Realm.Configuration.defaultConfiguration.fileURL)
 //        getDocumentsDirectory()
@@ -38,7 +49,6 @@ class ViewController: UIViewController {
     
     
    func makeSubEvent(){
-       let mySubEvent = SubEvent()
          
        mySubEvent.subEventName = mySubEventName
        
@@ -46,7 +56,6 @@ class ViewController: UIViewController {
    }
     
     func makeEvent() {
-        let myEvent = Event()
         
         myEvent.eventName = eventName
         myEvent.eventDday = eventDday
