@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        realm.begzinWrite()
+//        realm.beginWrite()
 //     
 //        realm.delete(realm.objects(Person.self))
 //        try! realm.commitWrite()
@@ -34,7 +34,11 @@ class ViewController: UIViewController {
             let lastName = person.lastName
             let fullName = "\(firstName) \(lastName)"
             
-            print("\(fullName)")
+            let label = UILabel(frame: view.bounds)
+            label.text = fullName
+            label.textAlignment = .center
+            label.numberOfLines = 0
+            view.addSubview(label)
             
         }
     }
