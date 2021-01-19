@@ -7,8 +7,25 @@
 
 import UIKit
 
-class CategorySelectionTableViewController: UITableViewController {
+class CategorySelectionTableViewController: UIViewController, UITableViewDataSource {
+    
+    var categories: [CategoryItem] = Category.shared.categories
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        categories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategorySelectionCell", for: indexPath)
+        
+        cell.textLabel?.text = categories[indexPath.row].categoryName
+        
+        return cell
+    }
+    
 
+    @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
