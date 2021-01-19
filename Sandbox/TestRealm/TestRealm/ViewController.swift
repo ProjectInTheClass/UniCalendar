@@ -19,9 +19,24 @@ class ViewController: UIViewController {
     let realm = try! Realm()
     
     //var events : Results<EventInfo>?
-    
+    var realmOnDisc: Realm? {
+            let url = Realm.Configuration.defaultConfiguration.fileURL
+            let objectTypes = [Event.self, EventInfo.self, SubEvent.self, Category.self, CategoryInfo.self]
+            let config = Realm.Configuration(fileURL: url,
+                                             deleteRealmIfMigrationNeeded:true,
+                                             objectTypes: objectTypes)
+
+            do {
+                let realm = try Realm(configuration: config)
+                return realm
+            } catch let error {
+                //log.error("\(error)")
+                return nil
+            }
+        }
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(realm)
         // Do any additional setup after loading the view.
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         //loadEventInfo()

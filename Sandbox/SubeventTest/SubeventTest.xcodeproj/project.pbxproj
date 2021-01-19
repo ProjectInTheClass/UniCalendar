@@ -67,12 +67,12 @@
 			children = (
 				0BDFA21025B6C12600A74B49 /* AppDelegate.swift */,
 				0BDFA21225B6C12600A74B49 /* SceneDelegate.swift */,
+				0BDFA22925B6C19700A74B49 /* Data.swift */,
 				0BDFA21425B6C12600A74B49 /* ViewController.swift */,
 				0BDFA21625B6C12600A74B49 /* Main.storyboard */,
 				0BDFA21925B6C12900A74B49 /* Assets.xcassets */,
 				0BDFA21B25B6C12900A74B49 /* LaunchScreen.storyboard */,
 				0BDFA21E25B6C12900A74B49 /* Info.plist */,
-				0BDFA22925B6C19700A74B49 /* Data.swift */,
 			);
 			path = SubeventTest;
 			sourceTree = "<group>";
