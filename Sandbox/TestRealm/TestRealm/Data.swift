@@ -5,7 +5,6 @@
 //  Created by Nayeon Kim on 2021/01/18.
 //
 
-import Foundation
 import RealmSwift
 
 class API {
@@ -35,7 +34,7 @@ class CategoryInfo: Object {
 class Category: Object {
     @objc dynamic var categoryName:String = ""
     @objc dynamic var categoryColor:Int = 0
-    var parentCategoryInfo = LinkingObjects(fromType: CategoryInfo.self, property: "categories")
+    var parentCategoryInfo = LinkingObjects(fromType: CategoryInfo.self, property: "categoryInfo")
 }
 
 class Event: Object {
@@ -51,7 +50,7 @@ class SubEvent: Object {
     @objc dynamic var subEventName: String = ""
     @objc dynamic var subEventIsDone: Bool = false
     
-    var parentEvent = LinkingObjects(fromType: Event.self, property: "subEvents")
+    var parentEvent = LinkingObjects(fromType: Event.self, property: "subEventInfo")
 }
 
 

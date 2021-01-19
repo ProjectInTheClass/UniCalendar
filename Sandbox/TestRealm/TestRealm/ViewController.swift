@@ -10,7 +10,7 @@ import RealmSwift
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textLabel: UILabel!
+    //@IBOutlet weak var textLabel: UILabel!
     //    func getDirectory() -> URL {
 //        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 //        let documentsDirectory = paths[0]
@@ -18,19 +18,34 @@ class ViewController: UIViewController {
 //    }
     let realm = try! Realm()
     
-    var events : Results<EventInfo>?
-    
+    //var events : Results<EventInfo>?
+    var realmOnDisc: Realm? {
+            let url = Realm.Configuration.defaultConfiguration.fileURL
+            let objectTypes = [Event.self, EventInfo.self, SubEvent.self, Category.self, CategoryInfo.self]
+            let config = Realm.Configuration(fileURL: url,
+                                             deleteRealmIfMigrationNeeded:true,
+                                             objectTypes: objectTypes)
+
+            do {
+                let realm = try Realm(configuration: config)
+                return realm
+            } catch let error {
+                //log.error("\(error)")
+                return nil
+            }
+        }
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(realm)
         // Do any additional setup after loading the view.
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        loadEventInfo()
+        //loadEventInfo()
         
     }
 
-    func loadEventInfo() {
-        events = realm.objects(EventInfo.self)
-        print(events.self!)
-    }
+//    func loadEventInfo() {
+//        events = realm.objects(EventInfo.self)
+//        print(events.self!)
+//    }
 }
 
