@@ -8,45 +8,31 @@
 import UIKit
 import RealmSwift
 
-struct EventItem {
-    var eventName: String
-    var dDay: String
-    var importance: Int
-    var importanceImage: String
-    var progressPercent: Float
-}
+//struct EventItem {
+//    var eventName: String
+//    var dDay: String
+//    var importance: Int
+//    var importanceImage: String
+//    var progressPercent: Float
+//}
 //let eventItems: [Event] = [
 //
 //]
 
 
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    let realm = try! Realm()
-    let category = Category()
-    let eventList = EventList()
-    
-    let event = Event()
-    let subEvent = SubEvent()
-    
-    
-    //let predicate = NSPredicate(format: <#T##String#>, <#T##args: CVarArg...##CVarArg#>)
-    //let callEvent = realm.objects(EventList.self).filter("")
-//    func call(){
-//        let callEventList = realm.objects(EventList.self)
-//
-//        //print(callEventList()
-//        //return callEventList
-//    }
+class HomeViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-
+    
+    private var events: Results<Event>!
+    
+    
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print(eventList.accessibilityElementCount())
         //return eventList.accessibilityElementCount()
-
+        return events.count
     }
     
     // indexPath 각 (section, row)에 맞는 cell
@@ -55,13 +41,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-        let event = eventList.events[indexPath.row]
+        let event = events[indexPath.row]
         cell.eventNameLabel.text = event.eventName
         
         cell.dDayLabel.text = dateFormatter.string(from: event.eventDday)
         
         cell.importanceLabel.text = "중요해요"
-        cell.importanceImageLabel.text = String(event.importance)
+        //cell.importanceImageLabel.text = String(event.events[indexPath.row].)
         
         cell.progressLabel.text = "영차영차"
 //        cell.progressView.setProgress(event.progressPercent, animated: false)
@@ -83,10 +69,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        call()
         print(Realm.Configuration.defaultConfiguration.fileURL)
         tableView.dataSource = self
         tableView.delegate = self
+        
+        
+        
+       
+        
+//        try! API.shared.realm.write {
+//            API.shared.realm.add(myEvent)
+//            API.shared.realm.add(myEvent2)
+//        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        events = API.shared.callEvent()
     }
     
 }

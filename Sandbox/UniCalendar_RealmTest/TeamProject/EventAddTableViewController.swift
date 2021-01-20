@@ -23,6 +23,24 @@ class EventAddTableViewController: UITableViewController {
     @IBAction func completeModal(_ sender: Any) {
         // TODO
         // Add New event to EventList
+        let myEvent = Event()
+        //let mySubEvent = SubEvent()
+        
+        let eventName = "checkcheck"
+        let eventDday = Date.init()
+        let importance = 3
+        let eventIsDone = false
+        
+        myEvent.eventName = eventName
+        myEvent.eventDday = eventDday
+        myEvent.importance = importance
+        myEvent.eventIsDone = eventIsDone
+        
+       
+        
+        try! API.shared.realm.write {
+            API.shared.realm.add(myEvent)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
