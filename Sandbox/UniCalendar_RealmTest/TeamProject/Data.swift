@@ -6,7 +6,9 @@ class API {
     
     let realm = try! Realm()
     
+    func 
     let callEventList = realm.objects(EventList.self)
+    
 }
 
 class Category: Object {
