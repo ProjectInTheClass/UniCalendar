@@ -73,34 +73,14 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-        let myEvent = Event()
         
-        let eventName = "dd"
-        let eventDday = Date.init()
-        let importance = 3
-        let eventIsDone = false
         
-        myEvent.eventName = eventName
-        myEvent.eventDday = eventDday
-        myEvent.importance = importance
-        myEvent.eventIsDone = eventIsDone
+       
         
-        let myEvent2 = Event()
-        
-        let eventName2 = "aa"
-        let eventDday2 = Date.init()
-        let importance2 = 2
-        let eventIsDone2 = false
-        
-        myEvent2.eventName = eventName2
-        myEvent2.eventDday = eventDday2
-        myEvent2.importance = importance2
-        myEvent2.eventIsDone = eventIsDone2
-        
-        try! API.shared.realm.write {
-            API.shared.realm.add(myEvent)
-            API.shared.realm.add(myEvent2)
-        }
+//        try! API.shared.realm.write {
+//            API.shared.realm.add(myEvent)
+//            API.shared.realm.add(myEvent2)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool){

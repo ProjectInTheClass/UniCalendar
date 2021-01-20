@@ -44,6 +44,8 @@ class HomeDetailViewController: UIViewController, UITableViewDataSource {
         eventNameLabel.text = eventName
         progressView.setProgress(progressPercent, animated: false)
         progressPercentLabel.text = "\(progressPercent*100)%"
+        
+        
     }
 
 }
