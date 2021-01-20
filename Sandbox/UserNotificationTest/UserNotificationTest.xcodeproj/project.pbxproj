@@ -13,7 +13,7 @@
 		183CCB1625B6C04A00F79166 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183CCB1425B6C04A00F79166 /* Main.storyboard */; };
 		183CCB1825B6C04B00F79166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 183CCB1725B6C04B00F79166 /* Assets.xcassets */; };
 		183CCB1B25B6C04B00F79166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183CCB1925B6C04B00F79166 /* LaunchScreen.storyboard */; };
-		18EC8C3425B81AF9006BEC56 /* SubGoalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC8C3325B81AF9006BEC56 /* SubGoalTableViewController.swift */; };
+		18EC8C3825B81FF5006BEC56 /* SubGoalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC8C3725B81FF5006BEC56 /* SubGoalTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		183CCB1725B6C04B00F79166 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		183CCB1A25B6C04B00F79166 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		183CCB1C25B6C04B00F79166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18EC8C3325B81AF9006BEC56 /* SubGoalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubGoalTableViewController.swift; sourceTree = "<group>"; };
+		18EC8C3725B81FF5006BEC56 /* SubGoalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubGoalTableViewController.swift; path = ../SubGoalTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +63,9 @@
 				183CCB1225B6C04A00F79166 /* ViewController.swift */,
 				183CCB1425B6C04A00F79166 /* Main.storyboard */,
 				183CCB1725B6C04B00F79166 /* Assets.xcassets */,
+				18EC8C3725B81FF5006BEC56 /* SubGoalTableViewController.swift */,
 				183CCB1925B6C04B00F79166 /* LaunchScreen.storyboard */,
 				183CCB1C25B6C04B00F79166 /* Info.plist */,
-				18EC8C3325B81AF9006BEC56 /* SubGoalTableViewController.swift */,
 			);
 			path = UserNotificationTest;
 			sourceTree = "<group>";
@@ -142,7 +142,7 @@
 			files = (
 				183CCB1325B6C04A00F79166 /* ViewController.swift in Sources */,
 				183CCB0F25B6C04A00F79166 /* AppDelegate.swift in Sources */,
-				18EC8C3425B81AF9006BEC56 /* SubGoalTableViewController.swift in Sources */,
+				18EC8C3825B81FF5006BEC56 /* SubGoalTableViewController.swift in Sources */,
 				183CCB1125B6C04A00F79166 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

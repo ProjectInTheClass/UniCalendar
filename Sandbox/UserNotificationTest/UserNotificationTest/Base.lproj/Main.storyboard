@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" id="07C-g5-2LB">
-                                <rect key="frame" x="0.0" y="241" width="414" height="352"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJq-64-0ch">
+                                <rect key="frame" x="40" y="253" width="339" height="419"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="9zi-wp-AkN" kind="embed" id="mHB-yN-6SD"/>
+                                    <segue destination="eiT-rx-lSC" kind="embed" id="aYH-8g-lt3"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -33,43 +33,31 @@
             <point key="canvasLocation" x="-197.10144927536234" y="93.75"/>
         </scene>
         <!--Sub Goal Table View Controller-->
-        <scene sceneID="Ex8-PQ-3U2">
+        <scene sceneID="jqs-Oc-772">
             <objects>
-                <viewController id="9zi-wp-AkN" customClass="SubGoalTableViewController" customModule="UserNotificationTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7Tf-oO-VNt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="352"/>
+                <tableViewController id="eiT-rx-lSC" customClass="SubGoalTableViewController" customModule="UserNotificationTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WSy-Mf-82S">
+                        <rect key="frame" x="0.0" y="0.0" width="339" height="419"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ncx-1L-mCM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="352"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubGoalCell" id="Egr-Lz-8hK">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Egr-Lz-8hK" id="ohq-qH-1N2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Ncx-1L-mCM" secondAttribute="bottom" id="3ht-YL-RtK"/>
-                            <constraint firstItem="Ncx-1L-mCM" firstAttribute="leading" secondItem="7Tf-oO-VNt" secondAttribute="leading" id="DEp-UJ-flr"/>
-                            <constraint firstAttribute="trailing" secondItem="Ncx-1L-mCM" secondAttribute="trailing" id="UvL-0i-Y98"/>
-                            <constraint firstItem="Ncx-1L-mCM" firstAttribute="top" secondItem="7Tf-oO-VNt" secondAttribute="top" id="t6f-b0-AZl"/>
-                        </constraints>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubGoalCell" id="4nv-dN-iz6">
+                                <rect key="frame" x="0.0" y="28" width="339" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4nv-dN-iz6" id="8UD-ZV-hc4">
+                                    <rect key="frame" x="0.0" y="0.0" width="339" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <connections>
-                        <outlet property="tableView" destination="Ncx-1L-mCM" id="kgf-DP-IcN"/>
+                        <outlet property="subGoalTableView" destination="WSy-Mf-82S" id="i62-fh-wWF"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BWF-aC-DmD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rqc-7d-2OJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589.85507246376812" y="93.75"/>
+            <point key="canvasLocation" x="443" y="-21"/>
         </scene>
     </scenes>
     <resources>
