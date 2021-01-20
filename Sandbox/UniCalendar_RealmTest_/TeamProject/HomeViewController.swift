@@ -8,16 +8,16 @@
 import UIKit
 import RealmSwift
 
-struct EventItem {
-    var eventName: String
-    var dDay: String
-    var importance: Int
-    var importanceImage: String
-    var progressPercent: Float
-}
-//let eventItems: [Event] = [
-//
-//]
+//struct EventItem {
+//    var eventName: String
+//    var dDay: String
+//    var importance: Int
+//    var importanceImage: String
+//    var progressPercent: Float
+//}
+////let eventItems: [Event] = [
+////
+////]
 
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -28,26 +28,26 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        let eventList = call()
-        print(eventList.count)
-        return eventList.count
+        print(API.shared.eventArr.count)
+        print("111111111111111111111111111")
+        return API.shared.eventArr.count
 
     }
     
     // indexPath 각 (section, row)에 맞는 cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let eventList = call()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-        let event = eventList.events[indexPath.row]
-        cell.eventNameLabel.text = event.eventName
+        let event_ = API.shared.eventArr[indexPath.row]
+        print(event_)
         
-        cell.dDayLabel.text = dateFormatter.string(from: event.eventDday)
+        cell.eventNameLabel.text = event_.eventName
+        
+        cell.dDayLabel.text = dateFormatter.string(from: event_.eventDday)
         
         cell.importanceLabel.text = "중요해요"
-        cell.importanceImageLabel.text = String(event.importance)
+        cell.importanceImageLabel.text = String(event_.importance)
         
         cell.progressLabel.text = "영차영차"
 //        cell.progressView.setProgress(event.progressPercent, animated: false)

@@ -2,22 +2,30 @@ import Foundation
 import RealmSwift
 
 class API {
+    
+    static let shared = API()
     let realm = try! Realm()
     let category = Category()
     let eventList = EventList()
-//    let category = realm.objects(EventList.self)
-//         let eventList = realm.objects(EventList.self)
-//         let event = realm.objects(EventList.self)
-//         let subEvent = realm.objects(EventList.self)
     let event = Event()
     let subEvent = SubEvent()
+    let eventArr = Array<Event>()
+    
+    
+//    func call(){
+//
+//    }
+    
 //    let calEventList = realm.objects(EventList.self)
+    //    let category = realm.objects(EventList.self)
+    //         let eventList = realm.objects(EventList.self)
+    //         let event = realm.objects(EventList.self)
+    //         let subEvent = realm.objects(EventList.self)
     
     func makeCategory(_ name:String,_ color: Int) -> Category {
         let category = Category()
         category.categoryName = name
         category.categoryColor = color
-        
         return category
     }
     
@@ -31,9 +39,10 @@ class API {
         return event
     }
     
-    func makeSubEvent(_ name:String,_ isDone: Int) -> Category {
+    func makeSubEvent(_ name:String,_ isDone: Bool) -> SubEvent {
         let subEvent = SubEvent()
-        subEvent.
+        subEvent.subEventName = name
+        subEvent.subEventIsDone = isDone
         
         return subEvent
     }
