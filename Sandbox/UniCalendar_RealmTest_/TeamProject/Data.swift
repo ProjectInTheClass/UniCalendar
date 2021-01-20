@@ -12,6 +12,7 @@ class API {
     let event = Event()
     let subEvent = SubEvent()
 //    let calEventList = realm.objects(EventList.self)
+    
     func makeCategory(_ name:String,_ color: Int) -> Category {
         let category = Category()
         category.categoryName = name
@@ -19,6 +20,24 @@ class API {
         
         return category
     }
+    
+    func makeEvent(_ name:String,_ Dday: Date,_ important:Int,_ isDone:Bool) -> Event {
+        let event = Event()
+        event.eventName = name
+        event.eventDday = Dday
+        event.importance = important
+        event.eventIsDone = isDone
+        
+        return event
+    }
+    
+    func makeSubEvent(_ name:String,_ isDone: Int) -> Category {
+        let subEvent = SubEvent()
+        subEvent.
+        
+        return subEvent
+    }
+    
 }
 
 class Category: Object {
