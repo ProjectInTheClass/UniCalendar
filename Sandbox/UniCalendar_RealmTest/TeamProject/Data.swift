@@ -1,7 +1,13 @@
 import Foundation
 import RealmSwift
 
-
+class API {
+    static let shared = API()
+    
+    let realm = try! Realm()
+    
+    let callEventList = realm.objects(EventList.self)
+}
 
 class Category: Object {
     @objc dynamic var categoryName:String = ""

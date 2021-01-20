@@ -19,6 +19,8 @@ struct EventItem {
 //
 //]
 
+
+
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let realm = try! Realm()
@@ -27,15 +29,23 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let event = Event()
     let subEvent = SubEvent()
-//    let callEvent = realm.objects(EventList.self)
     
+    
+    //let predicate = NSPredicate(format: <#T##String#>, <#T##args: CVarArg...##CVarArg#>)
+    //let callEvent = realm.objects(EventList.self).filter("")
+//    func call(){
+//        let callEventList = realm.objects(EventList.self)
+//
+//        //print(callEventList()
+//        //return callEventList
+//    }
     
     @IBOutlet weak var tableView: UITableView!
-    
+
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(eventList.accessibilityElementCount())
-        return eventList.accessibilityElementCount()
+        //print(eventList.accessibilityElementCount())
+        //return eventList.accessibilityElementCount()
 
     }
     
@@ -73,6 +83,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        call()
         print(Realm.Configuration.defaultConfiguration.fileURL)
         tableView.dataSource = self
         tableView.delegate = self
