@@ -12,7 +12,9 @@ class NotificationSettingTableViewController: UITableViewController {
     var checkedDay: Int = 0
     var checkedTime: Int = 0
 
-    var lastCheckedIndexPath: IndexPath = IndexPath()
+    // 각 section별로, 마지막 체크된 셀의 indexPath는 무엇인가
+    var lastCheckedIndexPathInSection: [IndexPath] = [IndexPath(), IndexPath()]
+    
     var isSectionChecked: [Bool] = [false, false]
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,7 +45,7 @@ class NotificationSettingTableViewController: UITableViewController {
     
     // done button
     @IBAction func goToAddEvent(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToAddEvent", sender: self)
+        performSegue(withIdentifier: "unwindToAddEventFromNotification", sender: self)
     }
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -63,28 +65,28 @@ class NotificationSettingTableViewController: UITableViewController {
             default:
                 print("error")
             }
+            // 체크한 row의 indexPath 정보를 section별로 저장
+            lastCheckedIndexPathInSection[indexPath.section] = indexPath
             isSectionChecked[indexPath.section] = true
-
         } else { // 현재 섹션이 체크가 되어있으면
             // 기존 체크된 cell을 체크 해제
-            if indexPath.section == lastCheckedIndexPath.section {
-                tableView.cellForRow(at: lastCheckedIndexPath)?.accessoryType = .none
-                
-                tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-                
-                switch (indexPath.section) {
-                case 0: // frequency section
-                    self.checkedDay = indexPath.row
-                    break
-                case 1:
-                    self.checkedTime = indexPath.row
-                    break
-                default:
-                    print("error")
-                }
+
+            tableView.cellForRow(at: lastCheckedIndexPathInSection[indexPath.section])?.accessoryType = .none
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            
+            switch (indexPath.section) {
+            case 0: // frequency section
+                self.checkedDay = indexPath.row
+                break
+            case 1:
+                self.checkedTime = indexPath.row
+                break
+            default:
+                print("error")
             }
         }
-        lastCheckedIndexPath = indexPath
+        
+        lastCheckedIndexPathInSection[indexPath.section] = indexPath
     }
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         // tableView.cellForRow(at: indexPath)?.accessoryType = .none
