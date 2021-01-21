@@ -17,8 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqM-cn-VP7" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="480"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="480" id="2Rh-xa-IHQ"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" red="0.4186819792" green="0.38698247079999998" blue="0.9177264571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -37,14 +40,21 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YtU-oE-udI">
+                                <rect key="frame" x="0.0" y="532" width="414" height="281"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xml-3A-n4L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nqM-cn-VP7" firstAttribute="leading" secondItem="xml-3A-n4L" secondAttribute="leading" id="S1X-aB-rAf"/>
-                            <constraint firstItem="xml-3A-n4L" firstAttribute="bottom" secondItem="nqM-cn-VP7" secondAttribute="bottom" id="WhU-Xq-qPB"/>
-                            <constraint firstItem="xml-3A-n4L" firstAttribute="trailing" secondItem="nqM-cn-VP7" secondAttribute="trailing" id="iif-W3-OB4"/>
-                            <constraint firstItem="nqM-cn-VP7" firstAttribute="top" secondItem="xml-3A-n4L" secondAttribute="top" id="wH3-SL-UKU"/>
+                            <constraint firstItem="nqM-cn-VP7" firstAttribute="trailing" secondItem="xml-3A-n4L" secondAttribute="trailing" id="44V-Ss-0R5"/>
+                            <constraint firstItem="YtU-oE-udI" firstAttribute="trailing" secondItem="xml-3A-n4L" secondAttribute="trailing" id="8oo-v0-CzC"/>
+                            <constraint firstItem="YtU-oE-udI" firstAttribute="top" secondItem="nqM-cn-VP7" secondAttribute="bottom" constant="8" symbolic="YES" id="OPm-Vc-PmH"/>
+                            <constraint firstItem="YtU-oE-udI" firstAttribute="leading" secondItem="xml-3A-n4L" secondAttribute="leading" id="Rab-uN-aff"/>
+                            <constraint firstItem="nqM-cn-VP7" firstAttribute="leading" secondItem="xml-3A-n4L" secondAttribute="leading" id="bon-Ub-Bun"/>
+                            <constraint firstItem="YtU-oE-udI" firstAttribute="bottom" secondItem="xml-3A-n4L" secondAttribute="bottom" id="nqd-B2-Dff"/>
+                            <constraint firstItem="nqM-cn-VP7" firstAttribute="top" secondItem="xml-3A-n4L" secondAttribute="top" id="sTE-OY-5Vx"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="캘린더" image="calendar" catalog="system" selectedImage="calendar" id="gJz-HB-Mnv">
@@ -57,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Bx-PW-p1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="40"/>
+            <point key="canvasLocation" x="89.855072463768124" y="39.508928571428569"/>
         </scene>
     </scenes>
     <resources>

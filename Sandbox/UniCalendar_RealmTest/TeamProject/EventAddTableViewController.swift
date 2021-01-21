@@ -40,7 +40,7 @@ class EventAddTableViewController: UITableViewController {
     
     func save() {
 
-        let d = self.dateFormatter.date(from: "2020-01-28")
+        let d = self.dateFormatter.date(from: "2021-01-28")
         
         let newEvent = Event(eventName: "알고리즘과제", eventDday: d!, importance: 3, eventIsDone: true)
 

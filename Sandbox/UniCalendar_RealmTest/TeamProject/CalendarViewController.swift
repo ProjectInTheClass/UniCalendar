@@ -13,38 +13,40 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
 
     @IBOutlet weak var calendarView: FSCalendar!
     
-    let dateFormatter = DateFormatter()
-    var events = [Date]()
+    var events: [Event] = api.callEvent()
+    var eventDates = [Date]()
+    
+    var dateFormatter:DateFormatter {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        return df
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         calendarView.delegate = self
         calendarView.dataSource = self
         
-        calendarView.appearance.eventDefaultColor = UIColor.green
+        calendarView.appearance.eventDefaultColor = UIColor.purple
         calendarView.appearance.eventSelectionColor = UIColor.green
         
-        let xmas = dateFormatter.date(from: "2021-01-22")
-        let sampledate = dateFormatter.date(from: "2021-01-26")
-        events = [xmas!, sampledate!]
-        // calendarView.appearance.borderRadius = 0
-        // 스와이프 스크롤 작동 여부 ( 활성화하면 좌측 우측 상단에 다음달 살짝 보임, 비활성화하면 사라짐 )
-        // calendarView.scrollEnabled = true
-        // 스와이프 스크롤 방향 ( 버티칼로 스와이프 설정하면 좌측 우측 상단 다음달 표시 없어짐, 호리젠탈은 보임 )
         calendarView.scrollDirection = .vertical
+        
+        //        let xmas = dateFormatter.date(from: "2021-01-22")
+        //        let sampledate = dateFormatter.date(from: "2021-01-22")
+        //        events = [xmas!, sampledate!]
+                
+        
+        
+        for event in events {
+            print(event)
+//            let day = dateFormatter.event.eventDday
+//            eventDates.append(day)
+        }
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
 
@@ -54,10 +56,12 @@ extension CalendarViewController : FSCalendarDelegateAppearance {
     // 날짜 선택 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(dateFormatter.string(from: date) + " 선택됨")
+        
     }
     // 날짜 선택 해제 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(dateFormatter.string(from: date) + " 해제됨")
+        
     }
     
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
@@ -77,13 +81,16 @@ extension CalendarViewController : FSCalendarDelegateAppearance {
         }
 
     
+    
     //이벤트 표시 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-    if self.events.contains(date) {
-    return 1
-    } else {
-    return 0
-    }
+        if self.eventDates.contains(date) {
+            print("이써")
+            return 1
+        } else {
+            print("없으")
+            return 0
+        }
     }
 }
 
