@@ -6,23 +6,24 @@ class API {
     
     let realm = try! Realm()
     
-    func callCategory() -> Results<Category>{
-    //        let event = callEvent()
-            return realm.objects(Category.self)
-        }
+    func callCategory() -> [Category]{
+        let r: [Category] = realm.objects(Category.self).map { $0 }
+        return r
+    }
     
     func callEvent() -> [Event] {
-//        let subEvent = callSubEvent()
         let r: [Event] = realm.objects(Event.self).map { $0 }
         return r
     }
     
-    func callSubEvent() -> Results<SubEvent>{
-        return realm.objects(SubEvent.self)
+    func callSubEvent() -> [SubEvent]{
+        let r: [SubEvent] = realm.objects(SubEvent.self).map { $0 }
+        return r
     }
     
-    func callContent() -> Results<Content>{
-        return realm.objects(Content.self)
+    func callContent() -> [Content]{
+        let r: [Content] = realm.objects(Content.self).map { $0 }
+        return r
     }
     
 }

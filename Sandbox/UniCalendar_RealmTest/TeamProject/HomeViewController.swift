@@ -12,7 +12,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
-    let events: [Event] = api.realm.objects(Event.self).map { $0 }
+    var events: [Event] = api.callEvent()
     
     var selectedCellBefore: Int = 0
     //var myEvent = Event()
