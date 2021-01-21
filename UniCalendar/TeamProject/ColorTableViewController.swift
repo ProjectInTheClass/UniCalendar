@@ -16,7 +16,7 @@ class ColorTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destView = segue.destination
-        
+        print("colort / prepare")
         guard let vc = destView as? ModalTableViewController else {
             return
         }
@@ -24,8 +24,9 @@ class ColorTableViewController: UITableViewController {
         vc.getImageChange = self.calculateColor(color: confirmedColor)
     }
     
-    
+    // DoneButton action
     @IBAction func goTo(_ sender: Any) {
+        print("color / goTo()")
         performSegue(withIdentifier: "unwindToAddModal", sender: self)
     }
     

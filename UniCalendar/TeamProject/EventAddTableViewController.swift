@@ -18,6 +18,10 @@ class EventAddTableViewController: UITableViewController {
     @IBOutlet weak var notificationFrequency: UILabel!
     @IBOutlet weak var notificationTime: UILabel!
     
+    @IBAction func completeModal(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 //    @IBAction func unwind (segue: UIStoryboardSegue) {
 //        print(getImageChange)
 //        showColorImage.image = UIImage(named: getImageChange)
@@ -31,7 +35,7 @@ class EventAddTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -39,13 +43,6 @@ class EventAddTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    @IBAction func completeModal(_ sender: Any) {
-        // TODO
-        // Add New event to EventList
-        self.dismiss(animated: true, completion: nil)
-    }
     
     override func viewWillAppear(_ animated: Bool){
         self.notificationTime.text = "\(self.getNotificationTime)"

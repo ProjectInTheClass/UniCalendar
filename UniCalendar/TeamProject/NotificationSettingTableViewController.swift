@@ -13,18 +13,25 @@ class NotificationSettingTableViewController: UITableViewController {
     
     var checkedTime: Int = 0
     
+    @IBAction func doneButtonAction(_ sender: Any) {
+        print("NotiSetting / doneButton")
+        performSegue(withIdentifier: "fromNotificationSetting", sender: self)
+        print("NotiSetting/ performSegue")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destView = segue.destination
-        
+        print("before return")
         guard let vc = destView as? EventAddTableViewController else {
             return
         }
         
         vc.getNotificationTime = getTimeFromCheckedTime(time: checkedTime)
+        print("CheckedTime: \(checkedTime)")
         
     }
     
@@ -50,9 +57,6 @@ class NotificationSettingTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     @IBAction func cancelModal(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    @IBAction func completeModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     

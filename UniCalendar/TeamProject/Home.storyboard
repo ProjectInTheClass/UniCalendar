@@ -516,17 +516,20 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="VGq-EV-e5c">
                             <connections>
-                                <action selector="completeModal:" destination="S7Z-lH-8NS" id="5qI-Yw-J4x"/>
+                                <action selector="doneButtonAction:" destination="S7Z-lH-8NS" id="Bxv-cf-bBk"/>
+                                <segue destination="pG8-3K-TRu" kind="unwind" identifier="fromDoneButton" unwindAction="unwindWithSegue:" id="7tp-8j-GoC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="VGq-EV-e5c" id="wMM-lP-Ql6"/>
+                        <segue destination="pG8-3K-TRu" kind="unwind" identifier="fromNotificationSetting" unwindAction="unwindWithSegue:" id="2HX-D2-8ed"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ww-51-Awm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="pG8-3K-TRu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4473.8461538461534" y="871.56398104265395"/>
+            <point key="canvasLocation" x="4455" y="872"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Gc-zz-1ID">
@@ -542,7 +545,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHv-Ev-LIX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3605" y="872"/>
+            <point key="canvasLocation" x="3562" y="872"/>
         </scene>
         <!--알림 빈도 설정-->
         <scene sceneID="pF2-5B-k6L">
@@ -635,7 +638,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="r0F-9V-1x2" kind="presentation" id="LpU-0d-cCT"/>
+                                            <segue destination="r0F-9V-1x2" kind="presentation" identifier="" id="LpU-0d-cCT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="GDF-iT-GQA">
@@ -741,7 +744,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="fPT-hS-XPr" kind="presentation" id="tBZ-94-cVr"/>
+                                            <segue destination="fPT-hS-XPr" kind="presentation" identifier="getNotificationSetting" id="tBZ-94-cVr"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="sCB-dk-QaR" detailTextLabel="J0k-OT-zt0" style="IBUITableViewCellStyleValue1" id="agb-lt-svX">
@@ -784,7 +787,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Jza-fX-hhl">
                             <connections>
-                                <action selector="completeModal:" destination="JIC-6f-RIu" id="ABY-0r-aRH"/>
+                                <action selector="completeModal:" destination="JIC-6f-RIu" id="dEG-xO-eRf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -796,7 +799,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZy-kG-jHt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3366" y="114"/>
+            <point key="canvasLocation" x="3562" y="115"/>
         </scene>
         <!--카테고리 선택-->
         <scene sceneID="cCx-SJ-YDr">
@@ -836,7 +839,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FLk-Ck-68n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4991" y="115"/>
+            <point key="canvasLocation" x="5269" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aLM-lr-kcK">
@@ -852,7 +855,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npG-qb-oFw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4155" y="115"/>
+            <point key="canvasLocation" x="4371" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wQp-7l-vSo">
