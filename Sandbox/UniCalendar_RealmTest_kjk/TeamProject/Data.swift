@@ -75,14 +75,16 @@ class SubEvent: Object {
 }
 
 class Content: Object {
-    @objc dynamic var firstContent: String = ""
-    @objc dynamic var secondContent: String = ""
-    @objc dynamic var thirdContent: String = ""
+    @objc dynamic var begin: String = ""
+    @objc dynamic var earlyMiddle: String = ""
+    @objc dynamic var lateMiddle: String = ""
+    @objc dynamic var end: String = ""
     
-    convenience init(firstContent: String, firstContent: String, firstContent: String) {
+    convenience init(begin: String, earlyMiddle: String, lateMiddle: String, end: String) {
         self.init()
-        self.subEventName = subEventName
-        self.subEventIsDone = subEventIsDone
+        self.begin = begin
+        self.earlyMiddle = earlyMiddle
+        self.end = end
     }
 }
 
