@@ -301,24 +301,31 @@
                         <sections>
                             <tableViewSection id="OIS-v9-nS3">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Q12-De-YZa" style="IBUITableViewCellStyleDefault" id="Pgw-wS-SoU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Q12-De-YZa" detailTextLabel="tF9-XE-oaE" style="IBUITableViewCellStyleValue1" id="Pgw-wS-SoU">
                                         <rect key="frame" x="0.0" y="28" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pgw-wS-SoU" id="s3K-c7-4nu">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="358.66666666666669" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q12-De-YZa">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="43.666667938232422"/>
+                                                    <rect key="frame" x="20" y="11.999999999999998" width="59" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="선택" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tF9-XE-oaE">
+                                                    <rect key="frame" x="321" y="11.999999999999998" width="29.666666666666668" height="20.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="r0F-9V-1x2" kind="presentation" id="LpU-0d-cCT"/>
+                                            <segue destination="iUK-JG-reS" kind="presentation" identifier="ToCategorySelection" id="1uE-dC-4Ly"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="GDF-iT-GQA">
@@ -437,7 +444,7 @@
                     <navigationItem key="navigationItem" title="일정 추가" id="Va5-mJ-Llz">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6t0-XN-gh7">
                             <connections>
-                                <action selector="cancelModal:" destination="3Yg-L1-01k" id="LUC-Kd-oAM"/>
+                                <action selector="cancelModal:" destination="JIC-6f-RIu" id="hfg-ZO-AVW"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Jza-fX-hhl">
@@ -447,69 +454,74 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryLabel" destination="tF9-XE-oaE" id="tP6-Xp-eQC"/>
                         <outlet property="settledNotificationInfoLabel" destination="SqH-UH-Sl8" id="trn-Tn-2f1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZy-kG-jHt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="3Yg-L1-01k" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3364.6153846153843" y="113.74407582938387"/>
         </scene>
         <!--카테고리 선택-->
-        <scene sceneID="cCx-SJ-YDr">
+        <scene sceneID="W6a-UQ-46o">
             <objects>
-                <tableViewController id="lxv-fW-GRz" customClass="CategorySelectionTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HYZ-Fl-0Ak">
+                <tableViewController id="Keh-E7-1NM" customClass="CategorySelectionTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ije-cC-e9U">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategorySelectionCell" id="pPd-Eb-jkQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategorySelectionCell" id="kEw-q5-ra5">
                                 <rect key="frame" x="0.0" y="28" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pPd-Eb-jkQ" id="7l0-sF-pMb">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kEw-q5-ra5" id="Gcm-lx-0N6">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="lxv-fW-GRz" id="YuL-Y4-zER"/>
-                            <outlet property="delegate" destination="lxv-fW-GRz" id="RWS-C4-qst"/>
+                            <outlet property="dataSource" destination="Keh-E7-1NM" id="hLs-4S-Azd"/>
+                            <outlet property="delegate" destination="Keh-E7-1NM" id="qkB-Yv-USt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="카테고리 선택" id="8TQ-Uq-09e">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="EyX-9D-O30">
+                    <navigationItem key="navigationItem" title="카테고리 선택" id="hj4-JJ-0x7">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3t8-3i-Np7">
                             <connections>
-                                <action selector="cancelModal:" destination="lxv-fW-GRz" id="KvZ-IR-Omi"/>
+                                <action selector="cancelModal:" destination="Keh-E7-1NM" id="eS6-eK-Tm0"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="BtP-LI-mJt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="RkB-5B-7jf">
                             <connections>
-                                <action selector="completeModal:" destination="lxv-fW-GRz" id="WHt-6P-SQ4"/>
+                                <action selector="completeModal:" destination="Keh-E7-1NM" id="T5j-fw-Zox"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="rid-oE-Nki" kind="unwind" identifier="unwindToAddEventFromCategory" unwindAction="unwind:" id="uOJ-21-wvq"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FLk-Ck-68n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tmj-cV-lOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="rid-oE-Nki" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4991" y="115"/>
+            <point key="canvasLocation" x="5140" y="115"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="aLM-lr-kcK">
+        <scene sceneID="1fe-7p-NBf">
             <objects>
-                <navigationController id="r0F-9V-1x2" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dDe-fJ-vk3">
+                <navigationController id="iUK-JG-reS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LIo-bv-jUD"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d0q-It-yM3">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="lxv-fW-GRz" kind="relationship" relationship="rootViewController" id="Cx4-OU-fhv"/>
+                        <segue destination="Keh-E7-1NM" kind="relationship" relationship="rootViewController" id="J0G-HM-fua"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="npG-qb-oFw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEt-0C-lGZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4155" y="115"/>
+            <point key="canvasLocation" x="4232" y="115"/>
         </scene>
         <!--푸시 알림 설정-->
         <scene sceneID="gla-FP-l5r">
@@ -700,7 +712,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="PU5-0g-iDJ" kind="unwind" identifier="unwindToAddEvent" unwindAction="unwind:" id="eiF-mQ-41m"/>
+                        <segue destination="PU5-0g-iDJ" kind="unwind" identifier="unwindToAddEventFromNotification" unwindAction="unwind:" id="eiF-mQ-41m"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Nr-Ra-fY6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

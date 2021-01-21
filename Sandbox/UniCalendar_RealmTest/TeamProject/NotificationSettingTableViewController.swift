@@ -45,7 +45,7 @@ class NotificationSettingTableViewController: UITableViewController {
     
     // done button
     @IBAction func goToAddEvent(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToAddEvent", sender: self)
+        performSegue(withIdentifier: "unwindToAddEventFromNotification", sender: self)
     }
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -10,8 +10,8 @@
 		0B4D006325B55C6400437BEB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4D006225B55C6400437BEB /* CalendarViewController.swift */; };
 		183CCAF825B6B45C00F79166 /* EventAddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CCAF725B6B45C00F79166 /* EventAddTableViewController.swift */; };
 		183CCAFB25B6B7AD00F79166 /* EventEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CCAFA25B6B7AD00F79166 /* EventEditTableViewController.swift */; };
-		183CCAFE25B6B7C800F79166 /* CategorySelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CCAFD25B6B7C800F79166 /* CategorySelectionTableViewController.swift */; };
 		185F798225B987E50091D1D7 /* NotificationSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F798125B987E50091D1D7 /* NotificationSettingTableViewController.swift */; };
+		185F798525B9F3940091D1D7 /* CategorySelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F798425B9F3940091D1D7 /* CategorySelectionTableViewController.swift */; };
 		18B9DF2925A6DE6200F05FFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */; };
 		18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9DF3E25A6F17B00F05FFB /* EventCell.swift */; };
 		18E4DD2425B4409700876183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4DD2325B4409700876183 /* HomeDetailViewController.swift */; };
@@ -45,8 +45,8 @@
 		0B4D006225B55C6400437BEB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		183CCAF725B6B45C00F79166 /* EventAddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAddTableViewController.swift; sourceTree = "<group>"; };
 		183CCAFA25B6B7AD00F79166 /* EventEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditTableViewController.swift; sourceTree = "<group>"; };
-		183CCAFD25B6B7C800F79166 /* CategorySelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionTableViewController.swift; sourceTree = "<group>"; };
 		185F798125B987E50091D1D7 /* NotificationSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingTableViewController.swift; sourceTree = "<group>"; };
+		185F798425B9F3940091D1D7 /* CategorySelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionTableViewController.swift; sourceTree = "<group>"; };
 		18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18B9DF3E25A6F17B00F05FFB /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		18E4DD2325B4409700876183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 			children = (
 				183CCAF725B6B45C00F79166 /* EventAddTableViewController.swift */,
 				183CCAFA25B6B7AD00F79166 /* EventEditTableViewController.swift */,
-				183CCAFD25B6B7C800F79166 /* CategorySelectionTableViewController.swift */,
 				185F798125B987E50091D1D7 /* NotificationSettingTableViewController.swift */,
+				185F798425B9F3940091D1D7 /* CategorySelectionTableViewController.swift */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -366,7 +366,7 @@
 				5B4ED58225B4149900852B04 /* GraphViewController.swift in Sources */,
 				5B35DCEA25B284DF00A73E9E /* ColorTableViewController.swift in Sources */,
 				5B35DCE125B1C81E00A73E9E /* ModalTableViewController.swift in Sources */,
-				183CCAFE25B6B7C800F79166 /* CategorySelectionTableViewController.swift in Sources */,
+				185F798525B9F3940091D1D7 /* CategorySelectionTableViewController.swift in Sources */,
 				5B35DCC825B0981100A73E9E /* AddCategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

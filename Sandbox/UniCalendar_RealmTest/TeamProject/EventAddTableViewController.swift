@@ -11,9 +11,12 @@ let api = API.shared
 
 class EventAddTableViewController: UITableViewController {
     
+    var category: String = ""
+    
     var notificationFrequency: String = ""
     var notificationTime: String = ""
     
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var settledNotificationInfoLabel: UILabel!
     
     var dateFormatter:DateFormatter {
@@ -23,12 +26,25 @@ class EventAddTableViewController: UITableViewController {
     }
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
-        settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"
+        // print("seg: \(seg.identifier)")
+        switch seg.identifier {
+        case "unwindToAddEventFromCategory":
+            categoryLabel.text = category
+            break
+        case "unwindToAddEventFromNotification":
+            settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"
+            break
+        default:
+            break
+        }
     }
+    
+
 
     @IBAction func cancelModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     
     @IBAction func completeModal(_ sender: Any) {
         // TODO
