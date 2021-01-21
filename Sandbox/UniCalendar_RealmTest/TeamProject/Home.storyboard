@@ -125,7 +125,7 @@
                                             <outlet property="progressLabel" destination="KWu-KC-ruP" id="GLh-8M-bM4"/>
                                             <outlet property="progressPercentLabel" destination="o1S-bB-f2V" id="0ps-tV-xTQ"/>
                                             <outlet property="progressView" destination="F7E-mh-DMY" id="xBq-oN-tsS"/>
-                                            <segue destination="l1j-zJ-RaE" kind="show" id="5sp-hU-NAB"/>
+                                            <segue destination="l1j-zJ-RaE" kind="show" identifier="moveToDetail" id="5sp-hU-NAB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

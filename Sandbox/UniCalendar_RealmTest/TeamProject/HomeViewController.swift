@@ -26,8 +26,8 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     private var events: Results<Event>!
-    
-    
+    var selectedCellBefore: Int = 0
+    //var myEvent = Event()
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print(eventList.accessibilityElementCount())
@@ -42,6 +42,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
         let event = events[indexPath.row]
+        
         cell.eventNameLabel.text = event.eventName
         
         cell.dDayLabel.text = dateFormatter.string(from: event.eventDday)
@@ -55,13 +56,31 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+//        selectedCellBefore = indexPath.row
+//        print("selected cell before in func: \(selectedCellBefore)")
+//    }
+
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        selectedCellBefore = indexPath.row
+//        print("selected cell before in func: \(selectedCellBefore)")
+//
+//
+//    }
+//
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        
         guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
         guard let cell: EventCell = sender as? EventCell else { return }
+        
         
         destinationController.dDay = cell.dDayLabel.text!
         destinationController.eventName = cell.eventNameLabel.text!
         destinationController.progressPercent = cell.progressView.progress
+        destinationController.selectedCell = tableView.indexPathForSelectedRow!.row
+        
+        print("Selected Cell Before: \(tableView.indexPathForSelectedRow!.row)")
         
         // TODO: 디테일 탭으로 소목표 넘기기
         
@@ -74,9 +93,6 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         tableView.delegate = self
         
         
-        
-       
-        
 //        try! API.shared.realm.write {
 //            API.shared.realm.add(myEvent)
 //            API.shared.realm.add(myEvent2)
@@ -86,5 +102,9 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool){
         events = API.shared.callEvent()
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//
+//    }
     
 }

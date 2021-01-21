@@ -6,19 +6,24 @@ class API {
     
     let realm = try! Realm()
     
-    func callEventList()->Results<EventList>{
-        let event = callEvent()
-        return realm.objects(EventList.self)
-    }
-    
+//    func callEventList()->Results<EventList>{
+//        let event = callEvent()
+//        return realm.objects(EventList.self)
+//    }
+//
     func callEvent() -> Results<Event>{
-        let subEvent = callSubEvent()
+        let subEvents = callSubEvents()
         return realm.objects(Event.self)
     }
     
     func callCategory() -> Results<Category>{
         let event = callEvent()
         return realm.objects(Category.self)
+    }
+    
+    func callSubEvents() -> Results<SubEvents> {
+        let subEvent = callSubEvent()
+        return realm.objects(SubEvents.self)
     }
     
     func callSubEvent() -> Results<SubEvent>{
@@ -53,17 +58,27 @@ class Event: Object {
     @objc dynamic var importance: Int = 0
     @objc dynamic var eventIsDone: Bool = false
 
-    let subEvents = List<SubEvent>()
+    let subEventArray = List<SubEvents>()
     
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
     var parentEventList = LinkingObjects(fromType: EventList.self, property: "events")
+    
+//    override static func primaryKey() -> String? {
+//        return "id"
+//    }
+}
+
+class SubEvents: Object {
+    let subEvents = List<SubEvent>()
+    
+    var parentEvent = LinkingObjects(fromType: Event.self, property: "subEventArray")
 }
 
 class SubEvent: Object {
     @objc dynamic var subEventName: String = ""
     @objc dynamic var subEventIsDone: Bool = false
     
-    var parentEvent = LinkingObjects(fromType: Event.self, property:"subEvents")
+    var parentSubEventArray = LinkingObjects(fromType: SubEvents.self, property:"subEvents")
 }
 
 class Content: Object {

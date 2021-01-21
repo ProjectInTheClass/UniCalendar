@@ -31,6 +31,7 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressPercentLabel: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -39,6 +40,13 @@ class EventCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+        
+    }
+    
+    func returnCellIndex() -> Int {
+        print(self.tag)
+        print(self.hashValue)
+        return self.tag
     }
 
 }
