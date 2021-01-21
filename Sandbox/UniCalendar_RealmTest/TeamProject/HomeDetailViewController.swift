@@ -11,7 +11,7 @@ import RealmSwift
 class HomeDetailViewController: UIViewController, UITableViewDataSource {
   
     //let subGoals: [String] = ["소목표1", "소목표2", "소목표3"]
-    let events: [Event] = api.realm.objects(Event.self).map { $0 }
+    let events: [Event] = api.callEvent()
     
     var dDay: String = ""
     var eventName: String = ""
