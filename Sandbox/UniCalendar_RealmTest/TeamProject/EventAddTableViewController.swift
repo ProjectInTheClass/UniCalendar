@@ -10,14 +10,21 @@ import UIKit
 let api = API.shared
 
 class EventAddTableViewController: UITableViewController {
-
+    
+    var notificationFrequency: String = ""
+    var notificationTime: String = ""
+    
+    @IBOutlet weak var settledNotificationInfoLabel: UILabel!
+    
     var dateFormatter:DateFormatter {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         return df
     }
     
-   
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"
+    }
 
     @IBAction func cancelModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
