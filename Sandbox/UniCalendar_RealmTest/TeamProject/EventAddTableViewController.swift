@@ -7,14 +7,17 @@
 
 import UIKit
 
+let api = API.shared
+
 class EventAddTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
+    var dateFormatter:DateFormatter {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        return df
     }
+    
+   
 
     @IBAction func cancelModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -23,25 +26,32 @@ class EventAddTableViewController: UITableViewController {
     @IBAction func completeModal(_ sender: Any) {
         // TODO
         // Add New event to EventList
-        let myEvent = Event()
-        //let mySubEvent = SubEvent()
-        
-        let eventName = "checkcheck"
-        let eventDday = Date.init()
-        let importance = 3
-        let eventIsDone = false
-        
-        myEvent.eventName = eventName
-        myEvent.eventDday = eventDday
-        myEvent.importance = importance
-        myEvent.eventIsDone = eventIsDone
-        
-       
-        
-        try! API.shared.realm.write {
-            API.shared.realm.add(myEvent)
-        }
+        save()
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    func save() {
+
+        let d = self.dateFormatter.date(from: "2020-01-28")
+        
+        let newEvent = Event(eventName: "알고리즘과제", eventDday: d!, importance: 3, eventIsDone: true)
+
+        let category = Category(categoryName: "과제1", categoryColor: 0)
+        category.eventsInCategory.append(newEvent)
+                
+        
+        try! api.realm.write{
+            api.realm.add([category])
+        }
+        
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        
+        // Do any additional setup after loading the view.
+    }
 }

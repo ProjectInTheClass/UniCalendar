@@ -6,25 +6,16 @@ class API {
     
     let realm = try! Realm()
     
-//    func callEventList()->Results<EventList>{
-//        let event = callEvent()
-//        return realm.objects(EventList.self)
-//    }
-//
-    func callEvent() -> Results<Event>{
-        let subEvents = callSubEvent()
-        return realm.objects(Event.self)
-    }
-    
     func callCategory() -> Results<Category>{
-        let event = callEvent()
-        return realm.objects(Category.self)
-    }
+    //        let event = callEvent()
+            return realm.objects(Category.self)
+        }
     
-//    func callSubEvents() -> Results<SubEvents> {
+    func callEvent() -> [Event] {
 //        let subEvent = callSubEvent()
-//        return realm.objects(SubEvents.self)
-//    }
+        let r: [Event] = realm.objects(Event.self).map { $0 }
+        return r
+    }
     
     func callSubEvent() -> Results<SubEvent>{
         return realm.objects(SubEvent.self)
@@ -33,11 +24,6 @@ class API {
     func callContent() -> Results<Content>{
         return realm.objects(Content.self)
     }
-    //let callEventList = realm.objects(EventList.self)
-    
-//    func add() {
-//        
-//    }
     
 }
 
@@ -47,7 +33,11 @@ class Category: Object {
     
     let eventsInCategory = List<Event>()
     
-    
+    convenience init(categoryName: String, categoryColor: Int) {
+        self.init()
+        self.categoryName = categoryName
+        self.categoryColor = categoryColor
+    }
 }
 
 
@@ -57,32 +47,45 @@ class Event: Object {
     @objc dynamic var importance: Int = 0
     @objc dynamic var eventIsDone: Bool = false
 
-    let subEvent = List<SubEvent>()
+    let subEvents = List<SubEvent>()
     
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
     
-//    override static func primaryKey() -> String? {
-//        return "id"
-//    }
-}
+    convenience init(eventName: String, eventDday : Date, importance : Int, eventIsDone : Bool ) {
+        self.init()
+        self.eventName = eventName
+        self.eventDday = eventDday
+        self.importance = importance
+        self.eventIsDone = eventIsDone
+    }
 
-//class SubEvents: Object {
-//    let subEvents = List<SubEvent>()
-//
-//    var parentEvent = LinkingObjects(fromType: Event.self, property: "subEventArray")
-//}
+}
 
 class SubEvent: Object {
     @objc dynamic var subEventName: String = ""
     @objc dynamic var subEventIsDone: Bool = false
     
-    var parentEvent = LinkingObjects(fromType: Event.self, property:"subEvent")
+    var parentEvent = LinkingObjects(fromType: Event.self, property:"subEvents")
+    
+    convenience init(subEventName: String, subEventIsDone: Bool) {
+        self.init()
+        self.subEventName = subEventName
+        self.subEventIsDone = subEventIsDone
+    }
 }
 
 class Content: Object {
-    @objc dynamic var firstContent: String = ""
-    @objc dynamic var secondContent: String = ""
-    @objc dynamic var thirdContent: String = ""
+    @objc dynamic var begin: String = ""
+    @objc dynamic var earlyMiddle: String = ""
+    @objc dynamic var lateMiddle: String = ""
+    @objc dynamic var end: String = ""
+    
+    convenience init(begin: String, earlyMiddle: String, lateMiddle: String, end: String) {
+        self.init()
+        self.begin = begin
+        self.earlyMiddle = earlyMiddle
+        self.end = end
+    }
 }
 
 
