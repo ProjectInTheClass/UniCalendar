@@ -57,6 +57,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
         guard let cell: EventCell = sender as? EventCell else { return }
         
+        
+        
         destinationController.dDay = cell.dDayLabel.text!
         destinationController.eventName = cell.eventNameLabel.text!
         destinationController.progressPercent = cell.progressView.progress
@@ -64,7 +66,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // TODO: 디테일 탭으로 소목표 넘기기
         
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
