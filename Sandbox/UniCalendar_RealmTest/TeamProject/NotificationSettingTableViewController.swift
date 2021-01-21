@@ -12,6 +12,7 @@ class NotificationSettingTableViewController: UITableViewController {
     var checkedDay: Int = 0
     var checkedTime: Int = 0
 
+    var lastCheckedIndexPath: IndexPath = IndexPath()
     var isSectionChecked: [Bool] = [false, false]
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,6 +49,7 @@ class NotificationSettingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Todo: 탭 선택 변경 가능하게,,
+        // 현재 섹션이 체크가 안되어있으면
         if !isSectionChecked[indexPath.section] {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             
@@ -62,7 +64,27 @@ class NotificationSettingTableViewController: UITableViewController {
                 print("error")
             }
             isSectionChecked[indexPath.section] = true
+
+        } else { // 현재 섹션이 체크가 되어있으면
+            // 기존 체크된 cell을 체크 해제
+            if indexPath.section == lastCheckedIndexPath.section {
+                tableView.cellForRow(at: lastCheckedIndexPath)?.accessoryType = .none
+                
+                tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+                
+                switch (indexPath.section) {
+                case 0: // frequency section
+                    self.checkedDay = indexPath.row
+                    break
+                case 1:
+                    self.checkedTime = indexPath.row
+                    break
+                default:
+                    print("error")
+                }
+            }
         }
+        lastCheckedIndexPath = indexPath
     }
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         // tableView.cellForRow(at: indexPath)?.accessoryType = .none
