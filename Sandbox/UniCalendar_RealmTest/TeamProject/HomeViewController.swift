@@ -56,35 +56,35 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-//        selectedCellBefore = indexPath.row
-//        print("selected cell before in func: \(selectedCellBefore)")
-//    }
-
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectedCellBefore = indexPath.row
-//        print("selected cell before in func: \(selectedCellBefore)")
-//
-//
-//    }
-//
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "moveToDetail", sender: indexPath.row)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
-        
+
+
         guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
-        guard let cell: EventCell = sender as? EventCell else { return }
+        guard let row = sender as? Int else { return }
+
+
+        let event = events[row]
         
+//        destinationController.dDay = event.eventDday
+        destinationController.eventName = event.eventName
         
-        destinationController.dDay = cell.dDayLabel.text!
-        destinationController.eventName = cell.eventNameLabel.text!
-        destinationController.progressPercent = cell.progressView.progress
-        destinationController.selectedCell = tableView.indexPathForSelectedRow!.row
-        
-        print("Selected Cell Before: \(tableView.indexPathForSelectedRow!.row)")
-        
+//       selectedCellBefore =  tableView.indexPathForSelectedRow!.row
+
+        destinationController.selectedCell = row
+
+
+//        print("Selected Cell Before: \(tableView.indexPathForSelectedRow!.row)")
+    
         // TODO: 디테일 탭으로 소목표 넘기기
         
+        tableView.deselectRow(at:tableView.indexPathForSelectedRow!, animated: true)
+
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

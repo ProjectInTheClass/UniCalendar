@@ -12,7 +12,7 @@ class API {
 //    }
 //
     func callEvent() -> Results<Event>{
-        let subEvents = callSubEvents()
+        let subEvents = callSubEvent()
         return realm.objects(Event.self)
     }
     
@@ -21,10 +21,10 @@ class API {
         return realm.objects(Category.self)
     }
     
-    func callSubEvents() -> Results<SubEvents> {
-        let subEvent = callSubEvent()
-        return realm.objects(SubEvents.self)
-    }
+//    func callSubEvents() -> Results<SubEvents> {
+//        let subEvent = callSubEvent()
+//        return realm.objects(SubEvents.self)
+//    }
     
     func callSubEvent() -> Results<SubEvent>{
         return realm.objects(SubEvent.self)
@@ -46,11 +46,10 @@ class Category: Object {
     @objc dynamic var categoryColor: Int = 0
     
     let eventsInCategory = List<Event>()
+    
+    
 }
 
-class EventList: Object {
-    let events = List<Event>()
-}
 
 class Event: Object {
     @objc dynamic var eventName: String = ""
@@ -58,27 +57,26 @@ class Event: Object {
     @objc dynamic var importance: Int = 0
     @objc dynamic var eventIsDone: Bool = false
 
-    let subEventArray = List<SubEvents>()
+    let subEvent = List<SubEvent>()
     
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
-    var parentEventList = LinkingObjects(fromType: EventList.self, property: "events")
     
 //    override static func primaryKey() -> String? {
 //        return "id"
 //    }
 }
 
-class SubEvents: Object {
-    let subEvents = List<SubEvent>()
-    
-    var parentEvent = LinkingObjects(fromType: Event.self, property: "subEventArray")
-}
+//class SubEvents: Object {
+//    let subEvents = List<SubEvent>()
+//
+//    var parentEvent = LinkingObjects(fromType: Event.self, property: "subEventArray")
+//}
 
 class SubEvent: Object {
     @objc dynamic var subEventName: String = ""
     @objc dynamic var subEventIsDone: Bool = false
     
-    var parentSubEventArray = LinkingObjects(fromType: SubEvents.self, property:"subEvents")
+    var parentEvent = LinkingObjects(fromType: Event.self, property:"subEvent")
 }
 
 class Content: Object {
