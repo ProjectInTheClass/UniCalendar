@@ -26,14 +26,19 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     // indexPath 각 (section, row)에 맞는 cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
         let event = events[indexPath.row]
         
         cell.eventNameLabel.text = event.eventName
         
-        cell.dDayLabel.text = dateFormatter.string(from: event.eventDday)
+        let today = df.date(from: df.string(from : Date.init()))
+        let dDay = df.date(from: df.string(from: event.eventDday))!
+
+        let interval = dDay.timeIntervalSince(today!)
+        let d = Int(interval / 86400)
+        cell.dDayLabel.text = "D - " + String(d)
         
         cell.importanceLabel.text = "중요해요"
         //cell.importanceImageLabel.text = String(event.events[indexPath.row].)
