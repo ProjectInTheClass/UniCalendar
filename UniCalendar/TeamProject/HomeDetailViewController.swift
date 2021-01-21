@@ -13,8 +13,12 @@ class HomeDetailViewController: UIViewController {
     var eventName: String = ""
     var progressPercent: Float = 0.0
     
+    var bottomLabelText: String = ""
+    
     @IBOutlet weak var dDayLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
+    
+    @IBOutlet weak var bottomMessageLabel: UILabel!
     
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressPercentLabel: UILabel!
@@ -29,6 +33,8 @@ class HomeDetailViewController: UIViewController {
         eventNameLabel.text = eventName
         progressView.setProgress(progressPercent, animated: false)
         progressPercentLabel.text = "\(progressPercent*100)%"
+        
+        bottomMessageLabel.text = "🔥최종 목표 완료까지 n개 남았어요!🔥"
     }
 
 }
