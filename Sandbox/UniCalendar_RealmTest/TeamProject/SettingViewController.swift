@@ -93,9 +93,7 @@ class SettingViewController: UIViewController {
 
     @IBAction func unwindToSetting (segue: UIStoryboardSegue){
         //print("UNWIND PLEASE")
-        tableView.setEditing(true, animated: true)
-        tableView.reloadData()
-        tableView.endEditing(true)
+        
     }
     
     override func viewDidLoad() {
