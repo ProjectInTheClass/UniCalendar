@@ -125,7 +125,6 @@
                                             <outlet property="progressLabel" destination="KWu-KC-ruP" id="GLh-8M-bM4"/>
                                             <outlet property="progressPercentLabel" destination="o1S-bB-f2V" id="0ps-tV-xTQ"/>
                                             <outlet property="progressView" destination="F7E-mh-DMY" id="xBq-oN-tsS"/>
-                                            <segue destination="l1j-zJ-RaE" kind="show" identifier="moveToDetail" id="5sp-hU-NAB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -161,6 +160,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="zdT-58-KSk" id="en8-6Z-EnN"/>
+                        <segue destination="l1j-zJ-RaE" kind="show" identifier="moveToDetail" id="0sG-15-aTH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="838-cJ-Jpe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -244,7 +244,7 @@
                                                 <color key="progressTintColor" systemColor="systemPurpleColor"/>
                                             </progressView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8Q-u5-xEs">
-                                                <rect key="frame" x="286.33333333333331" y="25.333333333333339" width="43.666666666666686" height="14.333333333333332"/>
+                                                <rect key="frame" x="286.33333333333331" y="25.333333333333343" width="43.666666666666686" height="14.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

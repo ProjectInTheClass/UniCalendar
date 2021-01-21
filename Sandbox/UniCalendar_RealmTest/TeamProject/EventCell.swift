@@ -43,10 +43,10 @@ class EventCell: UITableViewCell {
         
     }
     
-    func returnCellIndex() -> Int {
-        print(self.tag)
-        print(self.hashValue)
-        return self.tag
-    }
+//    func returnCellIndex() -> Int {
+//        print(self.tag)
+//        print(self.hashValue)
+//        return self.tag
+//    }
 
 }

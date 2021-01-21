@@ -32,12 +32,12 @@ class HomeDetailViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return events[selectedCell].subEventArray[selectedCell].subEvents.count
+        return events[selectedCell].subEvent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = detailTableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
-        cell.textLabel?.text = events[selectedCell].subEventArray[selectedCell].subEvents[indexPath.row].subEventName
+        cell.textLabel?.text = events[selectedCell].subEvent[indexPath.row].subEventName
         
         return cell
     }
@@ -56,10 +56,11 @@ class HomeDetailViewController: UIViewController, UITableViewDataSource {
         
         print("Selected Cell : ")
         print(selectedCell)
-        dDayLabel.text = dDay
-        eventNameLabel.text = eventName
-        progressView.setProgress(progressPercent, animated: false)
-        progressPercentLabel.text = "\(progressPercent*100)%"
+//        dDayLabel.text = dDay
+//        eventNameLabel.text = eventName
+//        progressView.setProgress(progressPercent, animated: false)
+//        progressPercentLabel.text = "\(progressPercent*100)%"
+        
         
         
     }
