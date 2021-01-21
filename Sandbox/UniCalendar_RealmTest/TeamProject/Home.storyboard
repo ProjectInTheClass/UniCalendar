@@ -340,12 +340,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="177"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-sB-q5H">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-sB-q5H">
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="177"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="177" id="bud-4e-kWh"/>
                                                         <constraint firstAttribute="width" constant="390" id="wRs-2F-TtO"/>
                                                     </constraints>
+                                                    <locale key="locale" localeIdentifier="ko"/>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>

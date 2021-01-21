@@ -8,24 +8,12 @@
 import UIKit
 import RealmSwift
 
-//struct EventItem {
-//    var eventName: String
-//    var dDay: String
-//    var importance: Int
-//    var importanceImage: String
-//    var progressPercent: Float
-//}
-//let eventItems: [Event] = [
-//
-//]
-
-
-
 class HomeViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var events: Results<Event>!
+    let events: [Event] = api.realm.objects(Event.self).map { $0 }
+    
     var selectedCellBefore: Int = 0
     //var myEvent = Event()
     // 섹션당 row 수
@@ -99,9 +87,9 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 //        }
     }
     
-    override func viewWillAppear(_ animated: Bool){
-        events = API.shared.callEvent()
-    }
+//    override func viewWillAppear(_ animated: Bool){
+//        events = API.shared.callEvent()
+//    }
     
 //    override func viewWillDisappear(_ animated: Bool) {
 //
