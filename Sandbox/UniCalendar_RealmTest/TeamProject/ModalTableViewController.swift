@@ -38,25 +38,7 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
         saveCategory()
         performSegue(withIdentifier: "unwindToSetting", sender: self)
         
-<<<<<<< Updated upstream
-//        if completeButton.accessibilityRespondsToUserInteraction == true {
-            let newCategory = Category(categoryName: nameTextField.text!, categoryColor: getEnumColor(color: getImageChange))
-            //let newCategory = Category[]
-            
-            try! api.realm.write(){
-                api.realm.add(newCategory)
-            }
-            
-            print(category)
-            //print(newCategory)
-            
-            performSegue(withIdentifier: "unwindToSetting", sender: self)
-        //}
-        
-       //self.dismiss(animated: true, completion: nil)
-=======
->>>>>>> Stashed changes
-        
+
     }
     
     @IBAction func cancelModal(_ sender: Any) {
