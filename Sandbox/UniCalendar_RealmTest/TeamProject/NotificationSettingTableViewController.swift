@@ -10,6 +10,12 @@ import UIKit
 class NotificationSettingTableViewController: UITableViewController {
 
     var checkedDay: Int = 0
+    // 사용자 선택
+    
+    @IBOutlet weak var userSelectDayLabel: UILabel!
+    
+    // 사용자 설정 -> 선택된 요일 값을 배열로 받아옴
+    var checkedDaysOfWeek: [Int] = Array<Int>()
     var checkedTime: Int = 0
 
     // 각 section별로, 마지막 체크된 셀의 indexPath는 무엇인가
@@ -35,6 +41,7 @@ class NotificationSettingTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
 
     }
 
@@ -46,6 +53,10 @@ class NotificationSettingTableViewController: UITableViewController {
     // done button
     @IBAction func goToAddEvent(_ sender: Any) {
         performSegue(withIdentifier: "unwindToAddEventFromNotification", sender: self)
+    }
+    
+    @IBAction func unwindToNotificationSetting(_ unwindSegue: UIStoryboardSegue) {
+        userSelectDayLabel.text = getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
     }
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,6 +103,7 @@ class NotificationSettingTableViewController: UITableViewController {
         // tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     
+    
     func getTimeFromCheckedRow(row: Int) -> String {
         switch row {
         case 0:
@@ -118,10 +130,37 @@ class NotificationSettingTableViewController: UITableViewController {
         case 1:
             return "매일"
         case 2:
-            return "사용자 설정"
+            return  getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
         default:
             return "선택하지 않음"
         }
+    }
+    
+    func getDayStringFromDaysArray(dayList: [Int]) -> String {
+        let resultDayString: String = dayList.reduce("매주 ", {(prev: String, day: Int) -> String in
+            var dayString: String {
+                switch day {
+                case 0:
+                    return "월"
+                case 1:
+                    return "화"
+                case 2:
+                    return "수"
+                case 3:
+                    return "목"
+                case 4:
+                    return "금"
+                case 5:
+                    return "토"
+                case 6:
+                    return "일"
+                default:
+                    return "선택되지 않음"
+                }
+            }
+            return prev + dayString + " "
+        })
+        return resultDayString
     }
 
 }
