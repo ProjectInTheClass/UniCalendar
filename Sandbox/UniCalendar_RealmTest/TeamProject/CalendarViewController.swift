@@ -62,11 +62,38 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
         let cell = calendarEventTableView.dequeueReusableCell(withIdentifier: "CalendarEventTableViewCell", for: indexPath) as! CalendarEventTableViewCell
         let event = selectedDateEvents[indexPath.row]
         
-        cell.eventLabel.text = event.eventName
+        cell.eventNameLabel.text = event.eventName
+        
+//        print("parent category: \(event.parentCategory)")
+//
+//        print("index path row: \(indexPath.row)")
+//        print("color: \(event.parentCategory[0].categoryColor)")
+        let categoryColor = calculateColor(color: event.parentCategory[indexPath.row].categoryColor)
+        cell.categoryColorImage.image = UIImage(named: categoryColor)
+        //cell.dDayLabel.text = event.
       
         return cell
     }
     
+    //data에서 카테고리 불러왔을때 Int->String으로 변환해서 image색깔 바꿔주는 함수
+    func calculateColor(color: Int) -> String{
+        switch color {
+        case 0:
+            return "category_purple"
+        case 1:
+            return "category_blue"
+        case 2:
+            return "category_red"
+        case 3:
+            return "category_yellow"
+        case 4:
+            return "category_green"
+        case 5:
+            return "category_orange"
+        default:
+            return "category_purple"
+        }
+    }
     
     // 날짜 선택 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -78,6 +105,7 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
             }
         }
        
+        print(selectedDateEvents)
         calendarEventTableView.reloadData()
        
     }

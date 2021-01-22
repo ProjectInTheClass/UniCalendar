@@ -9,7 +9,10 @@ import UIKit
 
 class CalendarEventTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var eventLabel: UILabel!
+    @IBOutlet weak var categoryColorImage: UIImageView!
+    @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var dDayLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

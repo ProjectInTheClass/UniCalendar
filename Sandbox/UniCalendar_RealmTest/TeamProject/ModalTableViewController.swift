@@ -39,7 +39,7 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
             }
             
             print(category)
-            print(newCategory)
+            //print(newCategory)
             
             performSegue(withIdentifier: "unwindToSetting", sender: self)
         //}
