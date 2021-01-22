@@ -19,6 +19,8 @@ class EventAddTableViewController: UITableViewController {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var settledNotificationInfoLabel: UILabel!
     
+    var event = api.callEvent()
+    
     var dateFormatter:DateFormatter {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
@@ -50,7 +52,9 @@ class EventAddTableViewController: UITableViewController {
         // TODO
         // Add New event to EventList
         save()
-        self.dismiss(animated: true, completion: nil)
+        event = api.callEvent()
+        //self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "unwindToHome", sender: (Any).self)
     }
     
     
@@ -60,13 +64,14 @@ class EventAddTableViewController: UITableViewController {
         
         let newEvent = Event(eventName: "알고리즘과제", eventDday: d!, importance: 3, eventIsDone: true)
 
-        let category = Category(categoryName: "과제1", categoryColor: 0)
-        category.eventsInCategory.append(newEvent)
+        //let category = Category(categoryName: "과제1", categoryColor: 0)
+        //category.eventsInCategory.append(newEvent)
                 
         
         try! api.realm.write{
-            api.realm.add([category])
+            api.realm.add([newEvent])
         }
+        
         
     }
     

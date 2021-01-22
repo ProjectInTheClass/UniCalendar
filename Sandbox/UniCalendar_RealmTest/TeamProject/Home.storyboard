@@ -164,6 +164,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="838-cJ-Jpe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="vYb-T1-05B" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1750.7692307692307" y="115.16587677725119"/>
         </scene>
@@ -456,6 +457,7 @@
                     <connections>
                         <outlet property="categoryLabel" destination="tF9-XE-oaE" id="tP6-Xp-eQC"/>
                         <outlet property="settledNotificationInfoLabel" destination="SqH-UH-Sl8" id="trn-Tn-2f1"/>
+                        <segue destination="vYb-T1-05B" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="8B9-j8-Xb7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZy-kG-jHt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

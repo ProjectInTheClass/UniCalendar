@@ -55,7 +55,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-
+        events = api.callEvent()
         guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
         guard let row = sender as? Int else { return }
 
@@ -78,6 +78,11 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 
     }
 
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        events = api.callEvent()
+        print(events)
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,9 +97,9 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 //        }
     }
     
-//    override func viewWillAppear(_ animated: Bool){
-//        events = API.shared.callEvent()
-//    }
+    override func viewWillAppear(_ animated: Bool){
+        //events = API.shared.callEvent()
+    }
     
 //    override func viewWillDisappear(_ animated: Bool) {
 //
