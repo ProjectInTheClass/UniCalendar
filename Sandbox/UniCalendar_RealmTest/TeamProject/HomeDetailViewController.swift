@@ -64,6 +64,5 @@ class HomeDetailViewController: UIViewController, UITableViewDataSource {
         detailTableView.dataSource = self
     }
     
-   
 
 }
