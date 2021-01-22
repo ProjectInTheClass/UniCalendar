@@ -18,7 +18,9 @@ class CategoryDetailTableViewController: UITableViewController {
     @IBOutlet weak var categoryNameTextField: UITextField!
     @IBOutlet weak var categoryColor: UIImageView!
     
+    //'완료' action함수
     @IBAction func completeModal(_ sender: Any) {
+        //realm에 write -> 수정
         try? api.realm.write(){
             category[categoryIndex].categoryName = categoryNameTextField.text!
             category[categoryIndex].categoryColor = calculateColorInt(color: getImageChange)
@@ -26,6 +28,7 @@ class CategoryDetailTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //EditColorTableView에서 Detail로 unwind할 수 있게 해주는 함수
     @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
         categoryColor.image = UIImage(named: getImageChange)
     }
@@ -36,17 +39,20 @@ class CategoryDetailTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //TextField + Color설정
         categoryNameTextField.text = category[categoryIndex].categoryName
         categoryColor.image = UIImage(named: calculateColor(color: category[categoryIndex].categoryColor))
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
+            //1번째 row선택시 EditColorTableView로 넘어감
             performSegue(withIdentifier: "windToEditColor", sender: category[categoryIndex].categoryColor)
         } else if indexPath.row == 2 {
+            //alert메세지 생성
             let alert = UIAlertController(title: "⚠️카테고리 삭제⚠️", message: "카테고리를 삭제하면 카테고리에 포함되어 있는 👉🏻모든👈🏻 목표가 사라져요!\n그래도 삭제하시나요?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("네", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
+            //NSLog("The \"OK\" alert occured.")
                 try? api.realm.write{
                     api.realm.delete(self.category[self.categoryIndex])
                 }
@@ -54,13 +60,14 @@ class CategoryDetailTableViewController: UITableViewController {
                 self.performSegue(withIdentifier: "unwindToSettingFromDetail", sender: nil)
             }))
             alert.addAction(UIAlertAction(title: "아뇨", style: .cancel, handler: { _ in
-                NSLog("The NO alert occured.")
+                //NSLog("The NO alert occured.")
             }))
             self.present(alert, animated: true, completion: nil)
 //
         }
     }
     
+    //unwindToSettingFromDetail 위해 prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigation = segue.destination as? UINavigationController else {return}
         

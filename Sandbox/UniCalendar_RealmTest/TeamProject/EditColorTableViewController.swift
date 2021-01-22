@@ -16,6 +16,7 @@ class EditColorTableViewController: UITableViewController {
         performSegue(withIdentifier: "unwindToDetail", sender: nil)
     }
     
+    //'unwindToDetail'위해 prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destView = segue.destination
         
@@ -27,14 +28,10 @@ class EditColorTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool){
+        //처음 view 불러왔을때 기존에 저장되어있는 색깔 선택되어 있는 상태 표현
         tableView.selectRow(at: [0,firstColorIndex], animated: false, scrollPosition: UITableView.ScrollPosition.none)
         tableView.cellForRow(at: [0,firstColorIndex])?.accessoryType = .checkmark
     }

@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import RealmSwift
 
-//var categoryIndex: Int = 0
 
 class SettingViewController: UIViewController {
 
@@ -21,31 +20,22 @@ class SettingViewController: UIViewController {
     let about = "앱을 소개합니다👐🏻"
     let add = "카테고리 추가"
 
+    //Setting View Controller로 unwind 해주는 함수 지정
     @IBAction func unwindToSetting (segue: UIStoryboardSegue){
-        print("UNWIND PLEASE")
+        //print("UNWIND PLEASE")
+        //카테고리 데이터 새로고침
         category = api.callCategory()
         tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         tableView.delegate = self
         tableView.dataSource = self
-        print("View Did Load")
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("Appear")
-        
-    }
-
-//    override func viewDidAppear(_ animated: Bool) {
-//
-//        //API.shared.
-//    }
-//
     
 
 }
@@ -133,17 +123,9 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         guard let navigation = segue.destination as? UINavigationController else { return }
         
         guard let detail = navigation.viewControllers[0] as? CategoryDetailTableViewController else { return }
-          //print(destination.categoryIndex)
         detail.categoryIndex = row
-//
-//        print("send row completed")
-//        destination.categoryNameLabel.text = category[row].categoryName
+
     }
 
 }
 
-//guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
-//guard let row = sender as? Int else { return }
-//
-//
-//let event = events[row]
