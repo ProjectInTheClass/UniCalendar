@@ -1,9 +1,11 @@
 import UIKit
+import Charts
 
 class GraphViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-
+    
+    var numbers: [Double] = []
     let semiSection : [String] = ["배지🎖", "전체 보기▶️", "대학 생활 패턴 분석🔍", "완료도 분석📊"]
 
     override func viewDidLoad() {

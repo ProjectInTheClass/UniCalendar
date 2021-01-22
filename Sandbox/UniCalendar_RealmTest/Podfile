@@ -9,6 +9,7 @@ target 'TeamProject' do
 
 pod 'FSCalendar'
 pod 'RealmSwift'
+pod 'Charts'
   # Pods for SampleRealm
 
 end
