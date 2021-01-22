@@ -1,38 +1,32 @@
 //
-//  CategoryDetailTableViewController.swift
+//  EditColorTableViewController.swift
 //  TeamProject
 //
-//  Created by Nayeon Kim on 2021/01/16.
+//  Created by Nayeon Kim on 2021/01/22.
 //
 
 import UIKit
-import RealmSwift
 
-class CategoryDetailTableViewController: UITableViewController {
+class EditColorTableViewController: UITableViewController {
     
-    var category = api.callCategory()
-    var getImageChange: String = "category_purple"
+    var firstColorIndex: IndexPath? = nil
+    var confirmedColor: Int = 0
     
-    var categoryIndex: Int = 0
-   
-    @IBOutlet weak var categoryNameTextField: UITextField!
-    @IBOutlet weak var categoryColor: UIImageView!
-    
-    @IBAction func completeModal(_ sender: Any) {
-        try? api.realm.write(){
-            category[categoryIndex].categoryName = categoryNameTextField.text!
-            category[categoryIndex].categoryColor =
-        }
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func complete(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToDetail", sender: nil)
     }
     
-    @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destView = segue.destination
         
+        guard let vc = destView as? CategoryDetailTableViewController else {return}
+        
+        vc.getImageChange = self.calculateColor(color: confirmedColor)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -40,31 +34,21 @@ class CategoryDetailTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        categoryNameTextField.text = category[categoryIndex].categoryName
-        categoryColor.image = UIImage(named: calculateColor(color: category[categoryIndex].categoryColor))
+    override func viewWillAppear(_ animated: Bool){
+        tableView.cellForRow(at: firstColorIndex!)?.accessoryType = .checkmark
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            performSegue(withIdentifier: "windToEditColor", sender: indexPath)
-        } else if indexPath.row == 2 {
-            
-        }
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+    
+        confirmedColor = indexPath.row
+        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navigation = segue.destination as? UINavigationController else {return}
-        
-        guard let detail = navigation.viewControllers[0] as? EditColorTableViewController else { return }
-        
-//        guard let destination: EditColorTableViewController = segue.destination as? EditColorTableViewController else {return}
-        guard let colorIndexPath = sender as? IndexPath else {return}
-        
-        detail.firstColorIndex = colorIndexPath
-        //destination.firstColor = category[categoryIndex].categoryColor
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print(indexPath)
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
-
     
     func calculateColor(color: Int) -> String{
         switch color {
@@ -81,10 +65,10 @@ class CategoryDetailTableViewController: UITableViewController {
         case 5:
             return "category_orange"
         default:
-            return ""
+            return "category_purple"
         }
     }
-    
+
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {

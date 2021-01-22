@@ -44,6 +44,7 @@
 		5B4ED58F25B41B8500852B04 /* CompleteDegreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED58E25B41B8500852B04 /* CompleteDegreeCell.swift */; };
 		5B4ED5BB25B561F800852B04 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED5BA25B561F800852B04 /* Data.swift */; };
 		5B5C1DD525BAC41C003D534A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DD425BAC41C003D534A /* TabBarController.swift */; };
+		5B5C1DD925BAD18A003D534A /* EditColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DD825BAD18A003D534A /* EditColorTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		5B4ED58E25B41B8500852B04 /* CompleteDegreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDegreeCell.swift; sourceTree = "<group>"; };
 		5B4ED5BA25B561F800852B04 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		5B5C1DD425BAC41C003D534A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5B5C1DD825BAD18A003D534A /* EditColorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditColorTableViewController.swift; sourceTree = "<group>"; };
 		7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -214,6 +216,7 @@
 				5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */,
 				5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */,
 				5B35DCE925B284DF00A73E9E /* ColorTableViewController.swift */,
+				5B5C1DD825BAD18A003D534A /* EditColorTableViewController.swift */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				185F798225B987E50091D1D7 /* NotificationSettingTableViewController.swift in Sources */,
 				5B4ED58925B41B5500852B04 /* BadgeCell.swift in Sources */,
 				5B144714259DB3E700968770 /* AppDelegate.swift in Sources */,
+				5B5C1DD925BAD18A003D534A /* EditColorTableViewController.swift in Sources */,
 				5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */,
 				18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */,
 				185F798A25BAA0160091D1D7 /* NotificationDaysOfWeekTableViewController.swift in Sources */,
