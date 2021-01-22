@@ -13,7 +13,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
  
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var calendarEventTableView: UITableView!
-    @IBOutlet weak var eventLabel: UILabel!
+    
     
     var events: [Event] = api.callEvent()
     var eventDates = [Date]()
@@ -59,10 +59,10 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = calendarEventTableView.dequeueReusableCell(withIdentifier: "CalendarEventCell", for: indexPath)
+        let cell = calendarEventTableView.dequeueReusableCell(withIdentifier: "CalendarEventTableViewCell", for: indexPath) as! CalendarEventTableViewCell
         let event = selectedDateEvents[indexPath.row]
         
-        eventLabel.text = event.eventName
+        cell.eventLabel.text = event.eventName
       
         return cell
     }
