@@ -16,25 +16,34 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var showColorImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var completeButton: UIBarButtonItem!
+    
     
     @IBAction func unwind (segue: UIStoryboardSegue) {
         print(getImageChange)
         showColorImage.image = UIImage(named: getImageChange)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let newCategory = Category(categoryName: nameTextField.text!, categoryColor: getEnumColor(color: getImageChange))
-        
-        try! api.realm.write(){
-            api.realm.add(newCategory)
-        }
-        
-        print(category)
-        print(newCategory)
-    }
+    
+
+    
     
     @IBAction func completeModal(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToSetting", sender: self)
+        
+//        if completeButton.accessibilityRespondsToUserInteraction == true {
+            let newCategory = Category(categoryName: nameTextField.text!, categoryColor: getEnumColor(color: getImageChange))
+            //let newCategory = Category[]
+            
+            try! api.realm.write(){
+                api.realm.add(newCategory)
+            }
+            
+            print(category)
+            print(newCategory)
+            
+            performSegue(withIdentifier: "unwindToSetting", sender: self)
+        //}
+        
        //self.dismiss(animated: true, completion: nil)
         
     }

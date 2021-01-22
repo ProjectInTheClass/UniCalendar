@@ -92,7 +92,8 @@ class SettingViewController: UIViewController {
     let add = "카테고리 추가"
 
     @IBAction func unwindToSetting (segue: UIStoryboardSegue){
-        //print("UNWIND PLEASE")
+        print("UNWIND PLEASE")
+        tableView.reloadData()
         
     }
     
@@ -101,6 +102,8 @@ class SettingViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        print("View Did Load")
+        tableView.reloadData()
 //        for count in items {
 //
 //        }

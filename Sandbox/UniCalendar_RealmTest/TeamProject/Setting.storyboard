@@ -195,13 +195,14 @@
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="completeModal:" destination="8Ni-FS-e5Q" id="4Io-XX-ejl"/>
-                                <segue destination="BWk-MW-AW0" kind="unwind" identifier="unwindToSetting" unwindAction="unwindToSettingWithSegue:" id="hf4-dv-sBb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="completeButton" destination="vWA-9L-6tp" id="iaR-da-0CT"/>
                         <outlet property="nameTextField" destination="Z41-Ns-MAb" id="m2I-P4-MZN"/>
                         <outlet property="showColorImage" destination="Ja3-5r-1cj" id="uAI-vV-7hz"/>
+                        <segue destination="BWk-MW-AW0" kind="unwind" identifier="unwindToSetting" unwindAction="unwindToSettingWithSegue:" id="Ewo-hC-B9J"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKh-3r-oiV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
