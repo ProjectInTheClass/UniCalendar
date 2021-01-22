@@ -14,7 +14,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var calendarEventTableView: UITableView!
     
-    
     var events: [Event] = api.callEvent()
     var eventDates = [Date]()
     var selectedDateEvents = [Event]()
@@ -40,7 +39,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         calendarView.scrollDirection = .vertical
         
         for event in events {
-            print(event)
             let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
             eventDates.append(day)
         }
@@ -53,25 +51,27 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
 extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(selectedDateEvents)
-        print("zzzzzzzzzzzzzzzzzzzzzzzzzzzZ")
         return selectedDateEvents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = calendarEventTableView.dequeueReusableCell(withIdentifier: "CalendarEventTableViewCell", for: indexPath) as! CalendarEventTableViewCell
         let event = selectedDateEvents[indexPath.row]
+        print(event.parentCategory)
+        print(event)
         
         cell.eventNameLabel.text = event.eventName
         
-//        print("parent category: \(event.parentCategory)")
-//
-//        print("index path row: \(indexPath.row)")
-//        print("color: \(event.parentCategory[0].categoryColor)")
-        let categoryColor = calculateColor(color: event.parentCategory[indexPath.row].categoryColor)
+        let categoryColor = calculateColor(color: event.parentCategory[0].categoryColor)
+        print(categoryColor)
+       
         cell.categoryColorImage.image = UIImage(named: categoryColor)
-        //cell.dDayLabel.text = event.
-      
+        let today = dateFormatter.date(from: dateFormatter.string(from : Date.init()))
+        let dDay = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
+
+        let interval = dDay.timeIntervalSince(today!)
+        let d = Int(interval / 86400)
+        cell.dDayLabel.text = "D - " + String(d)
         return cell
     }
     
@@ -104,8 +104,6 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
                 selectedDateEvents.append(event)
             }
         }
-       
-        print(selectedDateEvents)
         calendarEventTableView.reloadData()
        
     }
@@ -124,22 +122,7 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
                return 0
            }
        }
-//    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-//
-//            switch dateFormatter.string(from: date) {
-//            case dateFormatter.string(from: Date()):
-//                return "오늘"
-//            case "2021-01-19":
-//                return "시험"
-//            case "2021-01-23":
-//                return "알고리즘 과제"
-//            case "2021-01-11":
-//                return "대외활동"
-//            default:
-//                return nil
-//            }
-//        }
-    
+
 }
 
 

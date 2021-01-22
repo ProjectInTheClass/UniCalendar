@@ -43,8 +43,22 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         //cell.importanceImageLabel.text = String(event.events[indexPath.row].)
         
         cell.progressLabel.text = "영차영차"
-//        cell.progressView.setProgress(event.progressPercent, animated: false)
-//        cell.progressPercentLabel.text = "\(event.progressPercent*100)%"
+        
+//        let pro
+//        if event.subEvents.count != 0 {
+//            var subIsDoneNum = 0
+//                for sub in event.subEvents{
+//                    if sub.subEventIsDone == true{
+//                        subIsDoneNum += 1
+//                    }
+//                }
+//            progressPercent = Float(subIsDoneNum/(event.subEvents.count))
+//            cell.progressView.setProgress(progressPercent, animated: false)
+//            
+//
+//        }
+//                cell.progressPercentLabel.text = "\(progressPercent*100)%"
+//        
         return cell
     }
     
