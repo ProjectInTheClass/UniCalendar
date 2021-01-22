@@ -79,6 +79,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="678"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGD-59-Mgt" customClass="PieChartView" customModule="Charts">
+                                                    <rect key="frame" x="30" y="153.5" width="354" height="313.5"/>
+                                                </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="lA7-BH-2Mj">
                                                     <rect key="frame" x="10" y="65" width="394" height="599"/>
                                                     <constraints>
@@ -96,9 +99,13 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="lA7-BH-2Mj" secondAttribute="trailing" constant="10" id="26p-B1-LO7"/>
                                                 <constraint firstAttribute="bottom" secondItem="lA7-BH-2Mj" secondAttribute="bottom" constant="14" id="A1P-Hy-Dzj"/>
+                                                <constraint firstItem="LGD-59-Mgt" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" constant="10" id="BN4-UO-kRF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="LGD-59-Mgt" secondAttribute="bottom" constant="200" id="CCh-nG-4yk"/>
                                                 <constraint firstItem="Ec8-CJ-nJ0" firstAttribute="top" secondItem="bJ4-vv-E8u" secondAttribute="topMargin" constant="25" id="DKq-M6-s6g"/>
+                                                <constraint firstItem="LGD-59-Mgt" firstAttribute="top" secondItem="Ec8-CJ-nJ0" secondAttribute="bottom" constant="90" id="JTB-P0-VoF"/>
                                                 <constraint firstItem="lA7-BH-2Mj" firstAttribute="centerX" secondItem="bJ4-vv-E8u" secondAttribute="centerX" id="afW-Jm-lUE"/>
                                                 <constraint firstItem="Ec8-CJ-nJ0" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" id="c6c-pP-iiI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LGD-59-Mgt" secondAttribute="trailing" constant="10" id="eSo-jz-WnY"/>
                                                 <constraint firstItem="lA7-BH-2Mj" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" constant="-10" id="fMG-eS-aTv"/>
                                                 <constraint firstItem="lA7-BH-2Mj" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leading" constant="10" id="n9l-ej-52d"/>
                                                 <constraint firstItem="lA7-BH-2Mj" firstAttribute="top" secondItem="Ec8-CJ-nJ0" secondAttribute="bottom" constant="1.5" id="zQi-b3-1sA"/>
@@ -115,6 +122,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9s-fm-yIV" customClass="LineChartView" customModule="Charts">
+                                                    <rect key="frame" x="30" y="190" width="354" height="220"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="Pk0-Am-2br">
                                                     <rect key="frame" x="10" y="58.5" width="394" height="599"/>
                                                     <constraints>
@@ -130,10 +141,14 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Y9s-fm-yIV" secondAttribute="bottom" constant="282" id="2mM-eL-0x3"/>
                                                 <constraint firstItem="Pk0-Am-2br" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="1.5" id="RNb-Sp-eK6"/>
                                                 <constraint firstItem="Pk0-Am-2br" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leading" constant="10" id="Rry-JF-NhE"/>
                                                 <constraint firstAttribute="trailing" secondItem="Pk0-Am-2br" secondAttribute="trailing" constant="10" id="Sb0-YQ-h5B"/>
+                                                <constraint firstItem="Y9s-fm-yIV" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="133" id="guT-Un-pUS"/>
                                                 <constraint firstItem="osg-xh-TSz" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leadingMargin" id="pCh-vc-ErL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Y9s-fm-yIV" secondAttribute="trailing" constant="10" id="tow-5Y-nxU"/>
+                                                <constraint firstItem="Y9s-fm-yIV" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leadingMargin" constant="10" id="u7i-eU-mSf"/>
                                                 <constraint firstItem="osg-xh-TSz" firstAttribute="top" secondItem="rpS-ng-vuL" secondAttribute="topMargin" constant="25" id="wHq-5o-Yds"/>
                                             </constraints>
                                         </tableViewCellContentView>
