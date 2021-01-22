@@ -15,7 +15,6 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     var events: [Event] = api.callEvent()
     
     var selectedCellBefore: Int = 0
-    //var myEvent = Event()
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print(eventList.accessibilityElementCount())
@@ -55,7 +54,6 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        events = api.callEvent()
         guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
         guard let row = sender as? Int else { return }
 
@@ -89,20 +87,8 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         print(Realm.Configuration.defaultConfiguration.fileURL)
         tableView.dataSource = self
         tableView.delegate = self
-        
-        
-//        try! API.shared.realm.write {
-//            API.shared.realm.add(myEvent)
-//            API.shared.realm.add(myEvent2)
-//        }
-    }
     
-    override func viewWillAppear(_ animated: Bool){
-        //events = API.shared.callEvent()
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//
-//    }
+
     
 }

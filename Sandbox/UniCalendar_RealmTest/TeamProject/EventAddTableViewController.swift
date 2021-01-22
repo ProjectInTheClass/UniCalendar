@@ -28,7 +28,6 @@ class EventAddTableViewController: UITableViewController {
     }
     
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
-        // print("seg: \(seg.identifier)")
         switch seg.identifier {
         case "unwindToAddEventFromCategory":
             categoryLabel.text = categoryString
@@ -52,8 +51,6 @@ class EventAddTableViewController: UITableViewController {
         // TODO
         // Add New event to EventList
         save()
-        event = api.callEvent()
-        //self.dismiss(animated: true, completion: nil)
         performSegue(withIdentifier: "unwindToHome", sender: (Any).self)
     }
     
@@ -64,9 +61,6 @@ class EventAddTableViewController: UITableViewController {
         
         let newEvent = Event(eventName: "알고리즘과제", eventDday: d!, importance: 3, eventIsDone: true)
 
-        //let category = Category(categoryName: "과제1", categoryColor: 0)
-        //category.eventsInCategory.append(newEvent)
-                
         
         try! api.realm.write{
             api.realm.add([newEvent])

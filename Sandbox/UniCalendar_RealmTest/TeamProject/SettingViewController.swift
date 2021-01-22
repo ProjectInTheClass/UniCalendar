@@ -34,9 +34,6 @@ class SettingViewController: UIViewController {
         tableView.dataSource = self
         print("View Did Load")
         
-//        for count in items {
-//
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
