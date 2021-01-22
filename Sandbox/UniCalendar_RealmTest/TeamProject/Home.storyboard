@@ -233,7 +233,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ic-Ry-QAE">
                                 <rect key="frame" x="25" y="268" width="340" height="333"/>
                                 <connections>
-                                    <segue destination="ACb-tU-Dlh" kind="embed" id="eYS-0W-YpC"/>
+                                    <segue destination="ACb-tU-Dlh" kind="embed" identifier="ToSubEventTable" id="eYS-0W-YpC"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -257,6 +257,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="fpG-vy-xu2"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="containerView" destination="8ic-Ry-QAE" id="50r-DA-8MJ"/>
                         <outlet property="dDayLabel" destination="aYe-aX-YqH" id="oqc-h5-NoH"/>
                         <outlet property="eventNameLabel" destination="Amr-8m-ZUu" id="AbK-Rd-ZWy"/>
                         <outlet property="progressPercentLabel" destination="m8Q-u5-xEs" id="5Qi-sg-rgo"/>
@@ -265,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vO5-u3-keC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2596.9230769230767" y="863.74407582938386"/>
+            <point key="canvasLocation" x="2569" y="854"/>
         </scene>
         <!--Sub Events Table View Controller-->
         <scene sceneID="QBK-F1-Mm2">

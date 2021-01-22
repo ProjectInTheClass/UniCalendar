@@ -26,20 +26,42 @@ class HomeDetailViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressPercentLabel: UILabel!
     
+    @IBOutlet weak var containerView: UIView!
+    
    
     //private var subGoals: Results<SubEvent>!
     
     //var myEvents = Event()
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToSubEventTable" {
+            let view = segue.destination as? SubEventsTableViewController
+            view?.event = events[selectedCell]
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // detailTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        dDayLabel.text = dDay
-        eventNameLabel.text = eventName
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let event = events[selectedCell]
+        
+        if event.subEvents.count == 0 {
+            //
+        }
+        
+        
+        let today = df.date(from: df.string(from : Date.init()))
+        let dDay = df.date(from: df.string(from: event.eventDday))!
+
+        let interval = dDay.timeIntervalSince(today!)
+        let d = Int(interval / 86400)
+        dDayLabel.text = "D - " + String(d)
+        
+        eventNameLabel.text = event.eventName
         progressView.setProgress(progressPercent, animated: false)
         progressPercentLabel.text = "\(progressPercent*100)%"
 
