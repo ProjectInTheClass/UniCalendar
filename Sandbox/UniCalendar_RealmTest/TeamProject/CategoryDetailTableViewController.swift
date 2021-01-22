@@ -21,23 +21,18 @@ class CategoryDetailTableViewController: UITableViewController {
     @IBAction func completeModal(_ sender: Any) {
         try? api.realm.write(){
             category[categoryIndex].categoryName = categoryNameTextField.text!
-            category[categoryIndex].categoryColor =
+            category[categoryIndex].categoryColor = calculateColorInt(color: getImageChange)
         }
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
-        
+        categoryColor.image = UIImage(named: getImageChange)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,9 +42,22 @@ class CategoryDetailTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
-            performSegue(withIdentifier: "windToEditColor", sender: indexPath)
+            performSegue(withIdentifier: "windToEditColor", sender: category[categoryIndex].categoryColor)
         } else if indexPath.row == 2 {
-            
+            let alert = UIAlertController(title: "⚠️카테고리 삭제⚠️", message: "카테고리를 삭제하면 카테고리에 포함되어 있는 👉🏻모든👈🏻 목표가 사라져요!\n그래도 삭제하시나요?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("네", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+                try? api.realm.write{
+                    api.realm.delete(self.category[self.categoryIndex])
+                }
+                
+                self.performSegue(withIdentifier: "unwindToSettingFromDetail", sender: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "아뇨", style: .cancel, handler: { _ in
+                NSLog("The NO alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+//
         }
     }
     
@@ -58,11 +66,10 @@ class CategoryDetailTableViewController: UITableViewController {
         
         guard let detail = navigation.viewControllers[0] as? EditColorTableViewController else { return }
         
-//        guard let destination: EditColorTableViewController = segue.destination as? EditColorTableViewController else {return}
-        guard let colorIndexPath = sender as? IndexPath else {return}
+        guard let colorIndexPath = sender as? Int else {return}
         
         detail.firstColorIndex = colorIndexPath
-        //destination.firstColor = category[categoryIndex].categoryColor
+
     }
 
     
@@ -82,6 +89,25 @@ class CategoryDetailTableViewController: UITableViewController {
             return "category_orange"
         default:
             return ""
+        }
+    }
+    
+    func calculateColorInt(color: String) -> Int{
+        switch color{
+        case "category_purple":
+            return 0
+        case "category_blue":
+            return 1
+        case "category_red":
+            return 2
+        case "category_yellow":
+            return 3
+        case "category_green":
+            return 4
+        case "category_orange":
+            return 5
+        default:
+            return 0
         }
     }
     

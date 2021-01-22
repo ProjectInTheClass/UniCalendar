@@ -214,8 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */,
-				5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */,
 				5B35DCE925B284DF00A73E9E /* ColorTableViewController.swift */,
+				5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */,
 				5B5C1DD825BAD18A003D534A /* EditColorTableViewController.swift */,
 			);
 			name = TableViewControllers;

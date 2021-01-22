@@ -9,7 +9,7 @@ import UIKit
 
 class EditColorTableViewController: UITableViewController {
     
-    var firstColorIndex: IndexPath? = nil
+    var firstColorIndex: Int = 0
     var confirmedColor: Int = 0
     
     @IBAction func complete(_ sender: Any) {
@@ -35,7 +35,8 @@ class EditColorTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool){
-        tableView.cellForRow(at: firstColorIndex!)?.accessoryType = .checkmark
+        tableView.selectRow(at: [0,firstColorIndex], animated: false, scrollPosition: UITableView.ScrollPosition.none)
+        tableView.cellForRow(at: [0,firstColorIndex])?.accessoryType = .checkmark
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

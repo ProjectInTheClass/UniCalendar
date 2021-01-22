@@ -41,9 +41,6 @@ class ColorTableViewController: UITableViewController {
 //        self.present(backToAddModal, animated: true)
 //    }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        print("Color Modal disappeared")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

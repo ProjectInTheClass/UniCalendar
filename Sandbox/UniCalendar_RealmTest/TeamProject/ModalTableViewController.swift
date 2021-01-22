@@ -26,7 +26,7 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     func saveCategory(){
-        let newCategory = Category(categoryName: nameTextField.text!, categoryColor: getEnumColor(color: getImageChange))
+        let newCategory = Category(categoryName: nameTextField.text!, categoryColor: calculateColorInt(color: getImageChange))
         
         try! api.realm.write(){
             api.realm.add([newCategory])
@@ -78,7 +78,7 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    func getEnumColor(color: String) -> Int{
+    func calculateColorInt(color: String) -> Int{
         switch color{
         case "category_purple":
             return 0
