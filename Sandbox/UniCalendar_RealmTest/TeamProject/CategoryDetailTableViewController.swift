@@ -9,6 +9,12 @@ import UIKit
 import RealmSwift
 
 class CategoryDetailTableViewController: UITableViewController {
+    
+    let category = api.callCategory()
+    
+    var categoryIndex: Int = 0
+    @IBOutlet weak var categoryNameLabel: UILabel!
+    
     @IBAction func completeModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -16,12 +22,16 @@ class CategoryDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        categoryNameLabel.text = category[categoryIndex].categoryName
     }
 
     // MARK: - Table view data source
