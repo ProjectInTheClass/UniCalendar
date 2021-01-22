@@ -25,11 +25,20 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
-
+    func saveCategory(){
+        let newCategory = Category(categoryName: nameTextField.text!, categoryColor: getEnumColor(color: getImageChange))
+        
+        try! api.realm.write(){
+            api.realm.add([newCategory])
+        }
+    }
     
     
     @IBAction func completeModal(_ sender: Any) {
+        saveCategory()
+        performSegue(withIdentifier: "unwindToSetting", sender: self)
         
+<<<<<<< Updated upstream
 //        if completeButton.accessibilityRespondsToUserInteraction == true {
             let newCategory = Category(categoryName: nameTextField.text!, categoryColor: getEnumColor(color: getImageChange))
             //let newCategory = Category[]
@@ -45,6 +54,8 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
         //}
         
        //self.dismiss(animated: true, completion: nil)
+=======
+>>>>>>> Stashed changes
         
     }
     

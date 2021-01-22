@@ -11,7 +11,7 @@ let api = API.shared
 
 class EventAddTableViewController: UITableViewController {
     
-    var category: String = ""
+    var categoryString: String = ""
     
     var notificationFrequency: String = ""
     var notificationTime: String = ""
@@ -29,7 +29,7 @@ class EventAddTableViewController: UITableViewController {
         // print("seg: \(seg.identifier)")
         switch seg.identifier {
         case "unwindToAddEventFromCategory":
-            categoryLabel.text = category
+            categoryLabel.text = categoryString
             break
         case "unwindToAddEventFromNotification":
             settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"

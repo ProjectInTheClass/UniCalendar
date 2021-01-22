@@ -9,6 +9,50 @@ import Foundation
 import UIKit
 import RealmSwift
 
+
+
+class SettingViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
+    
+    var category: [Category] = api.callCategory()
+
+    let sectionName: [String] = ["카테고리 관리", "우리 앱은요"]
+    let about = "앱을 소개합니다👐🏻"
+    let add = "카테고리 추가"
+
+    @IBAction func unwindToSetting (segue: UIStoryboardSegue){
+        print("UNWIND PLEASE")
+        category = api.callCategory()
+        tableView.reloadData()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        print("View Did Load")
+        
+//        for count in items {
+//
+//        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Appear")
+        
+    }
+
+//    override func viewDidAppear(_ animated: Bool) {
+//
+//        //API.shared.
+//    }
+//
+    
+
+}
+
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
     //section count
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,46 +124,3 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
     }
 
 }
-
-class SettingViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
-    
-    var category: [Category] = api.callCategory()
-
-    let sectionName: [String] = ["카테고리 관리", "우리 앱은요"]
-    let about = "앱을 소개합니다👐🏻"
-    let add = "카테고리 추가"
-
-    @IBAction func unwindToSetting (segue: UIStoryboardSegue){
-        print("UNWIND PLEASE")
-        tableView.reloadData()
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        tableView.delegate = self
-        tableView.dataSource = self
-        print("View Did Load")
-        tableView.reloadData()
-//        for count in items {
-//
-//        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("Appear")
-        
-    }
-
-//    override func viewDidAppear(_ animated: Bool) {
-//
-//        //API.shared.
-//    }
-//
-    
-
-}
-

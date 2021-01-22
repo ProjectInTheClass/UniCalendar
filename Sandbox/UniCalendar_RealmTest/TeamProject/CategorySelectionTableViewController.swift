@@ -31,7 +31,7 @@ class CategorySelectionTableViewController: UITableViewController {
             return
         }
         
-        vc.category = self.selectedCategory
+        vc.categoryString = self.selectedCategory
     }
     
     @IBAction func cancelModal(_ sender: Any) {

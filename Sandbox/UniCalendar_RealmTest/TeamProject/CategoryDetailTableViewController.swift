@@ -9,7 +9,6 @@ import UIKit
 import RealmSwift
 
 class CategoryDetailTableViewController: UITableViewController {
-
     @IBAction func completeModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
