@@ -456,6 +456,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryLabel" destination="tF9-XE-oaE" id="tP6-Xp-eQC"/>
+                        <outlet property="newEventName" destination="hzI-mg-FkO" id="yGw-Js-TcR"/>
                         <outlet property="settledNotificationInfoLabel" destination="SqH-UH-Sl8" id="trn-Tn-2f1"/>
                         <segue destination="vYb-T1-05B" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="8B9-j8-Xb7"/>
                     </connections>
