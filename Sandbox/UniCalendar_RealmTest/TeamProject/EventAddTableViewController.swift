@@ -18,6 +18,7 @@ class EventAddTableViewController: UITableViewController {
     
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var settledNotificationInfoLabel: UILabel!
+    @IBOutlet weak var newEventName: UITextField!
     
     var event = api.callEvent()
     
@@ -59,7 +60,7 @@ class EventAddTableViewController: UITableViewController {
 
         let d = self.dateFormatter.date(from: "2021-01-28")
         
-        let newEvent = Event(eventName: "알고리즘과제", eventDday: d!, importance: 3, eventIsDone: true)
+        let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: 3, eventIsDone: true)
 
         
         try! api.realm.write{
