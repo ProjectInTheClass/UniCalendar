@@ -14,6 +14,9 @@
 		185F798225B987E50091D1D7 /* NotificationSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F798125B987E50091D1D7 /* NotificationSettingTableViewController.swift */; };
 		185F798525B9F3940091D1D7 /* CategorySelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F798425B9F3940091D1D7 /* CategorySelectionTableViewController.swift */; };
 		185F798A25BAA0160091D1D7 /* NotificationDaysOfWeekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F798925BAA0160091D1D7 /* NotificationDaysOfWeekTableViewController.swift */; };
+		185F798D25BAB6790091D1D7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F798C25BAB6790091D1D7 /* Notification.swift */; };
+		185F799525BAC3790091D1D7 /* SubEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F799425BAC3790091D1D7 /* SubEventsTableViewController.swift */; };
+		185F799825BAC4E20091D1D7 /* SubEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F799725BAC4E20091D1D7 /* SubEventCell.swift */; };
 		18B9DF2925A6DE6200F05FFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */; };
 		18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9DF3E25A6F17B00F05FFB /* EventCell.swift */; };
 		18E4DD2425B4409700876183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4DD2325B4409700876183 /* HomeDetailViewController.swift */; };
@@ -41,6 +44,7 @@
 		5B4ED58F25B41B8500852B04 /* CompleteDegreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED58E25B41B8500852B04 /* CompleteDegreeCell.swift */; };
 		5B4ED5BB25B561F800852B04 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED5BA25B561F800852B04 /* Data.swift */; };
 		5B5C1DD525BAC41C003D534A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DD425BAC41C003D534A /* TabBarController.swift */; };
+		5B5C1DD925BAD18A003D534A /* EditColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DD825BAD18A003D534A /* EditColorTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,9 @@
 		185F798125B987E50091D1D7 /* NotificationSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingTableViewController.swift; sourceTree = "<group>"; };
 		185F798425B9F3940091D1D7 /* CategorySelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionTableViewController.swift; sourceTree = "<group>"; };
 		185F798925BAA0160091D1D7 /* NotificationDaysOfWeekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDaysOfWeekTableViewController.swift; sourceTree = "<group>"; };
+		185F798C25BAB6790091D1D7 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		185F799425BAC3790091D1D7 /* SubEventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubEventsTableViewController.swift; sourceTree = "<group>"; };
+		185F799725BAC4E20091D1D7 /* SubEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubEventCell.swift; sourceTree = "<group>"; };
 		18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18B9DF3E25A6F17B00F05FFB /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		18E4DD2325B4409700876183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +88,7 @@
 		5B4ED58E25B41B8500852B04 /* CompleteDegreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDegreeCell.swift; sourceTree = "<group>"; };
 		5B4ED5BA25B561F800852B04 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		5B5C1DD425BAC41C003D534A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5B5C1DD825BAD18A003D534A /* EditColorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditColorTableViewController.swift; sourceTree = "<group>"; };
 		7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,6 +112,7 @@
 				185F798125B987E50091D1D7 /* NotificationSettingTableViewController.swift */,
 				185F798425B9F3940091D1D7 /* CategorySelectionTableViewController.swift */,
 				185F798925BAA0160091D1D7 /* NotificationDaysOfWeekTableViewController.swift */,
+				185F799425BAC3790091D1D7 /* SubEventsTableViewController.swift */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -142,6 +151,7 @@
 				5B14471C259DB3E900968770 /* Assets.xcassets */,
 				5B14471E259DB3E900968770 /* LaunchScreen.storyboard */,
 				5B144721259DB3E900968770 /* Info.plist */,
+				185F798C25BAB6790091D1D7 /* Notification.swift */,
 			);
 			path = TeamProject;
 			sourceTree = "<group>";
@@ -154,6 +164,7 @@
 				18B9DF3E25A6F17B00F05FFB /* EventCell.swift */,
 				18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */,
 				18E4DD2325B4409700876183 /* HomeDetailViewController.swift */,
+				185F799725BAC4E20091D1D7 /* SubEventCell.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -203,8 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				5B35DCE025B1C81E00A73E9E /* ModalTableViewController.swift */,
-				5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */,
 				5B35DCE925B284DF00A73E9E /* ColorTableViewController.swift */,
+				5B35DCE625B1F0B900A73E9E /* CategoryDetailTableViewController.swift */,
+				5B5C1DD825BAD18A003D534A /* EditColorTableViewController.swift */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -360,13 +372,16 @@
 				5B144718259DB3E700968770 /* ViewController.swift in Sources */,
 				5B35DCE725B1F0BA00A73E9E /* CategoryDetailTableViewController.swift in Sources */,
 				5B35DCC425B08C1F00A73E9E /* AboutCell.swift in Sources */,
+				185F799825BAC4E20091D1D7 /* SubEventCell.swift in Sources */,
 				185F798225B987E50091D1D7 /* NotificationSettingTableViewController.swift in Sources */,
 				5B4ED58925B41B5500852B04 /* BadgeCell.swift in Sources */,
 				5B144714259DB3E700968770 /* AppDelegate.swift in Sources */,
+				5B5C1DD925BAD18A003D534A /* EditColorTableViewController.swift in Sources */,
 				5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */,
 				18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */,
 				185F798A25BAA0160091D1D7 /* NotificationDaysOfWeekTableViewController.swift in Sources */,
 				5B2841F925A577F500FA63BD /* SettingViewController.swift in Sources */,
+				185F799525BAC3790091D1D7 /* SubEventsTableViewController.swift in Sources */,
 				0B4D006325B55C6400437BEB /* CalendarViewController.swift in Sources */,
 				5B4ED5BB25B561F800852B04 /* Data.swift in Sources */,
 				5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */,
@@ -375,6 +390,7 @@
 				5B4ED58C25B41B6A00852B04 /* PatternCell.swift in Sources */,
 				18E4DD2425B4409700876183 /* HomeDetailViewController.swift in Sources */,
 				5B4ED58225B4149900852B04 /* GraphViewController.swift in Sources */,
+				185F798D25BAB6790091D1D7 /* Notification.swift in Sources */,
 				5B35DCEA25B284DF00A73E9E /* ColorTableViewController.swift in Sources */,
 				0BD91D9725BA929F0096D4B9 /* CalendarEventTableViewCell.swift in Sources */,
 				5B35DCE125B1C81E00A73E9E /* ModalTableViewController.swift in Sources */,
