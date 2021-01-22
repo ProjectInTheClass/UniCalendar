@@ -108,13 +108,38 @@
                                             <outlet property="patternLabel" destination="Ec8-CJ-nJ0" id="SBC-EW-MJC"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompleteDegreeCell" rowHeight="353" id="VNF-Q2-SCV" userLabel="CompleteDegreeCell" customClass="CompleteDegreeCell" customModule="TeamProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="921.5" width="414" height="353"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CompleteDegreeCell" rowHeight="703" id="VNF-Q2-SCV" userLabel="CompleteDegreeCell" customClass="CompleteDegreeCell" customModule="TeamProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="921.5" width="414" height="703"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VNF-Q2-SCV" id="rpS-ng-vuL">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="353"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="Pk0-Am-2br">
+                                                    <rect key="frame" x="10" y="58.5" width="394" height="599"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="394" id="WEh-CX-aJa"/>
+                                                        <constraint firstAttribute="height" constant="599" id="vfM-lH-Edr"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osg-xh-TSz">
+                                                    <rect key="frame" x="20" y="36" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Pk0-Am-2br" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="1.5" id="RNb-Sp-eK6"/>
+                                                <constraint firstItem="Pk0-Am-2br" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leading" constant="10" id="Rry-JF-NhE"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pk0-Am-2br" secondAttribute="trailing" constant="10" id="Sb0-YQ-h5B"/>
+                                                <constraint firstItem="osg-xh-TSz" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leadingMargin" id="pCh-vc-ErL"/>
+                                                <constraint firstItem="osg-xh-TSz" firstAttribute="top" secondItem="rpS-ng-vuL" secondAttribute="topMargin" constant="25" id="wHq-5o-Yds"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="completeLabel" destination="osg-xh-TSz" id="XBo-rQ-tZ4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

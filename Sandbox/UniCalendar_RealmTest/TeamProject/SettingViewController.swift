@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-
+//var categoryIndex: Int = 0
 
 class SettingViewController: UIViewController {
 
@@ -111,7 +111,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
             case category.count:
                 self.performSegue(withIdentifier: "addCategoryModal", sender: nil)
             default:
-                self.performSegue(withIdentifier: "moveToDetail", sender: nil)
+                self.performSegue(withIdentifier: "moveToDetail", sender: indexPath.row)
+        
                     break
             }
 
@@ -119,5 +120,30 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
             self.performSegue(withIdentifier: "moveToAboutPage", sender: nil)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let row = sender as? Int else {
+        return
+        }
+        
+        print("ROW: \(row)")
+
+        
+        guard let navigation = segue.destination as? UINavigationController else { return }
+        
+        guard let detail = navigation.viewControllers[0] as? CategoryDetailTableViewController else { return }
+          //print(destination.categoryIndex)
+        detail.categoryIndex = row
+//
+//        print("send row completed")
+//        destination.categoryNameLabel.text = category[row].categoryName
+    }
 
 }
+
+//guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
+//guard let row = sender as? Int else { return }
+//
+//
+//let event = events[row]

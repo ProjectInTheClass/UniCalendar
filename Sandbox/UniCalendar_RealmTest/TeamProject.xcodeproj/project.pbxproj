@@ -43,6 +43,7 @@
 		5B4ED58C25B41B6A00852B04 /* PatternCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED58B25B41B6A00852B04 /* PatternCell.swift */; };
 		5B4ED58F25B41B8500852B04 /* CompleteDegreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED58E25B41B8500852B04 /* CompleteDegreeCell.swift */; };
 		5B4ED5BB25B561F800852B04 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED5BA25B561F800852B04 /* Data.swift */; };
+		5B5C1DD525BAC41C003D534A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DD425BAC41C003D534A /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		5B4ED58B25B41B6A00852B04 /* PatternCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternCell.swift; sourceTree = "<group>"; };
 		5B4ED58E25B41B8500852B04 /* CompleteDegreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDegreeCell.swift; sourceTree = "<group>"; };
 		5B4ED5BA25B561F800852B04 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		5B5C1DD425BAC41C003D534A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -139,6 +141,7 @@
 				5B144717259DB3E700968770 /* ViewController.swift */,
 				5B4ED5BA25B561F800852B04 /* Data.swift */,
 				5B144719259DB3E700968770 /* Main.storyboard */,
+				5B5C1DD425BAC41C003D534A /* TabBarController.swift */,
 				5B2841FC25A57A7300FA63BD /* Home */,
 				5B28420025A57ACB00FA63BD /* Calendar */,
 				5B2841FF25A57AA900FA63BD /* Graph */,
@@ -361,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B4ED58F25B41B8500852B04 /* CompleteDegreeCell.swift in Sources */,
+				5B5C1DD525BAC41C003D534A /* TabBarController.swift in Sources */,
 				18B9DF2925A6DE6200F05FFB /* HomeViewController.swift in Sources */,
 				5B144718259DB3E700968770 /* ViewController.swift in Sources */,
 				5B35DCE725B1F0BA00A73E9E /* CategoryDetailTableViewController.swift in Sources */,

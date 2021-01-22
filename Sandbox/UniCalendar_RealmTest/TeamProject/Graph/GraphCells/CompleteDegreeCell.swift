@@ -9,6 +9,7 @@ import UIKit
 
 class CompleteDegreeCell: UITableViewCell {
 
+    @IBOutlet weak var completeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
