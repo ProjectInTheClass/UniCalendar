@@ -26,6 +26,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(events)
     
         calendarEventTableView.dataSource = self
         calendarEventTableView.delegate = self
@@ -57,21 +58,20 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = calendarEventTableView.dequeueReusableCell(withIdentifier: "CalendarEventTableViewCell", for: indexPath) as! CalendarEventTableViewCell
         let event = selectedDateEvents[indexPath.row]
-        print(event.parentCategory)
-        print(event)
         
         cell.eventNameLabel.text = event.eventName
         
         let categoryColor = calculateColor(color: event.parentCategory[0].categoryColor)
-        print(categoryColor)
        
         cell.categoryColorImage.image = UIImage(named: categoryColor)
-        let today = dateFormatter.date(from: dateFormatter.string(from : Date.init()))
-        let dDay = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
-
-        let interval = dDay.timeIntervalSince(today!)
-        let d = Int(interval / 86400)
-        cell.dDayLabel.text = "D - " + String(d)
+//        let today = dateFormatter.date(from: dateFormatter.string(from : Date.init()))
+//        let dDay = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
+//
+//        let interval = dDay.timeIntervalSince(today!)
+//        let d = Int(interval / 86400)
+        cell.dDayLabel.text = "D - " //+ String(d)
+        // 완료한 세부 목표 / 세부 목표 출력하기
+        
         return cell
     }
     
@@ -97,13 +97,17 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
     
     // 날짜 선택 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
 //        print(dateFormatter.string(from: date) + " 선택됨")
         selectedDateEvents.removeAll()
+        
         for event in events {
-            if event.eventDday == date {
+            let date_ = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
+            if date_ == date {
                 selectedDateEvents.append(event)
             }
         }
+        print(selectedDateEvents)
         calendarEventTableView.reloadData()
        
     }

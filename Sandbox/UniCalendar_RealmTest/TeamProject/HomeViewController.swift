@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Foundation
 
 class HomeViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
     
@@ -44,27 +45,29 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         
         cell.progressLabel.text = "영차영차"
         
-//        let pro
-//        if event.subEvents.count != 0 {
-//            var subIsDoneNum = 0
-//                for sub in event.subEvents{
-//                    if sub.subEventIsDone == true{
-//                        subIsDoneNum += 1
-//                    }
-//                }
-//            progressPercent = Float(subIsDoneNum/(event.subEvents.count))
-//            cell.progressView.setProgress(progressPercent, animated: false)
-//            
-//
-//        }
-//                cell.progressPercentLabel.text = "\(progressPercent*100)%"
-//        
+        var progressPercent: Float = 0
+        if event.subEvents.count != 0 {
+            var subIsDoneNum = 0
+                for sub in event.subEvents{
+                    if sub.subEventIsDone == true {
+                        subIsDoneNum += 1
+                    }
+                }
+            progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
+           
+            cell.progressView.setProgress(progressPercent, animated: false)
+            
+
+        }
+                cell.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "moveToDetail", sender: indexPath.row)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // DetailView로 데이터 넘기기

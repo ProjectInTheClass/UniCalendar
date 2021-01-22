@@ -60,10 +60,23 @@ class HomeDetailViewController: UIViewController {
         let interval = dDay.timeIntervalSince(today!)
         let d = Int(interval / 86400)
         dDayLabel.text = "D - " + String(d)
-        
         eventNameLabel.text = event.eventName
-        progressView.setProgress(progressPercent, animated: false)
-        progressPercentLabel.text = "\(progressPercent*100)%"
+        
+        var progressPercent: Float = 0
+        if event.subEvents.count != 0 {
+            var subIsDoneNum = 0
+                for sub in event.subEvents{
+                    if sub.subEventIsDone == true {
+                        subIsDoneNum += 1
+                    }
+                }
+            progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
+           
+            progressView.setProgress(progressPercent, animated: false)
+            
+
+        }
+            progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
 
     }
 

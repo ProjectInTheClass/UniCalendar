@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Charts
 
 class PatternCell: UITableViewCell {
 
     
     @IBOutlet weak var patternLabel: UILabel!
+    @IBOutlet weak var pieChartView: PieChartView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
