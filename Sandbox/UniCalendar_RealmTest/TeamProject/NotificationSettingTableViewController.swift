@@ -25,7 +25,6 @@ class NotificationSettingTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destView = segue.destination
-        print("Notification / prepare")
         guard let vc = destView as? EventAddTableViewController else {
             return
         }
