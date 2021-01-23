@@ -9,17 +9,6 @@ import UIKit
 
 class EventCell: UITableViewCell {
     
-
-//    @IBOutlet weak var eventNameLabel: UILabel!
-//    @IBOutlet weak var dDayLabel: UILabel!
-//
-//    @IBOutlet weak var importanceLabel: UILabel!
-//    @IBOutlet weak var importanceImageLabel: UILabel!
-//
-//    @IBOutlet weak var progressLabel: UILabel!
-//    @IBOutlet weak var progressView: UIProgressView!
-//    @IBOutlet weak var progressPercentLabel: UILabel!
-//
     @IBOutlet weak var dDayLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
     
@@ -49,10 +38,5 @@ class EventCell: UITableViewCell {
         
     }
     
-//    func returnCellIndex() -> Int {
-//        print(self.tag)
-//        print(self.hashValue)
-//        return self.tag
-//    }
 
 }

@@ -29,6 +29,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
         
+        var defaultCategory = api.callCategory()
+        
+        if defaultCategory.isEmpty == true {
+            let hwCategory = Category(categoryName: "📓과제", categoryColor: 0)
+            let examCategory = Category(categoryName: "📝시험", categoryColor: 1)
+            let activityCategory = Category(categoryName: "👥대외활동", categoryColor: 2)
+            
+            try! api.realm.write(){
+                api.realm.add(hwCategory)
+                api.realm.add(examCategory)
+                api.realm.add(activityCategory)
+            }
+            
+            defaultCategory = api.callCategory()
+        }
+        
         
         // For Notification
         UNUserNotificationCenter.current().delegate = self

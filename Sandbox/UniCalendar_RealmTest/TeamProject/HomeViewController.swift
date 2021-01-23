@@ -34,8 +34,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(eventList.accessibilityElementCount())
-        //return eventList.accessibilityElementCount()
+        
         return events.count
     }
     
@@ -56,23 +55,17 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         cell.dDayLabel.text = "D-" + String(d)
         
         
-//        if d < 0 {
-//            //cell.dDayLabel.text = "D+" + String(-Int(d))
-//        } else {
-//            cell.dDayLabel.text = "D-" + String(d)
-//        }
-        
         cell.eventNameLabel.text = event.eventName
         
         cell.importanceLabel.text = "중요해요"
         
+        //중요해요 옆 이미지 표현
         cell.importanceOne.image = UIImage(named: imageStringArray[0])
         cell.importanceTwo.image = UIImage(named: imageStringArray[0])
         cell.importanceThree.image = UIImage(named: imageStringArray[0])
         cell.importanceFour.image = UIImage(named: imageStringArray[0])
         cell.importanceFive.image = UIImage(named: imageStringArray[0])
         
-        //print(event.importance)
         
         switch event.importance {
         case 1:

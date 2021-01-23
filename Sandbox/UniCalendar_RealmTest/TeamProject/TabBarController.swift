@@ -13,22 +13,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var defaultCategory = api.callCategory()
         
-        let hwCategory = Category(categoryName: "📓과제", categoryColor: 0)
-        let examCategory = Category(categoryName: "📝시험", categoryColor: 1)
-        let activityCategory = Category(categoryName: "👥대외활동", categoryColor: 2)
-        
-        
-        if defaultCategory.count == 0 {
-            try! api.realm.write(){
-                api.realm.add(hwCategory)
-                api.realm.add(examCategory)
-                api.realm.add(activityCategory)
-            }
-        }
-        
-        defaultCategory = api.callCategory()
         
        
         
