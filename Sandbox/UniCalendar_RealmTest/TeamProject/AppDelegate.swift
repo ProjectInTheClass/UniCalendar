@@ -10,10 +10,25 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let events = api.callEvent()
+        var change: Int = 0
+        
+        if events.isEmpty == false {
+            for event in events {
+                if event.eventDday > Date.init() {
+                    change += 1
+                }
+            }
+            
+            try! api.realm.write(){
+                events[change].eventIsDone = true
+            }
+        }
+        
         
         // For Notification
         UNUserNotificationCenter.current().delegate = self

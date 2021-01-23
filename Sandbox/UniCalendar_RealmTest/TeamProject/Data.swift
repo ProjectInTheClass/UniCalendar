@@ -16,6 +16,16 @@ class API {
         return r
     }
     
+    func callNotDoneEvent() -> [Event] {
+        let r: [Event] = realm.objects(Event.self).filter("eventIsDone = false").map { $0 }
+        return r
+    }
+    
+    func callDoneEvent() -> [Event] {
+        let r: [Event] = realm.objects(Event.self).filter("eventIsDone = true").map { $0 }
+        return r
+    }
+    
     func callSubEvent() -> [SubEvent]{
         let r: [SubEvent] = realm.objects(SubEvent.self).map { $0 }
         return r

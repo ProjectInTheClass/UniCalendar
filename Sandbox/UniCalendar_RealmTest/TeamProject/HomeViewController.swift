@@ -14,7 +14,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var homeNavigationTitle: UINavigationItem!
     
-    var events: [Event] = api.callEvent()
+    var events: [Event] = api.callNotDoneEvent()
     var selectedCellBefore: Int = 0
     
     var imageStringArray : [String] = ["importance_blank", "importance_filled"]
@@ -42,25 +42,27 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     // indexPath 각 (section, row)에 맞는 cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
         let event = events[indexPath.row]
         
-        cell.eventNameLabel.text = event.eventName
-        
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
         let today = df.date(from: df.string(from : Date.init()))
         let dDay = df.date(from: df.string(from: event.eventDday))!
 
         let interval = dDay.timeIntervalSince(today!)
         let d = Int(interval / 86400)
         
-        if d < 0 {
-            cell.dDayLabel.text = "D+" + String(-Int(d))
-        } else {
-            cell.dDayLabel.text = "D-" + String(d)
-        }
+        cell.dDayLabel.text = "D-" + String(d)
         
+        
+//        if d < 0 {
+//            //cell.dDayLabel.text = "D+" + String(-Int(d))
+//        } else {
+//            cell.dDayLabel.text = "D-" + String(d)
+//        }
+        
+        cell.eventNameLabel.text = event.eventName
         
         cell.importanceLabel.text = "중요해요"
         
@@ -155,7 +157,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         homeNavigationTitle.title = df.string(from: Date.init())
         
         print("VIEW WILL APPEAR")
-        events = api.callEvent()
+        events = api.callNotDoneEvent()
         tableView.reloadData()
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TabBarController: UITabBarController {
 
@@ -28,6 +29,8 @@ class TabBarController: UITabBarController {
         }
         
         defaultCategory = api.callCategory()
+        
+       
         
         // Do any additional setup after loading the view.
     }
