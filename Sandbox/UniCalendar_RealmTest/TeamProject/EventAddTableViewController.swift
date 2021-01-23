@@ -12,6 +12,7 @@ let api = API.shared
 class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
     
     var categoryString: String = ""
+    var selectedCategory: Int = 0
     
     var notificationFrequency: String = ""
     var notificationTime: String = ""
@@ -28,6 +29,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
    
     
     var event = api.callEvent()
+    var category = api.callCategory()
     
     var dateFormatter:DateFormatter {
         let df = DateFormatter()
@@ -92,9 +94,11 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
         let d = self.dateFormatter.date(from: pickedDate)
         
         let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false)
-
+        
         
         try! api.realm.write{
+            category[selectedCategory].eventsInCategory.append(newEvent)
+            //api.realm.add(<#T##object: Object##Object#>)
             api.realm.add([newEvent])
         }
         

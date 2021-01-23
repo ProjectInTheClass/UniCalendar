@@ -52,12 +52,13 @@ class Event: Object {
     
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
     
-    convenience init(eventName: String, eventDday : Date, importance : Int, eventIsDone : Bool ) {
+    convenience init(eventName: String, eventDday : Date, importance : Int, eventIsDone : Bool) {
         self.init()
         self.eventName = eventName
         self.eventDday = eventDday
         self.importance = importance
         self.eventIsDone = eventIsDone
+        
     }
 
 }

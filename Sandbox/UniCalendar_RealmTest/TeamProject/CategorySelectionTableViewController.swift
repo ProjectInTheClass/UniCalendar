@@ -10,7 +10,7 @@ import UIKit
 class CategorySelectionTableViewController: UITableViewController {
 
     var categories: [Category] = API.shared.callCategory()
-    var selectedCategory: String = ""
+    var selectedCategory: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,8 @@ class CategorySelectionTableViewController: UITableViewController {
             return
         }
         
-        vc.categoryString = self.selectedCategory
+        vc.categoryLabel.text = categories[selectedCategory].categoryName
+        vc.selectedCategory = selectedCategory
     }
     
     @IBAction func cancelModal(_ sender: Any) {
@@ -63,8 +64,9 @@ class CategorySelectionTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        selectedCategory = categories[indexPath.row].categoryName
+        selectedCategory = indexPath.row
     }
+    
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }

@@ -46,6 +46,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        events = api.callEvent()
+    }
+    
 }
 
 
@@ -62,14 +66,14 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
         cell.eventNameLabel.text = event.eventName
         
         let categoryColor = calculateColor(color: event.parentCategory[0].categoryColor)
-       
         cell.categoryColorImage.image = UIImage(named: categoryColor)
-//        let today = dateFormatter.date(from: dateFormatter.string(from : Date.init()))
-//        let dDay = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
-//
-//        let interval = dDay.timeIntervalSince(today!)
-//        let d = Int(interval / 86400)
-        cell.dDayLabel.text = "D - " //+ String(d)
+        
+        let today = dateFormatter.date(from: dateFormatter.string(from : Date.init()))
+        let dDay = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
+
+        let interval = dDay.timeIntervalSince(today!)
+        let d = Int(interval / 86400)
+        cell.dDayLabel.text = "D - " + String(d)
         // 완료한 세부 목표 / 세부 목표 출력하기
         
         return cell
