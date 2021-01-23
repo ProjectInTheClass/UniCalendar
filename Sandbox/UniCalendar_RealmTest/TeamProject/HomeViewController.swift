@@ -17,17 +17,20 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     var events: [Event] = api.callEvent()
     var selectedCellBefore: Int = 0
     
-    func blankImportance() -> UIImage {
-        let importanceImage = UIImage(named: "importance_blank")!
-        
-        return importanceImage
-    }
+    var imageStringArray : [String] = ["importance_blank", "importance_filled"]
     
-    func fillImportance() -> UIImage{
-        let importanceImage = UIImage(named: "importance_filled")!
-        
-        return importanceImage
-    }
+//    func blankImportance() -> UIImage {
+//        let importanceImage = UIImage(named: "importance_blank")!
+//
+//        return importanceImage
+//    }
+//
+//    func fillImportance() -> UIImage{
+//        let importanceImage = UIImage(named: "importance_filled")!
+//
+//        return importanceImage
+//    }
+//
     
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,19 +54,46 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 
         let interval = dDay.timeIntervalSince(today!)
         let d = Int(interval / 86400)
-        cell.dDayLabel.text = "D - " + String(d)
+        
+        if d < 0 {
+            cell.dDayLabel.text = "D+" + String(-Int(d))
+        } else {
+            cell.dDayLabel.text = "D-" + String(d)
+        }
+        
         
         cell.importanceLabel.text = "중요해요"
         
-//        var count: Int = 0
-//        while count < event.importance{
-//            
-//            count+=1
-//        }
-//        
-//        while count < 5 {
-//            
-//        }
+        cell.importanceOne.image = UIImage(named: imageStringArray[0])
+        cell.importanceTwo.image = UIImage(named: imageStringArray[0])
+        cell.importanceThree.image = UIImage(named: imageStringArray[0])
+        cell.importanceFour.image = UIImage(named: imageStringArray[0])
+        cell.importanceFive.image = UIImage(named: imageStringArray[0])
+        
+        //print(event.importance)
+        
+        switch event.importance {
+        case 1:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+        case 2:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+            cell.importanceTwo.image = UIImage(named: imageStringArray[1])
+        case 3:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+            cell.importanceTwo.image = UIImage(named: imageStringArray[1])
+            cell.importanceThree.image = UIImage(named: imageStringArray[1])
+        case 4:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+            cell.importanceTwo.image = UIImage(named: imageStringArray[1])
+            cell.importanceThree.image = UIImage(named: imageStringArray[1])
+            cell.importanceFour.image = UIImage(named: imageStringArray[1])
+        default:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+            cell.importanceTwo.image = UIImage(named: imageStringArray[1])
+            cell.importanceThree.image = UIImage(named: imageStringArray[1])
+            cell.importanceFour.image = UIImage(named: imageStringArray[1])
+            cell.importanceFive.image = UIImage(named: imageStringArray[1])
+        }
         //cell.importanceImageLabel.text = String(event.events[indexPath.row].)
         
         cell.progressLabel.text = "영차영차"
@@ -97,18 +127,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
         guard let row = sender as? Int else { return }
 
-
-        // let event = events[row]
-        
-        // destinationController.dDay = event.eventDday
-        // destinationController.eventName = event.eventName
-        
-        // selectedCellBefore =  tableView.indexPathForSelectedRow!.row
-
         destinationController.selectedCell = row
-
-
-        // print("Selected Cell Before: \(tableView.indexPathForSelectedRow!.row)")
     
         tableView.deselectRow(at:tableView.indexPathForSelectedRow!, animated: true)
 
@@ -139,5 +158,25 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         events = api.callEvent()
         tableView.reloadData()
     }
+    
+//    func filledOne() {
+//
+//    }
+//
+//    func filledTwo() {
+//
+//    }
+//
+//    func filledThree() {
+//
+//    }
+//
+//    func filledFour() {
+//
+//    }
+//
+//    func filledFive() {
+//
+//    }
     
 }

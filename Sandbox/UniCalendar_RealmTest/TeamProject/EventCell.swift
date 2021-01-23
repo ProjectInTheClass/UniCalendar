@@ -37,7 +37,6 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var importanceFour: UIImageView!
     @IBOutlet weak var importanceFive: UIImageView!
     
-//    let importanceImage: [UIImage] = [UIImage.init(named: "")]
     
     override func awakeFromNib() {
         super.awakeFromNib()
