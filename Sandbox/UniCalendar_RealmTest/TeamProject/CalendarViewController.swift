@@ -74,7 +74,13 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
 
         let interval = dDay.timeIntervalSince(today!)
         let d = Int(interval / 86400)
-        cell.dDayLabel.text = "D - " + String(d)
+        
+        if d < 0 {
+            cell.dDayLabel.text = "D + " + String(-Int(d))
+        } else {
+            cell.dDayLabel.text = "D - " + String(d)
+        }
+        
         // 완료한 세부 목표 / 세부 목표 출력하기
         
         return cell

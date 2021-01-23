@@ -36,7 +36,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dDay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQH-Vs-Oqu">
                                                                     <rect key="frame" x="0.0" y="0.0" width="54.666666666666664" height="28.666666666666668"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                                    <color key="textColor" systemColor="systemBlueColor"/>
+                                                                    <color key="textColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eventName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKS-03-aX5">
@@ -48,10 +48,10 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DYj-YM-UrJ">
-                                                            <rect key="frame" x="0.0" y="43.666666666666671" width="208" height="55.333333333333329"/>
+                                                            <rect key="frame" x="0.0" y="43.666666666666671" width="186.66666666666666" height="55.333333333333329"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleAspectFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UIV-JQ-Qgd">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="208" height="21"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="174.33333333333334" height="21"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="importance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3St-na-q3C">
                                                                             <rect key="frame" x="0.0" y="3.3333333333333295" width="64.333333333333329" height="14.333333333333336"/>
@@ -59,33 +59,47 @@
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="importanceImage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYH-tt-Ss1">
-                                                                            <rect key="frame" x="74.333333333333329" y="0.3333333333333286" width="133.66666666666669" height="20.333333333333332"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LOz-B6-K1y">
+                                                                            <rect key="frame" x="74.333333333333329" y="0.0" width="99.999999999999986" height="21"/>
+                                                                            <subviews>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gBX-A0-4l4" userLabel="ImportanceOne">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="21"/>
+                                                                                </imageView>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jTa-sa-x9U" userLabel="ImportanceTwo">
+                                                                                    <rect key="frame" x="20.000000000000014" y="0.0" width="20" height="21"/>
+                                                                                </imageView>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-bs-ctJ" userLabel="ImportanceThree">
+                                                                                    <rect key="frame" x="40.000000000000014" y="0.0" width="20" height="21"/>
+                                                                                </imageView>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wYC-mX-SU8" userLabel="ImportanceFour">
+                                                                                    <rect key="frame" x="60.000000000000014" y="0.0" width="20" height="21"/>
+                                                                                </imageView>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cC2-Il-auU" userLabel="ImportanceFive">
+                                                                                    <rect key="frame" x="80.000000000000014" y="0.0" width="20" height="21"/>
+                                                                                </imageView>
+                                                                            </subviews>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="133.66666666666663" id="mYi-bP-MCM"/>
+                                                                                <constraint firstAttribute="width" constant="100" id="N5e-K1-Cgh"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                        </stackView>
                                                                     </subviews>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleAspectFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IDE-ld-aEW">
-                                                                    <rect key="frame" x="0.0" y="26" width="195.66666666666666" height="29.333333333333329"/>
+                                                                    <rect key="frame" x="0.0" y="26" width="174.33333333333334" height="29.333333333333329"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWu-KC-ruP">
-                                                                            <rect key="frame" x="0.0" y="7.6666666666666581" width="71.333333333333329" height="14.333333333333336"/>
+                                                                            <rect key="frame" x="0.0" y="7.6666666666666581" width="50" height="14.333333333333336"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <progressView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F7E-mh-DMY">
-                                                                            <rect key="frame" x="81.333333333333329" y="12.666666666666657" width="66.999999999999986" height="4"/>
+                                                                            <rect key="frame" x="60" y="12.666666666666657" width="67" height="4"/>
                                                                             <color key="tintColor" systemColor="systemPurpleColor"/>
                                                                             <color key="progressTintColor" systemColor="systemPurpleColor"/>
                                                                         </progressView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1S-bB-f2V">
-                                                                            <rect key="frame" x="158.33333333333334" y="8.6666666666666572" width="37.333333333333343" height="12"/>
+                                                                            <rect key="frame" x="137" y="8.6666666666666572" width="37.333333333333343" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -120,8 +134,12 @@
                                         <connections>
                                             <outlet property="dDayLabel" destination="hQH-Vs-Oqu" id="BBc-ym-Dbp"/>
                                             <outlet property="eventNameLabel" destination="WKS-03-aX5" id="ISs-mY-9eO"/>
-                                            <outlet property="importanceImageLabel" destination="sYH-tt-Ss1" id="bcE-ec-AzH"/>
+                                            <outlet property="importanceFive" destination="cC2-Il-auU" id="oK6-zs-MrJ"/>
+                                            <outlet property="importanceFour" destination="wYC-mX-SU8" id="Dh7-9D-U5w"/>
                                             <outlet property="importanceLabel" destination="3St-na-q3C" id="gid-vv-Nwu"/>
+                                            <outlet property="importanceOne" destination="gBX-A0-4l4" id="eHD-CM-Bpm"/>
+                                            <outlet property="importanceThree" destination="UWI-bs-ctJ" id="lUZ-Ip-RHj"/>
+                                            <outlet property="importanceTwo" destination="jTa-sa-x9U" id="LRA-ek-21J"/>
                                             <outlet property="progressLabel" destination="KWu-KC-ruP" id="GLh-8M-bM4"/>
                                             <outlet property="progressPercentLabel" destination="o1S-bB-f2V" id="0ps-tV-xTQ"/>
                                             <outlet property="progressView" destination="F7E-mh-DMY" id="xBq-oN-tsS"/>

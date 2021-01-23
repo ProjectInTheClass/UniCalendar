@@ -15,8 +15,20 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBOutlet weak var homeNavigationTitle: UINavigationItem!
     
     var events: [Event] = api.callEvent()
-    
     var selectedCellBefore: Int = 0
+    
+    func blankImportance() -> UIImage {
+        let importanceImage = UIImage(named: "importance_blank")!
+        
+        return importanceImage
+    }
+    
+    func fillImportance() -> UIImage{
+        let importanceImage = UIImage(named: "importance_filled")!
+        
+        return importanceImage
+    }
+    
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print(eventList.accessibilityElementCount())
@@ -42,6 +54,16 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         cell.dDayLabel.text = "D - " + String(d)
         
         cell.importanceLabel.text = "중요해요"
+        
+//        var count: Int = 0
+//        while count < event.importance{
+//            
+//            count+=1
+//        }
+//        
+//        while count < 5 {
+//            
+//        }
         //cell.importanceImageLabel.text = String(event.events[indexPath.row].)
         
         cell.progressLabel.text = "영차영차"
