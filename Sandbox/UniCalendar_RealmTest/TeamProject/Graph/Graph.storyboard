@@ -155,6 +155,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="barChartView" destination="Mhu-mf-1LL" id="TCh-8w-Xmh"/>
                                             <outlet property="completeLabel" destination="osg-xh-TSz" id="XBo-rQ-tZ4"/>
                                         </connections>
                                     </tableViewCell>
