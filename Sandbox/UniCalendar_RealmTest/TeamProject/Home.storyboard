@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -535,7 +536,8 @@
                         <barButtonItem key="rightBarButtonItem" title="수정" id="fpG-vy-xu2">
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="43q-fm-IXq" kind="show" id="wSh-rn-yiw"/>
+                                <action selector="edit:" destination="l1j-zJ-RaE" id="ukg-yJ-xGV"/>
+                                <segue destination="43q-fm-IXq" kind="show" identifier="ToEdit" id="wSh-rn-yiw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -550,6 +552,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vO5-u3-keC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ch4-bm-pqJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1856.9230769230769" y="900.71090047393363"/>
         </scene>
@@ -764,6 +767,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </cells>
+                            </tableViewSection>
+                            <tableViewSection id="OYL-OG-UNG">
+                                <cells/>
                             </tableViewSection>
                         </sections>
                         <connections>
@@ -1257,7 +1263,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8wh-s9-fXt">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
                             <tableViewSection id="Swo-16-T6P">
                                 <cells>
@@ -1365,6 +1370,7 @@
                                                     <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <connections>
                                                         <action selector="ringVolumeSliderChange:" destination="JIC-6f-RIu" eventType="valueChanged" id="1PF-I2-Nuh"/>
+                                                        <action selector="ringVolumeSliderChange:" destination="43q-fm-IXq" eventType="valueChanged" id="D5T-w8-6Gu"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -1400,17 +1406,56 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="일정 삭제" id="JKw-5F-T0s">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Op7-7O-vee" style="IBUITableViewCellStyleDefault" id="phR-lQ-sid">
+                                        <rect key="frame" x="0.0" y="591.33333969116211" width="390" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="phR-lQ-sid" id="AUB-Xx-5rf">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="이 일정 삭제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Op7-7O-vee">
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" name="red"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="43q-fm-IXq" id="4zD-pT-SX7"/>
                             <outlet property="delegate" destination="43q-fm-IXq" id="bxA-KU-RoV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="PnP-NO-rpM"/>
+                    <navigationItem key="navigationItem" id="PnP-NO-rpM">
+                        <barButtonItem key="rightBarButtonItem" title="완료" id="zb8-fp-Amx">
+                            <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="complete:" destination="43q-fm-IXq" id="OHT-zL-AhX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="categoryLabel" destination="e3s-Md-XKy" id="V14-BB-JvF"/>
+                        <outlet property="datePicker" destination="C6J-lR-e6b" id="UHY-Ws-9H5"/>
+                        <outlet property="deleteCell" destination="phR-lQ-sid" id="s5M-TF-v4S"/>
+                        <outlet property="eventName" destination="mQZ-UG-aVg" id="lMW-st-fZS"/>
+                        <outlet property="importanceSlider" destination="QAe-MD-SPi" id="nSz-vj-T7Q"/>
+                        <outlet property="settledNotificationInfoLabel" destination="1tW-xX-5uz" id="8Rg-m2-cxv"/>
+                        <outlet property="showImportance" destination="i7b-h8-Oo1" id="SwS-Sf-Kt8"/>
+                        <segue destination="ch4-bm-pqJ" kind="unwind" identifier="unwindToDetail" unwindAction="unwindToDetailWithSegue:" id="L76-4w-Moi"/>
+                        <segue destination="vYb-T1-05B" kind="unwind" identifier="unwindToHomeFromEdit" unwindAction="unwindToHomeWithSegue:" id="V5e-UT-fal"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Q8-r3-plv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2828" y="901"/>
+            <point key="canvasLocation" x="2625" y="885"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dyb-mG-qbl">
@@ -1471,6 +1516,9 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="importance_filled" width="8" height="8"/>
         <image name="selectionBox" width="226" height="78"/>
+        <namedColor name="red">
+            <color red="0.94499999284744263" green="0.44299998879432678" blue="0.42699998617172241" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

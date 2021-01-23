@@ -11,7 +11,7 @@ import RealmSwift
 class HomeDetailViewController: UIViewController {
   
     //let subGoals: [String] = ["소목표1", "소목표2", "소목표3"]
-    let events: [Event] = api.callNotDoneEvent()
+    var events: [Event] = api.callNotDoneEvent()
     
     var dDay: String = ""
     var eventName: String = ""
@@ -49,13 +49,26 @@ class HomeDetailViewController: UIViewController {
     
     //var myEvents = Event()
     
+    @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
+        events = api.callNotDoneEvent()
+        self.reloadInputViews()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToSubEventTable" {
             let view = segue.destination as? SubEventsTableViewController
             view?.event = events[selectedCell]
             view?.belongedContainer = self
+        } else if segue.identifier == "ToEdit" {
+            let view = segue.destination as? EventEditTableViewController
+            view?.selected = selectedCell
         }
     }
+    
+    @IBAction func edit(_ sender: Any) {
+        performSegue(withIdentifier: "ToEdit", sender: selectedCell)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
