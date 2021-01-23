@@ -496,11 +496,21 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="hwg-Qg-1fB">
                                 <rect key="frame" x="20" y="199" width="350" height="348"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="세부 목표를 추가해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z93-Vu-s4u">
+                                <rect key="frame" x="20" y="575" width="317" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEe-Tz-BVH">
+                                <rect key="frame" x="345" y="581" width="24.333333333333332" height="23.666666666666668"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MVE-g9-Q6m"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="8ic-Ry-QAE" secondAttribute="bottom" constant="221" id="6Ye-c4-HKg"/>
+                            <constraint firstItem="hwg-Qg-1fB" firstAttribute="bottom" secondItem="8ic-Ry-QAE" secondAttribute="bottom" constant="7" id="6Ye-c4-HKg"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="hwg-Qg-1fB" secondAttribute="bottom" constant="214" id="DCn-gD-Il7"/>
                             <constraint firstItem="8ic-Ry-QAE" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="25" id="DVL-we-XPV"/>
                             <constraint firstItem="8ic-Ry-QAE" firstAttribute="top" secondItem="tHc-Em-SOP" secondAttribute="bottom" constant="24.670000000000002" id="FBG-Ri-0Oe"/>

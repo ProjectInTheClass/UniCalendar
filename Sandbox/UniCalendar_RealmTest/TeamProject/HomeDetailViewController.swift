@@ -66,7 +66,6 @@ class HomeDetailViewController: UIViewController {
             //
         }
         
-        
         let today = df.date(from: df.string(from : Date.init()))
         let dDay = df.date(from: df.string(from: event.eventDday))!
 
