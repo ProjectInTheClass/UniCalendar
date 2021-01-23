@@ -69,7 +69,10 @@ class SubEventsTableViewController: UITableViewController {
             cell.subEventNameLabel.attributedText = attributeString
         // subEvent가 없을때
         } else {
-            cell.subEventNameLabel.text = "소목표가 없습니다."
+            cell.subEventNameLabel.textColor = UIColor.lightGray
+            cell.subEventNameLabel.font = UIFont(name: "System", size: 12)
+            cell.subEventNameLabel.textAlignment = .left
+            cell.subEventNameLabel.text = "새로운 소목표를 등록해주세요🤓"
         }
         
         return cell

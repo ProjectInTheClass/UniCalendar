@@ -11,6 +11,7 @@ import RealmSwift
 class CategoryDetailTableViewController: UITableViewController {
     
     var category = api.callCategory()
+    var event = api.callEvent()
     var getImageChange: String = "category_purple"
     
     var categoryIndex: Int = 0
@@ -54,8 +55,14 @@ class CategoryDetailTableViewController: UITableViewController {
             alert.addAction(UIAlertAction(title: NSLocalizedString("네", comment: "Default action"), style: .default, handler: { _ in
             //NSLog("The \"OK\" alert occured.")
                 try? api.realm.write{
+                    api.realm.delete(self.category[self.categoryIndex].eventsInCategory)
                     api.realm.delete(self.category[self.categoryIndex])
                 }
+                
+                //self.category = api.callCategory()
+                //self.event = api.callEvent()
+                //self.category[categoryIndex].eventsInCategory = api.callEvent()
+                //print(self.category)
                 
                 self.performSegue(withIdentifier: "unwindToSettingFromDetail", sender: nil)
             }))
@@ -69,6 +76,9 @@ class CategoryDetailTableViewController: UITableViewController {
     
     //unwindToSettingFromDetail 위해 prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        category = api.callCategory()
+        event = api.callEvent()
+        
         guard let navigation = segue.destination as? UINavigationController else {return}
         
         guard let detail = navigation.viewControllers[0] as? EditColorTableViewController else { return }

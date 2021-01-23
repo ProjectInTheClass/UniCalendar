@@ -293,10 +293,10 @@
                                             <rect key="frame" x="5" y="5" width="330" height="52.333333333333336"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z0V-H6-iYm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="248.66666666666666" height="52.333333333333336"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="249" height="52.333333333333336"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fk-yC-1gY">
-                                                    <rect key="frame" x="288.66666666666669" y="0.0" width="41.333333333333314" height="52.333333333333336"/>
+                                                    <rect key="frame" x="289" y="0.0" width="41" height="52.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>

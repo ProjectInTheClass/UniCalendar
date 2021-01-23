@@ -115,6 +115,10 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         df.locale = Locale(identifier: "ko")
         df.dateFormat = "M월 dd일 eeee"
         homeNavigationTitle.title = df.string(from: Date.init())
+        
+        print("VIEW WILL APPEAR")
+        events = api.callEvent()
+        tableView.reloadData()
     }
     
 }
