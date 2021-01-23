@@ -39,15 +39,16 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
         calendarView.scrollDirection = .vertical
         
-        for event in events {
-            let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
-            eventDates.append(day)
-        }
+       
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         events = api.callEvent()
+        for event in events {
+            let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
+            eventDates.append(day)
+        }
     }
     
 }
