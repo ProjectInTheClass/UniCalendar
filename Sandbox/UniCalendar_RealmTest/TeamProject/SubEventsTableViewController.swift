@@ -55,26 +55,35 @@ class SubEventsTableViewController: UITableViewController {
             cell.imageView?.image = UIImage(named: imageName)
 
             let labelText = subEvent.subEventName
-
             // cell.subEventName.text = subEvents[indexPath.row].eventName
-
-
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: labelText)
+            // 소목표 완료
             if isDone {
                 cell.subEventNameLabel.textColor = UIColor.systemGray4
-                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: labelText)
                 attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-
-                cell.subEventNameLabel.attributedText = attributeString
-                
+            // 진행중인 소목표
             } else {
-                cell.subEventNameLabel.text = labelText
+                cell.subEventNameLabel.textColor = UIColor.black
             }
+            cell.subEventNameLabel.attributedText = attributeString
+        // subEvent가 없을때
         } else {
-            // subEvent가 없을때
             cell.subEventNameLabel.text = "소목표가 없습니다."
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.event.subEvents.count >= 1 {
+            try? api.realm.write() {
+            self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
+            }
+            tableView.reloadData()
+        } else {
+            // Todo
+            print("소목표 추가하기")
+        }
     }
     
 }
