@@ -17,7 +17,9 @@ class NotificationDaysOfWeekTableViewController: UITableViewController {
     }
 
     @IBAction func cancelModal(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        checkedDayList.removeAll()
+        performSegue(withIdentifier: "unwindToNotificationFromDay", sender: self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,10 +32,16 @@ class NotificationDaysOfWeekTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        
-        if !checkedDayList.contains(indexPath.row) {
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            if checkedDayList.contains(indexPath.row) {
+                if let index = checkedDayList.firstIndex(of: indexPath.row) {
+                    checkedDayList.remove(at: index)
+                }
+            }
+            checkedDayList = checkedDayList.filter{ $0 != indexPath.row}
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             checkedDayList.append(indexPath.row)
         }
     }

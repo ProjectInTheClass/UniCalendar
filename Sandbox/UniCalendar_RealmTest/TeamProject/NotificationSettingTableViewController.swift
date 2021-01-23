@@ -30,13 +30,12 @@ class NotificationSettingTableViewController: UITableViewController {
         }
         vc.notificationFrequency = getDayFromCheckedRow(row: checkedDay)
         
+        // checkedDay가 0이면 빈도: 없음 선택이므로, 시간대도 없음
         if checkedDay != 0 {
         vc.notificationTime = getTimeFromCheckedRow(row: checkedTime)
         } else {
             vc.notificationTime = ""
         }
-        
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +54,14 @@ class NotificationSettingTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToNotificationSetting(_ unwindSegue: UIStoryboardSegue) {
-        userSelectDayLabel.text = getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
+        let userSelectDayString = getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
+        if userSelectDayString == "" {
+            userSelectDayLabel.text = "요일 선택"
+            checkedDay = 0
+            self.tableView.cellForRow(at: IndexPath(row: 2, section: 0))?.accessoryType = .disclosureIndicator
+        } else {
+            userSelectDayLabel.text = userSelectDayString
+        }
     }
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -65,6 +71,7 @@ class NotificationSettingTableViewController: UITableViewController {
         if !isSectionChecked[indexPath.section] {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             
+            // 설정된 값은 prepare 함수 안에서 문자열로 변환 후 unwind되어서 넘어감.
             switch (indexPath.section) {
             case 0: // frequency section
                 self.checkedDay = indexPath.row
@@ -78,17 +85,25 @@ class NotificationSettingTableViewController: UITableViewController {
             // 체크한 row의 indexPath 정보를 section별로 저장
             lastCheckedIndexPathInSection[indexPath.section] = indexPath
             isSectionChecked[indexPath.section] = true
-        } else { // 현재 섹션이 체크가 되어있으면
-            // 기존 체크된 cell을 체크 해제
-
-            tableView.cellForRow(at: lastCheckedIndexPathInSection[indexPath.section])?.accessoryType = .none
+        } else { // 현재 섹션이 체크가 되어있으면, 기존 체크된 셀을 체크 해제
+            
+            // 첫 번째 섹션을 눌렀고,
+            // '사용자 설정' 셀에 체크가 되어있을때
+            if indexPath.section == 0 && lastCheckedIndexPathInSection[indexPath.section].row == 2 {
+                tableView.cellForRow(at: lastCheckedIndexPathInSection[indexPath.section])?.accessoryType = .disclosureIndicator
+                userSelectDayLabel.text = "요일 선택"
+            } else {
+                tableView.cellForRow(at: lastCheckedIndexPathInSection[indexPath.section])?.accessoryType = .none
+            }
+            // 현재 섹션에 체크된 셀을 체크 해제하고, 현재 셀에 체크
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             
+            // 설정된 값은 prepare 함수 안에서 문자열로 변환 후 unwind되어서 넘어감.
             switch (indexPath.section) {
-            case 0: // frequency section
+            case 0: // 빈도(요일) 설정
                 self.checkedDay = indexPath.row
                 break
-            case 1:
+            case 1: // 시간 설정
                 self.checkedTime = indexPath.row
                 break
             default:
@@ -131,11 +146,14 @@ class NotificationSettingTableViewController: UITableViewController {
         case 2:
             return  getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
         default:
-            return "선택하지 않음"
+            return "없음"
         }
     }
     
     func getDayStringFromDaysArray(dayList: [Int]) -> String {
+        if dayList.isEmpty {
+            return ""
+        }
         let resultDayString: String = dayList.reduce("매주 ", {(prev: String, day: Int) -> String in
             var dayString: String {
                 switch day {
@@ -154,7 +172,7 @@ class NotificationSettingTableViewController: UITableViewController {
                 case 6:
                     return "일"
                 default:
-                    return "선택되지 않음"
+                    return ""
                 }
             }
             return prev + dayString + " "
