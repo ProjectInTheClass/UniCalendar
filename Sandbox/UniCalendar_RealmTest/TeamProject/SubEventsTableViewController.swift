@@ -23,8 +23,8 @@ class SubEventsTableViewController: UITableViewController {
     let subEventCellIdentifier = "SubEventCell"
     override func viewDidLoad() {
         super.viewDidLoad()
-        subEventTableView.dataSource = self
-        subEventTableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
 
     }
 
@@ -41,7 +41,7 @@ class SubEventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // return UITableViewCell
         
-        let cell = subEventTableView.dequeueReusableCell(withIdentifier: subEventCellIdentifier, for: indexPath) as! SubEventCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: subEventCellIdentifier, for: indexPath) as! SubEventCell
 
         if event.subEvents.count != 0 {
             let subEvent = event.subEvents[indexPath.row]
@@ -69,6 +69,7 @@ class SubEventsTableViewController: UITableViewController {
             cell.subEventNameLabel.attributedText = attributeString
         // subEvent가 없을때
         } else {
+            cell.imageView?.image = UIImage(named: "importance_blank")
             cell.subEventNameLabel.textColor = UIColor.lightGray
             cell.subEventNameLabel.font = UIFont(name: "System", size: 12)
             cell.subEventNameLabel.textAlignment = .left
@@ -81,11 +82,12 @@ class SubEventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.event.subEvents.count >= 1 {
             try? api.realm.write() {
-            self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
+                // 체크 반전
+                self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
             }
             tableView.reloadData()
             
-            // 소목표 체크되면 DetailView Progress Percent 바꿔주기
+            // 소목표 체크 변경시 ProgressBar Percent 바꿔주기
             var subIsDoneNum: Int = 0
             var progressPercent: Float = 0.0
             
@@ -98,7 +100,7 @@ class SubEventsTableViewController: UITableViewController {
             belongedContainer?.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
         } else {
             // Todo
-            print("소목표 추가하기")
+            
         }
     }
     

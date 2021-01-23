@@ -92,9 +92,6 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 
     }
 
-    @IBAction func unwindToHomeFromDetail(_ unwindSegue: UIStoryboardSegue) {
-        print("from Detail to Home")
-    }
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         print("from Add to Home")
         events = api.callEvent()
