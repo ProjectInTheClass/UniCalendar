@@ -41,7 +41,7 @@ class LocalNotificationManager {
     func requestPermission() -> Void {
         UNUserNotificationCenter
             .current()
-            .requestAuthorization(options: [.alert, .badge, .alert]) { granted, error in
+            .requestAuthorization(options: [.alert, .badge]) { granted, error in
                 if granted == true && error == nil {
                     // We have permission!
                 }
@@ -58,15 +58,19 @@ class LocalNotificationManager {
             notificationContent.title = notification.title
             notificationContent.body = notification.content
             
-//            let dateComponent = DateFormatter('y)
-//            
-//            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-//            let request = UNNotificationRequest(identifier: notification.id, content: notificationContent, trigger: trigger)
-//            
-//            UNUserNotificationCenter.current().add(request) { error in
-//                guard error == nil else { return }
-//                print("Scheduling notification with id: \(notification.id)")
-//            }
+            // 날짜 객체
+            let dateComponent = DateComponents(year: 2021, month: 1, hour: 9, weekday: 3)
+            // 알림 속성(시간, 위치 등)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+            // 위 데이터를 넣어서 알림 요청
+            let request = UNNotificationRequest(identifier: notification.id,
+                                                content: notificationContent,
+                                                trigger: trigger)
+            // 알림 등록
+            UNUserNotificationCenter.current().add(request) { error in
+                guard error == nil else { return }
+                print("Scheduling notification with id: \(notification.id)")
+            }
         }
     }
 }

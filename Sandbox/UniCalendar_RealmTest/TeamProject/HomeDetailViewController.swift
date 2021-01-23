@@ -37,11 +37,11 @@ class HomeDetailViewController: UIViewController {
         if segue.identifier == "ToSubEventTable" {
             let view = segue.destination as? SubEventsTableViewController
             view?.event = events[selectedCell]
+            view?.belongedContainer = self
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // detailTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,18 +62,14 @@ class HomeDetailViewController: UIViewController {
         dDayLabel.text = "D - " + String(d)
         eventNameLabel.text = event.eventName
         
-        var progressPercent: Float = 0
         if event.subEvents.count != 0 {
-            var subIsDoneNum = 0
-                for sub in event.subEvents{
-                    if sub.subEventIsDone == true {
-                        subIsDoneNum += 1
-                    }
-                }
-            progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
-           
-            progressView.setProgress(progressPercent, animated: false)
+            var subIsDoneNum: Int = 0
+            subIsDoneNum = event.subEvents.filter(
+                { (sub: SubEvent) -> Bool in return
+                sub.subEventIsDone == true }).count
             
+            progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
+            progressView.setProgress(progressPercent, animated: false)
 
         }
             progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"

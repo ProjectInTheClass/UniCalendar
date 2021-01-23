@@ -265,9 +265,11 @@
                         <outlet property="eventNameLabel" destination="Amr-8m-ZUu" id="AbK-Rd-ZWy"/>
                         <outlet property="progressPercentLabel" destination="m8Q-u5-xEs" id="5Qi-sg-rgo"/>
                         <outlet property="progressView" destination="44g-0S-apq" id="uAO-zq-eBu"/>
+                        <segue destination="2TF-4n-eA0" kind="unwind" identifier="unwindToHomeFromDetail" unwindAction="unwindToHomeFromDetail:" id="gnE-bk-Upa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vO5-u3-keC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="2TF-4n-eA0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2567.6923076923076" y="853.79146919431275"/>
         </scene>

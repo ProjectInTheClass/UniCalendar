@@ -12,6 +12,9 @@ class SubEventsTableViewController: UITableViewController {
 
     var event: Event = Event()
     
+    // 데이터 변경시 테이블뷰를 불러온 컨트롤러에 변경 값 넘겨주기 위함
+    var belongedContainer: HomeDetailViewController?
+    
     @IBOutlet var subEventTableView: UITableView!
     
     
@@ -28,8 +31,6 @@ class SubEventsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        
         if event.subEvents.count < 1 {
             return 1
         }
@@ -80,6 +81,18 @@ class SubEventsTableViewController: UITableViewController {
             self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
             }
             tableView.reloadData()
+            
+            // 소목표 체크되면 DetailView Progress Percent 바꿔주기
+            var subIsDoneNum: Int = 0
+            var progressPercent: Float = 0.0
+            
+            subIsDoneNum = self.event.subEvents.filter({ (sub: SubEvent) -> Bool in return
+                sub.subEventIsDone == true
+            }).count
+            
+            progressPercent = Float(subIsDoneNum) / Float(self.event.subEvents.count)
+            belongedContainer?.progressView.setProgress(progressPercent, animated: false)
+            belongedContainer?.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
         } else {
             // Todo
             print("소목표 추가하기")

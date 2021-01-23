@@ -49,18 +49,18 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         var progressPercent: Float = 0
         if event.subEvents.count != 0 {
             var subIsDoneNum = 0
-                for sub in event.subEvents{
-                    if sub.subEventIsDone == true {
-                        subIsDoneNum += 1
-                    }
-                }
+            
+            subIsDoneNum = event.subEvents.filter(
+                { (sub: SubEvent) -> Bool in return
+                sub.subEventIsDone == true }).count
+            
             progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
            
             cell.progressView.setProgress(progressPercent, animated: false)
             
 
         }
-                cell.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
+        cell.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
         
         return cell
     }
@@ -88,15 +88,17 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 
         // print("Selected Cell Before: \(tableView.indexPathForSelectedRow!.row)")
     
-        // TODO: 디테일 탭으로 소목표 넘기기
-        
         tableView.deselectRow(at:tableView.indexPathForSelectedRow!, animated: true)
 
     }
 
+    @IBAction func unwindToHomeFromDetail(_ unwindSegue: UIStoryboardSegue) {
+        print("from Detail to Home")
+    }
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        print("from Add to Home")
         events = api.callEvent()
-        print(events)
+        // print(events)
         tableView.reloadData()
     }
     
