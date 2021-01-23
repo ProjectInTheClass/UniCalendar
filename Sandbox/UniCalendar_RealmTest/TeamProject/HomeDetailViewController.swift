@@ -28,7 +28,23 @@ class HomeDetailViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     
-   
+    @IBOutlet weak var subEventAddTextField: UITextField!
+    @IBOutlet weak var subEventAddButton: UIButton!
+    
+    @IBAction func subEventAddButtonTapped(_ sender: Any) {
+        let newSubEventName: String = subEventAddTextField.text ?? ""
+        let newSubEvent: SubEvent = SubEvent(subEventName: newSubEventName, subEventIsDone: false)
+        try? api.realm.write() {
+            self.events[selectedCell].subEvents.append(newSubEvent)
+            api.realm.add([newSubEvent])
+            //SubEvent(subEventName: newSubEventName, subEventIsDone: false)
+        }
+        
+        subEventAddTextField.text = ""
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+    }
     //private var subGoals: Results<SubEvent>!
     
     //var myEvents = Event()

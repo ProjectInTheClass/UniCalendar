@@ -25,7 +25,13 @@ class SubEventsTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+    }
+    
+    @objc func loadList(){
+            //load data here
+            self.tableView.reloadData()
     }
 
     // MARK: - Table view data source

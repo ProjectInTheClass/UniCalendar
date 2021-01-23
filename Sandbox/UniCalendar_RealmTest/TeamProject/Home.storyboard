@@ -495,32 +495,39 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="hwg-Qg-1fB">
                                 <rect key="frame" x="20" y="199" width="350" height="348"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="세부 목표를 추가해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z93-Vu-s4u">
-                                <rect key="frame" x="20" y="575" width="317" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="세부 목표를 추가해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z93-Vu-s4u">
+                                <rect key="frame" x="20" y="568" width="315.66666666666669" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEe-Tz-BVH">
-                                <rect key="frame" x="345" y="581" width="24.333333333333332" height="23.666666666666668"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEe-Tz-BVH">
+                                <rect key="frame" x="345.66666666666669" y="573" width="24.333333333333314" height="24"/>
+                                <connections>
+                                    <action selector="subEventAddButtonTapped:" destination="l1j-zJ-RaE" eventType="touchUpInside" id="PAO-R4-1NE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MVE-g9-Q6m"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hwg-Qg-1fB" firstAttribute="bottom" secondItem="8ic-Ry-QAE" secondAttribute="bottom" constant="7" id="6Ye-c4-HKg"/>
+                            <constraint firstItem="iEe-Tz-BVH" firstAttribute="top" secondItem="hwg-Qg-1fB" secondAttribute="bottom" constant="26" id="CGG-Gf-ftB"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="hwg-Qg-1fB" secondAttribute="bottom" constant="214" id="DCn-gD-Il7"/>
                             <constraint firstItem="8ic-Ry-QAE" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="25" id="DVL-we-XPV"/>
                             <constraint firstItem="8ic-Ry-QAE" firstAttribute="top" secondItem="tHc-Em-SOP" secondAttribute="bottom" constant="24.670000000000002" id="FBG-Ri-0Oe"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="tHc-Em-SOP" secondAttribute="trailing" constant="30" id="HND-Gh-6yA"/>
+                            <constraint firstItem="iEe-Tz-BVH" firstAttribute="leading" secondItem="Z93-Vu-s4u" secondAttribute="trailing" constant="10" id="Ifj-4U-xU7"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8ic-Ry-QAE" secondAttribute="trailing" constant="25" id="Kdr-sa-EyH"/>
                             <constraint firstItem="8ic-Ry-QAE" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="25" id="Nfe-s2-f4X"/>
                             <constraint firstItem="hwg-Qg-1fB" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="20" id="O0k-Yb-pTU"/>
+                            <constraint firstItem="iEe-Tz-BVH" firstAttribute="centerY" secondItem="Z93-Vu-s4u" secondAttribute="centerY" id="OEh-cF-wsg"/>
+                            <constraint firstItem="iEe-Tz-BVH" firstAttribute="trailing" secondItem="hwg-Qg-1fB" secondAttribute="trailing" id="OyZ-IL-NXL"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="hwg-Qg-1fB" secondAttribute="trailing" constant="20" id="Pbq-jV-yhb"/>
+                            <constraint firstItem="Z93-Vu-s4u" firstAttribute="leading" secondItem="hwg-Qg-1fB" secondAttribute="leading" id="QYV-vc-VZj"/>
                             <constraint firstItem="tHc-Em-SOP" firstAttribute="top" secondItem="MVE-g9-Q6m" secondAttribute="top" constant="30" id="TR0-l1-sZB"/>
                             <constraint firstItem="tHc-Em-SOP" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="30" id="UXu-xW-g0J"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8ic-Ry-QAE" secondAttribute="trailing" constant="25" id="cA4-ha-e4c"/>
+                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="Z93-Vu-s4u" secondAttribute="bottom" constant="159" id="ffM-Cm-88x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="rSU-7W-1W7">
@@ -538,11 +545,13 @@
                         <outlet property="eventNameLabel" destination="Amr-8m-ZUu" id="AbK-Rd-ZWy"/>
                         <outlet property="progressPercentLabel" destination="m8Q-u5-xEs" id="5Qi-sg-rgo"/>
                         <outlet property="progressView" destination="44g-0S-apq" id="uAO-zq-eBu"/>
+                        <outlet property="subEventAddButton" destination="iEe-Tz-BVH" id="oUQ-go-P0h"/>
+                        <outlet property="subEventAddTextField" destination="Z93-Vu-s4u" id="R53-Ls-BOc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vO5-u3-keC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="901"/>
+            <point key="canvasLocation" x="1856.9230769230769" y="900.71090047393363"/>
         </scene>
         <!--Sub Events Table View Controller-->
         <scene sceneID="QBK-F1-Mm2">
