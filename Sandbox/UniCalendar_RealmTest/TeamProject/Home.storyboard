@@ -152,6 +152,7 @@
                     <navigationItem key="navigationItem" id="oca-7A-DAf">
                         <barButtonItem key="backBarButtonItem" title="Home" id="dtl-CX-H6k"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8DN-8C-a5m">
+                            <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="aGv-rW-tcM" kind="presentation" id="X1H-po-xja"/>
                             </connections>
@@ -184,13 +185,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="hwg-Qg-1fB">
-                                <rect key="frame" x="20" y="263" width="350" height="348"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tHc-Em-SOP">
-                                <rect key="frame" x="30" y="118" width="330" height="125"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="tHc-Em-SOP">
+                                <rect key="frame" x="30" y="118" width="330" height="64.333333333333314"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c7J-tc-yf1">
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c7J-tc-yf1">
                                         <rect key="frame" x="0.0" y="0.0" width="330" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D  -   4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYe-aX-YqH">
@@ -215,14 +213,14 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xyP-z6-hHp">
-                                        <rect key="frame" x="0.0" y="40" width="330" height="85"/>
+                                        <rect key="frame" x="0.0" y="50" width="330" height="14.333333333333329"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="44g-0S-apq">
-                                                <rect key="frame" x="0.0" y="40.666666666666657" width="276.33333333333331" height="4"/>
+                                                <rect key="frame" x="0.0" y="5.3333333333333428" width="276.33333333333331" height="4"/>
                                                 <color key="progressTintColor" systemColor="systemPurpleColor"/>
                                             </progressView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8Q-u5-xEs">
-                                                <rect key="frame" x="286.33333333333331" y="35.333333333333343" width="43.666666666666686" height="14.333333333333336"/>
+                                                <rect key="frame" x="286.33333333333331" y="0.0" width="43.666666666666686" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -232,26 +230,30 @@
                                 </subviews>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ic-Ry-QAE">
-                                <rect key="frame" x="25" y="268" width="340" height="333"/>
+                                <rect key="frame" x="25" y="207" width="340" height="333"/>
                                 <connections>
                                     <segue destination="ACb-tU-Dlh" kind="embed" identifier="ToSubEventTable" id="eYS-0W-YpC"/>
                                 </connections>
                             </containerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="hwg-Qg-1fB">
+                                <rect key="frame" x="20" y="199" width="350" height="348"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MVE-g9-Q6m"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="hwg-Qg-1fB" secondAttribute="bottom" constant="150" id="DCn-gD-Il7"/>
+                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="8ic-Ry-QAE" secondAttribute="bottom" constant="221" id="6Ye-c4-HKg"/>
+                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="hwg-Qg-1fB" secondAttribute="bottom" constant="214" id="DCn-gD-Il7"/>
                             <constraint firstItem="8ic-Ry-QAE" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="25" id="DVL-we-XPV"/>
+                            <constraint firstItem="8ic-Ry-QAE" firstAttribute="top" secondItem="tHc-Em-SOP" secondAttribute="bottom" constant="24.670000000000002" id="FBG-Ri-0Oe"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="tHc-Em-SOP" secondAttribute="trailing" constant="30" id="HND-Gh-6yA"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8ic-Ry-QAE" secondAttribute="trailing" constant="25" id="Kdr-sa-EyH"/>
+                            <constraint firstItem="8ic-Ry-QAE" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="25" id="Nfe-s2-f4X"/>
                             <constraint firstItem="hwg-Qg-1fB" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="20" id="O0k-Yb-pTU"/>
-                            <constraint firstItem="8ic-Ry-QAE" firstAttribute="top" secondItem="tHc-Em-SOP" secondAttribute="bottom" constant="25" id="O3z-Ph-7zE"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="hwg-Qg-1fB" secondAttribute="trailing" constant="20" id="Pbq-jV-yhb"/>
                             <constraint firstItem="tHc-Em-SOP" firstAttribute="top" secondItem="MVE-g9-Q6m" secondAttribute="top" constant="30" id="TR0-l1-sZB"/>
                             <constraint firstItem="tHc-Em-SOP" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="30" id="UXu-xW-g0J"/>
-                            <constraint firstItem="hwg-Qg-1fB" firstAttribute="top" secondItem="tHc-Em-SOP" secondAttribute="bottom" constant="20" id="cMY-RZ-JnB"/>
-                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="8ic-Ry-QAE" secondAttribute="bottom" constant="160" id="ezc-X7-r1L"/>
+                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8ic-Ry-QAE" secondAttribute="trailing" constant="25" id="cA4-ha-e4c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="rSU-7W-1W7">
@@ -267,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vO5-u3-keC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2569" y="854"/>
+            <point key="canvasLocation" x="2567.6923076923076" y="853.79146919431275"/>
         </scene>
         <!--Sub Events Table View Controller-->
         <scene sceneID="QBK-F1-Mm2">

@@ -40,7 +40,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
         switch seg.identifier {
         case "unwindToAddEventFromCategory":
-            categoryLabel.text = categoryString
+            categoryLabel.text = category[selectedCategory].categoryName
             break
         case "unwindToAddEventFromNotification":
             settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"
