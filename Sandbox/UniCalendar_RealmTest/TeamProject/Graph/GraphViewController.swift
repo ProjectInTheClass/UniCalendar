@@ -6,57 +6,42 @@ class GraphViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 //    @IBOutlet weak var barChartView: BarChartView!
     
-    let categories : [Category] = api.callCategory()
-    let events: [Event] = api.callEvent()
-    var pieDataEntry = PieChartDataEntry(value: 0)
-    var numberOfPieDataEntries = [PieChartDataEntry]()
+    var categories : [Category] = api.callCategory()
+    var events: [Event] = api.callEvent()
+    var pieDataEntries = [PieChartDataEntry]()
+    var dataPoints:[String] = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ]
+    var barDataEntries = [BarChartDataEntry]()
     
 //    var numbers: [Double] = [] // 차트를 그릴 데이터의 배열
     
     let semiSection : [String] = ["배지🎖", "전체 보기▶️", "대학 생활 패턴 분석🔍", "완료도 분석📊"]
     
-//    func updatePieChartData(){
-//        for category in categories{
-//            pieDataEntry.value = Double(category.categoryName.count)
-//            pieDataEntry.label = category.categoryName
-//
-//            numberOfPieDataEntries.append(pieDataEntry)
-//        }
-////        pieChartView.chartDescription?.text = "생활패턴분석"
-//
-//        let pieChartDataSet = PieChartDataSet(entries: numberOfPieDataEntries, label: nil)
-//        let pieChartData = PieChartData(dataSet: pieChartDataSet)
-//
-//        var colors:[UIColor] = []
-//
-//        for category in categories{
-//            let color = calculateColor(color: category.categoryColor)
-//
-//            colors.append( UIColor(named: color)! )
-//        }
-//        pieChartDataSet.colors = colors as! [NSUIColor]
-//
-//
-//
-//
-//    }
+    func updatePieChartData(){
+        for category in categories{
+            let dataEntry = PieChartDataEntry()
+            dataEntry.value = Double(category.eventsInCategory.count)
+            dataEntry.label = category.categoryName
+            pieDataEntries.append(dataEntry)
+        }
+    }
 
-//    func drawBarCahrt() {
-//        var barChartEntry = [ChartDataEntry]() // graph 에 보여줄 data array
-//
-//         // chart data array 에 데이터 추가
-//        for i in 0..<events.count {
-//                let value = ChartDataEntry(x: Double(i), y: numbers[i])
-//                barChartEntry.append(value)
-//         }
-//        let line1 = BarChartDataSet(entries: barChartEntry, label: "Number")
-//        line1.colors = [NSUIColor.blue]
-//
-//        let data = LineChartData()
-//        data.addDataSet(line1)
-//
-//
-//    }
+    
+    func updateBarChartData(){
+        var numOfCompletedEvents = [Int](repeating: 0, count: 12)
+        let year = Calendar.current.component(.year, from: Date.init())
+        
+        for i in 0...11 {
+            for event in events{
+                let components = Calendar.current.dateComponents([.year, .month], from: event.eventDday)
+                if (year == components.year) && ((i + 1) == components.month){
+                    numOfCompletedEvents[i] += 1
+                }
+            }
+            let dataEntry = BarChartDataEntry(x: Double(i), y : Double(numOfCompletedEvents[i]))
+            barDataEntries.append(dataEntry)
+        }
+    }
+
     
     func calculateColor(color: Int) -> String{
         switch color {
@@ -77,6 +62,12 @@ class GraphViewController: UIViewController {
         }
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        categories = api.callCategory()
+        events = api.callEvent()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -94,6 +85,15 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let valFormatter = NumberFormatter()
+        valFormatter.numberStyle = .currency
+        valFormatter.maximumFractionDigits = 2
+        valFormatter.currencySymbol = "$"
+                
+        let format = NumberFormatter()
+        format.numberStyle = .none
+        let formatter = DefaultValueFormatter(formatter: format)
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BadgeCell", for: indexPath) as! BadgeCell
 
@@ -106,11 +106,40 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PatternCell", for: indexPath) as! PatternCell
 
             cell.patternLabel.text = semiSection[2]
-//            cell.pieChartView.data = pieChartData
+            
+        
+            updatePieChartData()
+            
+            print(pieDataEntries)
+            
+            let pieChartDataSet = PieChartDataSet(entries: pieDataEntries, label: nil)
+            let pieChartData = PieChartData(dataSet: pieChartDataSet)
+
+            print(pieChartData)
+            var colors:[UIColor] = []
+
+            for category in categories{
+                let color = calculateColor(color: category.categoryColor)
+
+                colors.append( UIColor(named: color)! )
+            }
+            pieChartDataSet.colors = colors as! [NSUIColor]
+
+            pieChartData.setValueFormatter(formatter)
+            cell.pieChartView.data = pieChartData
+            
+            cell.pieChartView.data = pieChartData
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CompleteDegreeCell", for: indexPath) as! CompleteDegreeCell
+
+            updateBarChartData()
+            let barChartDataSet = BarChartDataSet(entries: barDataEntries, label: "완료 목표 수")
+            let barChartData = BarChartData(dataSet: barChartDataSet)
+            cell.barChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: valFormatter)
+            cell.barChartView.data = barChartData
+            
             return cell
         }
 

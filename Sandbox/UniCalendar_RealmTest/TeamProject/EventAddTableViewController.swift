@@ -84,7 +84,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func ringVolumeSliderChange(_ sender: UISlider)
     {
         sender.setValue(sender.value.rounded(.down), animated: false)
-        print(sender.value)
         showImportance.text = String(Int(importanceSlider.value))
     }
     

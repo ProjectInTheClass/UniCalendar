@@ -81,6 +81,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGD-59-Mgt" customClass="PieChartView" customModule="Charts">
                                                     <rect key="frame" x="30" y="153.5" width="354" height="313.5"/>
+                                                    <color key="backgroundColor" red="0.91640943289999999" green="0.44445782420000002" blue="0.87289567030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="lA7-BH-2Mj">
                                                     <rect key="frame" x="10" y="65" width="394" height="599"/>
@@ -123,9 +124,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9s-fm-yIV" customClass="BarChartView" customModule="Charts">
-                                                    <rect key="frame" x="30" y="190" width="354" height="220"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhu-mf-1LL" customClass="BarChartView" customModule="Charts">
+                                                    <rect key="frame" x="20" y="154" width="374" height="267"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="Pk0-Am-2br">
                                                     <rect key="frame" x="10" y="58.5" width="394" height="599"/>
@@ -142,14 +143,14 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Y9s-fm-yIV" secondAttribute="bottom" constant="282" id="2mM-eL-0x3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Mhu-mf-1LL" secondAttribute="bottom" constant="270" id="Kjt-T6-0c2"/>
                                                 <constraint firstItem="Pk0-Am-2br" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="1.5" id="RNb-Sp-eK6"/>
                                                 <constraint firstItem="Pk0-Am-2br" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leading" constant="10" id="Rry-JF-NhE"/>
+                                                <constraint firstItem="Mhu-mf-1LL" firstAttribute="centerX" secondItem="Pk0-Am-2br" secondAttribute="centerX" id="SML-Lh-eCh"/>
                                                 <constraint firstAttribute="trailing" secondItem="Pk0-Am-2br" secondAttribute="trailing" constant="10" id="Sb0-YQ-h5B"/>
-                                                <constraint firstItem="Y9s-fm-yIV" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="133" id="guT-Un-pUS"/>
+                                                <constraint firstItem="Mhu-mf-1LL" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="130" id="b3J-II-mfQ"/>
+                                                <constraint firstItem="Mhu-mf-1LL" firstAttribute="leading" secondItem="osg-xh-TSz" secondAttribute="leading" id="n9L-Po-rKu"/>
                                                 <constraint firstItem="osg-xh-TSz" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leadingMargin" id="pCh-vc-ErL"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Y9s-fm-yIV" secondAttribute="trailing" constant="10" id="tow-5Y-nxU"/>
-                                                <constraint firstItem="Y9s-fm-yIV" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leadingMargin" constant="10" id="u7i-eU-mSf"/>
                                                 <constraint firstItem="osg-xh-TSz" firstAttribute="top" secondItem="rpS-ng-vuL" secondAttribute="topMargin" constant="25" id="wHq-5o-Yds"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -217,6 +218,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

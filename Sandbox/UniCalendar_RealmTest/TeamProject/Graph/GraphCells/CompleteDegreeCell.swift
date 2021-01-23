@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Charts
 
 class CompleteDegreeCell: UITableViewCell {
 
     @IBOutlet weak var completeLabel: UILabel!
+    @IBOutlet weak var barChartView: BarChartView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
