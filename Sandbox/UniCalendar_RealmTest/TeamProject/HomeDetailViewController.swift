@@ -59,7 +59,13 @@ class HomeDetailViewController: UIViewController {
 
         let interval = dDay.timeIntervalSince(today!)
         let d = Int(interval / 86400)
-        dDayLabel.text = "D - " + String(d)
+        
+        if d == 0 {
+            dDayLabel.text = "D-DAY"
+        } else {
+            dDayLabel.text = "D-" + String(d)
+        }
+        
         eventNameLabel.text = event.eventName
         
         if event.subEvents.count != 0 {
