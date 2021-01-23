@@ -98,7 +98,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
         
         try! api.realm.write{
             category[selectedCategory].eventsInCategory.append(newEvent)
-            //api.realm.add(<#T##object: Object##Object#>)
             api.realm.add([newEvent])
         }
         

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--01.12(화)-->
+        <!--Home View Controller-->
         <scene sceneID="6lF-sg-edb">
             <objects>
                 <viewController id="eVp-WQ-dzW" customClass="HomeViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                             <constraint firstItem="w70-4S-DHz" firstAttribute="trailing" secondItem="zdT-58-KSk" secondAttribute="trailing" id="rLf-Hs-dCb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="01.12(화)" id="oca-7A-DAf">
+                    <navigationItem key="navigationItem" id="oca-7A-DAf">
                         <barButtonItem key="backBarButtonItem" title="Home" id="dtl-CX-H6k"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8DN-8C-a5m">
                             <connections>
@@ -159,6 +159,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="homeNavigationTitle" destination="oca-7A-DAf" id="cGT-iI-2dy"/>
                         <outlet property="tableView" destination="zdT-58-KSk" id="en8-6Z-EnN"/>
                         <segue destination="l1j-zJ-RaE" kind="show" identifier="moveToDetail" id="0sG-15-aTH"/>
                     </connections>
