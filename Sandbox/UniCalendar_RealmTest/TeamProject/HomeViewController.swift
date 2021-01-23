@@ -52,7 +52,11 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         let interval = dDay.timeIntervalSince(today!)
         let d = Int(interval / 86400)
         
-        cell.dDayLabel.text = "D-" + String(d)
+        if d == 0 {
+            cell.dDayLabel.text = "D-DAY"
+        } else {
+            cell.dDayLabel.text = "D-" + String(d)
+        }
         
         
         cell.eventNameLabel.text = event.eventName
@@ -130,8 +134,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         print("from Add to Home")
-        events = api.callEvent()
-        // print(events)
+        events = api.callNotDoneEvent()
         tableView.reloadData()
     }
     

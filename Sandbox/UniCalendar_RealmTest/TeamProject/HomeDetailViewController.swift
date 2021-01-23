@@ -11,7 +11,7 @@ import RealmSwift
 class HomeDetailViewController: UIViewController {
   
     //let subGoals: [String] = ["소목표1", "소목표2", "소목표3"]
-    let events: [Event] = api.callEvent()
+    let events: [Event] = api.callNotDoneEvent()
     
     var dDay: String = ""
     var eventName: String = ""
