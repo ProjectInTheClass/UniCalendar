@@ -14,20 +14,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let events = api.callEvent()
+        var events = api.callEvent()
+        //var count: Int = 0
         var change: Int = 0
         
         if events.isEmpty == false {
-            for event in events {
-                if event.eventDday > Date.init() {
-                    change += 1
+//            for event in events {
+//                if event.eventDday > Date.init() {
+//                    change += 1
+//                    try! api.realm.write(){
+//                        events[change].eventIsDone = true
+//                    }
+//                }
+//            }
+            while change < events.count {
+                if events[change].eventDday < Date.init() {
+                    try! api.realm.write(){
+                        events[change].eventIsDone = true
+                    }
                 }
-            }
-            
-            try! api.realm.write(){
-                events[change].eventIsDone = true
+                change += 1
             }
         }
+        
+        events = api.callEvent()
         
         var defaultCategory = api.callCategory()
         
@@ -67,4 +77,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
 }
+
 
