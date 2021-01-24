@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class HomeDetailViewController: UIViewController {
+class HomeDetailViewController: UIViewController, UITextFieldDelegate {
   
     //let subGoals: [String] = ["소목표1", "소목표2", "소목표3"]
     var events: [Event] = api.callNotDoneEvent()
@@ -71,9 +71,14 @@ class HomeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        subEventAddTextField.delegate = self
             
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        subEventAddTextField.resignFirstResponder()
+        return true
+    }
     override func viewWillAppear(_ animated: Bool) {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
