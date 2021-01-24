@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="3" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dlO-vd-exn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="5" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dlO-vd-exn">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -124,7 +124,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mhu-mf-1LL" customClass="BarChartView" customModule="Charts">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mhu-mf-1LL" customClass="BarChartView" customModule="Charts">
                                                     <rect key="frame" x="20" y="154" width="374" height="267"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                 </view>
@@ -143,12 +143,14 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Mhu-mf-1LL" secondAttribute="bottom" constant="270" id="Kjt-T6-0c2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Mhu-mf-1LL" secondAttribute="bottom" constant="271" id="Kjt-T6-0c2"/>
                                                 <constraint firstItem="Pk0-Am-2br" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="1.5" id="RNb-Sp-eK6"/>
                                                 <constraint firstItem="Pk0-Am-2br" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leading" constant="10" id="Rry-JF-NhE"/>
                                                 <constraint firstItem="Mhu-mf-1LL" firstAttribute="centerX" secondItem="Pk0-Am-2br" secondAttribute="centerX" id="SML-Lh-eCh"/>
                                                 <constraint firstAttribute="trailing" secondItem="Pk0-Am-2br" secondAttribute="trailing" constant="10" id="Sb0-YQ-h5B"/>
-                                                <constraint firstItem="Mhu-mf-1LL" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="130" id="b3J-II-mfQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="Pk0-Am-2br" secondAttribute="bottom" constant="45.5" id="ZJb-jj-WcJ"/>
+                                                <constraint firstItem="Mhu-mf-1LL" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="97" id="b3J-II-mfQ"/>
+                                                <constraint firstItem="Pk0-Am-2br" firstAttribute="top" secondItem="osg-xh-TSz" secondAttribute="bottom" constant="1.5" id="kf1-af-m8t"/>
                                                 <constraint firstItem="Mhu-mf-1LL" firstAttribute="leading" secondItem="osg-xh-TSz" secondAttribute="leading" id="n9L-Po-rKu"/>
                                                 <constraint firstItem="osg-xh-TSz" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leadingMargin" id="pCh-vc-ErL"/>
                                                 <constraint firstItem="osg-xh-TSz" firstAttribute="top" secondItem="rpS-ng-vuL" secondAttribute="topMargin" constant="25" id="wHq-5o-Yds"/>
