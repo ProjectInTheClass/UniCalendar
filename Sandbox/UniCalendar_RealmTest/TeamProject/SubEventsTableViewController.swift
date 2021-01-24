@@ -68,18 +68,22 @@ class SubEventsTableViewController: UITableViewController {
             if isDone {
                 cell.subEventNameLabel.textColor = UIColor.systemGray4
                 attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+                
             // 진행중인 소목표
             } else {
                 cell.subEventNameLabel.textColor = UIColor.black
             }
             cell.subEventNameLabel.attributedText = attributeString
+            
         // subEvent가 없을때
         } else {
             cell.imageView?.image = UIImage(named: "importance_blank")
+            cell.subEventNameLabel.attributedText = NSMutableAttributedString(string: "새로운 소목표를 등록해주세요🤓")
             cell.subEventNameLabel.textColor = UIColor.lightGray
             cell.subEventNameLabel.font = UIFont(name: "System", size: 12)
             cell.subEventNameLabel.textAlignment = .left
-            cell.subEventNameLabel.text = "새로운 소목표를 등록해주세요🤓"
+            // cell.subEventNameLabel.text = "새로운 소목표를 등록해주세요🤓"
+
         }
         
         return cell
@@ -94,20 +98,29 @@ class SubEventsTableViewController: UITableViewController {
             tableView.reloadData()
             
             // 소목표 체크 변경시 ProgressBar Percent 바꿔주기
-            var subIsDoneNum: Int = 0
-            var progressPercent: Float = 0.0
-            
-            subIsDoneNum = self.event.subEvents.filter({ (sub: SubEvent) -> Bool in return
-                sub.subEventIsDone == true
-            }).count
-            
-            progressPercent = Float(subIsDoneNum) / Float(self.event.subEvents.count)
-            belongedContainer?.progressView.setProgress(progressPercent, animated: false)
-            belongedContainer?.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
+            belongedContainer?.updateProgressBar()
         } else {
             // Todo
             
         }
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return self.event.subEvents.count > 0
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+        
+            if self.event.subEvents.count > 0 {
+                let selectedSubEvent = self.event.subEvents[indexPath.row]
+                try? api.realm.write() {
+                    api.realm.delete(selectedSubEvent)
+                }
+                tableView.reloadData()
+                belongedContainer?.updateProgressBar()
+            } else { return }
+        }
+    }
 }

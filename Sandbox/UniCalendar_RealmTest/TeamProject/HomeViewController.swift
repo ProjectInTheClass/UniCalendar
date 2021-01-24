@@ -111,6 +111,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
             
 
         }
+        
         cell.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
         
         return cell

@@ -15,7 +15,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     
     var dDay: String = ""
     var eventName: String = ""
-    var progressPercent: Float = 0.0
+
     var selectedCell:Int = 0
     
     // @IBOutlet weak var detailTableView: UITableView!
@@ -39,7 +39,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
             api.realm.add([newSubEvent])
             //SubEvent(subEventName: newSubEventName, subEventIsDone: false)
         }
-        
+        updateProgressBar()
         subEventAddTextField.text = ""
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -51,7 +51,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
         events = api.callNotDoneEvent()
-        self.reloadInputViews()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -101,19 +101,24 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         }
         
         eventNameLabel.text = event.eventName
+        updateProgressBar()
+    }
+    
+    func updateProgressBar () {
+        let event = self.events[selectedCell]
+        var subIsDoneNum: Int = 0
+        var progressPercent: Float = 0.0
         
         if event.subEvents.count != 0 {
-            var subIsDoneNum: Int = 0
             subIsDoneNum = event.subEvents.filter(
                 { (sub: SubEvent) -> Bool in return
                 sub.subEventIsDone == true }).count
             
             progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
-            progressView.setProgress(progressPercent, animated: false)
-
         }
-            progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
-
+        progressView.setProgress(progressPercent, animated: false)
+        progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
+        
     }
 
 }
