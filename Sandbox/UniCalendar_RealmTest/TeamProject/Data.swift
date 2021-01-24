@@ -51,7 +51,6 @@ class Category: Object {
     }
 }
 
-
 class Event: Object {
     @objc dynamic var eventName: String = ""
     @objc dynamic var eventDday: Date = Date.init()

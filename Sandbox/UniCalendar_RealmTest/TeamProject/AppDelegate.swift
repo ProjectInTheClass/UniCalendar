@@ -18,17 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //var count: Int = 0
         var change: Int = 0
         
+//        let day = DateFormatter()
+//        day.dateFormat = "yyyy-mm-dd"
+        
+        let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
+        
         if events.isEmpty == false {
-//            for event in events {
-//                if event.eventDday > Date.init() {
-//                    change += 1
-//                    try! api.realm.write(){
-//                        events[change].eventIsDone = true
-//                    }
-//                }
-//            }
             while change < events.count {
-                if events[change].eventDday < Date.init() {
+                let eventDday = Calendar.current.dateComponents([.year, .month, .day], from: events[change].eventDday)
+                if eventDday.year! < today.year! && eventDday.month! < today.month! && eventDday.day! < today.day! {
                     try! api.realm.write(){
                         events[change].eventIsDone = true
                     }
