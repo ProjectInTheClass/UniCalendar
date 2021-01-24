@@ -17,12 +17,12 @@ class API {
     }
     
     func callNotDoneEvent() -> [Event] {
-        let r: [Event] = realm.objects(Event.self).filter("eventIsDone = false").map { $0 }
+        let r: [Event] = realm.objects(Event.self).filter("eventIsDone = false").sorted(byKeyPath: "eventDday").map { $0 }
         return r
     }
     
     func callDoneEvent() -> [Event] {
-        let r: [Event] = realm.objects(Event.self).filter("eventIsDone = true").map { $0 }
+        let r: [Event] = realm.objects(Event.self).filter("eventIsDone = true").sorted(byKeyPath: "eventDday", ascending: false).map { $0 }
         return r
     }
     
