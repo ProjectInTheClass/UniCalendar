@@ -25,7 +25,11 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     var category = api.callCategory()
     
     var selected: Int = 0
+    var selectedCategory: Int = 0
     
+    @IBAction func unwindToEventEdit(segue: UIStoryboardSegue){
+        
+    }
     
     var dateFormatter:DateFormatter {
         let df = DateFormatter()
@@ -46,15 +50,34 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
+    func removeFromBeforeCategory() {
+        var beforeCategory = event[selected].parentCategory[0]
+        var count: Int = 0
+        for events in beforeCategory.eventsInCategory {
+            if events.eventName == event[selected].eventName {
+                    beforeCategory.eventsInCategory.remove(at: count)
+                }
+                count += 1
+            }
+            
+        }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToDetail"{
             let selectedEvent = event[selected]
             try? api.realm.write(){
-                selectedEvent.parentCategory[0].categoryName = categoryLabel.text!
+                removeFromBeforeCategory()
+                category[selectedCategory].eventsInCategory.append(selectedEvent)
                 selectedEvent.eventName = eventName.text!
                 selectedEvent.eventDday = datePicker.date
                 selectedEvent.importance = Int(importanceSlider.value)
             }
+        } else if segue.identifier == "toCategorySelect" {
+            guard let navigation = segue.destination as? UINavigationController else {return}
+            
+            guard let view = navigation.viewControllers[0] as? CategorySelectionEditTableViewController else {return}
+    
+            view.selected = selected
         }
     }
     
@@ -84,7 +107,9 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
 //        if indexPath.row == 0 {
 //            print("make category change")
 //        } else if indexPath.row ==
-        if indexPath.row == 0 && tableView.cellForRow(at: indexPath)?.textLabel?.text == "이 일정 삭제하기" {
+        if indexPath.row == 0 && tableView.cellForRow(at: indexPath)?.textLabel?.text == "카테고리"{
+            performSegue(withIdentifier: "toCategorySelect", sender: nil)
+        } else if indexPath.row == 0 && tableView.cellForRow(at: indexPath)?.textLabel?.text == "이 일정 삭제하기" {
             deleteEvent()
         }
     }

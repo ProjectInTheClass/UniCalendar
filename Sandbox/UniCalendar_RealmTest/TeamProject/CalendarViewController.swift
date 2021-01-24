@@ -14,6 +14,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var calendarEventTableView: UITableView!
     
+    var categories = api.callCategory()
     var events: [Event] = api.callEvent()
     var eventDates = [Date]()
     var selectedDateEvents = [Event]()
@@ -45,10 +46,12 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     override func viewWillAppear(_ animated: Bool) {
         events = api.callEvent()
+        categories = api.callCategory()
         for event in events {
             let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
             eventDates.append(day)
         }
+        self.calendarEventTableView.reloadData()
     }
     
 }

@@ -1,37 +1,54 @@
 //
-//  CategorySelectionTableViewController.swift
+//  CategorySelectionEditTableViewController.swift
 //  TeamProject
 //
-//  Created by KM on 2021/01/22.
+//  Created by Nayeon Kim on 2021/01/24.
 //
 
 import UIKit
 
-class CategorySelectionTableViewController: UITableViewController {
-
-    var categories: [Category] = api.callCategory()
-    var selectedCategory: Int = 0
+class CategorySelectionEditTableViewController: UITableViewController {
     
+    var events = api.callEvent()
+    var categories = api.callCategory()
+    var selected: Int = 0
+    var selectedCategory: Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let selectedEventCategoryName = events[selected].parentCategory[0].categoryName
+        var count: Int = 0
+        for category in categories {
+            if category.categoryName == selectedEventCategoryName {
+                selectedCategory = count
+            }
+            count += 1
+        }
+        self.tableView.selectRow(at: [0, selectedCategory], animated: false, scrollPosition: UITableView.ScrollPosition.none)
+        self.tableView.cellForRow(at: [0,selectedCategory])?.accessoryType = .checkmark
+    }
 
     // MARK: - Table view data source
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destView = segue.destination
         
-        guard let vc = destView as? EventAddTableViewController else {
+        guard let vc = destView as? EventEditTableViewController else {
             return
         }
         
         vc.categoryLabel.text = categories[selectedCategory].categoryName
         vc.selectedCategory = selectedCategory
+        //vc.selectedCategory = selectedCategory
     }
     
     @IBAction func cancelModal(_ sender: Any) {
@@ -39,7 +56,7 @@ class CategorySelectionTableViewController: UITableViewController {
     }
     
     @IBAction func completeModal(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToAddEventFromCategory", sender: self)
+        performSegue(withIdentifier: "unwindToEventEdit", sender: self)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,7 +68,7 @@ class CategorySelectionTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return categories.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // let cell = tableView.dequeueReusableCell(withIdentifier: "CategorySelectionCell", for: indexPath) as! CategoryCell
         // cell.categoryName.text = categories[indexPath.row].categoryName
@@ -71,6 +88,16 @@ class CategorySelectionTableViewController: UITableViewController {
     }
     
     
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

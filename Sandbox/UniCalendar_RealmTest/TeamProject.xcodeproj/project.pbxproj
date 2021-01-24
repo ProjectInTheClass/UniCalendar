@@ -43,10 +43,10 @@
 		5B4ED58C25B41B6A00852B04 /* PatternCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED58B25B41B6A00852B04 /* PatternCell.swift */; };
 		5B4ED58F25B41B8500852B04 /* CompleteDegreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED58E25B41B8500852B04 /* CompleteDegreeCell.swift */; };
 		5B4ED5BB25B561F800852B04 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4ED5BA25B561F800852B04 /* Data.swift */; };
-		5B5C1DD525BAC41C003D534A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DD425BAC41C003D534A /* TabBarController.swift */; };
 		5B5C1DD925BAD18A003D534A /* EditColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DD825BAD18A003D534A /* EditColorTableViewController.swift */; };
 		5B5C1DE525BC50B4003D534A /* PastEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DE425BC50B3003D534A /* PastEventCell.swift */; };
 		5B5C1DE825BC510F003D534A /* PastEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DE725BC510F003D534A /* PastEventViewController.swift */; };
+		5B64794725BDBC93006F7008 /* CategorySelectionEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B64794625BDBC93006F7008 /* CategorySelectionEditTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,10 +89,10 @@
 		5B4ED58B25B41B6A00852B04 /* PatternCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternCell.swift; sourceTree = "<group>"; };
 		5B4ED58E25B41B8500852B04 /* CompleteDegreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDegreeCell.swift; sourceTree = "<group>"; };
 		5B4ED5BA25B561F800852B04 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		5B5C1DD425BAC41C003D534A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5B5C1DD825BAD18A003D534A /* EditColorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditColorTableViewController.swift; sourceTree = "<group>"; };
 		5B5C1DE425BC50B3003D534A /* PastEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastEventCell.swift; sourceTree = "<group>"; };
 		5B5C1DE725BC510F003D534A /* PastEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastEventViewController.swift; sourceTree = "<group>"; };
+		5B64794625BDBC93006F7008 /* CategorySelectionEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionEditTableViewController.swift; sourceTree = "<group>"; };
 		7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -112,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				183CCAF725B6B45C00F79166 /* EventAddTableViewController.swift */,
-				183CCAFA25B6B7AD00F79166 /* EventEditTableViewController.swift */,
 				185F798125B987E50091D1D7 /* NotificationSettingTableViewController.swift */,
 				185F798425B9F3940091D1D7 /* CategorySelectionTableViewController.swift */,
 				185F798925BAA0160091D1D7 /* NotificationDaysOfWeekTableViewController.swift */,
@@ -147,7 +146,6 @@
 				5B144717259DB3E700968770 /* ViewController.swift */,
 				5B4ED5BA25B561F800852B04 /* Data.swift */,
 				5B144719259DB3E700968770 /* Main.storyboard */,
-				5B5C1DD425BAC41C003D534A /* TabBarController.swift */,
 				5B2841FC25A57A7300FA63BD /* Home */,
 				5B28420025A57ACB00FA63BD /* Calendar */,
 				5B2841FF25A57AA900FA63BD /* Graph */,
@@ -164,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				5B144730259DC1E300968770 /* Home.storyboard */,
+				5B64794425BDBC3C006F7008 /* EditEvent */,
 				5B5C1DEB25BC5127003D534A /* PastEvent */,
 				183CCAF625B6B38300F79166 /* TableViewControllers */,
 				18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */,
@@ -243,6 +242,15 @@
 				5B5C1DE725BC510F003D534A /* PastEventViewController.swift */,
 			);
 			name = PastEvent;
+			sourceTree = "<group>";
+		};
+		5B64794425BDBC3C006F7008 /* EditEvent */ = {
+			isa = PBXGroup;
+			children = (
+				183CCAFA25B6B7AD00F79166 /* EventEditTableViewController.swift */,
+				5B64794625BDBC93006F7008 /* CategorySelectionEditTableViewController.swift */,
+			);
+			name = EditEvent;
 			sourceTree = "<group>";
 		};
 		8A30193E11045150ECE92A22 /* Frameworks */ = {
@@ -381,7 +389,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B4ED58F25B41B8500852B04 /* CompleteDegreeCell.swift in Sources */,
-				5B5C1DD525BAC41C003D534A /* TabBarController.swift in Sources */,
 				18B9DF2925A6DE6200F05FFB /* HomeViewController.swift in Sources */,
 				5B144718259DB3E700968770 /* ViewController.swift in Sources */,
 				5B35DCE725B1F0BA00A73E9E /* CategoryDetailTableViewController.swift in Sources */,
@@ -407,6 +414,7 @@
 				18E4DD2425B4409700876183 /* HomeDetailViewController.swift in Sources */,
 				5B4ED58225B4149900852B04 /* GraphViewController.swift in Sources */,
 				185F798D25BAB6790091D1D7 /* Notification.swift in Sources */,
+				5B64794725BDBC93006F7008 /* CategorySelectionEditTableViewController.swift in Sources */,
 				5B35DCEA25B284DF00A73E9E /* ColorTableViewController.swift in Sources */,
 				0BD91D9725BA929F0096D4B9 /* CalendarEventTableViewCell.swift in Sources */,
 				5B35DCE125B1C81E00A73E9E /* ModalTableViewController.swift in Sources */,
