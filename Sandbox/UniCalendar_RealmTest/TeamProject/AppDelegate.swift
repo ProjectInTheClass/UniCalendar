@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if defaultCategory.isEmpty == true {
             let hwCategory = Category(categoryName: "📓과제", categoryColor: 0)
-            let examCategory = Category(categoryName: "📝시험", categoryColor: 1)
-            let activityCategory = Category(categoryName: "👥대외활동", categoryColor: 2)
+            let examCategory = Category(categoryName: "📝시험", categoryColor: 2)
+            let activityCategory = Category(categoryName: "👥대외활동", categoryColor: 1)
             
             try! api.realm.write(){
                 api.realm.add(hwCategory)

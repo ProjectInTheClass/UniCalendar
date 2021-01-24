@@ -12,7 +12,7 @@ class CategoryDetailTableViewController: UITableViewController {
     
     var category = api.callCategory()
     var event = api.callEvent()
-    var getImageChange: String = "category_purple"
+    var getImageChange: String = ""
     
     var categoryIndex: Int = 0
    
@@ -41,6 +41,7 @@ class CategoryDetailTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //TextField + Color설정
+        getImageChange = calculateColor(color: category[categoryIndex].categoryColor)
         categoryNameTextField.text = category[categoryIndex].categoryName
         categoryColor.image = UIImage(named: calculateColor(color: category[categoryIndex].categoryColor))
     }
