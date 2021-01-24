@@ -17,20 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="wdU-BW-mFQ">
-                                <rect key="frame" x="44" y="354" width="327" height="237"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="327" id="SP5-tW-UN3"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="327" id="hju-mM-AjX"/>
-                                    <constraint firstAttribute="height" constant="237" id="wmn-Bi-JbS"/>
-                                </constraints>
+                                <rect key="frame" x="44" y="156" width="327" height="430.5"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wdU-BW-mFQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="310" id="79V-b6-deV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wdU-BW-mFQ" secondAttribute="trailing" constant="43" id="nAc-VX-bad"/>
-                            <constraint firstItem="wdU-BW-mFQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="44" id="ydM-Mr-KzH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wdU-BW-mFQ" secondAttribute="bottom" constant="275.5" id="GUj-Bh-mAK"/>
+                            <constraint firstItem="wdU-BW-mFQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="112" id="RQt-Wy-2C5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wdU-BW-mFQ" secondAttribute="trailing" constant="43" id="XgQ-u6-D12"/>
+                            <constraint firstItem="wdU-BW-mFQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="44" id="tcC-vr-hWO"/>
                         </constraints>
                     </view>
                 </viewController>

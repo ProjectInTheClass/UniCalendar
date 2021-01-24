@@ -148,7 +148,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 
     override func viewWillAppear(_ animated: Bool) {
         let df = DateFormatter()
-        //df.locale = Locale(identifier: "ko")
+        df.locale = Locale(identifier: "ko")
         df.dateFormat = "M월 dd일 eeee"
         homeNavigationTitle.title = df.string(from: Date.init())
         
