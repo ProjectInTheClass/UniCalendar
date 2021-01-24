@@ -120,7 +120,7 @@
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <progressView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eBT-ar-lwz">
+                                                                        <progressView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="eBT-ar-lwz">
                                                                             <rect key="frame" x="54.999999999999986" y="3.3333333333333428" width="187.66666666666663" height="10"/>
                                                                             <color key="tintColor" systemColor="systemPurpleColor"/>
                                                                             <constraints>
@@ -311,7 +311,7 @@
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <progressView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F7E-mh-DMY">
+                                                                        <progressView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="F7E-mh-DMY">
                                                                             <rect key="frame" x="54.999999999999986" y="3.3333333333333428" width="187.66666666666663" height="10"/>
                                                                             <color key="tintColor" systemColor="systemPurpleColor"/>
                                                                             <constraints>
@@ -470,7 +470,7 @@
                                     <stackView opaque="NO" contentMode="scaleAspectFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xyP-z6-hHp">
                                         <rect key="frame" x="0.0" y="50" width="330" height="15"/>
                                         <subviews>
-                                            <progressView opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="44g-0S-apq">
+                                            <progressView opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="44g-0S-apq">
                                                 <rect key="frame" x="0.0" y="0.0" width="276.33333333333331" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="eSb-Dv-IU4"/>
