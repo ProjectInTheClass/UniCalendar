@@ -17,6 +17,7 @@ class GraphViewController: UIViewController {
     let semiSection : [String] = ["배지🎖", "전체 보기▶️", "대학 생활 패턴 분석🔍", "완료도 분석📊"]
     
     func updatePieChartData(){
+        pieDataEntries.removeAll()
         for category in categories{
             let dataEntry = PieChartDataEntry()
             dataEntry.value = Double(category.eventsInCategory.count)
@@ -29,6 +30,7 @@ class GraphViewController: UIViewController {
     func updateBarChartData(){
         var numOfCompletedEvents = [Int](repeating: 0, count: 12)
         let year = Calendar.current.component(.year, from: Date.init())
+        barDataEntries.removeAll()
         
         for i in 0...11 {
             for event in events{
@@ -63,10 +65,6 @@ class GraphViewController: UIViewController {
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        categories = api.callCategory()
-        events = api.callEvent()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,10 +83,10 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let valFormatter = NumberFormatter()
-        valFormatter.numberStyle = .currency
-        valFormatter.maximumFractionDigits = 2
-        valFormatter.currencySymbol = "$"
+//        let valFormatter = NumberFormatter()
+//        valFormatter.numberStyle = .currency
+//        valFormatter.maximumFractionDigits = 2
+//        valFormatter.currencySymbol = "$"
                 
         let format = NumberFormatter()
         format.numberStyle = .none
@@ -125,7 +123,9 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
             }
             pieChartDataSet.colors = colors as! [NSUIColor]
 
+            
             pieChartData.setValueFormatter(formatter)
+            
             cell.pieChartView.data = pieChartData
             
             cell.pieChartView.data = pieChartData
@@ -134,10 +134,21 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CompleteDegreeCell", for: indexPath) as! CompleteDegreeCell
 
+            cell.completeLabel.text = semiSection[3]
             updateBarChartData()
             let barChartDataSet = BarChartDataSet(entries: barDataEntries, label: "완료 목표 수")
             let barChartData = BarChartData(dataSet: barChartDataSet)
-            cell.barChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: valFormatter)
+        
+            
+            barChartData.setValueFormatter(formatter)
+            barChartDataSet.colors = [UIColor(named: "purple")!] as! [NSUIColor]
+            
+            cell.barChartView.xAxis.gridColor = .clear
+            cell.barChartView.xAxis.labelPosition = .bottom
+            cell.barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
+            cell.barChartView.xAxis.setLabelCount(dataPoints.count, force: false)
+            cell.barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+            cell.barChartView.rightAxis.enabled = false
             cell.barChartView.data = barChartData
             
             return cell

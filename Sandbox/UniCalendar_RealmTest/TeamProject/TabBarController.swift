@@ -9,18 +9,21 @@ import UIKit
 import RealmSwift
 
 class TabBarController: UITabBarController {
-
+    var categories : [Category] = api.callCategory()
+    var events: [Event] = api.callEvent()
+    var subEvents: [SubEvent] = api.callSubEvent()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
+    
        
         
         // Do any additional setup after loading the view.
     }
     
-
+   
     /*
     // MARK: - Navigation
 
