@@ -51,7 +51,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     func removeFromBeforeCategory() {
-        var beforeCategory = event[selected].parentCategory[0]
+        let beforeCategory = event[selected].parentCategory[0]
         var count: Int = 0
         for events in beforeCategory.eventsInCategory {
             if events.eventName == event[selected].eventName {

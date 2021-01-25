@@ -73,6 +73,12 @@ class GraphViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        categories = api.callCategory()
+        events = api.callEvent()
+        tableView.reloadData()
+    }
 
 
 }
