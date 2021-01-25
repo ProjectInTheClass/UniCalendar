@@ -91,6 +91,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
     
     func save() {
         
+        
+        
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
         let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: d!)
