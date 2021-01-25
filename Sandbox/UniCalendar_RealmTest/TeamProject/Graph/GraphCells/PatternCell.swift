@@ -78,6 +78,17 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
 //    }
     
     
+//    @IBAction func segDidChanged(_ sender: UISegmentedControl) {
+//        switch sender.selectedSegmentIndex {
+//        case 0:
+//            <#code#>
+//        case 1:
+//
+//        default:
+//            break
+//        }
+//        }
+//    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

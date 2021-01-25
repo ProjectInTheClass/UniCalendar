@@ -163,6 +163,7 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
             
             barChartData.setValueFormatter(formatter)
             barChartDataSet.colors = [UIColor(named: "purple")!]
+//            barChartDataSetOfSub.colors = [UIColor(named: "blue")!]
             let groupSpace = 0.3
             let barSpace = 0.05
             let barWidth = 0.3

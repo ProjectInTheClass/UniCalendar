@@ -92,6 +92,9 @@
                                                         <segment title="저번 달"/>
                                                         <segment title="이번 달 "/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="segDidChanged:" destination="7QE-sj-xTf" eventType="valueChanged" id="kV6-yg-bsY"/>
+                                                    </connections>
                                                 </segmentedControl>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wZI-vJ-HFB">
                                                     <rect key="frame" x="30" y="127" width="354" height="83"/>
