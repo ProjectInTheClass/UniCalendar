@@ -10,6 +10,14 @@ import UIKit
 let api = API.shared
 
 class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
+    // 빈도
+    // 0: 없음, 1:매일, 2: 사용자설정
+    var checkedFrequency: Int = 0
+    
+    // checkedFrequency가 2 일때, 월(0)~일(6) 중 선택된 요일값 배열
+    // checkedFrequency가 0또는 1이면(없거나 매일이면) 빈 배열
+    var checkedDaysOfWeek: [Int] = Array<Int>()
+    var checkedTime: Int = 0
     
     var categoryString: String = ""
     var selectedCategory: Int = 0
@@ -67,7 +75,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.newEventName.resignFirstResponder()
     }
@@ -90,8 +97,11 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func save() {
-        
-        
+        // 0 1 2
+        print(checkedFrequency)
+        // 0 1 2 3 4 5 6 or []
+        print(checkedDaysOfWeek)
+        print(checkedTime)
         
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
@@ -110,11 +120,20 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
                category[selectedCategory].eventsInCategory.append(newEvent)
                api.realm.add([newEvent])
            }
-                   
         }
         
-       
-        
+        switch self.checkedFrequency {
+        case 0: // 요일: 없음
+            // '없음' 선택이므로 알림 등록 없이 바로 break
+            break
+        case 1: // 요일: 매일
+            break
+        case 2: // 요일: 사용자설정
+            break
+        default:
+            break
+            
+        }
     }
     
     
