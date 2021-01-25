@@ -11,7 +11,7 @@ class CalendarEventTableViewCell: UITableViewCell {
 
     @IBOutlet weak var categoryColorImage: UIImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var dDayLabel: UILabel!
+    @IBOutlet weak var subCompletionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
