@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B4D006325B55C6400437BEB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4D006225B55C6400437BEB /* CalendarViewController.swift */; };
+		0BCA77D025BEE3610003CDC7 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCA77CF25BEE3610003CDC7 /* Cell.swift */; };
 		0BD91D9725BA929F0096D4B9 /* CalendarEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD91D9625BA929F0096D4B9 /* CalendarEventTableViewCell.swift */; };
 		183CCAF825B6B45C00F79166 /* EventAddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CCAF725B6B45C00F79166 /* EventAddTableViewController.swift */; };
 		183CCAFB25B6B7AD00F79166 /* EventEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183CCAFA25B6B7AD00F79166 /* EventEditTableViewController.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		00831C2CA960C3C579C4CB39 /* Pods-TeamProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamProject.debug.xcconfig"; path = "Target Support Files/Pods-TeamProject/Pods-TeamProject.debug.xcconfig"; sourceTree = "<group>"; };
 		0B4D006225B55C6400437BEB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		0BCA77CF25BEE3610003CDC7 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		0BD91D9625BA929F0096D4B9 /* CalendarEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventTableViewCell.swift; sourceTree = "<group>"; };
 		183CCAF725B6B45C00F79166 /* EventAddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAddTableViewController.swift; sourceTree = "<group>"; };
 		183CCAFA25B6B7AD00F79166 /* EventEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditTableViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4ED58825B41B5500852B04 /* BadgeCell.swift */,
+				0BCA77CF25BEE3610003CDC7 /* Cell.swift */,
 				5B4ED58B25B41B6A00852B04 /* PatternCell.swift */,
 				5B4ED58E25B41B8500852B04 /* CompleteDegreeCell.swift */,
 			);
@@ -402,6 +405,7 @@
 				5B5C1DE525BC50B4003D534A /* PastEventCell.swift in Sources */,
 				185F799825BAC4E20091D1D7 /* SubEventCell.swift in Sources */,
 				185F798225B987E50091D1D7 /* NotificationSettingTableViewController.swift in Sources */,
+				0BCA77D025BEE3610003CDC7 /* Cell.swift in Sources */,
 				5B4ED58925B41B5500852B04 /* BadgeCell.swift in Sources */,
 				5B144714259DB3E700968770 /* AppDelegate.swift in Sources */,
 				5B5C1DD925BAD18A003D534A /* EditColorTableViewController.swift in Sources */,

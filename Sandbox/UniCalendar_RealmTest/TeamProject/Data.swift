@@ -56,8 +56,6 @@ class Event: Object {
     @objc dynamic var eventDday: Date = Date.init()
     @objc dynamic var importance: Int = 0
     @objc dynamic var eventIsDone: Bool = false
-    
-
     let subEvents = List<SubEvent>()
     
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
@@ -99,3 +97,4 @@ class Content: Object {
         self.end = end
     }
 }
+

@@ -9,7 +9,7 @@ import UIKit
 
 class NotificationSettingTableViewController: UITableViewController {
 
-    var checkedDay: Int = 0
+    var checkedFrequency: Int = 0
     // 사용자 선택
     
     @IBOutlet weak var userSelectDayLabel: UILabel!
@@ -28,10 +28,15 @@ class NotificationSettingTableViewController: UITableViewController {
         guard let vc = destView as? EventAddTableViewController else {
             return
         }
-        vc.notificationFrequency = getDayFromCheckedRow(row: checkedDay)
+        // 0 1 2
+        vc.notificationFrequency = getDayFromCheckedRow(row: checkedFrequency)
         
+        vc.checkedFrequency = self.checkedFrequency
+        vc.checkedDaysOfWeek = self.checkedDaysOfWeek
+        
+        vc.checkedTime = self.checkedTime
         // checkedDay가 0이면 빈도: 없음 선택이므로, 시간대도 없음
-        if checkedDay != 0 {
+        if checkedFrequency != 0 {
         vc.notificationTime = getTimeFromCheckedRow(row: checkedTime)
         } else {
             vc.notificationTime = ""
@@ -57,7 +62,7 @@ class NotificationSettingTableViewController: UITableViewController {
         let userSelectDayString = getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
         if userSelectDayString == "" {
             userSelectDayLabel.text = "요일 선택"
-            checkedDay = 0
+            checkedFrequency = 0
             self.tableView.cellForRow(at: IndexPath(row: 2, section: 0))?.accessoryType = .disclosureIndicator
         } else {
             userSelectDayLabel.text = userSelectDayString
@@ -74,7 +79,7 @@ class NotificationSettingTableViewController: UITableViewController {
             // 설정된 값은 prepare 함수 안에서 문자열로 변환 후 unwind되어서 넘어감.
             switch (indexPath.section) {
             case 0: // frequency section
-                self.checkedDay = indexPath.row
+                self.checkedFrequency = indexPath.row
                 break
             case 1:
                 self.checkedTime = indexPath.row
@@ -101,7 +106,7 @@ class NotificationSettingTableViewController: UITableViewController {
             // 설정된 값은 prepare 함수 안에서 문자열로 변환 후 unwind되어서 넘어감.
             switch (indexPath.section) {
             case 0: // 빈도(요일) 설정
-                self.checkedDay = indexPath.row
+                self.checkedFrequency = indexPath.row
                 break
             case 1: // 시간 설정
                 self.checkedTime = indexPath.row
