@@ -48,6 +48,8 @@
 		5B5C1DE525BC50B4003D534A /* PastEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DE425BC50B3003D534A /* PastEventCell.swift */; };
 		5B5C1DE825BC510F003D534A /* PastEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5C1DE725BC510F003D534A /* PastEventViewController.swift */; };
 		5B64794725BDBC93006F7008 /* CategorySelectionEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B64794625BDBC93006F7008 /* CategorySelectionEditTableViewController.swift */; };
+		5B64795025BED67F006F7008 /* NotificationSettingEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B64794F25BED67F006F7008 /* NotificationSettingEditTableViewController.swift */; };
+		5B64795325BED697006F7008 /* NotificationDaysOfWeekEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B64795225BED697006F7008 /* NotificationDaysOfWeekEditTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,8 @@
 		5B5C1DE425BC50B3003D534A /* PastEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastEventCell.swift; sourceTree = "<group>"; };
 		5B5C1DE725BC510F003D534A /* PastEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastEventViewController.swift; sourceTree = "<group>"; };
 		5B64794625BDBC93006F7008 /* CategorySelectionEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionEditTableViewController.swift; sourceTree = "<group>"; };
+		5B64794F25BED67F006F7008 /* NotificationSettingEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingEditTableViewController.swift; sourceTree = "<group>"; };
+		5B64795225BED697006F7008 /* NotificationDaysOfWeekEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDaysOfWeekEditTableViewController.swift; sourceTree = "<group>"; };
 		7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -252,6 +256,8 @@
 			children = (
 				183CCAFA25B6B7AD00F79166 /* EventEditTableViewController.swift */,
 				5B64794625BDBC93006F7008 /* CategorySelectionEditTableViewController.swift */,
+				5B64794F25BED67F006F7008 /* NotificationSettingEditTableViewController.swift */,
+				5B64795225BED697006F7008 /* NotificationDaysOfWeekEditTableViewController.swift */,
 			);
 			name = EditEvent;
 			sourceTree = "<group>";
@@ -410,11 +416,13 @@
 				185F799525BAC3790091D1D7 /* SubEventsTableViewController.swift in Sources */,
 				5B5C1DE825BC510F003D534A /* PastEventViewController.swift in Sources */,
 				0B4D006325B55C6400437BEB /* CalendarViewController.swift in Sources */,
+				5B64795025BED67F006F7008 /* NotificationSettingEditTableViewController.swift in Sources */,
 				5B4ED5BB25B561F800852B04 /* Data.swift in Sources */,
 				5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */,
 				183CCAF825B6B45C00F79166 /* EventAddTableViewController.swift in Sources */,
 				183CCAFB25B6B7AD00F79166 /* EventEditTableViewController.swift in Sources */,
 				5B4ED58C25B41B6A00852B04 /* PatternCell.swift in Sources */,
+				5B64795325BED697006F7008 /* NotificationDaysOfWeekEditTableViewController.swift in Sources */,
 				18E4DD2425B4409700876183 /* HomeDetailViewController.swift in Sources */,
 				5B4ED58225B4149900852B04 /* GraphViewController.swift in Sources */,
 				185F798D25BAB6790091D1D7 /* Notification.swift in Sources */,

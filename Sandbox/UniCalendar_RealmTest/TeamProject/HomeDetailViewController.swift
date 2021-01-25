@@ -99,6 +99,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         } else {
             dDayLabel.text = "D-" + String(d)
         }
+        dDayLabel.sizeToFit()
         
         eventNameLabel.text = event.eventName
         updateProgressBar()

@@ -82,8 +82,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="categoryColorImage" destination="bNp-1o-zTo" id="gzV-Nz-omY"/>
-                                            <outlet property="dDayLabel" destination="mD9-0R-1Ft" id="hN3-Ha-7gn"/>
                                             <outlet property="eventNameLabel" destination="0Ex-gD-hKq" id="Ihr-x8-UWk"/>
+                                            <outlet property="subCompletionLabel" destination="mD9-0R-1Ft" id="5y4-RX-Jnm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

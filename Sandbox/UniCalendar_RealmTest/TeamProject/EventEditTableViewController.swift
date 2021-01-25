@@ -84,6 +84,12 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
             guard let view = navigation.viewControllers[0] as? CategorySelectionEditTableViewController else {return}
     
             view.selected = selected
+        } else if segue.identifier == "toNotificationSetting" {
+            guard let navigation = segue.destination as? UINavigationController else {return}
+            
+            guard let view = navigation.viewControllers[0] as? CategorySelectionEditTableViewController else {return}
+    
+            view.selected = selected
         }
     }
     

@@ -16,17 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="wdU-BW-mFQ">
-                                <rect key="frame" x="44" y="156" width="327" height="430.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen_OnlyWords" translatesAutoresizingMaskIntoConstraints="NO" id="7Qs-f4-BdM">
+                                <rect key="frame" x="77" y="311" width="261" height="146"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wdU-BW-mFQ" secondAttribute="bottom" constant="275.5" id="GUj-Bh-mAK"/>
-                            <constraint firstItem="wdU-BW-mFQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="112" id="RQt-Wy-2C5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wdU-BW-mFQ" secondAttribute="trailing" constant="43" id="XgQ-u6-D12"/>
-                            <constraint firstItem="wdU-BW-mFQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="44" id="tcC-vr-hWO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7Qs-f4-BdM" secondAttribute="bottom" constant="405" id="0qo-r1-CJw"/>
+                            <constraint firstItem="7Qs-f4-BdM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="77" id="Djx-cc-uog"/>
+                            <constraint firstItem="7Qs-f4-BdM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="267" id="Tqq-LS-Cgp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Qs-f4-BdM" secondAttribute="trailing" constant="76" id="XQO-v2-5X9"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,7 +36,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchScreen" width="241.33332824707031" height="430.66665649414062"/>
+        <image name="launchScreen_OnlyWords" width="176.66667175292969" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
