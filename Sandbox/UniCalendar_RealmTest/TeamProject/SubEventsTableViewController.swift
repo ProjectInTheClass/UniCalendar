@@ -78,7 +78,7 @@ class SubEventsTableViewController: UITableViewController {
         // subEvent가 없을때
         } else {
             cell.imageView?.image = UIImage(named: "importance_blank")
-            cell.subEventNameLabel.attributedText = NSMutableAttributedString(string: "새로운 소목표를 등록해주세요🤓")
+            cell.subEventNameLabel.attributedText = NSMutableAttributedString(string: "새로운 세부 목표를 등록해주세요🤓")
             cell.subEventNameLabel.textColor = UIColor.lightGray
             cell.subEventNameLabel.font = UIFont(name: "System", size: 12)
             cell.subEventNameLabel.textAlignment = .left
