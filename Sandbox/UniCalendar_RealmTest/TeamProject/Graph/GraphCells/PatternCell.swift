@@ -16,23 +16,60 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
     @IBOutlet weak var patternLabel: UILabel!
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var collectionView: UICollectionView!
-   
-    
-//    func setDataSourceAndDelegate(source: UICollectionViewDelegate & UICollectionViewDataSource, row: Int) {
-//        self.collectionView.dataSource = source
-//        self.collectionView.delegate = source
-//        self.collectionView.tag = row
-//        self.collectionView.reloadData()
-//    }
+    let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        var numOfCategory = 0
+//
+//        for category in categories{
+//            var isInCategory = false
+//            for i in 0..<category.eventsInCategory.count {
+//                let dCalendar = Calendar.current.dateComponents([.year, .month], from: category.eventsInCategory[i].eventDday)
+//                if ((dCalendar.year == today.year) && (dCalendar.month == today.month)){
+//                    isInCategory = true
+//                }
+//            }
+//            if isInCategory == true {
+//                numOfCategory += 1
+//            }
+//        }
+//        return numOfCategory
         return categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
+        var isInCategory = false
+        var numOfEvents = 0
+        
+//        print(indexPath.row)
+        
+        for i in 0..<categories[indexPath.row].eventsInCategory.count{
+            let dCalendar = Calendar.current.dateComponents([.year, .month], from: categories[indexPath.row].eventsInCategory[i].eventDday)
+           
+            if ((dCalendar.year == today.year) && (dCalendar.month == today.month)){
+                isInCategory = true
+                numOfEvents += 1
+//                print(categories[indexPath.row].eventsInCategory[i].eventName)
+//                print("---------------------------------------")
+            }
+            
+        }
+        
         cell.categoryNameLabel.text = categories[indexPath.row].categoryName
-        cell.eventNumLabel.text = String(categories[indexPath.row].eventsInCategory.count) + " 개 "
+        cell.eventNumLabel.text = String(numOfEvents) + " 개 "
+//        print(isInCategory)
+//        if isInCategory == true {
+//            print(categories[indexPath.row].categoryName)
+//            cell.categoryNameLabel.text = categories[indexPath.row].categoryName
+//            cell.eventNumLabel.text = String(numOfEvents) + " 개 "
+//        }
+//        }else{
+//
+//        }
+//
+//            cell.categoryNameLabel.text = categories[indexPath.row].categoryName
+//            cell.eventNumLabel.text = String(categories[indexPath.row].eventsInCategory.count) + " 개 "
         return cell
     }
     

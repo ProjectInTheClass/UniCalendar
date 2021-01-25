@@ -11,21 +11,30 @@ class GraphViewController: UIViewController {
     var pieDataEntries = [PieChartDataEntry]()
     var dataPoints:[String] = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ]
     var barDataEntries = [BarChartDataEntry]()
-    
+    let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
     
     func updatePieChartData(){
         pieDataEntries.removeAll()
         for category in categories{
+            var numOfEvent = 0
+            var isInCategory = false
             let dataEntry = PieChartDataEntry()
-            dataEntry.value = Double(category.eventsInCategory.count)
-//            if category.eventsInCategory.count == 0 {
-//                dataEntry.label = ""
-//            }else{
-//                dataEntry.label = category.categoryName
-//            }
+            for i in 0..<category.eventsInCategory.count {
+                let dCalendar = Calendar.current.dateComponents([.year, .month], from: category.eventsInCategory[i].eventDday)
+                if ((dCalendar.year == today.year) && (dCalendar.month == today.month)){
+                    numOfEvent += 1
+                    isInCategory = true
+                }
+            }
+            
+            if isInCategory == true {
+                dataEntry.value = Double(numOfEvent)
+                dataEntry.label = category.categoryName
+                pieDataEntries.append(dataEntry)
+            }
 //            
-            dataEntry.label = category.categoryName
-            pieDataEntries.append(dataEntry)
+            
+            
         }
     }
     
