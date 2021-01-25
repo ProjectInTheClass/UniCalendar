@@ -97,11 +97,13 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func save() {
+
         // 0 1 2
         print(checkedFrequency)
         // 0 1 2 3 4 5 6 or []
         print(checkedDaysOfWeek)
         print(checkedTime)
+
         
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
@@ -134,8 +136,12 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
             break
             
         }
+
     }
     
+    func savePushNotification() {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

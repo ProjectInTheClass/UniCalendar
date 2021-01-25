@@ -37,6 +37,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
         calendarView.appearance.eventDefaultColor = UIColor.purple
         calendarView.appearance.eventSelectionColor = UIColor.purple
+        // 스와이프 스크롤 작동 여부 ( 활성화하면 좌측 우측 상단에 다음달 살짝 보임, 비활성화하면 사라짐 )
         
         calendarView.scrollDirection = .horizontal
         
