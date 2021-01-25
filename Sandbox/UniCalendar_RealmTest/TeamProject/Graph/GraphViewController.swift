@@ -90,6 +90,7 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
                 
         let format = NumberFormatter()
         format.numberStyle = .none
+        format.zeroSymbol = "";
         let formatter = DefaultValueFormatter(formatter: format)
         
         if indexPath.row == 0 {
