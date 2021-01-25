@@ -14,6 +14,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var homeNavigationTitle: UINavigationItem!
     
+    var headerCheerUpMessage: String = ""
     var events: [Event] = api.callNotDoneEvent()
     var selectedCellBefore: Int = 0
     
@@ -31,6 +32,21 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 //        return importanceImage
 //    }
 //
+
+    
+    // header
+    func tableView(_ tableView: UITableView, titleForHeaderInSection
+                                section: Int) -> String? {
+        headerCheerUpMessage = "너무 힘들면 쉬어가요🙌"
+        return headerCheerUpMessage
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "System", size: 18)
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(30) // 이게 CGFloat 양수 최소값 상수
+    }
     
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -147,6 +163,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         let df = DateFormatter()
         df.locale = Locale(identifier: "ko")

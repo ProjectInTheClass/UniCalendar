@@ -214,12 +214,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-58-KSk">
-                                <rect key="frame" x="0.0" y="128" width="390" height="633"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-58-KSk">
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="147" id="W5b-1c-EtI" customClass="EventCell" customModule="TeamProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="390" height="147"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="390" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W5b-1c-EtI" id="XUl-HV-S52">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="147"/>
@@ -378,23 +378,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="너무 힘들 때는 쉬어가욥🙌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rby-2I-BXU">
-                                <rect key="frame" x="15" y="93" width="175" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="w70-4S-DHz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="w70-4S-DHz" firstAttribute="trailing" secondItem="rby-2I-BXU" secondAttribute="trailing" constant="200" id="2Cf-VW-pqK"/>
                             <constraint firstItem="zdT-58-KSk" firstAttribute="leading" secondItem="w70-4S-DHz" secondAttribute="leading" id="Bs5-7B-s5P"/>
-                            <constraint firstItem="rby-2I-BXU" firstAttribute="leading" secondItem="w70-4S-DHz" secondAttribute="leading" constant="15" id="GUI-gu-bih"/>
-                            <constraint firstItem="zdT-58-KSk" firstAttribute="top" secondItem="rby-2I-BXU" secondAttribute="bottom" id="QPA-Lg-YvK"/>
                             <constraint firstItem="w70-4S-DHz" firstAttribute="bottom" secondItem="zdT-58-KSk" secondAttribute="bottom" id="Rzv-gx-0xT"/>
-                            <constraint firstItem="rby-2I-BXU" firstAttribute="top" secondItem="w70-4S-DHz" secondAttribute="top" constant="5" id="Zmb-Al-45V"/>
-                            <constraint firstItem="zdT-58-KSk" firstAttribute="top" secondItem="w70-4S-DHz" secondAttribute="top" constant="40" id="hB1-dz-ouS"/>
+                            <constraint firstItem="zdT-58-KSk" firstAttribute="top" secondItem="w70-4S-DHz" secondAttribute="top" id="hB1-dz-ouS"/>
                             <constraint firstItem="w70-4S-DHz" firstAttribute="trailing" secondItem="zdT-58-KSk" secondAttribute="trailing" id="rLf-Hs-dCb"/>
                         </constraints>
                     </view>
@@ -443,7 +433,7 @@
                             <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="tHc-Em-SOP">
                                 <rect key="frame" x="30" y="118" width="330" height="65"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c7J-tc-yf1">
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c7J-tc-yf1">
                                         <rect key="frame" x="0.0" y="0.0" width="330" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-DAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYe-aX-YqH">
@@ -464,7 +454,9 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="aYe-aX-YqH" firstAttribute="top" secondItem="c7J-tc-yf1" secondAttribute="top" id="MRW-BK-2ko"/>
+                                            <constraint firstItem="Amr-8m-ZUu" firstAttribute="bottom" secondItem="aYe-aX-YqH" secondAttribute="bottom" id="RUw-q6-oKb"/>
                                             <constraint firstItem="aYe-aX-YqH" firstAttribute="leading" secondItem="c7J-tc-yf1" secondAttribute="leading" id="Zpx-1q-L8c"/>
+                                            <constraint firstItem="Amr-8m-ZUu" firstAttribute="leading" secondItem="aYe-aX-YqH" secondAttribute="trailing" constant="8" id="efj-Lo-8IN"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xyP-z6-hHp">
@@ -1775,7 +1767,7 @@
                 <navigationController storyboardIdentifier="HOME" automaticallyAdjustsScrollViewInsets="NO" id="2ZK-Wm-MZI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="홈" image="house" catalog="system" selectedImage="house.fill" id="f2u-7P-g0d"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="kFz-JQ-dW6">
+                    <navigationBar key="navigationBar" autoresizesSubviews="NO" contentMode="scaleToFill" largeTitles="YES" id="kFz-JQ-dW6">
                         <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
