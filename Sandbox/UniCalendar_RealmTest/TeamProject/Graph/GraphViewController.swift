@@ -4,33 +4,30 @@ import Charts
 class GraphViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var barChartView: BarChartView!
-    
+   
+    let semiSection : [String] = ["배지🎖", "전체 보기▶️", "대학 생활 패턴 분석🔍", "완료도 분석📊"]
     var categories : [Category] = api.callCategory()
     var events: [Event] = api.callEvent()
     var pieDataEntries = [PieChartDataEntry]()
     var dataPoints:[String] = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ]
     var barDataEntries = [BarChartDataEntry]()
     
-//    var numbers: [Double] = [] // 차트를 그릴 데이터의 배열
-    
-    let semiSection : [String] = ["배지🎖", "전체 보기▶️", "대학 생활 패턴 분석🔍", "완료도 분석📊"]
     
     func updatePieChartData(){
         pieDataEntries.removeAll()
         for category in categories{
             let dataEntry = PieChartDataEntry()
             dataEntry.value = Double(category.eventsInCategory.count)
-            if category.eventsInCategory.count == 0 {
-                dataEntry.label = ""
-            }else{
-                dataEntry.label = category.categoryName
-            }
-            
+//            if category.eventsInCategory.count == 0 {
+//                dataEntry.label = ""
+//            }else{
+//                dataEntry.label = category.categoryName
+//            }
+//            
+            dataEntry.label = category.categoryName
             pieDataEntries.append(dataEntry)
         }
     }
-
     
     func updateBarChartData(){
         var numOfCompletedEvents = [Int](repeating: 0, count: 12)
@@ -69,6 +66,7 @@ class GraphViewController: UIViewController {
         }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
           categories = api.callCategory()
           events = api.callEvent()
@@ -79,11 +77,7 @@ class GraphViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
-        // Do any additional setup after loading the view.
     }
-
 
 }
 
@@ -93,11 +87,6 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let valFormatter = NumberFormatter()
-//        valFormatter.numberStyle = .currency
-//        valFormatter.maximumFractionDigits = 2
-//        valFormatter.currencySymbol = "$"
-                
         let format = NumberFormatter()
         format.numberStyle = .none
         format.zeroSymbol = "";
@@ -133,10 +122,10 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
 
                 colors.append( UIColor(named: color)! )
             }
-            pieChartDataSet.colors = colors as! [NSUIColor]
+            pieChartDataSet.colors = colors
             pieChartData.setValueFormatter(formatter)
             
-            cell.pieChartView.animate(xAxisDuration: 2.0)
+            cell.pieChartView.animate(xAxisDuration: 1.0)
             cell.pieChartView.data = pieChartData
             
             return cell
@@ -151,7 +140,7 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
         
             
             barChartData.setValueFormatter(formatter)
-            barChartDataSet.colors = [UIColor(named: "purple")!] as! [NSUIColor]
+            barChartDataSet.colors = [UIColor(named: "purple")!]
             
             cell.barChartView.xAxis.gridColor = .clear
             cell.barChartView.xAxis.labelPosition = .bottom
@@ -166,18 +155,24 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
 
+    
 }
 
-//import UIKit
-//import RealmSwift
-//
-//class GraphViewController: UIViewController {
 //
 //
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view.
+//extension GraphViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 1
 //    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+//        cell.categoryNameLabel.text = categories[indexPath.row].categoryName
+//        cell.eventNumLabel.text = String(categories[indexPath.row].eventsInCategory.count)
 //
-//
+//        return cell
+//               
+//    }
+//    
+//    
 //}
