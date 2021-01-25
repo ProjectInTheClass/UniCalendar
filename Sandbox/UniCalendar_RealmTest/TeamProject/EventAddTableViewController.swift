@@ -118,11 +118,18 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         newEventName.delegate = self
         
-        // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
