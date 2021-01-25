@@ -29,6 +29,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
    
     
     var event = api.callEvent()
+    var doneEvent = api.callDoneEvent()
+    var notDoneEvent = api.callNotDoneEvent()
     var category = api.callCategory()
     
     var dateFormatter:DateFormatter {
@@ -91,15 +93,25 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
         
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
+        let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: d!)
+        let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
         
-        let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false)
-        
-        
-        try! api.realm.write{
-            category[selectedCategory].eventsInCategory.append(newEvent)
-            api.realm.add([newEvent])
+        if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) {
+            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: true)
+            try! api.realm.write(){
+                category[selectedCategory].eventsInCategory.append(newEvent)
+                api.realm.add([newEvent])
+            }
+        } else {
+            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false)
+           try! api.realm.write{
+               category[selectedCategory].eventsInCategory.append(newEvent)
+               api.realm.add([newEvent])
+           }
+                   
         }
         
+       
         
     }
     
