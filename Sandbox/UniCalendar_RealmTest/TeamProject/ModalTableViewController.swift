@@ -52,13 +52,27 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool){
         //커서+키보드 반응
         self.nameTextField.becomeFirstResponder()
+
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+           self.view.endEditing(true)
+       }
     
+    
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+
     }
     
     
