@@ -32,13 +32,17 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var subEventAddButton: UIButton!
     
     @IBAction func subEventAddButtonTapped(_ sender: Any) {
-        let newSubEventName: String = subEventAddTextField.text ?? ""
+        guard let newSubEventName: String = subEventAddTextField.text, !newSubEventName.isEmpty else {
+            return
+        }
+        
         let newSubEvent: SubEvent = SubEvent(subEventName: newSubEventName, subEventIsDone: false)
         try? api.realm.write() {
             self.events[selectedCell].subEvents.append(newSubEvent)
             api.realm.add([newSubEvent])
             //SubEvent(subEventName: newSubEventName, subEventIsDone: false)
         }
+        
         updateProgressBar()
         subEventAddTextField.text = ""
         
