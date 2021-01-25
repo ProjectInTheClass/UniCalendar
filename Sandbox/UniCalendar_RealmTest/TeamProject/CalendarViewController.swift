@@ -38,7 +38,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         calendarView.appearance.eventDefaultColor = UIColor.purple
         calendarView.appearance.eventSelectionColor = UIColor.purple
         
-        calendarView.scrollDirection = .vertical
+        calendarView.scrollDirection = .horizontal
         
        
         
