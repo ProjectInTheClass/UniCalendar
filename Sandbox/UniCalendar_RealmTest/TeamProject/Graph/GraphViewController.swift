@@ -21,7 +21,12 @@ class GraphViewController: UIViewController {
         for category in categories{
             let dataEntry = PieChartDataEntry()
             dataEntry.value = Double(category.eventsInCategory.count)
-            dataEntry.label = category.categoryName
+            if category.eventsInCategory.count == 0 {
+                dataEntry.label = ""
+            }else{
+                dataEntry.label = category.categoryName
+            }
+            
             pieDataEntries.append(dataEntry)
         }
     }
@@ -64,20 +69,19 @@ class GraphViewController: UIViewController {
         }
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+          categories = api.callCategory()
+          events = api.callEvent()
+          tableView.reloadData()
+      }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
+        
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        categories = api.callCategory()
-        events = api.callEvent()
-        tableView.reloadData()
     }
 
 
@@ -97,6 +101,7 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
         let format = NumberFormatter()
         format.numberStyle = .none
         format.zeroSymbol = "";
+        
         let formatter = DefaultValueFormatter(formatter: format)
         
         if indexPath.row == 0 {
@@ -129,13 +134,11 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
                 colors.append( UIColor(named: color)! )
             }
             pieChartDataSet.colors = colors as! [NSUIColor]
-
-            
             pieChartData.setValueFormatter(formatter)
             
+            cell.pieChartView.animate(xAxisDuration: 2.0)
             cell.pieChartView.data = pieChartData
             
-            cell.pieChartView.data = pieChartData
             return cell
         }
         else {

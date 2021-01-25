@@ -312,7 +312,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <progressView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="F7E-mh-DMY">
-                                                                            <rect key="frame" x="54.999999999999986" y="3.3333333333333428" width="187.66666666666663" height="10"/>
+                                                                            <rect key="frame" x="55.000000000000014" y="3.3333333333333428" width="175.33333333333337" height="10"/>
                                                                             <color key="tintColor" systemColor="systemPurpleColor"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="10" id="3QM-yt-s6l"/>
@@ -320,10 +320,7 @@
                                                                             <color key="progressTintColor" systemColor="systemPurpleColor"/>
                                                                         </progressView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1S-bB-f2V">
-                                                                            <rect key="frame" x="252.66666666666669" y="2.3333333333333428" width="25" height="12"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="25" id="doV-oZ-NXk"/>
-                                                                            </constraints>
+                                                                            <rect key="frame" x="240.33333333333334" y="2.3333333333333428" width="37.333333333333343" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -521,6 +518,7 @@
                             <constraint firstItem="tHc-Em-SOP" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="30" id="UXu-xW-g0J"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8ic-Ry-QAE" secondAttribute="trailing" constant="25" id="cA4-ha-e4c"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="Z93-Vu-s4u" secondAttribute="bottom" constant="159" id="ffM-Cm-88x"/>
+                            <constraint firstItem="hwg-Qg-1fB" firstAttribute="top" secondItem="tHc-Em-SOP" secondAttribute="bottom" constant="16" id="gb8-BM-QjB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="rSU-7W-1W7">
