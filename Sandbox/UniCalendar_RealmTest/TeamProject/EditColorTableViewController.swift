@@ -32,8 +32,9 @@ class EditColorTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool){
         //처음 view 불러왔을때 기존에 저장되어있는 색깔 선택되어 있는 상태 표현
-        tableView.selectRow(at: [0,firstColorIndex], animated: false, scrollPosition: UITableView.ScrollPosition.none)
+        tableView.selectRow(at: [0,firstColorIndex], animated: true, scrollPosition: UITableView.ScrollPosition.none)
         tableView.cellForRow(at: [0,firstColorIndex])?.accessoryType = .checkmark
+        confirmedColor = firstColorIndex
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
