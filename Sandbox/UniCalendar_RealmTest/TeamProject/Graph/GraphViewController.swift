@@ -10,7 +10,8 @@ class GraphViewController: UIViewController {
     var events: [Event] = api.callEvent()
     var pieDataEntries = [PieChartDataEntry]()
     var dataPoints:[String] = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ]
-    var barDataEntries = [BarChartDataEntry]()
+    var barDataEntriesOfEvents = [BarChartDataEntry]()
+    var barDataEntriesOfSubEvents = [BarChartDataEntry]()
     let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
     
     func updatePieChartData(){
@@ -32,26 +33,37 @@ class GraphViewController: UIViewController {
                 dataEntry.label = category.categoryName
                 pieDataEntries.append(dataEntry)
             }
-//            
+//
             
             
         }
     }
     
     func updateBarChartData(){
+        
         var numOfCompletedEvents = [Int](repeating: 0, count: 12)
+        var numOfCompletedSubEvents = [Int](repeating: 0, count: 12)
+
         let year = Calendar.current.component(.year, from: Date.init())
-        barDataEntries.removeAll()
+        barDataEntriesOfEvents.removeAll()
+        barDataEntriesOfSubEvents.removeAll()
         
         for i in 0...11 {
             for event in events{
                 let components = Calendar.current.dateComponents([.year, .month], from: event.eventDday)
                 if (year == components.year) && ((i + 1) == components.month){
                     numOfCompletedEvents[i] += 1
+                    for j in 0..<event.subEvents.count{
+                        if event.subEvents[j].subEventIsDone {
+                            numOfCompletedSubEvents[i] += 1
+                        }
+                    }
                 }
             }
-            let dataEntry = BarChartDataEntry(x: Double(i), y : Double(numOfCompletedEvents[i]))
-            barDataEntries.append(dataEntry)
+            let dataEntryOfEvents = BarChartDataEntry(x: Double(i), y : Double(numOfCompletedEvents[i]))
+            let dataEntryOfSubEvents = BarChartDataEntry(x: Double(i), y : Double(numOfCompletedSubEvents[i]))
+            barDataEntriesOfEvents.append(dataEntryOfEvents)
+            barDataEntriesOfSubEvents.append(dataEntryOfSubEvents)
         }
     }
 
@@ -144,13 +156,31 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.completeLabel.text = semiSection[3]
             updateBarChartData()
-            let barChartDataSet = BarChartDataSet(entries: barDataEntries, label: "완료 목표 수")
-            let barChartData = BarChartData(dataSet: barChartDataSet)
-        
+            let barChartDataSet = BarChartDataSet(entries: barDataEntriesOfEvents, label: "완료 목표 수")
+            let barChartDataSetOfSub = BarChartDataSet(entries: barDataEntriesOfSubEvents, label: "완료 세부 목표 수")
+            let dataSets: [BarChartDataSet] = [barChartDataSet,barChartDataSetOfSub]
+            let barChartData = BarChartData(dataSets: dataSets)
             
             barChartData.setValueFormatter(formatter)
             barChartDataSet.colors = [UIColor(named: "purple")!]
-            
+            let groupSpace = 0.3
+            let barSpace = 0.05
+            let barWidth = 0.3
+            barChartData.barWidth = barWidth;
+            cell.barChartView.xAxis.axisMinimum = Double(0)
+            let gg = barChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+            cell.barChartView.xAxis.axisMaximum = Double(0) + gg * Double(12)
+            barChartData.groupBars(fromX: Double(0), groupSpace: groupSpace, barSpace: barSpace)
+            cell.barChartView.notifyDataSetChanged()
+//            let legend = cell.barChartView.legend
+//            legend.enabled = true
+//            legend.horizontalAlignment = .right
+//            legend.verticalAlignment = .top
+//            legend.orientation = .vertical
+//            legend.drawInside = true
+//            legend.yOffset = 10.0;
+//            legend.xOffset = 10.0;
+//            legend.yEntrySpace = 0.0;
             cell.barChartView.xAxis.gridColor = .clear
             cell.barChartView.xAxis.labelPosition = .bottom
             cell.barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
@@ -173,15 +203,15 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return 1
 //    }
-//    
+//
 //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
 //        cell.categoryNameLabel.text = categories[indexPath.row].categoryName
 //        cell.eventNumLabel.text = String(categories[indexPath.row].eventsInCategory.count)
 //
 //        return cell
-//               
+//
 //    }
-//    
-//    
+//
+//
 //}
