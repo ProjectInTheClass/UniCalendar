@@ -110,10 +110,7 @@ class SubEventsTableViewController: UITableViewController {
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
             
             cell.subEventNameLabel.attributedText = attributeString
-            
-        
         }
-        
         return cell
     }
     
@@ -150,7 +147,7 @@ class SubEventsTableViewController: UITableViewController {
                 
                 print("현재이벤트 알림id 개수 \(notificationIDsOfcurrentEvent.count)")
                 // 기존 알림 삭제
-                // EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
+                EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
 
                 // 새로운 진행 단계에 맞는 알림 설정
                 //EventAddTableViewController().savePushNotification(event: event, step: <#T##Int#>, frequency: <#T##Int#>, time: <#T##Int#>, daysOfWeek: <#T##[Int]?#>)

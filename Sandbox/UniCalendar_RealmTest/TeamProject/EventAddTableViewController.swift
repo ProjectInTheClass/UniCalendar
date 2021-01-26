@@ -166,8 +166,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         // let content = contents[step]
         
         // 알림 메세지 구성
-        // event id도 넣어줘야함
-        
         let calendar = Calendar.current
         
         let df = DateFormatter()
@@ -196,12 +194,20 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                 
+                let notificationId = UUID().uuidString
                 // identifier 나중에 데이터베이스에 저장해줘야함
-                let request = UNNotificationRequest(identifier: UUID().uuidString,
+                let request = UNNotificationRequest(identifier: notificationId,
                                                     content: notificationContent,
                                                     trigger: trigger)
                 // D-Day 까지만 등록하고, 이후에는 등록 안함.
                 if interval >= 0 {
+                    let pushAlarm = PushAlarm()
+                    pushAlarm.id = notificationId
+                    
+                    try! api.realm.write() {
+                        api.realm.add(pushAlarm)
+                        event.pushAlarmID.append(pushAlarm)
+                    }
                     addNotificationToCenter(request: request, event: event)
                 }
             }
@@ -269,7 +275,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                         pushAlarm.id = notificationId
                         
                         try! api.realm.write() {
-                            api.realm.add([pushAlarm])
+                            api.realm.add(pushAlarm)
                             event.pushAlarmID.append(pushAlarm)
                         }
                         // 몇개의 알람 예정되어있는지
