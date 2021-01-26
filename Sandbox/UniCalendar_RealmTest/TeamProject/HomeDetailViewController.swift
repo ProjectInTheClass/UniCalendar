@@ -11,7 +11,7 @@ import RealmSwift
 class HomeDetailViewController: UIViewController, UITextFieldDelegate {
   
     //let subGoals: [String] = ["소목표1", "소목표2", "소목표3"]
-    var events: [Event] = api.callNotDoneEvent()
+    var events: [Event] = api.callNotPassedEvent()
     
     var dDay: String = ""
     var eventName: String = ""
@@ -52,7 +52,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     //var myEvents = Event()
     
     @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
-        events = api.callNotDoneEvent()
+        events = api.callNotPassedEvent()
 
     }
     
@@ -64,12 +64,39 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         } else if segue.identifier == "ToEdit" {
             let view = segue.destination as? EventEditTableViewController
             view?.selected = selectedCell
+//        } else if segue.identifier == "unwindToHomeFromDetail" {
+//            let view = segue.destination as? HomeViewController
+            
+            
         }
+    }
+    
+    func checkDone() {
+        var countTrue: Int = 0
+        let event = events[selectedCell]
+        for subEvent in event.subEvents {
+            if subEvent.subEventIsDone == true {
+                countTrue += 1
+            }
+        }
+        
+        if countTrue == event.subEvents.count {
+            try? api.realm.write(){
+                event.eventIsDone = true
+            }
+        }
+        
+        events = api.callEvent()
     }
     
     @IBAction func edit(_ sender: Any) {
         performSegue(withIdentifier: "ToEdit", sender: selectedCell)
     }
+    
+//    @IBAction func toHome(_ sender: Any) {
+//        performSegue(withIdentifier: "unwindToHomeFromDetail", sender: nil)
+//    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +149,10 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         progressView.setProgress(progressPercent, animated: false)
         progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        checkDone()
     }
 
 }

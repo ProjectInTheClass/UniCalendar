@@ -38,8 +38,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
    
     
     var event = api.callEvent()
-    var doneEvent = api.callDoneEvent()
-    var notDoneEvent = api.callNotDoneEvent()
+    var doneEvent = api.callPassedEvent()
+    var notDoneEvent = api.callNotPassedEvent()
     var category = api.callCategory()
     
     var dateFormatter:DateFormatter {

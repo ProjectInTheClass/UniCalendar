@@ -21,7 +21,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
    
     @IBOutlet weak var deleteCell: UITableViewCell!
     
-    var event = api.callNotDoneEvent()
+    var event = api.callNotPassedEvent()
     var category = api.callCategory()
     
     var selected: Int = 0
