@@ -156,7 +156,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        // notification permission
         UNUserNotificationCenter
             .current()
             .requestAuthorization(options: [.alert, .badge]) { granted, error in

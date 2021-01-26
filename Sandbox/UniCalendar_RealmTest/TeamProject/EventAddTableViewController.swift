@@ -113,7 +113,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
 
         var eventForNotification: Event = Event()
         
-
+        // 이벤트 추가
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
         let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: d!)
@@ -158,9 +158,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         // 알림 메세지 구성
         // event id도 넣어줘야함
         
-        //let today = Date()
-        // let dDay = event.eventDday
-        
         let calendar = Calendar.current
         
         let df = DateFormatter()
@@ -195,7 +192,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                                                     trigger: trigger)
                 // D-Day 까지만 등록하고, 이후에는 등록 안함.
                 if interval >= 0 {
-                    addNotificationToCenter(request: request)
+                    addNotificationToCenter(request: request, event: event)
                 }
             }
         } else if frequency == 2 { // 사용자 설정
@@ -249,13 +246,14 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                     
+                    let notificationId = UUID().uuidString
                     // todo identifier 나중에 데이터베이스에 저장해줘야함
-                    let request = UNNotificationRequest(identifier: UUID().uuidString,
+                    let request = UNNotificationRequest(identifier: notificationId,
                                                         content: notificationContent,
                                                         trigger: trigger)
                     // 알림 등록
                     if interval >= 0 {
-                        addNotificationToCenter(request: request)
+                        addNotificationToCenter(request: request, event: event)
                     }
                 }
             }
@@ -264,10 +262,9 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         }
     }
     
-    func addNotificationToCenter(request: UNNotificationRequest) {
+    func addNotificationToCenter(request: UNNotificationRequest, event: Event) {
         UNUserNotificationCenter.current().add(request) { error in
             guard error == nil else { return }
-            // debug: in notification add
         }
         // debug when notification added
         print("!! Notification\ntitle:[\(request.content.title)]\nbody:\(request.content.body)")
