@@ -31,11 +31,6 @@ class API {
         return r
     }
     
-//    func callContent() -> [Content]{
-//        let r: [Content] = realm.objects(Content.self).map { $0 }
-//        return r
-//    }
-    
 }
 
 class Category: Object {
@@ -56,16 +51,18 @@ class Event: Object {
     @objc dynamic var eventDday: Date = Date.init()
     @objc dynamic var importance: Int = 0
     @objc dynamic var eventIsDone: Bool = false
+    @objc dynamic var eventIsPassed: Bool = false
     let subEvents = List<SubEvent>()
     
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
     
-    convenience init(eventName: String, eventDday : Date, importance : Int, eventIsDone : Bool) {
+    convenience init(eventName: String, eventDday : Date, importance : Int, eventIsDone : Bool, eventIsPassed : Bool) {
         self.init()
         self.eventName = eventName
         self.eventDday = eventDday
         self.importance = importance
         self.eventIsDone = eventIsDone
+        self.eventIsPassed = eventIsPassed
         
     }
 
@@ -84,17 +81,5 @@ class SubEvent: Object {
     }
 }
 
-//class Content: Object {
-//    @objc dynamic var begin: String = ""
-//    @objc dynamic var earlyMiddle: String = ""
-//    @objc dynamic var lateMiddle: String = ""
-//    @objc dynamic var end: String = ""
-//
-//    convenience init(begin: String, earlyMiddle: String, lateMiddle: String, end: String) {
-//        self.init()
-//        self.begin = begin
-//        self.earlyMiddle = earlyMiddle
-//        self.end = end
-//    }
-//}
+
 

@@ -279,7 +279,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="eCd-Jg-m1W">
-                                                    <rect key="frame" x="29" y="453" width="215" height="179"/>
+                                                    <rect key="frame" x="29" y="453" width="141.5" height="179"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 달 평균 성공률" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3B-F8-n46">
                                                             <rect key="frame" x="0.0" y="0.0" width="131" height="20.5"/>
@@ -300,16 +300,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHv-Sr-vVZ">
-                                                            <rect key="frame" x="0.0" y="151.5" width="215" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="151.5" width="141.5" height="27.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="+5.28%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8d-Rb-HUS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="173.5" height="27.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="27.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                                     <color key="textColor" red="0.52442657950000005" green="0.3126676679" blue="0.94518142940000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNb-g0-LYl">
-                                                                    <rect key="frame" x="173.5" y="0.0" width="41.5" height="27.5"/>
+                                                                    <rect key="frame" x="100" y="0.0" width="41.5" height="27.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -345,7 +345,6 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="eCd-Jg-m1W" secondAttribute="bottom" constant="60" id="r59-wX-M41"/>
                                                 <constraint firstItem="5Zn-HD-fNz" firstAttribute="leading" secondItem="rpS-ng-vuL" secondAttribute="leadingMargin" id="sMs-h8-kUn"/>
                                                 <constraint firstItem="osg-xh-TSz" firstAttribute="top" secondItem="rpS-ng-vuL" secondAttribute="topMargin" constant="25" id="wHq-5o-Yds"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="eCd-Jg-m1W" secondAttribute="trailing" constant="150" id="wjr-82-XhX"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Mhu-mf-1LL" secondAttribute="trailing" constant="9" id="xNK-h6-LY8"/>
                                             </constraints>
                                         </tableViewCellContentView>

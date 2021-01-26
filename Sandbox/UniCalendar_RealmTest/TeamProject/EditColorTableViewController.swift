@@ -45,7 +45,6 @@ class EditColorTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        print(indexPath)
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     

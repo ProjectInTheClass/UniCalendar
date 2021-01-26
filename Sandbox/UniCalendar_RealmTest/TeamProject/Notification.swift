@@ -17,7 +17,6 @@ func makeNotificationDateComponent () {
     }
     
     for event in events {
-        print(event)
         let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
         eventDates.append(day)
     }
@@ -72,5 +71,19 @@ class LocalNotificationManager {
                 print("Scheduling notification with id: \(notification.id)")
             }
         }
+    }
+    
+    func getCountOfPendingNotifications() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
+            if requests.count < 1 {
+                print("emtpy requests")
+                
+            } else {
+                print("You Have \(requests.count) pending notifications.")
+                for request in requests {
+                    print(request.content.title)
+                }
+            }
+        })
     }
 }

@@ -38,7 +38,6 @@ class ColorTableViewController: UITableViewController {
     
     //show checkmark for selected row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         
         confirmedColor = indexPath.row
@@ -46,7 +45,6 @@ class ColorTableViewController: UITableViewController {
     
     //deselect the row as we only need SINGLE checkmark
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        print(indexPath)
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     

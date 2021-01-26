@@ -29,8 +29,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(events)
-    
+        
         calendarEventTableView.dataSource = self
         calendarEventTableView.delegate = self
         
@@ -140,8 +139,6 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
     
     // 날짜 선택 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        print(dateFormatter.string(from: date) + " 선택됨")
         selectedDateEvents.removeAll()
         
         for event in events {
@@ -150,7 +147,6 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
                 selectedDateEvents.append(event)
             }
         }
-        print(selectedDateEvents)
         calendarEventTableView.reloadData()
        
     }
@@ -158,7 +154,6 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
     
     // 날짜 선택 해제 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        print(dateFormatter.string(from: date) + " 해제됨")
     }
     
     //이벤트 표시 개수

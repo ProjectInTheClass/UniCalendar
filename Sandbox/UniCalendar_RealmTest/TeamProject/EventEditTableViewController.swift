@@ -45,13 +45,12 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func ringVolumeSliderChange(_ sender: UISlider)
     {
         sender.setValue(sender.value.rounded(.down), animated: false)
-        print(sender.value)
         showImportance.text = String(Int(importanceSlider.value))
     }
     
     
     func removeFromBeforeCategory() {
-        var beforeCategory = event[selected].parentCategory[0]
+        let beforeCategory = event[selected].parentCategory[0]
         var count: Int = 0
         for events in beforeCategory.eventsInCategory {
             if events.eventName == event[selected].eventName {
@@ -74,8 +73,8 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
                 selectedEvent.eventName = eventName.text!
                 selectedEvent.eventDday = datePicker.date
                 selectedEvent.importance = Int(importanceSlider.value)
-                if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) { selectedEvent.eventIsDone = true } else {
-                    selectedEvent.eventIsDone = false
+                if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) { selectedEvent.eventIsPassed = true } else {
+                    selectedEvent.eventIsPassed = false
                 }
             }
         } else if segue.identifier == "toCategorySelect" {
@@ -117,9 +116,6 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath.row == 0 {
-//            print("make category change")
-//        } else if indexPath.row ==
         if indexPath.row == 0 && tableView.cellForRow(at: indexPath)?.textLabel?.text == "카테고리"{
             performSegue(withIdentifier: "toCategorySelect", sender: nil)
         } else if indexPath.row == 0 && tableView.cellForRow(at: indexPath)?.textLabel?.text == "이 일정 삭제하기" {
@@ -134,7 +130,6 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         eventName.delegate = self
-        print(deleteCell!)
         let tapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false

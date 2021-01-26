@@ -37,7 +37,6 @@ class SettingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(category)
     }
     
 
@@ -119,8 +118,6 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         guard let row = sender as? Int else {
         return
         }
-        
-        print("ROW: \(row)")
 
         
         guard let navigation = segue.destination as? UINavigationController else { return }
