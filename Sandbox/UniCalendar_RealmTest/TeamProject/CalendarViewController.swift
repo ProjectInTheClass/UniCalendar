@@ -18,7 +18,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     var events: [Event] = api.callEvent()
     var eventDates = [Date]()
     var selectedDateEvents = [Event]()
-    
     var showToday: Int = 0
     
     var dateFormatter:DateFormatter {
@@ -55,6 +54,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         calendarView.calendarWeekdayView.weekdayLabels[4].text = "금"
         calendarView.calendarWeekdayView.weekdayLabels[5].text = "토"
         calendarView.calendarWeekdayView.weekdayLabels[6].text = "일"
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
