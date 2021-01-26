@@ -71,7 +71,7 @@
 		18E4DD2325B4409700876183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		50D17F45F44776D1A3AF1C30 /* Pods-TeamProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamProject.release.xcconfig"; path = "Target Support Files/Pods-TeamProject/Pods-TeamProject.release.xcconfig"; sourceTree = "<group>"; };
 		5B0CB62C25BFD9F300ABEADA /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
-		5B144710259DB3E700968770 /* TeamProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B144710259DB3E700968770 /* UniCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B144713259DB3E700968770 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B144715259DB3E700968770 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5B144717259DB3E700968770 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		5B144711259DB3E700968770 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5B144710259DB3E700968770 /* TeamProject.app */,
+				5B144710259DB3E700968770 /* UniCalendar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,9 +293,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5B14470F259DB3E700968770 /* TeamProject */ = {
+		5B14470F259DB3E700968770 /* UniCalendar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5B144724259DB3E900968770 /* Build configuration list for PBXNativeTarget "TeamProject" */;
+			buildConfigurationList = 5B144724259DB3E900968770 /* Build configuration list for PBXNativeTarget "UniCalendar" */;
 			buildPhases = (
 				4F1291B88D5050A337251F78 /* [CP] Check Pods Manifest.lock */,
 				5B14470C259DB3E700968770 /* Sources */,
@@ -307,9 +307,9 @@
 			);
 			dependencies = (
 			);
-			name = TeamProject;
+			name = UniCalendar;
 			productName = TeamProject;
-			productReference = 5B144710259DB3E700968770 /* TeamProject.app */;
+			productReference = 5B144710259DB3E700968770 /* UniCalendar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -326,7 +326,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5B14470B259DB3E700968770 /* Build configuration list for PBXProject "TeamProject" */;
+			buildConfigurationList = 5B14470B259DB3E700968770 /* Build configuration list for PBXProject "UniCalendar" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -339,7 +339,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5B14470F259DB3E700968770 /* TeamProject */,
+				5B14470F259DB3E700968770 /* UniCalendar */,
 			);
 		};
 /* End PBXProject section */
@@ -628,7 +628,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5B14470B259DB3E700968770 /* Build configuration list for PBXProject "TeamProject" */ = {
+		5B14470B259DB3E700968770 /* Build configuration list for PBXProject "UniCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B144722259DB3E900968770 /* Debug */,
@@ -637,7 +637,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5B144724259DB3E900968770 /* Build configuration list for PBXNativeTarget "TeamProject" */ = {
+		5B144724259DB3E900968770 /* Build configuration list for PBXNativeTarget "UniCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5B144725259DB3E900968770 /* Debug */,
