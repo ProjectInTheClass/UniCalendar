@@ -146,14 +146,14 @@ class SubEventsTableViewController: UITableViewController {
                 // 현재 이벤트의 알림 리스트 가져옴
                 
                 // 기존 알림 삭제
-                EventAddTableViewController().removeNotifications(notificationIds: [String])
+                // EventAddTableViewController().removeNotifications(notificationIds: [String])
 
                 // 새로운 진행 단계에 맞는 알림 설정
-                EventAddTableViewController().savePushNotification(event: <#T##Event#>, step: <#T##Int#>, frequency: <#T##Int#>, time: <#T##Int#>, daysOfWeek: <#T##[Int]?#>)
+                // EventAddTableViewController().savePushNotification(event: <#T##Event#>, step: <#T##Int#>, frequency: <#T##Int#>, time: <#T##Int#>, daysOfWeek: <#T##[Int]?#>)
                 
                 
-                UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
-                })
+                // UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
+                // })
             }
             
             // removePendingNotification(identifiers: event.notificationId)
