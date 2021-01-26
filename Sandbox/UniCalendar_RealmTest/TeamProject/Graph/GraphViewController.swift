@@ -101,7 +101,7 @@ class GraphViewController: UIViewController {
 
 extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,15 +111,15 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
         
         let formatter = DefaultValueFormatter(formatter: format)
         
+//        if indexPath.row == 0 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "BadgeCell", for: indexPath) as! BadgeCell
+//
+//            cell.badgeLabel.text = semiSection[0]
+//            cell.allButton.titleLabel!.text = semiSection[1]
+//
+//            return cell
+//        }
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BadgeCell", for: indexPath) as! BadgeCell
-
-            cell.badgeLabel.text = semiSection[0]
-            cell.allButton.titleLabel!.text = semiSection[1]
-
-            return cell
-        }
-        else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PatternCell", for: indexPath) as! PatternCell
 
             cell.patternLabel.text = semiSection[2]
