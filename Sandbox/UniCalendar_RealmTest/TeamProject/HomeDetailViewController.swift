@@ -102,6 +102,12 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
                 loopSub.subEventIsDone = true
             }
         }
+        
+        if event.subEvents.count == 0 {
+            try? api.realm.write(){
+                event.eventIsDone = true
+            }
+        }
         //buttonPressed = 1
     
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -159,6 +165,8 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
                 sub.subEventIsDone == true }).count
             
             progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
+        } else if event.subEvents.count == 0 && event.eventIsDone == true {
+            progressPercent = 1
         }
         progressView.setProgress(progressPercent, animated: false)
         progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
