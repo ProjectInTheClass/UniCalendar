@@ -51,7 +51,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     func removeFromBeforeCategory() {
-        var beforeCategory = event[selected].parentCategory[0]
+        let beforeCategory = event[selected].parentCategory[0]
         var count: Int = 0
         for events in beforeCategory.eventsInCategory {
             if events.eventName == event[selected].eventName {
@@ -74,8 +74,8 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
                 selectedEvent.eventName = eventName.text!
                 selectedEvent.eventDday = datePicker.date
                 selectedEvent.importance = Int(importanceSlider.value)
-                if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) { selectedEvent.eventIsDone = true } else {
-                    selectedEvent.eventIsDone = false
+                if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) { selectedEvent.eventIsPassed = true } else {
+                    selectedEvent.eventIsPassed = false
                 }
             }
         } else if segue.identifier == "toCategorySelect" {

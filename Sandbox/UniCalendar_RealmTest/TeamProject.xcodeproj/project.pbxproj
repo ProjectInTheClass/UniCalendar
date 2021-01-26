@@ -22,6 +22,7 @@
 		18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9DF3E25A6F17B00F05FFB /* EventCell.swift */; };
 		18E4DD2425B4409700876183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4DD2325B4409700876183 /* HomeDetailViewController.swift */; };
 		33CC3A331880CC6FA3A263DD /* Pods_TeamProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */; };
+		5B0CB62D25BFD9F300ABEADA /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0CB62C25BFD9F300ABEADA /* Contents.swift */; };
 		5B144714259DB3E700968770 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B144713259DB3E700968770 /* AppDelegate.swift */; };
 		5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B144715259DB3E700968770 /* SceneDelegate.swift */; };
 		5B144718259DB3E700968770 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B144717259DB3E700968770 /* ViewController.swift */; };
@@ -69,6 +70,7 @@
 		18B9DF3E25A6F17B00F05FFB /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		18E4DD2325B4409700876183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		50D17F45F44776D1A3AF1C30 /* Pods-TeamProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamProject.release.xcconfig"; path = "Target Support Files/Pods-TeamProject/Pods-TeamProject.release.xcconfig"; sourceTree = "<group>"; };
+		5B0CB62C25BFD9F300ABEADA /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		5B144710259DB3E700968770 /* TeamProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B144713259DB3E700968770 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B144715259DB3E700968770 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,15 @@
 			name = TableViewControllers;
 			sourceTree = "<group>";
 		};
+		5B0CB62B25BFD9D800ABEADA /* data */ = {
+			isa = PBXGroup;
+			children = (
+				5B4ED5BA25B561F800852B04 /* Data.swift */,
+				5B0CB62C25BFD9F300ABEADA /* Contents.swift */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
 		5B144707259DB3E700968770 = {
 			isa = PBXGroup;
 			children = (
@@ -150,8 +161,8 @@
 				5B144713259DB3E700968770 /* AppDelegate.swift */,
 				5B144715259DB3E700968770 /* SceneDelegate.swift */,
 				5B144717259DB3E700968770 /* ViewController.swift */,
-				5B4ED5BA25B561F800852B04 /* Data.swift */,
 				5B144719259DB3E700968770 /* Main.storyboard */,
+				5B0CB62B25BFD9D800ABEADA /* data */,
 				5B2841FC25A57A7300FA63BD /* Home */,
 				5B28420025A57ACB00FA63BD /* Calendar */,
 				5B2841FF25A57AA900FA63BD /* Graph */,
@@ -416,6 +427,7 @@
 				185F799525BAC3790091D1D7 /* SubEventsTableViewController.swift in Sources */,
 				5B5C1DE825BC510F003D534A /* PastEventViewController.swift in Sources */,
 				0B4D006325B55C6400437BEB /* CalendarViewController.swift in Sources */,
+				5B0CB62D25BFD9F300ABEADA /* Contents.swift in Sources */,
 				5B64795025BED67F006F7008 /* NotificationSettingEditTableViewController.swift in Sources */,
 				5B4ED5BB25B561F800852B04 /* Data.swift in Sources */,
 				5B35DCB625AEC0CD00A73E9E /* CategoryCell.swift in Sources */,
