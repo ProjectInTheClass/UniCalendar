@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if events.isEmpty == false {
             while change < events.count {
                 let eventDday = Calendar.current.dateComponents([.year, .month, .day], from: events[change].eventDday)
-                if eventDday.year! < today.year! && eventDday.month! < today.month! && eventDday.day! < today.day! {
+                
+                if (eventDday.year! < today.year!) || (eventDday.year! <= today.year! && eventDday.month! < today.month!) || (eventDday.year! <= today.year! && eventDday.month! <= today.month! && eventDday.day! < today.day!) {
                     try! api.realm.write(){
                         events[change].eventIsPassed = true
                     }
