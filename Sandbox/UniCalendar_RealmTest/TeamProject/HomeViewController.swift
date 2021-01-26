@@ -171,7 +171,6 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-        
     }
 
     
@@ -182,6 +181,8 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         homeNavigationTitle.title = df.string(from: Date.init())
         
         print("VIEW WILL APPEAR")
+        // notification count debug
+        // print(LocalNotificationManager().getCountOfPendingNotifications())
         events = api.callNotDoneEvent()
         tableView.reloadData()
         
