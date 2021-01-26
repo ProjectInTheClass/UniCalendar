@@ -61,7 +61,18 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         }
     }
     
+    func getIntervalDayBetweenDates(from: Date, to: Date) -> Int {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        
+        let fromDate = df.date(from: df.string(from: from))
+        let toDate = df.date(from: df.string(from: to))!
 
+        let interval = toDate.timeIntervalSince(fromDate!)
+        
+        // dMinus
+        return Int(interval / (3600 * 24))
+    }
 
     @IBAction func cancelModal(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -143,15 +154,12 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         print("함수 시작: savePushNotification")
         // let contents = api.callContent()
         
-        // 데이터 구조 바꿔야함
+        // todo 데이터 구조 바꿔야함
         // 컨텐츠 안에 문자열 들어가는 구조로?
         // let content = contents[step]
         
         // 알림 메세지 구성
         // event id도 넣어줘야함
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = event.eventName // 앞에 디데이 계산해서 추가
-        notificationContent.body = "단계: \(step), \(event.eventName)의 푸시이벤트입니다."
         
         //let today = Date()
         // let dDay = event.eventDday
@@ -161,44 +169,43 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         
-        let today = df.date(from: df.string(from : Date.init()))
-        let dDay = df.date(from: df.string(from: event.eventDday))!
-
-        let interval = dDay.timeIntervalSince(today!)
-        
-        // dMinus
-        let dMinus = Int(interval / 86400)
-        
+        let dMinusWhenInit: Int = getIntervalDayBetweenDates(from: Date(), to: event.eventDday)
         
         if frequency == 0 {
             // do nothing
         } else if frequency == 1 { // everyday
             // D-Day 당일까지 포함이므로 offset값에 +1
-            for offset in 0..<dMinus+1 {
+            for offset in 0..<dMinusWhenInit+1 {
                 let date = calendar.date(byAdding: .day, value: offset, to: Date())!
-                var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+                var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
+                // 6시 9시 12시 ...
+                dateComponents.hour = 6 + checkedTime*3
                 
-                // 시간 설정 바꿔줘야함
-                dateComponents.hour = 6
+                let interval = getIntervalDayBetweenDates(from: date, to: event.eventDday)
+                
+                // notification content
+                let notificationContent = UNMutableNotificationContent()
+                notificationContent.title = "D-\(interval) \(event.eventName)"
+                
+                notificationContent.body = "\(event.eventName) at \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
+                
+                
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                 
                 // identifier 나중에 데이터베이스에 저장해줘야함
                 let request = UNNotificationRequest(identifier: UUID().uuidString,
                                                     content: notificationContent,
                                                     trigger: trigger)
-                // 알림 등록
-                addNotificationToCenter(request: request)
-                
-                // debug: everday / contents title
-                print("이벤트 타이틀, 바디 [요일: 매일]")
-                print(notificationContent.title)
-                print(notificationContent.body)
+                // D-Day 까지만 등록하고, 이후에는 등록 안함.
+                if interval >= 0 {
+                    addNotificationToCenter(request: request)
+                }
             }
         } else if frequency == 2 { // 사용자 설정
             if checkedDaysOfWeek.isEmpty {
                 return
             }
-            let weeks: Int = dMinus / 7
+            let weeks: Int = dMinusWhenInit / 7
             
             // 체크된 요일로 반복문
             for weekday in checkedDaysOfWeek {
@@ -229,29 +236,35 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                         break;
                     }
                     
-                    let date = calendar.date(byAdding: .day, value: 7*(week+1), to: weekdayDate)!
-                    var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+                    let date = calendar.date(byAdding: .day, value: 7*(week), to: weekdayDate)!
+                    var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
                     
                     dateComponents.hour = 6 + checkedTime * 3
+                    
+                    let interval = getIntervalDayBetweenDates(from: date, to: event.eventDday)
+                    
+                    // content
+                    let notificationContent = UNMutableNotificationContent()
+                    notificationContent.title = "D-\(interval) \(event.eventName)"
+                    
+                    notificationContent.body = "\(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
+                    
+                    
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                     
-                    // identifier 나중에 데이터베이스에 저장해줘야함
+                    // todo identifier 나중에 데이터베이스에 저장해줘야함
                     let request = UNNotificationRequest(identifier: UUID().uuidString,
                                                         content: notificationContent,
                                                         trigger: trigger)
                     // 알림 등록
-                    print("- 이벤트 타이틀, 바디 [특정 요일 등록]")
-                    print("title: \(request.content.title)")
-                    print("body: \(request.content.body)")
-                    print("outer: \(weekday), inner: \(week)")
-                    addNotificationToCenter(request: request)
+                    if interval >= 0 {
+                        addNotificationToCenter(request: request)
+                    }
                 }
             }
         } else {
             print("notification frequency setting error")
         }
-        
-
     }
     
     func addNotificationToCenter(request: UNNotificationRequest) {
@@ -259,7 +272,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
             guard error == nil else { return }
             // debug: in notification add
         }
-        print("!! Notification [\(request.content.title)] Add !!")
+        // debug when notification added
+        print("!! Notification\ntitle:[\(request.content.title)]\nbody:\(request.content.body)")
     }
     // if process step is changed
     func removeNotifications(notificationIds: [String]) {
@@ -367,4 +381,16 @@ extension Date {
       }
     }
   }
+}
+
+extension Date {
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
+    
+
 }
