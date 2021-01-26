@@ -111,13 +111,13 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
         let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
         
         if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) {
-            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: true)
+            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: true)
             try! api.realm.write(){
                 category[selectedCategory].eventsInCategory.append(newEvent)
                 api.realm.add([newEvent])
             }
         } else {
-            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false)
+            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: false)
            try! api.realm.write{
                category[selectedCategory].eventsInCategory.append(newEvent)
                api.realm.add([newEvent])

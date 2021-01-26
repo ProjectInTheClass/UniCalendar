@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 let eventDday = Calendar.current.dateComponents([.year, .month, .day], from: events[change].eventDday)
                 if eventDday.year! < today.year! && eventDday.month! < today.month! && eventDday.day! < today.day! {
                     try! api.realm.write(){
-                        events[change].eventIsDone = true
+                        events[change].eventIsPassed = true
                     }
                 }
                 change += 1
