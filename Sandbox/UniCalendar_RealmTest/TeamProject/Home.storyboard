@@ -493,6 +493,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="checkAllTrue:" destination="l1j-zJ-RaE" eventType="touchUpInside" id="iQo-EZ-wwN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MVE-g9-Q6m"/>
@@ -559,7 +562,7 @@
             <objects>
                 <tableViewController id="ACb-tU-Dlh" customClass="SubEventsTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="G90-6e-sZk">
-                        <rect key="frame" x="0.0" y="0.0" width="339.33333333333331" height="405"/>
+                        <rect key="frame" x="0.0" y="0.0" width="339" height="405"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>

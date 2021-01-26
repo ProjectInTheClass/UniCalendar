@@ -40,6 +40,10 @@ class SubEventsTableViewController: UITableViewController {
         self.view.addGestureRecognizer(tapGesture)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     @objc func loadList(){
             //load data here
             self.tableView.reloadData()

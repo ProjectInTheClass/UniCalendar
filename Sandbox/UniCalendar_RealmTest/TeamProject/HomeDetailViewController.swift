@@ -8,6 +8,8 @@
 import UIKit
 import RealmSwift
 
+var buttonPressed: Int = 0
+
 class HomeDetailViewController: UIViewController, UITextFieldDelegate {
   
     //let subGoals: [String] = ["소목표1", "소목표2", "소목표3"]
@@ -93,9 +95,21 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "ToEdit", sender: selectedCell)
     }
     
-//    @IBAction func toHome(_ sender: Any) {
-//        performSegue(withIdentifier: "unwindToHomeFromDetail", sender: nil)
-//    }
+    @IBAction func checkAllTrue(_ sender: Any) {
+        let event = events[selectedCell]
+        for loopSub in event.subEvents {
+            try? api.realm.write(){
+                loopSub.subEventIsDone = true
+            }
+        }
+        //buttonPressed = 1
+    
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        events = api.callNotPassedEvent()
+        updateProgressBar()
+    }
+    
     
     
     override func viewDidLoad() {
