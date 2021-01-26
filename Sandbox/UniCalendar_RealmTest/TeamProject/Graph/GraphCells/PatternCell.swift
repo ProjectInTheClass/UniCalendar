@@ -34,17 +34,23 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
 //            }
 //        }
 //        return numOfCategory
-        return categories.filter({ $0.eventsInCategory.count > 0 }).count
+       
+        return categories.count
+        
+    //    return categories.filter({ $0.eventsInCategory.count > 0 }).count
+    
+    
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         var isInCategory = false
         var numOfEvents = 0
-        let data = categories.filter({ $0.eventsInCategory.count > 0 })[indexPath.row]
+//        let data = categories.filter({ $0.eventsInCategory.count > 0 })[indexPath.row]
         
-        for i in 0..<data.eventsInCategory.count{
-            let dCalendar = Calendar.current.dateComponents([.year, .month], from: data.eventsInCategory[i].eventDday)
+        for i in 0..<categories[indexPath.row].eventsInCategory.count{
+            let dCalendar = Calendar.current.dateComponents([.year, .month], from: categories[indexPath.row].eventsInCategory[i].eventDday)
            
             if ((dCalendar.year == today.year) && (dCalendar.month == today.month)){
                 isInCategory = true
