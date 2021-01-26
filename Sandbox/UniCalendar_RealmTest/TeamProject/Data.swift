@@ -31,6 +31,11 @@ class API {
         return r
     }
     
+    func callPushAlarm() -> [PushAlarm] {
+        let r: [PushAlarm] = realm.objects(PushAlarm.self).map { $0 }
+        return r
+    }
+    
 }
 
 class Category: Object {
@@ -52,9 +57,10 @@ class Event: Object {
     @objc dynamic var importance: Int = 0
     @objc dynamic var eventIsDone: Bool = false
     @objc dynamic var eventIsPassed: Bool = false
-    @objc dynamic var notificationID : [String] = []
+    //dynamic var notificationID : [String] = []
     
     let subEvents = List<SubEvent>()
+    let pushAlarmID = List<PushAlarm>()
     
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
     
@@ -82,5 +88,9 @@ class SubEvent: Object {
     }
 }
 
-
+class PushAlarm: Object {
+    @objc dynamic var id: String = ""
+    
+    var parentEvent = LinkingObjects(fromType: Event.self, property: "pushAlarmID")
+}
 
