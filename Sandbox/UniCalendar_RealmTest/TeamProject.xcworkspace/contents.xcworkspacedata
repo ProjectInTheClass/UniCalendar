@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/kimjunkyung/Documents/GitHub/UniCalender/Sandbox/UniCalendar_RealmTest/UniCalendar.xcodeproj">
+      location = "group:UniCalendar.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
