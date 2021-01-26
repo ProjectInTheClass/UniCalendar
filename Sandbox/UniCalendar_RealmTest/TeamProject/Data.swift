@@ -63,7 +63,6 @@ class Event: Object {
         self.importance = importance
         self.eventIsDone = eventIsDone
         self.eventIsPassed = eventIsPassed
-        
     }
 
 }

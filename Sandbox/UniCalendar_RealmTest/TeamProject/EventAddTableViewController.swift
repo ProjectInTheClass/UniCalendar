@@ -61,6 +61,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         }
     }
     
+    // Date() 두개 받아서 차이 리턴
     func getIntervalDayBetweenDates(from: Date, to: Date) -> Int {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
@@ -137,6 +138,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         }
         
         // Todo: step 값 계산하기 (begin:0 ~ end: 2 or 3?)
+
         let step: Int = 0 // begin
         
         // switch-case 안에서 호출시 checkedDayOfWeek 뺄수도 있음

@@ -105,18 +105,24 @@ class SubEventsTableViewController: UITableViewController {
                 // 체크 반전
                 self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
             }
+            // TODO: 여기서 이벤트 진행률 변경 체크
+            
             var numOfIsDone = 0
             for i in 0..<self.event.subEvents.count {
                 if self.event.subEvents[i].subEventIsDone == true{
                     numOfIsDone += 1
                 }
             }
+            // for debug
             print(numOfIsDone)
             print(event.subEvents.count)
+            print("진행률 변경: \(Float(numOfIsDone)/Float(event.subEvents.count))")
+            
             if self.event.subEvents.count == numOfIsDone {
                 try! api.realm.write(){
                     self.event.eventIsDone = true
                 }
+                // TODO: 여기서 계획된 알림 삭제?
             }
             print(event.eventIsDone)
             tableView.reloadData()
