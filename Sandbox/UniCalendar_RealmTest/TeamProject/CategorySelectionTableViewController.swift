@@ -70,6 +70,12 @@ class CategorySelectionTableViewController: UITableViewController {
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let headerString = "카테고리 설정, 추가 및 수정은 환경설정⚙️에서 할 수 있어요"
+        
+        return headerString
+    }
+    
     
     /*
     // Override to support conditional editing of the table view.
