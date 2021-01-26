@@ -124,6 +124,22 @@ class SubEventsTableViewController: UITableViewController {
             print("진행률 변경후: \(afterProcess)")
             print("진행단계 같은가요?: \(isSameStep(before: beforeProcess, after: afterProcess))")
             
+            
+            // 진행 단계 변경
+            if !isSameStep(before: beforeProcess, after: afterProcess) {
+                // 현재 이벤트의 알림 리스트 가져옴
+                
+                // 기존 알림 삭제
+                EventAddTableViewController().removeNotifications(notificationIds: [String])
+
+                // 새로운 진행 단계에 맞는 알림 설정
+                EventAddTableViewController().savePushNotification(event: <#T##Event#>, step: <#T##Int#>, frequency: <#T##Int#>, time: <#T##Int#>, daysOfWeek: <#T##[Int]?#>)
+                
+                
+                UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
+                })
+            }
+            
             // removePendingNotification(identifiers: event.notificationId)
             
             if self.event.subEvents.count == numOfIsDone {
@@ -174,8 +190,10 @@ class SubEventsTableViewController: UITableViewController {
             step = "EarlyMiddle"
         } else if process <= 0.75 {
             step = "LateMiddle"
-        } else {
+        } else if process < 1.0 {
             step = "End"
+        } else {
+            step = "Done"
         }
         return step
     }

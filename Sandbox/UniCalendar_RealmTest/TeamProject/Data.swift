@@ -53,7 +53,7 @@ class Event: Object {
     @objc dynamic var eventIsDone: Bool = false
     @objc dynamic var eventIsPassed: Bool = false
     let subEvents = List<SubEvent>()
-    
+        
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
     
     convenience init(eventName: String, eventDday : Date, importance : Int, eventIsDone : Bool, eventIsPassed : Bool) {
