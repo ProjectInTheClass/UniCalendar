@@ -60,6 +60,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         events = api.callEvent()
         categories = api.callCategory()
         calendarView.deselect(Date.init())
+        
+        eventDates.removeAll()
+
+        
         for event in events {
             let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
             eventDates.append(day)
