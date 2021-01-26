@@ -130,12 +130,9 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
         
             updatePieChartData()
             
-            print(pieDataEntries)
-            
             let pieChartDataSet = PieChartDataSet(entries: pieDataEntries, label: nil)
             let pieChartData = PieChartData(dataSet: pieChartDataSet)
 
-            print(pieChartData)
             var colors:[UIColor] = []
 
             for category in categories{

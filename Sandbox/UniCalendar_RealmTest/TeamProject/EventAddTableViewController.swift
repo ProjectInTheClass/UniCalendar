@@ -110,14 +110,9 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     
     func save() {
 
-        // 0 1 2
-        print(checkedFrequency)
-        // 0 1 2 3 4 5 6 or []
-        print(checkedDaysOfWeek)
-        print(checkedTime)
-
         var eventForNotification: Event = Event()
         
+
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
         let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: d!)

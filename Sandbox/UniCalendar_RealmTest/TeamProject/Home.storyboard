@@ -487,6 +487,11 @@
                                 <state key="normal" title="모두 완료 하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MVE-g9-Q6m"/>
@@ -518,6 +523,9 @@
                             <constraint firstItem="Amr-8m-ZUu" firstAttribute="leading" secondItem="aYe-aX-YqH" secondAttribute="trailing" constant="10" id="sJQ-yH-UpT"/>
                             <constraint firstItem="iEe-Tz-BVH" firstAttribute="centerY" secondItem="Z93-Vu-s4u" secondAttribute="centerY" id="zFU-W0-h22"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="rSU-7W-1W7">
                         <barButtonItem key="backBarButtonItem" title="뒤로" id="KU8-GS-IoG"/>
