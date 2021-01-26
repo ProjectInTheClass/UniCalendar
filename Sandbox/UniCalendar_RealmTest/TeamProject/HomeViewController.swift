@@ -181,12 +181,12 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         df.dateFormat = "M월 dd일 eeee"
         homeNavigationTitle.title = df.string(from: Date.init())
         
-        print("VIEW WILL APPEAR")
+        print("\nVIEW WILL APPEAR")
 
         // notification count debug
-        // print(LocalNotificationManager().getCountOfPendingNotifications())
-        // events = api.callNotDoneEvent()
-
+        LocalNotificationManager().printCountOfNotifications()
+        let notificationInRealm = api.callPushAlarm().count
+        print("db 내 알람: \(notificationInRealm)개")
         events = api.callNotPassedEvent()
 
         tableView.reloadData()

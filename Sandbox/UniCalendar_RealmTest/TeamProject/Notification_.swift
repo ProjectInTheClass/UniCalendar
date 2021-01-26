@@ -73,7 +73,7 @@ class LocalNotificationManager {
         }
     }
     
-    func getCountOfPendingNotifications() {
+    func printCountOfNotifications() {
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
             if requests.count < 1 {
                 print("emtpy requests")

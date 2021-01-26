@@ -152,6 +152,9 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         
         eventNameLabel.text = event.eventName
         updateProgressBar()
+        
+        // debug notification
+        print("\(event.eventName) has \(event.pushAlarmID.count) alarms\n")
     }
     
     func updateProgressBar () {
