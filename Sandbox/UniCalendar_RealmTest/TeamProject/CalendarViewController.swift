@@ -19,6 +19,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     var eventDates = [Date]()
     var selectedDateEvents = [Event]()
     
+    var showToday: Int = 0
+    
     var dateFormatter:DateFormatter {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
@@ -59,16 +61,16 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     override func viewWillAppear(_ animated: Bool) {
         events = api.callEvent()
         categories = api.callCategory()
-        calendarView.deselect(Date.init())
-        
+        //기존에 저장되어있던 eventDates 모두 삭제
         eventDates.removeAll()
 
-        
+        //새로 eventDates append해줌
         for event in events {
             let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
             eventDates.append(day)
         }
-        //reload data for both calendar & table view
+        
+        //reload data for both calendar & table view, selectedDateEvents data remove
         selectedDateEvents.removeAll()
         calendarView.reloadData()
         self.calendarEventTableView.reloadData()
