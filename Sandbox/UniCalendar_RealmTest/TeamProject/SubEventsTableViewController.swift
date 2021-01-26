@@ -109,6 +109,8 @@ class SubEventsTableViewController: UITableViewController {
             
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
             
+            cell.subEventNameLabel.attributedText = attributeString
+            
         
         }
         
