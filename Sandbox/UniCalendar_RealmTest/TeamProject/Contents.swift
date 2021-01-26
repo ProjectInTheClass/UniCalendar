@@ -44,7 +44,7 @@ struct LateMiddle {
 }
 
 struct End {
-    let firstSentence : [String] = ["", "", "", "", ""]
+    let firstSentence : [String] = [" 완료하고 마무리", "", "", "", ""]
     let secondSentence: [String] = ["", "", "", "", ""]
 }
 
