@@ -51,6 +51,10 @@ class SubEventsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if event.subEvents.count < 1 {
             return 1
