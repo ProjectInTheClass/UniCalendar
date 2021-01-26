@@ -105,7 +105,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         print(checkedDaysOfWeek)
         print(checkedTime)
 
-        var newEvent:Event = Event()
+        var eventForNotification: Event = Event()
         
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
@@ -114,24 +114,20 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         
         if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) {
 
-            newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: true)
-
             let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: true)
 
             try! api.realm.write(){
                 category[selectedCategory].eventsInCategory.append(newEvent)
                 api.realm.add([newEvent])
             }
+            eventForNotification = newEvent
         } else {
-
-            newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false)
-
             let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: false)
-
            try! api.realm.write{
                category[selectedCategory].eventsInCategory.append(newEvent)
                api.realm.add([newEvent])
            }
+            eventForNotification = newEvent
         }
         
         // Todo: step 값 계산하기 (begin:0 ~ end: 2 or 3?)
@@ -140,7 +136,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         // switch-case 안에서 호출시 checkedDayOfWeek 뺄수도 있음
         // 알림 설정에서사용자 선택-요일 이 선택된 상태가 아니면 아니면 빈배열
         
-        savePushNotification(event: newEvent, step: step, frequency: checkedFrequency, time: checkedTime, daysOfWeek: checkedDaysOfWeek)
+        savePushNotification(event: eventForNotification, step: step, frequency: checkedFrequency, time: checkedTime, daysOfWeek: checkedDaysOfWeek)
     }
     
     func savePushNotification(event: Event, step: Int, frequency: Int, time: Int, daysOfWeek: [Int]?) {
