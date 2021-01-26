@@ -12,7 +12,7 @@ class PastEventViewController: UIViewController, UITableViewDataSource, UITabBar
     
     @IBOutlet weak var tableView: UITableView!
     
-    var events: [Event] = api.callDoneEvent()
+    var events: [Event] = api.callPassedEvent()
     
     var imageStringArray : [String] = ["importance_blank", "importance_filled"]
     
@@ -101,7 +101,7 @@ class PastEventViewController: UIViewController, UITableViewDataSource, UITabBar
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        events = api.callDoneEvent()
+        events = api.callPassedEvent()
         tableView.reloadData()
     }
 

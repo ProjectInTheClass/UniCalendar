@@ -15,7 +15,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBOutlet weak var homeNavigationTitle: UINavigationItem!
     
     var headerCheerUpMessage: String = ""
-    var events: [Event] = api.callNotDoneEvent()
+    var events: [Event] = api.callNotPassedEvent()
     var selectedCellBefore: Int = 0
     
     var imageStringArray : [String] = ["importance_blank", "importance_filled"]
@@ -151,7 +151,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         print("from Add to Home")
-        events = api.callNotDoneEvent()
+        events = api.callNotPassedEvent()
         tableView.reloadData()
     }
     
@@ -182,7 +182,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         homeNavigationTitle.title = df.string(from: Date.init())
         
         print("VIEW WILL APPEAR")
-        events = api.callNotDoneEvent()
+        events = api.callNotPassedEvent()
         tableView.reloadData()
         
         // --------- noti test start -----
