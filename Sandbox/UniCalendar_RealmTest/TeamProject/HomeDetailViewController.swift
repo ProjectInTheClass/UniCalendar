@@ -8,6 +8,8 @@
 import UIKit
 import RealmSwift
 
+var buttonPressed: Int = 0
+
 class HomeDetailViewController: UIViewController, UITextFieldDelegate {
   
     //let subGoals: [String] = ["소목표1", "소목표2", "소목표3"]
@@ -93,9 +95,27 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         performSegue(withIdentifier: "ToEdit", sender: selectedCell)
     }
     
-//    @IBAction func toHome(_ sender: Any) {
-//        performSegue(withIdentifier: "unwindToHomeFromDetail", sender: nil)
-//    }
+    @IBAction func checkAllTrue(_ sender: Any) {
+        let event = events[selectedCell]
+        for loopSub in event.subEvents {
+            try? api.realm.write(){
+                loopSub.subEventIsDone = true
+            }
+        }
+        
+        if event.subEvents.count == 0 {
+            try? api.realm.write(){
+                event.eventIsDone = true
+            }
+        }
+        //buttonPressed = 1
+    
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        events = api.callNotPassedEvent()
+        updateProgressBar()
+    }
+    
     
     
     override func viewDidLoad() {
@@ -132,6 +152,9 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         
         eventNameLabel.text = event.eventName
         updateProgressBar()
+        
+        // debug notification
+        print("\(event.eventName) has \(event.pushAlarmID.count) alarms\n")
     }
     
     func updateProgressBar () {
@@ -145,6 +168,8 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
                 sub.subEventIsDone == true }).count
             
             progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
+        } else if event.subEvents.count == 0 && event.eventIsDone == true {
+            progressPercent = 1
         }
         progressView.setProgress(progressPercent, animated: false)
         progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"

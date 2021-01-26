@@ -40,6 +40,10 @@ class SubEventsTableViewController: UITableViewController {
         self.view.addGestureRecognizer(tapGesture)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     @objc func loadList(){
             //load data here
             self.tableView.reloadData()
@@ -87,45 +91,86 @@ class SubEventsTableViewController: UITableViewController {
             cell.subEventNameLabel.attributedText = attributeString
             
         // subEvent가 없을때
-        } else {
+        } else if event.subEvents.count == 0 && event.eventIsDone == false{
             cell.imageView?.image = UIImage(named: "importance_blank")
             cell.subEventNameLabel.attributedText = NSMutableAttributedString(string: "새로운 세부 목표를 등록해주세요🤓")
             cell.subEventNameLabel.textColor = UIColor.lightGray
             cell.subEventNameLabel.font = UIFont(name: "System", size: 12)
             cell.subEventNameLabel.textAlignment = .left
 
+        } else if event.subEvents.count == 0 && event.eventIsDone == true{
+            cell.imageView?.image = UIImage(named: "importance_filled")
+            cell.subEventNameLabel.attributedText = NSMutableAttributedString(string: "모두 완료되었어요!😃")
+            cell.subEventNameLabel.textColor = UIColor.lightGray
+            cell.subEventNameLabel.font = UIFont(name: "System", size: 12)
+            cell.subEventNameLabel.textAlignment = .left
+            
+            let attributeString : NSMutableAttributedString = NSMutableAttributedString(string: cell.subEventNameLabel.text!)
+            
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
+            
+        
         }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if self.event.subEvents.count >= 1 {
+            let beforeProcess: Float = Float(self.event.subEvents.filter{s in s.subEventIsDone == true}.count) / Float(self.event.subEvents.count)
+            
             try? api.realm.write() {
                 // 체크 반전
                 self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
             }
+            // TODO: 여기서 이벤트 진행률 변경 체크
+            
             var numOfIsDone = 0
             for i in 0..<self.event.subEvents.count {
                 if self.event.subEvents[i].subEventIsDone == true{
                     numOfIsDone += 1
                 }
             }
-            print(numOfIsDone)
-            print(event.subEvents.count)
+            // for debug
+            
+            let afterProcess: Float = Float(numOfIsDone)/Float(event.subEvents.count)
+            
+            print("진행률 변경전: \(beforeProcess)")
+            print("진행률 변경후: \(afterProcess)")
+            print("진행단계 같은가요?: \(isSameStep(before: beforeProcess, after: afterProcess))")
+            LocalNotificationManager().printCountOfNotifications()
+            
+            // 진행 단계 변경
+            if !isSameStep(before: beforeProcess, after: afterProcess) {
+                // 현재 이벤트의 알림 리스트 가져옴
+                let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map({(push: PushAlarm) -> String in return push.id })
+                
+                print("현재이벤트 알림id 개수 \(notificationIDsOfcurrentEvent.count)")
+                // 기존 알림 삭제
+                // EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
+
+                // 새로운 진행 단계에 맞는 알림 설정
+                //EventAddTableViewController().savePushNotification(event: event, step: <#T##Int#>, frequency: <#T##Int#>, time: <#T##Int#>, daysOfWeek: <#T##[Int]?#>)
+                
+            }
+            print("\nStepChanged")
+            LocalNotificationManager().printCountOfNotifications()
+            // removePendingNotification(identifiers: event.notificationId)
+            
             if self.event.subEvents.count == numOfIsDone {
                 try! api.realm.write(){
                     self.event.eventIsDone = true
                 }
+                // TODO: 여기서 계획된 알림 삭제?
             }
-            print(event.eventIsDone)
+            print("event is done?: \(event.eventIsDone)")
             tableView.reloadData()
             
             // 소목표 체크 변경시 ProgressBar Percent 바꿔주기
             belongedContainer?.updateProgressBar()
-        } else {
-            // Todo
-            
+        } else if event.subEvents.count == 0 && event.eventIsDone == true {
+            belongedContainer?.updateProgressBar()
         }
     }
     
@@ -146,5 +191,31 @@ class SubEventsTableViewController: UITableViewController {
                 belongedContainer?.updateProgressBar()
             } else { return }
         }
+    }
+    
+    
+    func getStepByProcess(process: Float) -> String {
+        if process > 1 || process < 0 {
+            return "error"
+        }
+        var step: String
+        if process <= 0.25 {
+            step = "Beginning"
+        } else if process <= 0.5 {
+            step = "EarlyMiddle"
+        } else if process <= 0.75 {
+            step = "LateMiddle"
+        } else if process < 1.0 {
+            step = "End"
+        } else {
+            step = "Done"
+        }
+        return step
+    }
+    func isSameStep(before: Float, after: Float) -> Bool {
+        let beforeProcessStep: String = getStepByProcess(process: before)
+        let afterProcessStep: String = getStepByProcess(process: after)
+        
+        return (beforeProcessStep == afterProcessStep)
     }
 }

@@ -124,8 +124,9 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
             progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
            
             cell.progressView.setProgress(progressPercent, animated: false)
-            
-
+        } else if event.subEvents.count == 0 && event.eventIsDone == true {
+            progressPercent = 1
+            cell.progressView.setProgress(progressPercent, animated: false)
         }
         
         cell.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
@@ -158,7 +159,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        // notification permission
         UNUserNotificationCenter
             .current()
             .requestAuthorization(options: [.alert, .badge]) { granted, error in
@@ -171,7 +172,6 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-        
     }
 
     
@@ -181,8 +181,14 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         df.dateFormat = "M월 dd일 eeee"
         homeNavigationTitle.title = df.string(from: Date.init())
         
-        print("VIEW WILL APPEAR")
+        print("\nVIEW WILL APPEAR")
+
+        // notification count debug
+        LocalNotificationManager().printCountOfNotifications()
+        let notificationInRealm = api.callPushAlarm().count
+        print("db 내 알람: \(notificationInRealm)개")
         events = api.callNotPassedEvent()
+
         tableView.reloadData()
         
         // --------- noti test start -----

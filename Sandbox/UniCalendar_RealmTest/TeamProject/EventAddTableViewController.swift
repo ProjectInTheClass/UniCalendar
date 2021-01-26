@@ -61,6 +61,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         }
     }
     
+    // Date() 두개 받아서 차이 리턴
     func getIntervalDayBetweenDates(from: Date, to: Date) -> Int {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
@@ -82,8 +83,18 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     @IBAction func completeModal(_ sender: Any) {
         // TODO
         // Add New event to EventList
-        save()
-        performSegue(withIdentifier: "unwindToHome", sender: (Any).self)
+        
+        if newEventName.hasText == false || categoryLabel.text?.isEmpty == true || settledNotificationInfoLabel.text == "선택 되지 않음"{
+            let alert = UIAlertController(title: "⚠️이벤트 등록 오류⚠️", message: "선택을 모두 완료해주세요!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("네", comment: "Default action"), style: .default, handler: { _ in
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            save()
+            performSegue(withIdentifier: "unwindToHome", sender: (Any).self)
+        }
+        
     }
     
     
@@ -112,7 +123,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
 
         var eventForNotification: Event = Event()
         
-
+        // 이벤트 추가
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
         let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: d!)
@@ -137,6 +148,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         }
         
         // Todo: step 값 계산하기 (begin:0 ~ end: 2 or 3?)
+
         let step: Int = 0 // begin
         
         // switch-case 안에서 호출시 checkedDayOfWeek 뺄수도 있음
@@ -155,9 +167,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         
         // 알림 메세지 구성
         // event id도 넣어줘야함
-        
-        //let today = Date()
-        // let dDay = event.eventDday
         
         let calendar = Calendar.current
         
@@ -193,7 +202,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                                                     trigger: trigger)
                 // D-Day 까지만 등록하고, 이후에는 등록 안함.
                 if interval >= 0 {
-                    addNotificationToCenter(request: request)
+                    addNotificationToCenter(request: request, event: event)
                 }
             }
         } else if frequency == 2 { // 사용자 설정
@@ -247,13 +256,24 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                     
-                    // todo identifier 나중에 데이터베이스에 저장해줘야함
-                    let request = UNNotificationRequest(identifier: UUID().uuidString,
+                    let notificationId = UUID().uuidString
+                    
+                    let request = UNNotificationRequest(identifier: notificationId,
                                                         content: notificationContent,
                                                         trigger: trigger)
                     // 알림 등록
                     if interval >= 0 {
-                        addNotificationToCenter(request: request)
+                        addNotificationToCenter(request: request, event: event)
+                        
+                        let pushAlarm = PushAlarm()
+                        pushAlarm.id = notificationId
+                        
+                        try! api.realm.write() {
+                            api.realm.add([pushAlarm])
+                            event.pushAlarmID.append(pushAlarm)
+                        }
+                        // 몇개의 알람 예정되어있는지
+                        LocalNotificationManager().printCountOfNotifications()
                     }
                 }
             }
@@ -262,17 +282,16 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         }
     }
     
-    func addNotificationToCenter(request: UNNotificationRequest) {
+    func addNotificationToCenter(request: UNNotificationRequest, event: Event) {
         UNUserNotificationCenter.current().add(request) { error in
             guard error == nil else { return }
-            // debug: in notification add
         }
         // debug when notification added
-        print("!! Notification\ntitle:[\(request.content.title)]\nbody:\(request.content.body)")
+        print("[New Notification]\n-title: \(request.content.title)\n-body: \(request.content.body)\n")
     }
     // if process step is changed
     func removeNotifications(notificationIds: [String]) {
-        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: notificationIds)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: notificationIds)
     }
     //----------------------------알림 end--------------------
         

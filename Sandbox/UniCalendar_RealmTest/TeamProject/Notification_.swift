@@ -27,7 +27,7 @@ func makeNotificationDateComponent () {
 import Foundation
 import UserNotifications
 
-struct Notification {
+struct Notification_ {
     var id: String
     var title: String
     var content : String
@@ -35,7 +35,7 @@ struct Notification {
 }
 
 class LocalNotificationManager {
-    var notifications = [Notification]()
+    var notifications = [Notification_]()
     
     func requestPermission() -> Void {
         UNUserNotificationCenter
@@ -48,7 +48,7 @@ class LocalNotificationManager {
     }
     
     func addNotification(title: String, content: String, dateString: String) -> Void {
-        notifications.append(Notification(id: UUID().uuidString, title: title, content: content, dateString: dateString))
+        notifications.append(Notification_(id: UUID().uuidString, title: title, content: content, dateString: dateString))
     }
     
     func scheduleNotifications() -> Void {
@@ -73,7 +73,7 @@ class LocalNotificationManager {
         }
     }
     
-    func getCountOfPendingNotifications() {
+    func printCountOfNotifications() {
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
             if requests.count < 1 {
                 print("emtpy requests")

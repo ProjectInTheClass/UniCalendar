@@ -112,9 +112,12 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
         }
         
         cell.subCompletionLabel.textColor = UIColor.gray
-        cell.subCompletionLabel.text = "세부 목표 : " + String(count) + " / " + String(event.subEvents.count)
         
-        
+        if event.subEvents.count == 0 {
+            cell.subCompletionLabel.text = "세부 목표가 없어요🙅"
+        } else {
+            cell.subCompletionLabel.text = "세부 목표 : " + String(count) + " / " + String(event.subEvents.count)
+        }
         
         return cell
     }
