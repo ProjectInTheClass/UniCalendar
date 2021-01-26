@@ -12,7 +12,7 @@
         <!--Past Event View Controller-->
         <scene sceneID="k30-Bu-hyB">
             <objects>
-                <viewController id="rtS-4I-A8b" customClass="PastEventViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rtS-4I-A8b" customClass="PastEventViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MPF-bZ-C6l">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XBi-a1-rY0">
                                 <rect key="frame" x="0.0" y="140" width="390" height="621"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PastEventCell" rowHeight="147" id="Jcb-oS-dvt" customClass="PastEventCell" customModule="TeamProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PastEventCell" rowHeight="147" id="Jcb-oS-dvt" customClass="PastEventCell" customModule="UniCalendar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="390" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jcb-oS-dvt" id="nMe-lN-3Gd">
@@ -205,7 +205,7 @@
         <!--Home View Controller-->
         <scene sceneID="6lF-sg-edb">
             <objects>
-                <viewController id="eVp-WQ-dzW" customClass="HomeViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eVp-WQ-dzW" customClass="HomeViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tei-Fq-jHT">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -214,7 +214,7 @@
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="147" id="W5b-1c-EtI" customClass="EventCell" customModule="TeamProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="147" id="W5b-1c-EtI" customClass="EventCell" customModule="UniCalendar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.333332061767578" width="390" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W5b-1c-EtI" id="XUl-HV-S52">
@@ -412,80 +412,104 @@
         <!--Home Detail View Controller-->
         <scene sceneID="oQf-HG-1E4">
             <objects>
-                <viewController id="l1j-zJ-RaE" customClass="HomeDetailViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="l1j-zJ-RaE" customClass="HomeDetailViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jXA-SX-7SN">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8Q-u5-xEs">
-                                <rect key="frame" x="320.66666666666669" y="158" width="43.666666666666686" height="14"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="43.670000000000002" id="nEZ-t6-e7E"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="44g-0S-apq">
-                                <rect key="frame" x="30" y="158" width="284" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="eSb-Dv-IU4"/>
-                                    <constraint firstAttribute="width" constant="284" id="ySy-kp-ASw"/>
-                                </constraints>
-                                <color key="progressTintColor" systemColor="systemPurpleColor"/>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBi-aP-wXt">
-                                <rect key="frame" x="186" y="216" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ic-Ry-QAE">
-                                <rect key="frame" x="25" y="256" width="339.33333333333331" height="405"/>
+                                <rect key="frame" x="36" y="262" width="308.66666666666669" height="381"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="381" id="O4E-GL-3i7"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="ACb-tU-Dlh" kind="embed" identifier="ToSubEventTable" id="eYS-0W-YpC"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="세부 목표를 추가해주세요!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z93-Vu-s4u">
-                                <rect key="frame" x="30" y="188" width="287.33333333333331" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="Fiz-6o-zqa"/>
-                                    <constraint firstAttribute="width" constant="288" id="dm4-K5-BoH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEe-Tz-BVH">
-                                <rect key="frame" x="334.33333333333331" y="193" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="CtG-Tx-HCl"/>
-                                    <constraint firstAttribute="height" constant="25" id="upi-7n-AM5"/>
-                                </constraints>
-                                <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <action selector="subEventAddButtonTapped:" destination="l1j-zJ-RaE" eventType="touchUpInside" id="PAO-R4-1NE"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-DAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYe-aX-YqH">
-                                <rect key="frame" x="29.999999999999993" y="114" width="94.333333333333314" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <color key="textColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="hwg-Qg-1fB">
-                                <rect key="frame" x="20" y="248" width="349.33333333333331" height="413"/>
+                                <rect key="frame" x="20" y="240" width="350" height="415"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="415" id="5ia-YZ-9U4"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eventName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amr-8m-ZUu">
-                                <rect key="frame" x="134.33333333333334" y="123" width="100.33333333333334" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwa-fm-5b9">
-                                <rect key="frame" x="20" y="688" width="345" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="8bA-gd-zDg">
+                                <rect key="frame" x="28" y="108" width="332.66666666666669" height="113"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="RZz-pL-w8S">
+                                        <rect key="frame" x="0.0" y="0.0" width="332.66666666666669" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-DAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYe-aX-YqH">
+                                                <rect key="frame" x="0.0" y="0.0" width="94.666666666666671" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <color key="textColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="eventName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amr-8m-ZUu">
+                                                <rect key="frame" x="97.666666666666686" y="0.0" width="235" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="235" id="K1L-AH-pcW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="sCk-GT-86J">
+                                        <rect key="frame" x="0.0" y="50" width="332.66666666666669" height="63"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="zzH-sQ-ZSe">
+                                                <rect key="frame" x="0.0" y="0.0" width="332.66666666666669" height="15"/>
+                                                <subviews>
+                                                    <progressView opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="44g-0S-apq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="15"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="15" id="cUB-9z-tO4"/>
+                                                            <constraint firstAttribute="width" constant="280" id="dBG-qd-d5n"/>
+                                                        </constraints>
+                                                        <color key="progressTintColor" systemColor="systemPurpleColor"/>
+                                                    </progressView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8Q-u5-xEs">
+                                                        <rect key="frame" x="289" y="0.0" width="43.666666666666686" height="15"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="43.670000000000002" id="YPR-jp-5x6"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="4kX-fD-FQc">
+                                                <rect key="frame" x="0.0" y="29" width="332.66666666666669" height="34"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="세부 목표를 추가해주세요!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z93-Vu-s4u">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="280" id="Jqe-EA-mFn"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEe-Tz-BVH">
+                                                        <rect key="frame" x="295" y="0.0" width="37.666666666666686" height="34"/>
+                                                        <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <connections>
+                                                            <action selector="subEventAddButtonTapped:" destination="l1j-zJ-RaE" eventType="touchUpInside" id="PAO-R4-1NE"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwa-fm-5b9">
+                                <rect key="frame" x="21" y="686" width="348.66666666666669" height="30"/>
                                 <color key="backgroundColor" red="0.52442657950000005" green="0.3126676679" blue="0.94518142940000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Rjg-tn-tyU"/>
+                                </constraints>
                                 <state key="normal" title="모두 완료 하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -502,31 +526,18 @@
                         <viewLayoutGuide key="safeArea" id="MVE-g9-Q6m"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="m8Q-u5-xEs" firstAttribute="leading" secondItem="44g-0S-apq" secondAttribute="trailing" constant="6.6699999999999999" id="0bP-Fj-3X4"/>
-                            <constraint firstItem="aYe-aX-YqH" firstAttribute="top" secondItem="MVE-g9-Q6m" secondAttribute="top" constant="26" id="2MZ-6R-gG9"/>
-                            <constraint firstItem="Amr-8m-ZUu" firstAttribute="top" secondItem="MVE-g9-Q6m" secondAttribute="top" constant="35" id="CK9-9p-UtB"/>
-                            <constraint firstItem="hwg-Qg-1fB" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="20" id="D19-G4-47t"/>
-                            <constraint firstItem="Z93-Vu-s4u" firstAttribute="top" secondItem="44g-0S-apq" secondAttribute="bottom" constant="15" id="GGB-iy-nUB"/>
-                            <constraint firstItem="aYe-aX-YqH" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="30" id="Lcf-WG-qnW"/>
-                            <constraint firstItem="hwg-Qg-1fB" firstAttribute="centerX" secondItem="jXA-SX-7SN" secondAttribute="centerX" id="NW2-bR-NSL"/>
-                            <constraint firstItem="44g-0S-apq" firstAttribute="top" secondItem="aYe-aX-YqH" secondAttribute="bottom" constant="8" id="O29-lB-Ssh"/>
-                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="8ic-Ry-QAE" secondAttribute="bottom" constant="100" id="X2h-cd-gHp"/>
-                            <constraint firstItem="Z93-Vu-s4u" firstAttribute="top" secondItem="m8Q-u5-xEs" secondAttribute="bottom" constant="16" id="YYW-Xe-JRA"/>
-                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="Amr-8m-ZUu" secondAttribute="trailing" constant="154.66999999999999" id="YmJ-KP-XiT"/>
-                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="bottom" secondItem="hwg-Qg-1fB" secondAttribute="bottom" constant="100" id="ZSb-F3-AqC"/>
-                            <constraint firstItem="8ic-Ry-QAE" firstAttribute="trailing" secondItem="m8Q-u5-xEs" secondAttribute="trailing" id="am1-5B-naH"/>
-                            <constraint firstItem="8ic-Ry-QAE" firstAttribute="centerX" secondItem="jXA-SX-7SN" secondAttribute="centerX" id="bjb-or-LTJ"/>
-                            <constraint firstItem="hwg-Qg-1fB" firstAttribute="top" secondItem="Z93-Vu-s4u" secondAttribute="bottom" constant="25" id="e9c-u8-c2h"/>
-                            <constraint firstItem="44g-0S-apq" firstAttribute="leading" secondItem="Z93-Vu-s4u" secondAttribute="leading" id="ePL-bo-0Ne"/>
-                            <constraint firstItem="Z93-Vu-s4u" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="30" id="ff6-UZ-aLr"/>
-                            <constraint firstItem="m8Q-u5-xEs" firstAttribute="top" secondItem="Amr-8m-ZUu" secondAttribute="bottom" constant="11" id="fqq-Ho-ASq"/>
-                            <constraint firstItem="iEe-Tz-BVH" firstAttribute="leading" secondItem="Z93-Vu-s4u" secondAttribute="trailing" constant="17" id="hg7-RK-9PF"/>
-                            <constraint firstItem="44g-0S-apq" firstAttribute="leading" secondItem="aYe-aX-YqH" secondAttribute="leading" id="kd9-yS-GY6"/>
-                            <constraint firstItem="8ic-Ry-QAE" firstAttribute="top" secondItem="Z93-Vu-s4u" secondAttribute="bottom" constant="33" id="mNf-Aa-OVQ"/>
-                            <constraint firstItem="iEe-Tz-BVH" firstAttribute="trailing" secondItem="Amr-8m-ZUu" secondAttribute="trailing" constant="124.66666666666669" id="mmn-V2-VAA"/>
-                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="m8Q-u5-xEs" secondAttribute="trailing" constant="25" id="ocu-aJ-Qm9"/>
-                            <constraint firstItem="Amr-8m-ZUu" firstAttribute="leading" secondItem="aYe-aX-YqH" secondAttribute="trailing" constant="10" id="sJQ-yH-UpT"/>
-                            <constraint firstItem="iEe-Tz-BVH" firstAttribute="centerY" secondItem="Z93-Vu-s4u" secondAttribute="centerY" id="zFU-W0-h22"/>
+                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="hwg-Qg-1fB" secondAttribute="trailing" constant="18.666666666666686" id="5qt-zs-xuB"/>
+                            <constraint firstItem="gwa-fm-5b9" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="21" id="79Q-gx-pOd"/>
+                            <constraint firstItem="8ic-Ry-QAE" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="36" id="7kr-O5-WTf"/>
+                            <constraint firstItem="gwa-fm-5b9" firstAttribute="top" secondItem="hwg-Qg-1fB" secondAttribute="bottom" constant="31" id="JXM-sm-w4N"/>
+                            <constraint firstItem="hwg-Qg-1fB" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="20" id="LJ6-kX-tIv"/>
+                            <constraint firstItem="8bA-gd-zDg" firstAttribute="top" secondItem="MVE-g9-Q6m" secondAttribute="top" constant="20" id="Puw-qv-hHs"/>
+                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8ic-Ry-QAE" secondAttribute="trailing" constant="44.000000000000057" id="SJ7-LW-XAc"/>
+                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="gwa-fm-5b9" secondAttribute="trailing" constant="19" id="SfG-v9-3WX"/>
+                            <constraint firstItem="8bA-gd-zDg" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="28" id="Wvs-Rn-YkD"/>
+                            <constraint firstItem="8ic-Ry-QAE" firstAttribute="top" secondItem="8bA-gd-zDg" secondAttribute="bottom" constant="41" id="kYd-wE-XRN"/>
+                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8bA-gd-zDg" secondAttribute="trailing" constant="28" id="w23-qb-Fpa"/>
+                            <constraint firstItem="hwg-Qg-1fB" firstAttribute="top" secondItem="8bA-gd-zDg" secondAttribute="bottom" constant="19" id="x4C-eo-qyE"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
@@ -561,27 +572,27 @@
         <!--Sub Events Table View Controller-->
         <scene sceneID="QBK-F1-Mm2">
             <objects>
-                <tableViewController id="ACb-tU-Dlh" customClass="SubEventsTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ACb-tU-Dlh" customClass="SubEventsTableViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="G90-6e-sZk">
-                        <rect key="frame" x="0.0" y="0.0" width="339.33333333333331" height="405"/>
+                        <rect key="frame" x="0.0" y="0.0" width="308.66666666666669" height="381"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubEventCell" id="xVZ-9h-SNa" customClass="SubEventCell" customModule="TeamProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="339.33333333333331" height="62.333332061767578"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubEventCell" id="xVZ-9h-SNa" customClass="SubEventCell" customModule="UniCalendar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="308.66666666666669" height="62.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xVZ-9h-SNa" id="Hu8-gh-u2W">
-                                    <rect key="frame" x="0.0" y="0.0" width="339.33333333333331" height="62.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="308.66666666666669" height="62.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="kni-dT-Btf">
-                                            <rect key="frame" x="5" y="5" width="329.33333333333331" height="52.333333333333336"/>
+                                            <rect key="frame" x="5" y="5" width="298.66666666666669" height="52.333333333333336"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z0V-H6-iYm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="248" height="52.333333333333336"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="217.33333333333334" height="52.333333333333336"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fk-yC-1gY">
-                                                    <rect key="frame" x="288" y="0.0" width="41.333333333333314" height="52.333333333333336"/>
+                                                    <rect key="frame" x="257.33333333333331" y="0.0" width="41.333333333333314" height="52.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -617,7 +628,7 @@
         <!--일정 추가-->
         <scene sceneID="g3j-TV-LPX">
             <objects>
-                <tableViewController id="JIC-6f-RIu" customClass="EventAddTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="JIC-6f-RIu" customClass="EventAddTableViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qvq-CR-YJU">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -810,7 +821,7 @@
         <!--카테고리 선택-->
         <scene sceneID="W6a-UQ-46o">
             <objects>
-                <tableViewController id="Keh-E7-1NM" customClass="CategorySelectionTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Keh-E7-1NM" customClass="CategorySelectionTableViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ije-cC-e9U">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -873,7 +884,7 @@
         <!--푸시 알림 설정-->
         <scene sceneID="gla-FP-l5r">
             <objects>
-                <tableViewController id="7In-Pq-Bie" customClass="NotificationSettingTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7In-Pq-Bie" customClass="NotificationSettingTableViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NkN-C5-U65">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1083,7 +1094,7 @@
         <!--요일 설정-->
         <scene sceneID="UP0-oF-Ehd">
             <objects>
-                <tableViewController id="PdF-0T-a7c" customClass="NotificationDaysOfWeekTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="PdF-0T-a7c" customClass="NotificationDaysOfWeekTableViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cIs-W6-Y2J">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1261,7 +1272,7 @@
         <!--Event Edit Table View Controller-->
         <scene sceneID="pxU-Kx-8mn">
             <objects>
-                <tableViewController id="43q-fm-IXq" customClass="EventEditTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="43q-fm-IXq" customClass="EventEditTableViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8wh-s9-fXt">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1469,7 +1480,7 @@
         <!--카테고리 선택-->
         <scene sceneID="LXv-FK-1Jv">
             <objects>
-                <tableViewController id="cm0-gV-mel" customClass="CategorySelectionEditTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cm0-gV-mel" customClass="CategorySelectionEditTableViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zq6-Zh-juq">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1514,7 +1525,7 @@
         <!--푸시 알림 설정-->
         <scene sceneID="tNA-FI-aPT">
             <objects>
-                <tableViewController id="ex8-59-mvb" customClass="NotificationSettingEditTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ex8-59-mvb" customClass="NotificationSettingEditTableViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lar-OF-o4o">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1713,7 +1724,7 @@
         <!--요일 설정-->
         <scene sceneID="SJj-sn-vcN">
             <objects>
-                <tableViewController id="9Sb-A2-dlc" customClass="NotificationDaysOfWeekEditTableViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="9Sb-A2-dlc" customClass="NotificationDaysOfWeekEditTableViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BS9-Yc-P8w">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
