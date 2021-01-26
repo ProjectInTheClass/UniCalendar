@@ -63,7 +63,6 @@ class CategoryDetailTableViewController: UITableViewController {
                 //self.category = api.callCategory()
                 //self.event = api.callEvent()
                 //self.category[categoryIndex].eventsInCategory = api.callEvent()
-                //print(self.category)
                 
                 self.performSegue(withIdentifier: "unwindToSettingFromDetail", sender: nil)
             }))

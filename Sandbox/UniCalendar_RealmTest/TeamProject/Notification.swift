@@ -17,7 +17,6 @@ func makeNotificationDateComponent () {
     }
     
     for event in events {
-        print(event)
         let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
         eventDates.append(day)
     }
