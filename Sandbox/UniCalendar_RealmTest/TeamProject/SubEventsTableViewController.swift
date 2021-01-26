@@ -40,6 +40,10 @@ class SubEventsTableViewController: UITableViewController {
         self.view.addGestureRecognizer(tapGesture)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     @objc func loadList(){
             //load data here
             self.tableView.reloadData()
@@ -87,13 +91,25 @@ class SubEventsTableViewController: UITableViewController {
             cell.subEventNameLabel.attributedText = attributeString
             
         // subEvent가 없을때
-        } else {
+        } else if event.subEvents.count == 0 && event.eventIsDone == false{
             cell.imageView?.image = UIImage(named: "importance_blank")
             cell.subEventNameLabel.attributedText = NSMutableAttributedString(string: "새로운 세부 목표를 등록해주세요🤓")
             cell.subEventNameLabel.textColor = UIColor.lightGray
             cell.subEventNameLabel.font = UIFont(name: "System", size: 12)
             cell.subEventNameLabel.textAlignment = .left
 
+        } else if event.subEvents.count == 0 && event.eventIsDone == true{
+            cell.imageView?.image = UIImage(named: "importance_filled")
+            cell.subEventNameLabel.attributedText = NSMutableAttributedString(string: "모두 완료되었어요!😃")
+            cell.subEventNameLabel.textColor = UIColor.lightGray
+            cell.subEventNameLabel.font = UIFont(name: "System", size: 12)
+            cell.subEventNameLabel.textAlignment = .left
+            
+            let attributeString : NSMutableAttributedString = NSMutableAttributedString(string: cell.subEventNameLabel.text!)
+            
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            
+        
         }
         
         return cell
@@ -153,9 +169,8 @@ class SubEventsTableViewController: UITableViewController {
             
             // 소목표 체크 변경시 ProgressBar Percent 바꿔주기
             belongedContainer?.updateProgressBar()
-        } else {
-            // Todo
-            
+        } else if event.subEvents.count == 0 && event.eventIsDone == true {
+            belongedContainer?.updateProgressBar()
         }
     }
     

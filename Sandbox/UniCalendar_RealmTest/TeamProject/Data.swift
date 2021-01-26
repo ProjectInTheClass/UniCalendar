@@ -52,6 +52,8 @@ class Event: Object {
     @objc dynamic var importance: Int = 0
     @objc dynamic var eventIsDone: Bool = false
     @objc dynamic var eventIsPassed: Bool = false
+    @objc dynamic var notificationID : [String] = []
+    
     let subEvents = List<SubEvent>()
         
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
