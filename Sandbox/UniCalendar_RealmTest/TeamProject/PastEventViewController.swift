@@ -13,6 +13,7 @@ class PastEventViewController: UIViewController, UITableViewDataSource, UITabBar
     @IBOutlet weak var tableView: UITableView!
     
     var events: [Event] = api.callPassedEvent()
+    var mainEvents: [Event] = api.callEvent()
     
     var imageStringArray : [String] = ["importance_blank", "importance_filled"]
     
@@ -95,8 +96,9 @@ class PastEventViewController: UIViewController, UITableViewDataSource, UITabBar
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete){
             try? api.realm.write(){
-                events.remove(at: indexPath.row)
+                api.realm.delete(events[indexPath.row])
             }
+            events = api.callPassedEvent()
             tableView.reloadData()
         } else { return }
     }
