@@ -11,6 +11,8 @@ import Foundation
 class SubEventsTableViewController: UITableViewController {
 
     var event: Event = Event()
+    var categories = api.callCategory()
+   
     
     // 데이터 변경시 테이블뷰를 불러온 컨트롤러에 변경 값 넘겨주기 위함
     var belongedContainer: HomeDetailViewController?
@@ -91,7 +93,6 @@ class SubEventsTableViewController: UITableViewController {
             cell.subEventNameLabel.textColor = UIColor.lightGray
             cell.subEventNameLabel.font = UIFont(name: "System", size: 12)
             cell.subEventNameLabel.textAlignment = .left
-            // cell.subEventNameLabel.text = "새로운 소목표를 등록해주세요🤓"
 
         }
         
@@ -104,6 +105,20 @@ class SubEventsTableViewController: UITableViewController {
                 // 체크 반전
                 self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
             }
+            var numOfIsDone = 0
+            for i in 0..<self.event.subEvents.count {
+                if self.event.subEvents[i].subEventIsDone == true{
+                    numOfIsDone += 1
+                }
+            }
+            print(numOfIsDone)
+            print(event.subEvents.count)
+            if self.event.subEvents.count == numOfIsDone {
+                try! api.realm.write(){
+                    self.event.eventIsDone = true
+                }
+            }
+            print(event.eventIsDone)
             tableView.reloadData()
             
             // 소목표 체크 변경시 ProgressBar Percent 바꿔주기
