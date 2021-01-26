@@ -163,12 +163,12 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
             
             barChartData.setValueFormatter(formatter)
             barChartDataSet.colors = [UIColor(named: "purple")!]
-//            barChartDataSetOfSub.colors = [UIColor(named: "blue")!]
+            barChartDataSetOfSub.colors = [UIColor(named: "pink")!]
             let groupSpace = 0.3
             let barSpace = 0.05
             let barWidth = 0.3
             barChartData.barWidth = barWidth;
-            cell.barChartView.xAxis.axisMinimum = Double(0)
+//            cell.barChartView.xAxis.axisMinimum = Double(0)
             let gg = barChartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
             cell.barChartView.xAxis.axisMaximum = Double(0) + gg * Double(12)
             barChartData.groupBars(fromX: Double(0), groupSpace: groupSpace, barSpace: barSpace)
