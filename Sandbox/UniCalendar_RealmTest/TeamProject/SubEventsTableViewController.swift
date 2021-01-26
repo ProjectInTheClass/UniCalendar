@@ -100,7 +100,10 @@ class SubEventsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if self.event.subEvents.count >= 1 {
+            let beforeProcess: Float = Float(self.event.subEvents.filter{s in s.subEventIsDone == true}.count) / Float(self.event.subEvents.count)
+            
             try? api.realm.write() {
                 // 체크 반전
                 self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
@@ -114,9 +117,14 @@ class SubEventsTableViewController: UITableViewController {
                 }
             }
             // for debug
-            print(numOfIsDone)
-            print(event.subEvents.count)
-            print("진행률 변경: \(Float(numOfIsDone)/Float(event.subEvents.count))")
+            
+            let afterProcess: Float = Float(numOfIsDone)/Float(event.subEvents.count)
+            
+            print("진행률 변경전: \(beforeProcess)")
+            print("진행률 변경후: \(afterProcess)")
+            print("진행단계 같은가요?: \(isSameStep(before: beforeProcess, after: afterProcess))")
+            
+            // removePendingNotification(identifiers: event.notificationId)
             
             if self.event.subEvents.count == numOfIsDone {
                 try! api.realm.write(){
@@ -152,5 +160,29 @@ class SubEventsTableViewController: UITableViewController {
                 belongedContainer?.updateProgressBar()
             } else { return }
         }
+    }
+    
+    
+    func getStepByProcess(process: Float) -> String {
+        if process > 1 || process < 0 {
+            return "error"
+        }
+        var step: String
+        if process <= 0.25 {
+            step = "Beginning"
+        } else if process <= 0.5 {
+            step = "EarlyMiddle"
+        } else if process <= 0.75 {
+            step = "LateMiddle"
+        } else {
+            step = "End"
+        }
+        return step
+    }
+    func isSameStep(before: Float, after: Float) -> Bool {
+        let beforeProcessStep: String = getStepByProcess(process: before)
+        let afterProcessStep: String = getStepByProcess(process: after)
+        
+        return (beforeProcessStep == afterProcessStep)
     }
 }
