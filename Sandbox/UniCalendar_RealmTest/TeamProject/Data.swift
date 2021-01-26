@@ -31,10 +31,10 @@ class API {
         return r
     }
     
-    func callContent() -> [Content]{
-        let r: [Content] = realm.objects(Content.self).map { $0 }
-        return r
-    }
+//    func callContent() -> [Content]{
+//        let r: [Content] = realm.objects(Content.self).map { $0 }
+//        return r
+//    }
     
 }
 
@@ -84,17 +84,17 @@ class SubEvent: Object {
     }
 }
 
-class Content: Object {
-    @objc dynamic var begin: String = ""
-    @objc dynamic var earlyMiddle: String = ""
-    @objc dynamic var lateMiddle: String = ""
-    @objc dynamic var end: String = ""
-    
-    convenience init(begin: String, earlyMiddle: String, lateMiddle: String, end: String) {
-        self.init()
-        self.begin = begin
-        self.earlyMiddle = earlyMiddle
-        self.end = end
-    }
-}
+//class Content: Object {
+//    @objc dynamic var begin: String = ""
+//    @objc dynamic var earlyMiddle: String = ""
+//    @objc dynamic var lateMiddle: String = ""
+//    @objc dynamic var end: String = ""
+//
+//    convenience init(begin: String, earlyMiddle: String, lateMiddle: String, end: String) {
+//        self.init()
+//        self.begin = begin
+//        self.earlyMiddle = earlyMiddle
+//        self.end = end
+//    }
+//}
 
