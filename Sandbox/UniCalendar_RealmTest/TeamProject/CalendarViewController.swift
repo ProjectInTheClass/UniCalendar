@@ -41,19 +41,42 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
         calendarView.scrollDirection = .horizontal
         
-       
+        //스와이프 양옆으로 흐리게 다음/전달 보이는거
+        calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
+        //headerDateFormat
+        calendarView.appearance.headerDateFormat = "YYYY년 MM월"
         
+        calendarView.locale = Locale(identifier: "ko_KR")
+        calendarView.calendarWeekdayView.weekdayLabels[0].text = "월"
+        calendarView.calendarWeekdayView.weekdayLabels[1].text = "화"
+        calendarView.calendarWeekdayView.weekdayLabels[2].text = "수"
+        calendarView.calendarWeekdayView.weekdayLabels[3].text = "목"
+        calendarView.calendarWeekdayView.weekdayLabels[4].text = "금"
+        calendarView.calendarWeekdayView.weekdayLabels[5].text = "토"
+        calendarView.calendarWeekdayView.weekdayLabels[6].text = "일"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         events = api.callEvent()
         categories = api.callCategory()
+        calendarView.deselect(Date.init())
         for event in events {
             let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
             eventDates.append(day)
         }
+        //reload data for both calendar & table view
+        selectedDateEvents.removeAll()
+        calendarView.reloadData()
         self.calendarEventTableView.reloadData()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        for date in eventDates{
+            calendarView.deselect(date)
+        }
+    }
+    
+    
     
 }
 
@@ -72,18 +95,6 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
         
         let categoryColor = calculateColor(color: event.parentCategory[0].categoryColor)
         cell.categoryColorImage.image = UIImage(named: categoryColor)
-        
-//        let today = dateFormatter.date(from: dateFormatter.string(from : Date.init()))
-//        let dDay = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
-//
-//        let interval = dDay.timeIntervalSince(today!)
-//        let d = Int(interval / 86400)
-//
-//        if d < 0 {
-//            cell.dDayLabel.text = "D + " + String(-Int(d))
-//        } else {
-//            cell.dDayLabel.text = "D - " + String(d)
-//        }
         
         // 완료한 세부 목표 / 세부 목표 출력하기
         var count: Int = 0
@@ -124,7 +135,7 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
     // 날짜 선택 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-//        print(dateFormatter.string(from: date) + " 선택됨")
+        print(dateFormatter.string(from: date) + " 선택됨")
         selectedDateEvents.removeAll()
         
         for event in events {

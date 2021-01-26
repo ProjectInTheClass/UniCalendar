@@ -107,6 +107,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
                 api.realm.delete(selectedEvent)
             }
             
+            self.event = api.callEvent()
             self.performSegue(withIdentifier: "unwindToHomeFromEdit", sender: nil)
         }))
         alert.addAction(UIAlertAction(title: "아뇨", style: .cancel, handler: { _ in
