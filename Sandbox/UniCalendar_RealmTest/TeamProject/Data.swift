@@ -57,7 +57,7 @@ class Event: Object {
     @objc dynamic var importance: Int = 0
     @objc dynamic var eventIsDone: Bool = false
     @objc dynamic var eventIsPassed: Bool = false
-    //dynamic var notificationID : [String] = []
+
     
     let subEvents = List<SubEvent>()
     let pushAlarmID = List<PushAlarm>()
@@ -92,5 +92,10 @@ class PushAlarm: Object {
     @objc dynamic var id: String = ""
     
     var parentEvent = LinkingObjects(fromType: Event.self, property: "pushAlarmID")
+    
+    convenience init(id: String) {
+        self.init()
+        self.id = id
+    }
 }
 

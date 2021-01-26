@@ -247,13 +247,23 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                     
                     let notificationId = UUID().uuidString
-                    // todo identifier 나중에 데이터베이스에 저장해줘야함
+                    
                     let request = UNNotificationRequest(identifier: notificationId,
                                                         content: notificationContent,
                                                         trigger: trigger)
                     // 알림 등록
                     if interval >= 0 {
                         addNotificationToCenter(request: request, event: event)
+                        
+                        let pushAlarm = PushAlarm()
+                        pushAlarm.id = notificationId
+                        
+                        try! api.realm.write() {
+                            api.realm.add([pushAlarm])
+                            event.pushAlarmID.append(pushAlarm)
+                        }
+                        // 몇개의 알람 예정되어있는지
+                        LocalNotificationManager().printCountOfNotifications()
                     }
                 }
             }
@@ -267,11 +277,11 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
             guard error == nil else { return }
         }
         // debug when notification added
-        print("!! Notification\ntitle:[\(request.content.title)]\nbody:\(request.content.body)")
+        print("[New Notification]\n-title: \(request.content.title)\n-body: \(request.content.body)\n")
     }
     // if process step is changed
     func removeNotifications(notificationIds: [String]) {
-        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: notificationIds)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: notificationIds)
     }
     //----------------------------알림 end--------------------
         
