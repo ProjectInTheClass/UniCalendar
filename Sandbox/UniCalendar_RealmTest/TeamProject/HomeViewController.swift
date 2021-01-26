@@ -157,10 +157,21 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        UNUserNotificationCenter
+            .current()
+            .requestAuthorization(options: [.alert, .badge]) { granted, error in
+                if granted == true && error == nil {
+                    // We have permission!
+                }
+        }
+
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         tableView.dataSource = self
         tableView.delegate = self
-    
+        
+        
     }
 
     
@@ -173,6 +184,10 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         print("VIEW WILL APPEAR")
         events = api.callNotDoneEvent()
         tableView.reloadData()
+        
+        // --------- noti test start -----
+
+        //------------------- noti test end -------------
     }
     
 //    func filledOne() {

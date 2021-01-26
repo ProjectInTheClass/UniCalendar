@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import UserNotifications
 
 let api = API.shared
 
-class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
+class EventAddTableViewController: UITableViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
     // 빈도
     // 0: 없음, 1:매일, 2: 사용자설정
     var checkedFrequency: Int = 0
@@ -98,44 +99,177 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
     
     func save() {
 
+<<<<<<< HEAD
+=======
+        // 0 1 2
+        print(checkedFrequency)
+        // 0 1 2 3 4 5 6 or []
+        print(checkedDaysOfWeek)
+        print(checkedTime)
+
+        var eventForNotification: Event = Event()
+        
+>>>>>>> 1d93d0e548048971ed357ed37bcab0a4f9061748
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
         let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: d!)
         let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
         
         if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) {
+
             let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: true)
+
             try! api.realm.write(){
                 category[selectedCategory].eventsInCategory.append(newEvent)
                 api.realm.add([newEvent])
             }
+            eventForNotification = newEvent
         } else {
             let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: false)
            try! api.realm.write{
                category[selectedCategory].eventsInCategory.append(newEvent)
                api.realm.add([newEvent])
            }
+            eventForNotification = newEvent
         }
         
-        switch self.checkedFrequency {
-        case 0: // 요일: 없음
-            // '없음' 선택이므로 알림 등록 없이 바로 break
-            break
-        case 1: // 요일: 매일
-            break
-        case 2: // 요일: 사용자설정
-            break
-        default:
-            break
+        // Todo: step 값 계산하기 (begin:0 ~ end: 2 or 3?)
+        let step: Int = 0 // begin
+        
+        // switch-case 안에서 호출시 checkedDayOfWeek 뺄수도 있음
+        // 알림 설정에서사용자 선택-요일 이 선택된 상태가 아니면 아니면 빈배열
+        
+        savePushNotification(event: eventForNotification, step: step, frequency: checkedFrequency, time: checkedTime, daysOfWeek: checkedDaysOfWeek)
+    }
+    
+    func savePushNotification(event: Event, step: Int, frequency: Int, time: Int, daysOfWeek: [Int]?) {
+        print("함수 시작: savePushNotification")
+        // let contents = api.callContent()
+        
+        // 데이터 구조 바꿔야함
+        // 컨텐츠 안에 문자열 들어가는 구조로?
+        // let content = contents[step]
+        
+        // 알림 메세지 구성
+        // event id도 넣어줘야함
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = event.eventName // 앞에 디데이 계산해서 추가
+        notificationContent.body = "단계: \(step), \(event.eventName)의 푸시이벤트입니다."
+        
+        //let today = Date()
+        // let dDay = event.eventDday
+        
+        let calendar = Calendar.current
+        
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        
+        let today = df.date(from: df.string(from : Date.init()))
+        let dDay = df.date(from: df.string(from: event.eventDday))!
+
+        let interval = dDay.timeIntervalSince(today!)
+        
+        // dMinus
+        let dMinus = Int(interval / 86400)
+        
+        
+        if frequency == 0 {
+            // do nothing
+        } else if frequency == 1 { // everyday
+            // D-Day 당일까지 포함이므로 offset값에 +1
+            for offset in 0..<dMinus+1 {
+                let date = calendar.date(byAdding: .day, value: offset, to: Date())!
+                var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+                
+                // 시간 설정 바꿔줘야함
+                dateComponents.hour = 6
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                
+                // identifier 나중에 데이터베이스에 저장해줘야함
+                let request = UNNotificationRequest(identifier: UUID().uuidString,
+                                                    content: notificationContent,
+                                                    trigger: trigger)
+                // 알림 등록
+                addNotificationToCenter(request: request)
+                
+                // debug: everday / contents title
+                print("이벤트 타이틀, 바디 [요일: 매일]")
+                print(notificationContent.title)
+                print(notificationContent.body)
+            }
+        } else if frequency == 2 { // 사용자 설정
+            if checkedDaysOfWeek.isEmpty {
+                return
+            }
+            let weeks: Int = dMinus / 7
             
+            // 체크된 요일로 반복문
+            for weekday in checkedDaysOfWeek {
+                // week가 0이면 이번주
+                // 오늘: 화요일, 디데이: 다음주 수요일이면 D-8
+                // weeks 는 1이 되니까
+                // +0(이번주), +1(다음주)까지 되려면
+                // 반복문을 한 번 더 돌아야함
+                // 그래서 0..<weeks"+1"
+                for week in 0..<weeks+1 {
+                    var weekdayDate: Date = Date()
+                    switch weekday {
+                    case 0:
+                        weekdayDate = Date.today().next(.monday,  considerToday: true)
+                    case 1:
+                        weekdayDate = Date.today().next(.tuesday,  considerToday: true)
+                    case 2:
+                        weekdayDate = Date.today().next(.wednesday,  considerToday: true)
+                    case 3:
+                        weekdayDate = Date.today().next(.thursday,  considerToday: true)
+                    case 4:
+                        weekdayDate = Date.today().next(.friday,  considerToday: true)
+                    case 5:
+                        weekdayDate = Date.today().next(.saturday,  considerToday: true)
+                    case 6:
+                        weekdayDate = Date.today().next(.sunday,  considerToday: true)
+                    default:
+                        break;
+                    }
+                    
+                    let date = calendar.date(byAdding: .day, value: 7*(week+1), to: weekdayDate)!
+                    var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+                    
+                    dateComponents.hour = 6 + checkedTime * 3
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+                    
+                    // identifier 나중에 데이터베이스에 저장해줘야함
+                    let request = UNNotificationRequest(identifier: UUID().uuidString,
+                                                        content: notificationContent,
+                                                        trigger: trigger)
+                    // 알림 등록
+                    print("- 이벤트 타이틀, 바디 [특정 요일 등록]")
+                    print("title: \(request.content.title)")
+                    print("body: \(request.content.body)")
+                    print("outer: \(weekday), inner: \(week)")
+                    addNotificationToCenter(request: request)
+                }
+            }
+        } else {
+            print("notification frequency setting error")
         }
+        
 
     }
     
-    func savePushNotification() {
-        
+    func addNotificationToCenter(request: UNNotificationRequest) {
+        UNUserNotificationCenter.current().add(request) { error in
+            guard error == nil else { return }
+            // debug: in notification add
+        }
+        print("!! Notification [\(request.content.title)] Add !!")
     }
-    
+    // if process step is changed
+    func removeNotifications(notificationIds: [String]) {
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: notificationIds)
+    }
+    //----------------------------알림 end--------------------
+        
     @objc private func hideKeyboard() {
         self.view.endEditing(true)
     }
@@ -153,5 +287,87 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         importanceSlider.value = 2
         showImportance.text = String(Int(importanceSlider.value))
+        
     }
+}
+
+
+// Date Extension for get Weekday easily
+
+/* https://stackoverflow.com/questions/33397101/how-to-get-mondays-date-of-the-current-week-in-swift/33397770
+ */
+extension Date {
+
+  static func today() -> Date {
+      return Date()
+  }
+
+  func next(_ weekday: Weekday, considerToday: Bool = false) -> Date {
+    return get(.next,
+               weekday,
+               considerToday: considerToday)
+  }
+
+  func previous(_ weekday: Weekday, considerToday: Bool = false) -> Date {
+    return get(.previous,
+               weekday,
+               considerToday: considerToday)
+  }
+
+  func get(_ direction: SearchDirection,
+           _ weekDay: Weekday,
+           considerToday consider: Bool = false) -> Date {
+
+    let dayName = weekDay.rawValue
+
+    let weekdaysName = getWeekDaysInEnglish().map { $0.lowercased() }
+
+    assert(weekdaysName.contains(dayName), "weekday symbol should be in form \(weekdaysName)")
+
+    let searchWeekdayIndex = weekdaysName.firstIndex(of: dayName)! + 1
+
+    let calendar = Calendar(identifier: .gregorian)
+
+    if consider && calendar.component(.weekday, from: self) == searchWeekdayIndex {
+      return self
+    }
+
+    var nextDateComponent = calendar.dateComponents([.hour, .minute, .second], from: self)
+    nextDateComponent.weekday = searchWeekdayIndex
+
+    let date = calendar.nextDate(after: self,
+                                 matching: nextDateComponent,
+                                 matchingPolicy: .nextTime,
+                                 direction: direction.calendarSearchDirection)
+
+    return date!
+  }
+
+}
+
+// MARK: Helper methods
+extension Date {
+  func getWeekDaysInEnglish() -> [String] {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.locale = Locale(identifier: "en_US_POSIX")
+    return calendar.weekdaySymbols
+  }
+
+  enum Weekday: String {
+    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
+  }
+
+  enum SearchDirection {
+    case next
+    case previous
+
+    var calendarSearchDirection: Calendar.SearchDirection {
+      switch self {
+      case .next:
+        return .forward
+      case .previous:
+        return .backward
+      }
+    }
+  }
 }
