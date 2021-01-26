@@ -71,15 +71,16 @@ class CompleteDegreeCell: UITableViewCell {
         
         if numOfTotal == 0 {
             averageCompletion.text = "0%"
-            comparisonLabel.text = "아직 지난 달과 비교할 데티어가 없어요😢"
+            comparisonLabel.text = "아직 지난 달과 비교할 데이터가 없어요😢"
             
             completionRateComparison.text = ""
             upDownLabel.text = ""
-        }else {
-            averageCompletion.text = String(format: "%.0f", average) + "%"
             
-            if numOfLastMonthCompletion != 0{
-                let lastMonthAverage = Double(numOfLastMonthTotal) / Double(numOfLastMonthCompletion) * 100
+        } else {
+            averageCompletion.text = String(format: "%.0f", average) + "%"
+            comparisonLabel.text = "저번 달보다 성공률이"
+            if numOfLastMonthTotal != 0{
+                let lastMonthAverage = Double(numOfLastMonthCompletion) / Double(numOfLastMonthTotal) * 100
                 let comparison = average - lastMonthAverage
                 completionRateComparison.text = String(format: "%.2f", comparison) + "%"
                 if comparison == 0 {
@@ -92,11 +93,11 @@ class CompleteDegreeCell: UITableViewCell {
                     upDownLabel.text = "낮아요"
                 }
             }else {
-                completionRateComparison.text = String(format: "%.0f", average)  + "%"
-                upDownLabel.text = "높아요"
+                comparisonLabel.text = "지난 달에는 등록한 목표가 없어요🤭"
+                completionRateComparison.text = ""
+                upDownLabel.text = ""
             }
         }
-       
     }
     
     func countSubEventsNumAndRate(){
@@ -129,15 +130,16 @@ class CompleteDegreeCell: UITableViewCell {
         
         if numOfTotal == 0 {
             averageCompletion.text = "0%"
-            comparisonLabel.text = "아직 지난 달과 비교할 데티어가 없어요😢"
+            comparisonLabel.text = "아직 지난 달과 비교할 데이터가 없어요😢"
             
             completionRateComparison.text = ""
             upDownLabel.text = ""
-        }else {
-            averageCompletion.text = String(format: "%.0f", average) + "%"
             
-            if numOfLastMonthCompletion != 0{
-                let lastMonthAverage = Double(numOfLastMonthTotal) / Double(numOfLastMonthCompletion) * 100
+        } else {
+            averageCompletion.text = String(format: "%.0f", average) + "%"
+            comparisonLabel.text = "저번 달보다 성공률이"
+            if numOfLastMonthTotal != 0{
+                let lastMonthAverage = Double(numOfLastMonthCompletion) / Double(numOfLastMonthTotal) * 100
                 let comparison = average - lastMonthAverage
                 completionRateComparison.text = String(format: "%.2f", comparison) + "%"
                 if comparison == 0 {
@@ -160,6 +162,7 @@ class CompleteDegreeCell: UITableViewCell {
         switch sender.selectedSegmentIndex {
         case 0:
             countEventsNumAndRate()
+            
         case 1:
             countSubEventsNumAndRate()
         default:

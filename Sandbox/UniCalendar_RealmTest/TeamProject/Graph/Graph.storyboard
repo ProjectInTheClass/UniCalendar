@@ -86,10 +86,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="VAG-dI-0Oc">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="VAG-dI-0Oc">
                                                     <rect key="frame" x="30" y="96" width="354" height="32"/>
                                                     <segments>
-                                                        <segment title="저번 달"/>
+                                                        <segment title="지난 달"/>
                                                         <segment title="이번 달 "/>
                                                     </segments>
                                                     <connections>
@@ -97,36 +97,36 @@
                                                     </connections>
                                                 </segmentedControl>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wZI-vJ-HFB">
-                                                    <rect key="frame" x="30" y="127" width="354" height="83"/>
+                                                    <rect key="frame" x="30" y="135" width="354" height="62"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="83" id="29J-hh-2l1"/>
+                                                        <constraint firstAttribute="height" constant="62" id="29J-hh-2l1"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UdF-Sw-2Nh">
-                                                        <size key="itemSize" width="81" height="73"/>
+                                                        <size key="itemSize" width="74" height="67"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="0Wd-vF-Wvo" customClass="Cell" customModule="TeamProject" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="5" width="74" height="73"/>
+                                                            <rect key="frame" x="0.0" y="-2.5" width="74" height="67"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4UB-Dx-REh">
-                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="73"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="67"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xIF-ne-H4c">
-                                                                        <rect key="frame" x="43" y="25.5" width="0.0" height="22"/>
+                                                                        <rect key="frame" x="43" y="25.5" width="0.0" height="16"/>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="categoryNameLabel " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhb-2O-flK">
-                                                                        <rect key="frame" x="8" y="8" width="58" height="27.5"/>
+                                                                        <rect key="frame" x="8" y="8" width="58" height="21.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="eventNumLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlD-wz-uL0">
-                                                                        <rect key="frame" x="8" y="43.5" width="58" height="19.5"/>
+                                                                        <rect key="frame" x="8" y="37.5" width="58" height="19.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" red="0.52442657950000005" green="0.3126676679" blue="0.94518142940000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <nil key="highlightedColor"/>
@@ -146,7 +146,7 @@
                                                                     <constraint firstItem="LlD-wz-uL0" firstAttribute="leading" secondItem="4UB-Dx-REh" secondAttribute="leading" constant="8" id="z1J-bt-F0g"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
-                                                            <size key="customSize" width="74" height="73"/>
+                                                            <size key="customSize" width="74" height="67"/>
                                                             <connections>
                                                                 <outlet property="categoryNameLabel" destination="Vhb-2O-flK" id="9re-YU-Y8v"/>
                                                                 <outlet property="eventNumLabel" destination="LlD-wz-uL0" id="hf4-ow-Lso"/>
@@ -158,6 +158,22 @@
                                                     <rect key="frame" x="30" y="205" width="354" height="271"/>
                                                     <color key="backgroundColor" red="0.91640943289999999" green="0.44445782420000002" blue="0.87289567030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </view>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-SM-eQY">
+                                                    <rect key="frame" x="30" y="476" width="354" height="174"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <string key="text">열심히 살아가는 당신😎은
+과제에 가장 많은 노력🔥을 기울이고 있으며,
+대외 활동에도 시간🕙을 투자합니다.
+다양한 경험과 꾸준한 노력이
+분명 좋은 결과를 만들어 낼 것으로 보입니다.🎉
+
+다른 활동에 비해 시험 준비의 빈도가 낮은 편입니다.
+
+오늘도 열공합시다💪🏻</string>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="TX8-cu-lRV">
                                                     <rect key="frame" x="10" y="64" width="394" height="599"/>
                                                     <constraints>
@@ -170,29 +186,34 @@
                                             <constraints>
                                                 <constraint firstItem="VAG-dI-0Oc" firstAttribute="top" secondItem="Ec8-CJ-nJ0" secondAttribute="bottom" constant="39.5" id="10s-4O-04v"/>
                                                 <constraint firstItem="wZI-vJ-HFB" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" constant="10" id="3bc-2v-yxy"/>
-                                                <constraint firstItem="LGD-59-Mgt" firstAttribute="top" secondItem="wZI-vJ-HFB" secondAttribute="bottom" constant="-5" id="F2d-9E-V5W"/>
+                                                <constraint firstItem="LGD-59-Mgt" firstAttribute="top" secondItem="wZI-vJ-HFB" secondAttribute="bottom" constant="8" id="F2d-9E-V5W"/>
                                                 <constraint firstItem="TX8-cu-lRV" firstAttribute="top" secondItem="Ec8-CJ-nJ0" secondAttribute="bottom" constant="7.5" id="FfN-I0-o8Z"/>
-                                                <constraint firstItem="wZI-vJ-HFB" firstAttribute="top" secondItem="VAG-dI-0Oc" secondAttribute="bottom" id="JeQ-BT-keW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="VfP-SM-eQY" secondAttribute="bottom" constant="17" id="HlD-MQ-XB2"/>
+                                                <constraint firstItem="wZI-vJ-HFB" firstAttribute="top" secondItem="VAG-dI-0Oc" secondAttribute="bottom" constant="8" id="JeQ-BT-keW"/>
                                                 <constraint firstAttribute="bottom" secondItem="TX8-cu-lRV" secondAttribute="bottom" constant="15" id="JhK-Tu-1bk"/>
                                                 <constraint firstItem="wZI-vJ-HFB" firstAttribute="leading" secondItem="LGD-59-Mgt" secondAttribute="leading" id="KLi-ue-uZA"/>
                                                 <constraint firstItem="VAG-dI-0Oc" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" constant="10" id="NKq-im-GA1"/>
-                                                <constraint firstItem="wZI-vJ-HFB" firstAttribute="top" secondItem="VAG-dI-0Oc" secondAttribute="bottom" id="QE6-r0-UpF"/>
+                                                <constraint firstItem="wZI-vJ-HFB" firstAttribute="top" secondItem="VAG-dI-0Oc" secondAttribute="bottom" constant="8" id="QE6-r0-UpF"/>
                                                 <constraint firstItem="TX8-cu-lRV" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leading" constant="10" id="QJz-Ub-bFK"/>
                                                 <constraint firstItem="Ec8-CJ-nJ0" firstAttribute="top" secondItem="bJ4-vv-E8u" secondAttribute="topMargin" constant="25" id="TRC-mc-S2J"/>
                                                 <constraint firstItem="wZI-vJ-HFB" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" constant="10" id="U7q-BW-aKB"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="VAG-dI-0Oc" secondAttribute="trailing" constant="10" id="ZUe-Sf-cP9"/>
-                                                <constraint firstItem="LGD-59-Mgt" firstAttribute="top" secondItem="wZI-vJ-HFB" secondAttribute="bottom" constant="-5" id="afB-pp-TRS"/>
+                                                <constraint firstItem="LGD-59-Mgt" firstAttribute="top" secondItem="wZI-vJ-HFB" secondAttribute="bottom" constant="8" id="afB-pp-TRS"/>
                                                 <constraint firstItem="Ec8-CJ-nJ0" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" id="bm2-Jf-ceZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wZI-vJ-HFB" secondAttribute="trailing" constant="10" id="fEe-BH-8oN"/>
+                                                <constraint firstItem="VfP-SM-eQY" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" constant="10" id="gfC-Z8-sre"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wZI-vJ-HFB" secondAttribute="trailing" constant="10" id="lca-6Q-tHn"/>
+                                                <constraint firstItem="VfP-SM-eQY" firstAttribute="top" secondItem="LGD-59-Mgt" secondAttribute="bottom" id="tG5-aR-lEp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VfP-SM-eQY" secondAttribute="trailing" constant="10" id="tq4-c1-Bgl"/>
                                                 <constraint firstAttribute="bottom" secondItem="LGD-59-Mgt" secondAttribute="bottom" constant="202" id="vtu-JS-A6z"/>
                                                 <constraint firstAttribute="trailing" secondItem="TX8-cu-lRV" secondAttribute="trailing" constant="10" id="wnE-MJ-U05"/>
                                                 <constraint firstItem="wZI-vJ-HFB" firstAttribute="trailing" secondItem="LGD-59-Mgt" secondAttribute="trailing" id="x3x-1W-BCu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="collectionView" destination="wZI-vJ-HFB" id="spn-Vc-W00"/>
+                                            <outlet property="collectionView" destination="wZI-vJ-HFB" id="cfi-Yf-lI7"/>
                                             <outlet property="patternLabel" destination="Ec8-CJ-nJ0" id="SBC-EW-MJC"/>
+                                            <outlet property="patternTextView" destination="VfP-SM-eQY" id="bns-2h-TGI"/>
                                             <outlet property="pieChartView" destination="LGD-59-Mgt" id="WtN-0v-Hms"/>
                                         </connections>
                                     </tableViewCell>
@@ -209,7 +230,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Zn-HD-fNz">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Zn-HD-fNz">
                                                     <rect key="frame" x="20" y="86" width="374" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="VGT-1o-anL"/>
@@ -220,6 +241,7 @@
                                                     </segments>
                                                     <connections>
                                                         <action selector="segDidChange:" destination="VNF-Q2-SCV" eventType="valueChanged" id="Kog-iC-Ndh"/>
+                                                        <action selector="segDidChanged:" destination="ncd-ao-cF9" eventType="valueChanged" id="qMe-3i-WN3"/>
                                                     </connections>
                                                 </segmentedControl>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="22V-ex-WCN">
@@ -383,6 +405,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVl-4S-nVP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ncd-ao-cF9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="750.72463768115949" y="29.464285714285712"/>
         </scene>

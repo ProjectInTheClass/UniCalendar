@@ -33,9 +33,6 @@ class GraphViewController: UIViewController {
                 dataEntry.label = category.categoryName
                 pieDataEntries.append(dataEntry)
             }
-//
-            
-            
         }
     }
     
@@ -51,7 +48,7 @@ class GraphViewController: UIViewController {
         for i in 0...11 {
             for event in events{
                 let components = Calendar.current.dateComponents([.year, .month], from: event.eventDday)
-                if (year == components.year) && ((i + 1) == components.month){
+                if (year == components.year) && ((i + 1) == components.month) && event.eventIsDone == true{
                     numOfCompletedEvents[i] += 1
                     for j in 0..<event.subEvents.count{
                         if event.subEvents[j].subEventIsDone {
@@ -126,25 +123,6 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PatternCell", for: indexPath) as! PatternCell
 
             cell.patternLabel.text = semiSection[2]
-            
-        
-            updatePieChartData()
-            
-            let pieChartDataSet = PieChartDataSet(entries: pieDataEntries, label: nil)
-            let pieChartData = PieChartData(dataSet: pieChartDataSet)
-
-            var colors:[UIColor] = []
-
-            for category in categories{
-                let color = calculateColor(color: category.categoryColor)
-
-                colors.append( UIColor(named: color)! )
-            }
-            pieChartDataSet.colors = colors
-            pieChartData.setValueFormatter(formatter)
-            
-            cell.pieChartView.animate(xAxisDuration: 1.0)
-            cell.pieChartView.data = pieChartData
             
             return cell
         }

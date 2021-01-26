@@ -8,97 +8,174 @@
 import UIKit
 import Charts
 
-class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    
-    var categories : [Category] = api.callCategory()
-    var events: [Event] = api.callEvent()
+var isClicked = true
+var flag = true
+
+class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var patternLabel: UILabel!
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var patternTextView: UITextView!
+    
+    var categories : [Category] = api.callCategory()
+    var events: [Event] = api.callEvent()
+    var pieDataEntries = [PieChartDataEntry]()
     let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
-    
+    var sentence = ""
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        var numOfCategory = 0
-//
-//        for category in categories{
-//            var isInCategory = false
-//            for i in 0..<category.eventsInCategory.count {
-//                let dCalendar = Calendar.current.dateComponents([.year, .month], from: category.eventsInCategory[i].eventDday)
-//                if ((dCalendar.year == today.year) && (dCalendar.month == today.month)){
-//                    isInCategory = true
-//                }
-//            }
-//            if isInCategory == true {
-//                numOfCategory += 1
-//            }
-//        }
-//        return numOfCategory
-       
         return categories.count
-        
-    //    return categories.filter({ $0.eventsInCategory.count > 0 }).count
-    
-    
-    
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
-        var isInCategory = false
-        var numOfEvents = 0
-//        let data = categories.filter({ $0.eventsInCategory.count > 0 })[indexPath.row]
         
-        for i in 0..<categories[indexPath.row].eventsInCategory.count{
-            let dCalendar = Calendar.current.dateComponents([.year, .month], from: categories[indexPath.row].eventsInCategory[i].eventDday)
-           
-            if ((dCalendar.year == today.year) && (dCalendar.month == today.month)){
-                isInCategory = true
-                numOfEvents += 1
-
+        if isClicked == false {
+            if flag == true {
+                cell.changeCollectionView()
+            }else{
+                cell.changeLastCollectionView()
             }
             
         }
-        
-        cell.categoryNameLabel.text = categories[indexPath.row].categoryName
-        cell.eventNumLabel.text = String(numOfEvents) + " 개 "
-
-//        if isInCategory == true {
-//            cell.categoryNameLabel.text = categories[indexPath.row].categoryName
-//            cell.eventNumLabel.text = String(numOfEvents) + " 개 "
-//        }
-//        }else{
-//
-//        }
-//
-//            cell.categoryNameLabel.text = categories[indexPath.row].categoryName
-//            cell.eventNumLabel.text = String(categories[indexPath.row].eventsInCategory.count) + " 개 "
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 70, height: 90)
-//    }
+    func drawPieChart() {
+        let format = NumberFormatter()
+        format.numberStyle = .none
+        format.zeroSymbol = "";
+        let formatter = DefaultValueFormatter(formatter: format)
+        pieDataEntries.removeAll()
+        for category in categories{
+            var numOfEvent = 0
+            var isInCategory = false
+            let dataEntry = PieChartDataEntry()
+            for i in 0..<category.eventsInCategory.count {
+                let dCalendar = Calendar.current.dateComponents([.year, .month], from: category.eventsInCategory[i].eventDday)
+                if ((dCalendar.year == today.year) && (dCalendar.month == today.month)){
+                    numOfEvent += 1
+                    isInCategory = true
+                }
+            }
+            
+            if isInCategory == true {
+                dataEntry.value = Double(numOfEvent)
+                dataEntry.label = category.categoryName
+                pieDataEntries.append(dataEntry)
+            }
+        }
+        let pieChartDataSet = PieChartDataSet(entries: pieDataEntries, label: nil)
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
+
+        var colors:[UIColor] = []
+
+        for category in categories{
+            let color = calculateColor(color: category.categoryColor)
+
+            colors.append( UIColor(named: color)! )
+        }
+        pieChartDataSet.colors = colors
+        pieChartData.setValueFormatter(formatter)
+        
+        pieChartView.animate(xAxisDuration: 1.0)
+        pieChartView.data = pieChartData
+    }
     
+    func drawLastPieChart () {
+        let format = NumberFormatter()
+        format.numberStyle = .none
+        format.zeroSymbol = "";
+        let formatter = DefaultValueFormatter(formatter: format)
+        pieDataEntries.removeAll()
+        for category in categories{
+            var numOfEvent = 0
+            var isInCategory = false
+            let dataEntry = PieChartDataEntry()
+            for i in 0..<category.eventsInCategory.count {
+                let dCalendar = Calendar.current.dateComponents([.year, .month], from: category.eventsInCategory[i].eventDday)
+                if ((dCalendar.year == today.year) && ((dCalendar.month! + 1) == today.month) && today.month != 1) || (((dCalendar.year! + 1) == today.year) && today.month == 1 && dCalendar.month! == 12) {
+                    numOfEvent += 1
+                    isInCategory = true
+                }
+            }
+            
+            if isInCategory == true {
+                dataEntry.value = Double(numOfEvent)
+                dataEntry.label = category.categoryName
+                pieDataEntries.append(dataEntry)
+            }
+        }
+        let pieChartDataSet = PieChartDataSet(entries: pieDataEntries, label: nil)
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
+
+        var colors:[UIColor] = []
+
+        for category in categories{
+            let color = calculateColor(color: category.categoryColor)
+
+            colors.append( UIColor(named: color)! )
+        }
+        pieChartDataSet.colors = colors
+        pieChartData.setValueFormatter(formatter)
+        
+        pieChartView.animate(xAxisDuration: 1.0)
+        pieChartView.data = pieChartData
+    }
     
-//    @IBAction func segDidChanged(_ sender: UISegmentedControl) {
-//        switch sender.selectedSegmentIndex {
-//        case 0:
-//            <#code#>
-//        case 1:
-//
-//        default:
-//            break
-//        }
-//        }
-//    }
+    func calculateColor(color: Int) -> String{
+        switch color {
+        case 0:
+            return "purple"
+        case 1:
+            return "blue"
+        case 2:
+            return "red"
+        case 3:
+            return "yellow"
+        case 4:
+            return "green"
+        case 5:
+            return "orange"
+        default:
+            return "purple"
+        }
+    }
+    
+    @IBAction func segDidChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            categories = api.callCategory()
+            events = api.callEvent()
+            numOfLastCall = 0
+            drawLastPieChart()
+            isClicked = false
+            flag = false
+            collectionView.reloadData()
+            
+        case 1:
+            categories = api.callCategory()
+            events = api.callEvent()
+            numOfCall = 0
+            drawPieChart()
+            flag = true
+            collectionView.reloadData()
+        default:
+            break
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    
+        numOfCall = 0
+        numOfLastCall = 0
+        categories = api.callCategory()
+        events = api.callEvent()
         collectionView.reloadData()
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        drawPieChart()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
