@@ -36,18 +36,53 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var subEventAddButton: UIButton!
     
     @IBAction func subEventAddButtonTapped(_ sender: Any) {
+        let event = self.events[selectedCell]
+        let subEventsVC = SubEventsTableViewController()
+        
+        let beforeProcess: Float = self.progressView.progress
+        
         guard let newSubEventName: String = subEventAddTextField.text, !newSubEventName.isEmpty else {
             return
         }
         let newSubEvent: SubEvent = SubEvent(subEventName: newSubEventName, subEventIsDone: false)
         try? api.realm.write() {
-            self.events[selectedCell].subEvents.append(newSubEvent)
+            event.subEvents.append(newSubEvent)
             api.realm.add([newSubEvent])
             //SubEvent(subEventName: newSubEventName, subEventIsDone: false)
         }
         updateProgressBar()
-        subEventAddTextField.text = ""
         
+        // 진행률 변경 체크
+        var numOfIsDone = 0
+        for i in 0..<event.subEvents.count {
+            if event.subEvents[i].subEventIsDone == true{
+                numOfIsDone += 1
+            }
+        }
+        if event.subEvents.count == 0 {
+            numOfIsDone = 0
+        }
+        
+        let afterProcess: Float = self.progressView.progress
+        
+        
+        if beforeProcess != afterProcess {
+            // 현재 이벤트의 알림 리스트 가져옴
+            // (db 수정 전)
+            let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
+            
+            print("현재이벤트 알림id 개수 \(notificationIDsOfcurrentEvent.count)")
+            // 알림 센터에서 기존 알림 삭제
+            EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
+            
+            // step 0~3 : begin~end
+            // step 4: event is Done, print complete message, return immediately
+            EventAddTableViewController().savePushNotification(event: event, step: subEventsVC.getStepByProcess(process: afterProcess), pushAlarmSetting: event.pushAlarmSetting ?? PushAlarmSetting())
+        }
+        print("\nStepChanged")
+        LocalNotificationManager().printCountOfNotifications()
+                
+        subEventAddTextField.text = ""
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         
     }
@@ -177,6 +212,8 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
         
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         checkDone()
