@@ -26,6 +26,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     
     var selected: Int = 0
     var selectedCategory: Int = 0
+    var changedCategory: Bool = false
     
     var saveEventName: String = ""
     
@@ -64,29 +65,37 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
         }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var count : Int = 0
+        
         if segue.identifier == "unwindToDetail"{
             let selectedEvent = event[selected]
-            let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: selectedEvent.eventDday)
             let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
             
             try? api.realm.write(){
-                removeFromBeforeCategory()
-                category[selectedCategory].eventsInCategory.append(selectedEvent)
+                
+                if changedCategory == true {
+                    removeFromBeforeCategory()
+                    category[selectedCategory].eventsInCategory.append(selectedEvent)
+                }
+                
                 selectedEvent.eventName = eventName.text!
                 
                 saveEventName = eventName.text!
                 
                 selectedEvent.eventDday = datePicker.date
+                let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: selectedEvent.eventDday)
+
                 selectedEvent.importance = Int(importanceSlider.value)
-                if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) { selectedEvent.eventIsPassed = true } else {
+                if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) {
+                    selectedEvent.eventIsPassed = true
+                    event = api.callEvent()
+                    performSegue(withIdentifier: "unwindToHomeError", sender: nil)
+                } else {
                     selectedEvent.eventIsPassed = false
                 }
             }
             
             event = api.callNotPassedEvent()
-            
-            var count : Int = 0
-            var check: Int = 0
             
             while count < event.count {
                 if  event[count].eventName == saveEventName {
@@ -95,6 +104,9 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
                 }
                 count += 1
             }
+            
+            
+            
             
 //            for element in event {
 //                if count == selected && element.eventName != saveEventName{
