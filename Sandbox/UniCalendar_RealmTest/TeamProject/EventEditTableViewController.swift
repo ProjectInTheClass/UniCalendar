@@ -27,6 +27,8 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     var selected: Int = 0
     var selectedCategory: Int = 0
     
+    var saveEventName: String = ""
+    
     @IBAction func unwindToEventEdit(segue: UIStoryboardSegue){
         
     }
@@ -71,12 +73,41 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
                 removeFromBeforeCategory()
                 category[selectedCategory].eventsInCategory.append(selectedEvent)
                 selectedEvent.eventName = eventName.text!
+                
+                saveEventName = eventName.text!
+                
                 selectedEvent.eventDday = datePicker.date
                 selectedEvent.importance = Int(importanceSlider.value)
                 if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) { selectedEvent.eventIsPassed = true } else {
                     selectedEvent.eventIsPassed = false
                 }
             }
+            
+            event = api.callNotPassedEvent()
+            
+            var count : Int = 0
+            var check: Int = 0
+            
+            while count < event.count {
+                if  event[count].eventName == saveEventName {
+                    selected = count
+                    break
+                }
+                count += 1
+            }
+            
+//            for element in event {
+//                if count == selected && element.eventName != saveEventName{
+//                    selected = count
+//                }
+//                count += 1
+//            }
+            
+            guard let view = segue.destination as? HomeDetailViewController else {return}
+            
+            view.selectedCell = selected
+            
+            
         } else if segue.identifier == "toCategorySelect" {
             guard let navigation = segue.destination as? UINavigationController else {return}
             
