@@ -243,7 +243,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 default:
                     break
                 }
-                
+                notificationContent.body += "\n[at:\(dateComponents.month ?? 0)월\(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시]"
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                 
                 let notificationId = UUID().uuidString
@@ -333,6 +333,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     default:
                         break
                     }
+                    notificationContent.body += "\n[at:\(dateComponents.month ?? 0)월\(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시]"
                     
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                     
