@@ -84,7 +84,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         // TODO
         // Add New event to EventList
         
-        if newEventName.hasText == false || categoryLabel.text?.isEmpty == true || settledNotificationInfoLabel.text == "선택 되지 않음"{
+        if newEventName.hasText == false || categoryLabel.text! == "선택" || settledNotificationInfoLabel.text == "선택 되지 않음"{
             let alert = UIAlertController(title: "⚠️이벤트 등록 오류⚠️", message: "선택을 모두 완료해주세요!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("네", comment: "Default action"), style: .default, handler: { _ in
             }))
