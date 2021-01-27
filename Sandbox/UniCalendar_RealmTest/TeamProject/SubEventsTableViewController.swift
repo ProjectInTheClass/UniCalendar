@@ -143,7 +143,7 @@ class SubEventsTableViewController: UITableViewController {
             // 진행 단계 변경
             if !isSameStep(before: beforeProcess, after: afterProcess) {
                 // 현재 이벤트의 알림 리스트 가져옴
-                let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map({(push: PushAlarm) -> String in return push.id })
+                let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
                 
                 print("현재이벤트 알림id 개수 \(notificationIDsOfcurrentEvent.count)")
                 // 기존 알림 삭제
@@ -155,13 +155,13 @@ class SubEventsTableViewController: UITableViewController {
             }
             print("\nStepChanged")
             LocalNotificationManager().printCountOfNotifications()
-            // removePendingNotification(identifiers: event.notificationId)
             
             if self.event.subEvents.count == numOfIsDone {
                 try! api.realm.write(){
                     self.event.eventIsDone = true
                 }
-                // TODO: 여기서 계획된 알림 삭제?
+                // 이벤트의 푸쉬알람들 삭제
+                EventAddTableViewController().removeNotifications(notificationIds: self.event.pushAlarmID.map{$0.id})
             }
             print("event is done?: \(event.eventIsDone)")
             tableView.reloadData()

@@ -5,23 +5,6 @@
 //  Created by KM on 2021/01/22.
 //
 
-// Dateformatter Example text ------------------------------
-func makeNotificationDateComponent () {
-    var eventDates = [Date]()
-    let events: [Event] = api.callEvent()
-
-    var dateFormatter:DateFormatter {
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        return df
-    }
-    
-    for event in events {
-        let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
-        eventDates.append(day)
-    }
-}
-
 // ------------------------------------------------------------
 
 import Foundation
@@ -77,12 +60,8 @@ class LocalNotificationManager {
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
             if requests.count < 1 {
                 print("emtpy requests")
-                
             } else {
                 print("You Have \(requests.count) pending notifications.")
-                for request in requests {
-                    print(request.content.title)
-                }
             }
         })
     }
