@@ -127,6 +127,9 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         } else if event.subEvents.count == 0 && event.eventIsDone == true {
             progressPercent = 1
             cell.progressView.setProgress(progressPercent, animated: false)
+        } else {
+            progressPercent = 0
+            cell.progressView.setProgress(progressPercent, animated: false)
         }
         
         cell.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"

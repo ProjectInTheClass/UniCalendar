@@ -434,27 +434,27 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="8bA-gd-zDg">
                                 <rect key="frame" x="28" y="64" width="358" height="113"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="RZz-pL-w8S">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="RZz-pL-w8S">
                                         <rect key="frame" x="0.0" y="0.0" width="358" height="36"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-DAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYe-aX-YqH">
-                                                <rect key="frame" x="0.0" y="0.0" width="120" height="36"/>
+                                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-DAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYe-aX-YqH">
+                                                <rect key="frame" x="0.0" y="0.0" width="94.333333333333329" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="94.329999999999998" id="xdO-kW-JDH"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <color key="textColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="eventName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amr-8m-ZUu">
-                                                <rect key="frame" x="123" y="0.0" width="235" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="235" id="K1L-AH-pcW"/>
-                                                </constraints>
+                                                <rect key="frame" x="97.333333333333343" y="0.0" width="260.66666666666663" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="Amr-8m-ZUu" firstAttribute="leading" secondItem="aYe-aX-YqH" secondAttribute="trailing" constant="3" id="o5l-w2-fyE"/>
+                                            <constraint firstItem="Amr-8m-ZUu" firstAttribute="leading" secondItem="aYe-aX-YqH" secondAttribute="trailing" constant="3" id="GdU-Ar-3ke"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="sCk-GT-86J">

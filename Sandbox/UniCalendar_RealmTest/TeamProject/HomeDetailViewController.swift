@@ -216,7 +216,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        checkDone()
+        //checkDone()
     }
 
 }
