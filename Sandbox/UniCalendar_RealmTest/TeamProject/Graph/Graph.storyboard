@@ -108,7 +108,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec8-CJ-nJ0">
-                                                    <rect key="frame" x="16" y="1" width="52" height="26.333333333333329"/>
+                                                    <rect key="frame" x="16" y="1" width="52" height="26.333333333333332"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="26.329999999999998" id="xU5-kG-IIF"/>
                                                     </constraints>
@@ -188,7 +188,7 @@
                                                             <rect key="frame" x="145" y="0.0" width="178" height="45.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="completionLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vC6-zf-nOY">
-                                                                    <rect key="frame" x="55.33333333333335" y="0.0" width="122.66666666666669" height="25.333333333333332"/>
+                                                                    <rect key="frame" x="51.66666666666665" y="0.0" width="126.33333333333331" height="25.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -203,9 +203,6 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="vC6-zf-nOY" firstAttribute="leading" secondItem="mDS-CD-ctU" secondAttribute="leading" constant="55.333333333333343" id="8AS-FN-Qgt"/>
-                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
