@@ -60,6 +60,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         events = api.callEvent()
         categories = api.callCategory()
         //기존에 저장되어있던 eventDates 모두 삭제
