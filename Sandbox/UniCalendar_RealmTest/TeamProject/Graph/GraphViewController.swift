@@ -85,11 +85,16 @@ class GraphViewController: UIViewController {
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-          categories = api.callCategory()
-          events = api.callEvent()
-          tableView.reloadData()
-      }
+    override func viewDidAppear(_ animated: Bool) {
+        categories = api.callCategory()
+        events = api.callEvent()
+        tableView.reloadData()
+    }
+//    override func viewWillAppear(_ animated: Bool) {
+//          categories = api.callCategory()
+//          events = api.callEvent()
+//          tableView.reloadData()
+//      }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,20 +115,13 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
         format.zeroSymbol = "";
         
         let formatter = DefaultValueFormatter(formatter: format)
-        
-//        if indexPath.row == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "BadgeCell", for: indexPath) as! BadgeCell
-//
-//            cell.badgeLabel.text = semiSection[0]
-//            cell.allButton.titleLabel!.text = semiSection[1]
-//
-//            return cell
-//        }
+
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PatternCell", for: indexPath) as! PatternCell
-
             cell.patternLabel.text = semiSection[2]
-            
+            isClicked = true
+            flag = true
+            cell.setLayouts()
             return cell
         }
         else {
@@ -148,15 +146,6 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
             cell.barChartView.xAxis.axisMaximum = Double(0) + gg * Double(12)
             barChartData.groupBars(fromX: Double(0), groupSpace: groupSpace, barSpace: barSpace)
             cell.barChartView.notifyDataSetChanged()
-//            let legend = cell.barChartView.legend
-//            legend.enabled = true
-//            legend.horizontalAlignment = .right
-//            legend.verticalAlignment = .top
-//            legend.orientation = .vertical
-//            legend.drawInside = true
-//            legend.yOffset = 10.0;
-//            legend.xOffset = 10.0;
-//            legend.yEntrySpace = 0.0;
             cell.barChartView.xAxis.gridColor = .clear
             cell.barChartView.xAxis.labelPosition = .bottom
             cell.barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
@@ -172,22 +161,3 @@ extension GraphViewController: UITableViewDelegate, UITableViewDataSource {
 
     
 }
-
-//
-//
-//extension GraphViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-//        cell.categoryNameLabel.text = categories[indexPath.row].categoryName
-//        cell.eventNumLabel.text = String(categories[indexPath.row].eventsInCategory.count)
-//
-//        return cell
-//
-//    }
-//
-//
-//}

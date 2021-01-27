@@ -19,12 +19,12 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     var eventDates = [Date]()
     var selectedDateEvents = [Event]()
     var showToday: Int = 0
-    
     var dateFormatter:DateFormatter {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         return df
     }
+    var isToday = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let today = dateFormatter.date(from: dateFormatter.string(from: Date.init()))!
         
         events = api.callEvent()
         categories = api.callCategory()
@@ -68,14 +69,20 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
 
         //새로 eventDates append해줌
         for event in events {
-            let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
-            eventDates.append(day)
+            let date = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
+            eventDates.append(date)
+            if date == today{
+                selectedDateEvents.append(event)
+            }
         }
-        
+        print(isToday)
+        if isToday == false {
+            selectedDateEvents.removeAll()
+        }
         //reload data for both calendar & table view, selectedDateEvents data remove
-        selectedDateEvents.removeAll()
         calendarView.reloadData()
-        self.calendarEventTableView.reloadData()
+        
+        calendarEventTableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -146,7 +153,14 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
     // 날짜 선택 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDateEvents.removeAll()
-        
+        let today = dateFormatter.date(from: dateFormatter.string(from: Date.init()))!
+        if date == today {
+            isToday = true
+        }else{
+            isToday = false
+        }
+        print(isToday)
+        print("-----------------")
         for event in events {
             let date_ = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
             if date_ == date {
