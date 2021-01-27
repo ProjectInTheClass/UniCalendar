@@ -20,6 +20,8 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
 
     var selectedCell:Int = 0
     
+    var staticText : String = ""
+    
     // @IBOutlet weak var detailTableView: UITableView!
     
     @IBOutlet weak var dDayLabel: UILabel!
@@ -54,8 +56,10 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     //var myEvents = Event()
     
     @IBAction func unwindToDetail(segue: UIStoryboardSegue) {
+        //let beforeSortingEvent = events
+        //staticText = events[selectedCell].eventName
         events = api.callNotPassedEvent()
-
+        view.reloadInputViews()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -121,7 +125,8 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         subEventAddTextField.delegate = self
-            
+        
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -129,13 +134,10 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     override func viewWillAppear(_ animated: Bool) {
+        
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         let event = events[selectedCell]
-        
-        if event.subEvents.count == 0 {
-            //
-        }
         
         let today = df.date(from: df.string(from : Date.init()))
         let dDay = df.date(from: df.string(from: event.eventDday))!
