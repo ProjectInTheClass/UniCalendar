@@ -31,7 +31,12 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     var saveEventName: String = ""
     
     @IBAction func unwindToEventEdit(segue: UIStoryboardSegue){
-        
+        switch segue.identifier {
+        case "unWindToEventEdit":
+            break
+        default:
+            break
+        }
     }
     
     var dateFormatter:DateFormatter {
@@ -104,10 +109,6 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
                 }
                 count += 1
             }
-            
-            
-            
-            
 //            for element in event {
 //                if count == selected && element.eventName != saveEventName{
 //                    selected = count
@@ -129,9 +130,9 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
         } else if segue.identifier == "toNotificationSetting" {
             guard let navigation = segue.destination as? UINavigationController else {return}
             
-            guard let view = navigation.viewControllers[0] as? CategorySelectionEditTableViewController else {return}
+            guard let view = navigation.viewControllers[0] as? NotificationSettingEditTableViewController else {return}
     
-            view.selected = selected
+            view.alarmSetting = event[selected].pushAlarmSetting ?? PushAlarmSetting()
         }
     }
     
@@ -189,6 +190,4 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
         //settledNotificationInfoLabel.text = 
     }
     
-    
-
 }
