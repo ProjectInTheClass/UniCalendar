@@ -5,23 +5,6 @@
 //  Created by KM on 2021/01/22.
 //
 
-// Dateformatter Example text ------------------------------
-func makeNotificationDateComponent () {
-    var eventDates = [Date]()
-    let events: [Event] = api.callEvent()
-
-    var dateFormatter:DateFormatter {
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        return df
-    }
-    
-    for event in events {
-        let day = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
-        eventDates.append(day)
-    }
-}
-
 // ------------------------------------------------------------
 
 import Foundation
@@ -72,16 +55,18 @@ class LocalNotificationManager {
             }
         }
     }
-    
+    // 버그: 세부 목표0인 이벤트에 들어갔다 나오면 100%로 완료됨
+    // 예상: isDone: 0, count: 0 => 완료다! 싶은건가
+    // 그치만 세부목표 추가는 가능
     func printCountOfNotifications() {
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
             if requests.count < 1 {
                 print("emtpy requests")
-                
             } else {
                 print("You Have \(requests.count) pending notifications.")
-                for request in requests {
-                    print(request.content.title)
+                for r in requests {
+                    print("-title: \(r.content.title)")
+                    print("-body: \(r.content.body): ")
                 }
             }
         })

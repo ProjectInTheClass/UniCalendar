@@ -127,7 +127,6 @@ class SubEventsTableViewController: UITableViewController {
                 // 체크 반전
                 self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
             }
-            // TODO: 여기서 이벤트 진행률 변경 체크
             
             var numOfIsDone = 0
             for i in 0..<self.event.subEvents.count {
@@ -135,37 +134,36 @@ class SubEventsTableViewController: UITableViewController {
                     numOfIsDone += 1
                 }
             }
-            // for debug
-            
             let afterProcess: Float = Float(numOfIsDone)/Float(event.subEvents.count)
             
+            // 진행률 변경 체크
             print("진행률 변경전: \(beforeProcess)")
             print("진행률 변경후: \(afterProcess)")
             print("진행단계 같은가요?: \(isSameStep(before: beforeProcess, after: afterProcess))")
             LocalNotificationManager().printCountOfNotifications()
-            
             // 진행 단계 변경
             if !isSameStep(before: beforeProcess, after: afterProcess) {
                 // 현재 이벤트의 알림 리스트 가져옴
-                let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map({(push: PushAlarm) -> String in return push.id })
+                let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
                 
                 print("현재이벤트 알림id 개수 \(notificationIDsOfcurrentEvent.count)")
-                // 기존 알림 삭제
+                // 알림 센터에서 기존 알림 삭제
                 EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
-
+                
                 // 새로운 진행 단계에 맞는 알림 설정
-                //EventAddTableViewController().savePushNotification(event: event, step: <#T##Int#>, frequency: <#T##Int#>, time: <#T##Int#>, daysOfWeek: <#T##[Int]?#>)
+                // todo: step value change
+                EventAddTableViewController().savePushNotification(event: self.event, step: getStepByProcess(process: afterProcess), pushAlarmSetting: self.event.pushAlarmSetting ?? PushAlarmSetting())
                 
             }
             print("\nStepChanged")
             LocalNotificationManager().printCountOfNotifications()
-            // removePendingNotification(identifiers: event.notificationId)
             
-            if self.event.subEvents.count == numOfIsDone {
+            if (self.event.subEvents.count == numOfIsDone) && self.event.subEvents.count != 0 {
                 try! api.realm.write(){
                     self.event.eventIsDone = true
                 }
-                // TODO: 여기서 계획된 알림 삭제?
+                // 이벤트의 푸쉬알람들 삭제
+                EventAddTableViewController().removeNotifications(notificationIds: self.event.pushAlarmID.map{$0.id})
             }
             print("event is done?: \(event.eventIsDone)")
             tableView.reloadData()
@@ -197,27 +195,27 @@ class SubEventsTableViewController: UITableViewController {
     }
     
     
-    func getStepByProcess(process: Float) -> String {
+    func getStepByProcess(process: Float) -> Int {
         if process > 1 || process < 0 {
-            return "error"
+            return -1
         }
-        var step: String
+        var step: Int
         if process <= 0.25 {
-            step = "Beginning"
+            step = 0
         } else if process <= 0.5 {
-            step = "EarlyMiddle"
+            step = 1
         } else if process <= 0.75 {
-            step = "LateMiddle"
+            step = 2
         } else if process < 1.0 {
-            step = "End"
+            step = 3
         } else {
-            step = "Done"
+            step = -1
         }
         return step
     }
     func isSameStep(before: Float, after: Float) -> Bool {
-        let beforeProcessStep: String = getStepByProcess(process: before)
-        let afterProcessStep: String = getStepByProcess(process: after)
+        let beforeProcessStep: Int = getStepByProcess(process: before)
+        let afterProcessStep: Int = getStepByProcess(process: after)
         
         return (beforeProcessStep == afterProcessStep)
     }

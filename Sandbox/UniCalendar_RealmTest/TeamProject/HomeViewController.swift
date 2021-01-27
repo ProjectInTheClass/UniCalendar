@@ -185,8 +185,15 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
 
         // notification count debug
         LocalNotificationManager().printCountOfNotifications()
-        let notificationInRealm = api.callPushAlarm().count
-        print("db 내 알람: \(notificationInRealm)개")
+        let notificationsInRealm = api.callPushAlarm().count
+        var events = api.callEvent()
+        let notifications = api.callPushAlarm()
+        
+        
+        print("db 내 알람: \(notificationsInRealm)개")
+        
+        
+        
         events = api.callNotPassedEvent()
 
         tableView.reloadData()
