@@ -303,13 +303,13 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     case 1:
                         weekdayDate = Date.today().next(.tuesday,  considerToday: true)
                     case 2:
-                        weekdayDate = Date.today().next(.wednesday,  considerToday: true)
+                        weekdayDate = Date.today().next(.wednesday, considerToday: true)
                     case 3:
-                        weekdayDate = Date.today().next(.thursday,  considerToday: true)
+                        weekdayDate = Date.today().next(.thursday, considerToday: true)
                     case 4:
-                        weekdayDate = Date.today().next(.friday,  considerToday: true)
+                        weekdayDate = Date.today().next(.friday, considerToday: true)
                     case 5:
-                        weekdayDate = Date.today().next(.saturday,  considerToday: true)
+                        weekdayDate = Date.today().next(.saturday, considerToday: true)
                     case 6:
                         weekdayDate = Date.today().next(.sunday,  considerToday: true)
                     default:
