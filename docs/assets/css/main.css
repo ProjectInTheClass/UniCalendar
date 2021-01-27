@@ -83,7 +83,7 @@ input, select, textarea {
 	}
 
 	body {
-		background-color: white;
+		background-color: #852da80c ;
 		background-size: auto, cover;
 		background-position: top left, center 0;
 		background-attachment: fixed, fixed;
@@ -1499,6 +1499,7 @@ input, select, textarea {
 		.image.fit {
 			display: block;
 			width: 100%;
+			
 		}
 
 		.image.left {
@@ -1772,7 +1773,7 @@ input, select, textarea {
 		.button.style2 {
 			color: #520592;
 			background: white;
-			box-shadow: inset 0 0 0 1px rgba(82, 24, 148, 0.548);
+			box-shadow: inset 0 0 0 2px rgba(82, 24, 148, 0.548);
 		}
 
 			input[type="button"].style2:hover,
@@ -1781,7 +1782,7 @@ input, select, textarea {
 			button.style2:hover,
 			.button.style2:hover {
 				
-    			background: linear-gradient(to left top,rgba(238, 65, 238, 0.39), #7f3aff75, #2531cf86 );
+    			background: linear-gradient(to left top,rgba(238, 65, 238, 0.178), #7f3aff31, #2530cf36 );
 				color:white !important;
 				text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25) !important;
 			}
@@ -1819,7 +1820,7 @@ input, select, textarea {
 			top: -9em;
 			left: 50%;
 			height: 9em;
-			border-left: solid 1px rgba(82, 24, 148, 0.548);
+			border-left: solid 2px rgba(82, 24, 148, 0.548);
 		}
 
 		.box:before {
@@ -1850,7 +1851,7 @@ input, select, textarea {
 				top: 0;
 				width: 50%;
 				height: 100%;
-				background: #152E33;
+				background:#852da80c;
 				overflow: hidden;
 			}
 
@@ -2009,7 +2010,7 @@ input, select, textarea {
 
 			#header header h1 {
 				font-weight: 600;
-				font-size: 4em;
+				font-size: 3.5em;
 				letter-spacing: 10px;
 				color: transparent;
 				display: inline-block;
@@ -2057,7 +2058,7 @@ input, select, textarea {
 				bottom: -9em;
 				left: 50%;
 				height: 9em;
-				border-left: solid 1px rgba(82, 24, 148, 0.548);
+				border-left: solid 2px rgba(82, 24, 148, 0.548);
 			}
 
 			#header footer:before {
@@ -2096,7 +2097,7 @@ input, select, textarea {
 		border-image: linear-gradient(to left top,rgba(148, 53, 192, 0.678), #6b30d8b0 );
 		border-image-slice: 1;
 		border-bottom: 10px solid rgba(82, 24, 148, 0.548);
-		background: #852da80c bottom center no-repeat;
+		background: white bottom center no-repeat;
 		padding: 5em 0 5em 0;
 		margin: 0;
 		background-size: 125% auto;
@@ -2348,7 +2349,7 @@ input, select, textarea {
 		/* Basic */
 
 			body {
-				background-color: #efe2f0;
+				background-color: #852da80c;
 				background-repeat: repeat, no-repeat;
 				background-size: auto, 100% auto;
 				background-position: top left, top center;
@@ -2369,6 +2370,9 @@ input, select, textarea {
 				padding: 0 0 0.5em 0;
 			}
 
+			video {
+				width: 400px; 
+			}
 		/* Box */
 
 			.box {
