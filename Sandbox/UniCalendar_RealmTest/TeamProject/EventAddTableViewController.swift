@@ -321,11 +321,25 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     
                     dateComponents.hour = 6 + checkedTime * 3
                     
-                    let interval = getIntervalDayBetweenDates(from: date, to: event.eventDday)
+                    let df = DateFormatter()
+                    df.dateFormat = "yyyy-MM-dd"
                     
-                    // content
+                    let today = df.date(from: df.string(from : date))
+                    let dDay = df.date(from: df.string(from: event.eventDday))!
+
+                    let interval = dDay.timeIntervalSince(today!)
+                    let d = Int(interval / 86400)
+                    
+                    var dDayText: String = ""
+                    if d == 0 {
+                        dDayText = "D-DAY"
+                    } else {
+                        dDayText = "D-" + String(d)
+                    }
+                    
+                    // notification content
                     let notificationContent = UNMutableNotificationContent()
-                    notificationContent.title = "D-\(interval) \(event.eventName)"
+                    notificationContent.title = "\(dDayText) \(event.eventName)"
                     
                     //notificationContent.body = "step: \(step) \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
                     
