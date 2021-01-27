@@ -152,7 +152,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         
         // Todo: step 값 계산하기 (begin:0 ~ end: 2 or 3?)
 
-        let step: Int = 0 // begin
+        let step: Int = 0 // default: begin
         
         // switch-case 안에서 호출시 checkedDayOfWeek 뺄수도 있음
         // 알림 설정에서사용자 선택-요일 이 선택된 상태가 아니면 아니면 빈배열
@@ -161,16 +161,24 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     }
     
     func savePushNotification(event: Event, step: Int, pushAlarmSetting: PushAlarmSetting) {
+        // content 내용에 들어감
+        var eventProcess: Float = 0.0
+        var subEventName: String = ""
+        // process 계산
+        // 세부목표가 없으면 0, 있으면 (완료개수/ 전체개수)
+        eventProcess = !event.subEvents.isEmpty ?
+            Float(event.subEvents.filter{$0.subEventIsDone == true}.count) / Float(event.subEvents.count)
+            : 0
+        
+        if event.subEvents.count > 0 {
+            subEventName = event.subEvents.filter{ $0.subEventIsDone == false }.randomElement()!.subEventName
+        }
+        
         let frequency = pushAlarmSetting.checkedFrequency
         let checkedTime = pushAlarmSetting.checkedTime
         let checkedDaysOfWeek = pushAlarmSetting.checkedDaysOfWeek
         
         print("함수 시작: savePushNotification")
-        // let contents = api.callContent()
-        
-        // todo 데이터 구조 바꿔야함
-        // 컨텐츠 안에 문자열 들어가는 구조로?
-        // let content = contents[step]
         
         // 알림 메세지 구성
         let calendar = Calendar.current
@@ -196,8 +204,23 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 let notificationContent = UNMutableNotificationContent()
                 notificationContent.title = "D-\(interval) \(event.eventName)"
                 
-                notificationContent.body = "step: \(step) \(event.eventName) at \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
-                
+                // notificationContent.body = "step: \(step) \(event.eventName) at \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
+                switch step {
+                case 0:
+                    notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                    break
+                case 1:
+                    notificationContent.body = EarlyMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                    break
+                case 2:
+                    notificationContent.body = LateMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                    break
+                case 3:
+                    notificationContent.body = EndContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                    break
+                default:
+                    break
+                }
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                 
@@ -265,8 +288,24 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     let notificationContent = UNMutableNotificationContent()
                     notificationContent.title = "D-\(interval) \(event.eventName)"
                     
-                    notificationContent.body = "step: \(step) \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
+                    // notificationContent.body = "step: \(step) \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
                     
+                    switch step {
+                    case 0:
+                        notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                        break
+                    case 1:
+                        notificationContent.body = EarlyMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                        break
+                    case 2:
+                        notificationContent.body = LateMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                        break
+                    case 3:
+                        notificationContent.body = EndContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                        break
+                    default:
+                        break
+                    }
                     
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                     
