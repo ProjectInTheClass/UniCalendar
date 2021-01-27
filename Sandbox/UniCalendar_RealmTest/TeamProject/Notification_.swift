@@ -62,6 +62,9 @@ class LocalNotificationManager {
                 print("emtpy requests")
             } else {
                 print("You Have \(requests.count) pending notifications.")
+                for r in requests {
+                    print(r.content.title)
+                }
             }
         })
     }

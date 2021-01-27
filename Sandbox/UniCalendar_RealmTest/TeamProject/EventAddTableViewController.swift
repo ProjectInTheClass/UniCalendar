@@ -123,15 +123,18 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
 
         var eventForNotification: Event = Event()
         
-        // 이벤트 추가
+        // 이벤트 파라미터 값 설정
         let pickedDate = dateFormatter.string(from: datePicker.date)
         let d = self.dateFormatter.date(from: pickedDate)
         let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: d!)
         let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
         
+        let pushAlarmSetting: PushAlarmSetting = PushAlarmSetting(checkedTime: checkedTime, checkedFrequency: checkedFrequency, checkedDaysOfWeek: checkedDaysOfWeek)
+        
+        // 데이터베이스에 이벤트 추가
         if (dCalendar.year! < today.year!) || (dCalendar.year! <= today.year! && dCalendar.month! < today.month!) || (dCalendar.year! <= today.year! && dCalendar.month! <= today.month! && dCalendar.day! < today.day!) {
 
-            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: true)
+            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: true, pushAlarmSetting: pushAlarmSetting)
 
             try! api.realm.write(){
                 category[selectedCategory].eventsInCategory.append(newEvent)
@@ -139,7 +142,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
             }
             eventForNotification = newEvent
         } else {
-            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: false)
+            let newEvent = Event(eventName: newEventName.text!, eventDday: d!, importance: Int(importanceSlider.value), eventIsDone: false, eventIsPassed: false, pushAlarmSetting: pushAlarmSetting)
            try! api.realm.write{
                category[selectedCategory].eventsInCategory.append(newEvent)
                api.realm.add([newEvent])
@@ -154,10 +157,14 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         // switch-case 안에서 호출시 checkedDayOfWeek 뺄수도 있음
         // 알림 설정에서사용자 선택-요일 이 선택된 상태가 아니면 아니면 빈배열
         
-        savePushNotification(event: eventForNotification, step: step, frequency: checkedFrequency, time: checkedTime, daysOfWeek: checkedDaysOfWeek)
+        savePushNotification(event: eventForNotification, step: step, pushAlarmSetting: eventForNotification.pushAlarmSetting ?? PushAlarmSetting())
     }
     
-    func savePushNotification(event: Event, step: Int, frequency: Int, time: Int, daysOfWeek: [Int]?) {
+    func savePushNotification(event: Event, step: Int, pushAlarmSetting: PushAlarmSetting) {
+        let frequency = pushAlarmSetting.checkedFrequency
+        let checkedTime = pushAlarmSetting.checkedTime
+        let checkedDaysOfWeek = pushAlarmSetting.checkedDaysOfWeek
+        
         print("함수 시작: savePushNotification")
         // let contents = api.callContent()
         

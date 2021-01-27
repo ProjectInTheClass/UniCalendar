@@ -57,20 +57,21 @@ class Event: Object {
     @objc dynamic var importance: Int = 0
     @objc dynamic var eventIsDone: Bool = false
     @objc dynamic var eventIsPassed: Bool = false
-
+    @objc dynamic var pushAlarmSetting: PushAlarmSetting?
     
     let subEvents = List<SubEvent>()
     let pushAlarmID = List<PushAlarm>()
     
     var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
     
-    convenience init(eventName: String, eventDday : Date, importance : Int, eventIsDone : Bool, eventIsPassed : Bool) {
+    convenience init(eventName: String, eventDday : Date, importance : Int, eventIsDone : Bool, eventIsPassed : Bool, pushAlarmSetting: PushAlarmSetting) {
         self.init()
         self.eventName = eventName
         self.eventDday = eventDday
         self.importance = importance
         self.eventIsDone = eventIsDone
         self.eventIsPassed = eventIsPassed
+        self.pushAlarmSetting = pushAlarmSetting
     }
 
 }
@@ -99,3 +100,16 @@ class PushAlarm: Object {
     }
 }
 
+class PushAlarmSetting: Object {
+    @objc dynamic var checkedTime: Int = 0
+    @objc dynamic var checkedFrequency: Int = 0
+    @objc dynamic var parentEvent: Event?
+    
+    let checkedDaysOfWeek = List<Int>()
+    
+    convenience init(checkedTime: Int, checkedFrequency: Int, checkedDaysOfWeek: [Int]) {
+        self.init()
+        self.checkedTime = checkedTime
+        self.checkedFrequency = checkedFrequency
+    }
+}
