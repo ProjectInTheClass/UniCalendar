@@ -87,11 +87,11 @@ class CompleteDegreeCell: UITableViewCell {
                 if comparison == 0 {
                     comparisonLabel.text = "저번 달과 성공률이"
                     completionRateComparison.text = "100%"
-                    upDownLabel.text = "일치해요"
+                    upDownLabel.text = "일치해요🙌🏻"
                 } else if comparison > 0 {
-                    upDownLabel.text = "높아요"
+                    upDownLabel.text = "높아요👏🏻"
                 } else {
-                    upDownLabel.text = "낮아요"
+                    upDownLabel.text = "낮아요😦"
                 }
             }else {
                 comparisonLabel.text = "지난 달에는 등록한 목표가 없어요🤭"
@@ -146,15 +146,16 @@ class CompleteDegreeCell: UITableViewCell {
                 if comparison == 0 {
                     comparisonLabel.text = "저번 달과 성공률이"
                     completionRateComparison.text = "100%"
-                    upDownLabel.text = "일치해요"
+                    upDownLabel.text = "일치해요🙌🏻"
                 } else if comparison > 0 {
-                    upDownLabel.text = "높아요"
+                    upDownLabel.text = " 높아요👏🏻"
                 } else {
-                    upDownLabel.text = "낮아요"
+                    upDownLabel.text = " 낮아요😦"
                 }
             }else {
-                completionRateComparison.text = String(format: "%.0f", average) + "%"
-                upDownLabel.text = "높아요"
+                comparisonLabel.text = "지난 달에는 등록한 세부 목표가 없어요🤭"
+                completionRateComparison.text = ""
+                upDownLabel.text = ""
             }
         }
     }
