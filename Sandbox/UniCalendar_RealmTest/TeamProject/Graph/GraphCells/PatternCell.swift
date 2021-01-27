@@ -16,13 +16,12 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
     @IBOutlet weak var patternLabel: UILabel!
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var patternTextView: UITextView!
+    
     
     var categories : [Category] = api.callCategory()
     var events: [Event] = api.callEvent()
     var pieDataEntries = [PieChartDataEntry]()
     let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
-    var sentence = ""
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
     }
