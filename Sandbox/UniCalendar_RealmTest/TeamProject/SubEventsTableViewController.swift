@@ -121,21 +121,18 @@ class SubEventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if self.event.subEvents.count >= 1 {
-            let beforeProcess: Float = Float(self.event.subEvents.filter{s in s.subEventIsDone == true}.count) / Float(self.event.subEvents.count)
+            // let beforeProcess: Float = Float(self.event.subEvents.filter{s in s.subEventIsDone == true}.count) / Float(self.event.subEvents.count)
+            let beforeProcess: Float = self.belongedContainer?.progressView.progress ?? 0.0
             
             try? api.realm.write() {
                 // 체크 반전
                 self.event.subEvents[indexPath.row].subEventIsDone = !self.event.subEvents[indexPath.row].subEventIsDone
             }
             
-            var numOfIsDone = 0
-            for i in 0..<self.event.subEvents.count {
-                if self.event.subEvents[i].subEventIsDone == true{
-                    numOfIsDone += 1
-                }
-            }
-            let afterProcess: Float = Float(numOfIsDone)/Float(event.subEvents.count)
-            
+
+            // let afterProcess: Float = Float(numOfIsDone)/Float(event.subEvents.count)
+            self.belongedContainer?.updateProgressBar()
+            let afterProcess: Float = self.belongedContainer?.progressView.progress ?? 0.0
             // 진행률 변경 체크
             print("진행률 변경전: \(beforeProcess)")
             print("진행률 변경후: \(afterProcess)")
@@ -145,12 +142,11 @@ class SubEventsTableViewController: UITableViewController {
             // ** 만약 세부목표가 전부 체크되었으면
             // ** 기존 알림 삭제 이후 isDone체크 해서 완료되었으면 이후에도 삭제
             
-            if !isSameStep(before: beforeProcess, after: afterProcess) {
+            if beforeProcess != afterProcess {
                 // 현재 이벤트의 알림 리스트 가져옴
                 // (db 수정 전)
                 let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
-                
-                print("현재이벤트 알림id 개수 \(notificationIDsOfcurrentEvent.count)")
+
                 // 알림 센터에서 기존 알림 삭제
                 EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
                 
@@ -158,9 +154,14 @@ class SubEventsTableViewController: UITableViewController {
                 // step 4: event is Done, print complete message, return immediately
                 EventAddTableViewController().savePushNotification(event: self.event, step: getStepByProcess(process: afterProcess), pushAlarmSetting: self.event.pushAlarmSetting ?? PushAlarmSetting())
             }
-            print("\nStepChanged")
             LocalNotificationManager().printCountOfNotifications()
             
+            var numOfIsDone = 0
+            for i in 0..<self.event.subEvents.count {
+                if self.event.subEvents[i].subEventIsDone == true{
+                    numOfIsDone += 1
+                }
+            }
             // db 수정 (event.isDone 설정)
             if self.event.subEvents.count != 0  && (self.event.subEvents.count == numOfIsDone) {
                 try! api.realm.write(){
@@ -188,7 +189,10 @@ class SubEventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             // handle delete (by removing the data from your array and updating the tableview)
-        
+            self.belongedContainer?.updateProgressBar()
+            let beforeProcess:Float = self.belongedContainer?.progressView.progress ?? 0.0
+            
+            // db에서 알림 삭제
             if self.event.subEvents.count > 0 {
                 let selectedSubEvent = self.event.subEvents[indexPath.row]
                 try? api.realm.write() {
@@ -197,6 +201,45 @@ class SubEventsTableViewController: UITableViewController {
                 tableView.reloadData()
                 belongedContainer?.updateProgressBar()
             } else { return }
+            
+            // 삭제 후 진행률
+            let afterProcess:Float = self.belongedContainer?.progressView.progress ?? 0.0
+            
+            // 진행률이 변했으면 (완료 안된 세부목표를 지운경우)
+            if beforeProcess != afterProcess {
+                // 현재 이벤트의 알림 리스트 가져옴
+                // (db 수정 전)
+                let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
+                
+                print("현재이벤트 알림id 개수 \(notificationIDsOfcurrentEvent.count)")
+                
+                // 알림 센터에서 기존 알림 삭제
+                EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
+                
+                // step 0~3 : begin~end
+                // step 4: event is Done, print complete message, return immediately
+                EventAddTableViewController().savePushNotification(event: self.event, step: getStepByProcess(process: afterProcess), pushAlarmSetting: self.event.pushAlarmSetting ?? PushAlarmSetting())
+                
+                // push notification db 수정 (event.isDone 설정)
+                var numOfIsDone = 0
+                for i in 0..<event.subEvents.count {
+                    if event.subEvents[i].subEventIsDone == true {
+                        numOfIsDone += 1
+                    }
+                }
+                // 이벤트 완료시 db에 isDone 변경, 알림 삭제
+                if event.subEvents.count != 0  && (event.subEvents.count == numOfIsDone) {
+                    try! api.realm.write(){
+                        event.eventIsDone = true
+                    }
+                    // 이벤트의 푸쉬알람들 삭제
+                    if !event.pushAlarmID.isEmpty {
+                        EventAddTableViewController().removeNotifications(notificationIds: event.pushAlarmID.map{$0.id})
+                    }
+                }
+            }
+
+            print("\nStepChanged")
         }
     }
     
@@ -206,16 +249,18 @@ class SubEventsTableViewController: UITableViewController {
             return -1
         }
         var step: Int
-        if process <= 0.25 {
+        if process == 0 {
             step = 0
-        } else if process <= 0.5 {
+        } else if process <= 0.25 {
             step = 1
-        } else if process <= 0.75 {
+        } else if process <= 0.5 {
             step = 2
-        } else if process < 1.0 {
+        } else if process <= 0.75 {
             step = 3
-        } else if process == 1.0 {
+        } else if process < 1.0 {
             step = 4
+        } else if process == 1.0 {
+            step = 5
         } else {
             step = -1
         }
@@ -228,3 +273,5 @@ class SubEventsTableViewController: UITableViewController {
         return (beforeProcessStep == afterProcessStep)
     }
 }
+
+

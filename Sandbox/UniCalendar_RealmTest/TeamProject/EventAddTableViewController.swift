@@ -152,7 +152,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         
         // Todo: step 값 계산하기 (begin:0 ~ end: 2 or 3?)
 
-        let step: Int = 0 // default: begin
+        let step: Int = 0 // default: begin with no subevents
         
         // switch-case 안에서 호출시 checkedDayOfWeek 뺄수도 있음
         // 알림 설정에서사용자 선택-요일 이 선택된 상태가 아니면 아니면 빈배열
@@ -161,8 +161,10 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     }
     
     func savePushNotification(event: Event, step: Int, pushAlarmSetting: PushAlarmSetting) {
-        if step == 4 {
-            print("[Step4] event is done by completing all subevents")
+        // 0~4: noSub, begin, early, late, end
+        // 5: Done
+        if step == 5 {
+            print("[Step5] event is done by completing all subevents")
             return
         }
         
@@ -185,9 +187,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 // all subEvents is Done
                 // do Nothing
             }
-        } else {
-            // if subEvents empty
-            subEventName = event.eventName
         }
         
         let frequency = pushAlarmSetting.checkedFrequency
@@ -227,15 +226,18 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 
                 switch step {
                 case 0:
-                    notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                    notificationContent.body = BeginningContent.makeContent(subEventName: event.eventName, percentage: Int(eventProcess*100))
                     break
                 case 1:
-                    notificationContent.body = EarlyMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                    notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
                     break
                 case 2:
-                    notificationContent.body = LateMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                    notificationContent.body = EarlyMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
                     break
                 case 3:
+                    notificationContent.body = LateMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                    break
+                case 4:
                     notificationContent.body = EndContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
                     break
                 default:
@@ -314,15 +316,18 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     
                     switch step {
                     case 0:
-                        notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                        notificationContent.body = BeginningContent.makeContent(subEventName: event.eventName, percentage: Int(eventProcess*100))
                         break
                     case 1:
-                        notificationContent.body = EarlyMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                        notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
                         break
                     case 2:
-                        notificationContent.body = LateMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                        notificationContent.body = EarlyMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
                         break
                     case 3:
+                        notificationContent.body = LateMiddleContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                        break
+                    case 4:
                         notificationContent.body = EndContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
                         break
                     default:
