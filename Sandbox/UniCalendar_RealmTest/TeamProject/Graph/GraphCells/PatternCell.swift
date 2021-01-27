@@ -47,6 +47,14 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
         format.zeroSymbol = "";
         let formatter = DefaultValueFormatter(formatter: format)
         pieDataEntries.removeAll()
+        var colors:[UIColor] = []
+
+        for category in categories{
+            let color = calculateColor(color: category.categoryColor)
+
+            colors.append( UIColor(named: color)! )
+        }
+        
         for category in categories{
             var numOfEvent = 0
             var isInCategory = false
@@ -63,18 +71,14 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
                 dataEntry.value = Double(numOfEvent)
                 dataEntry.label = category.categoryName
                 pieDataEntries.append(dataEntry)
+                let color = calculateColor(color: category.categoryColor)
+
+                colors.append( UIColor(named: color)! )
             }
         }
         let pieChartDataSet = PieChartDataSet(entries: pieDataEntries, label: nil)
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
-
-        var colors:[UIColor] = []
-
-        for category in categories{
-            let color = calculateColor(color: category.categoryColor)
-
-            colors.append( UIColor(named: color)! )
-        }
+        
         pieChartDataSet.colors = colors
         pieChartData.setValueFormatter(formatter)
         
