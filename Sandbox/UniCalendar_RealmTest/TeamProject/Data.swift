@@ -36,6 +36,11 @@ class API {
         return r
     }
     
+    func callPushAlarmSetting() -> [PushAlarmSetting] {
+        let r: [PushAlarmSetting] = realm.objects(PushAlarmSetting.self).map { $0 }
+        return r
+    }
+    
 }
 
 class Category: Object {
@@ -103,7 +108,8 @@ class PushAlarm: Object {
 class PushAlarmSetting: Object {
     @objc dynamic var checkedTime: Int = 0
     @objc dynamic var checkedFrequency: Int = 0
-    @objc dynamic var parentEvent: Event?
+    
+    var parentEvent = LinkingObjects(fromType: Event.self, property: "pushAlarmSetting")
     
     let checkedDaysOfWeek = List<Int>()
     
