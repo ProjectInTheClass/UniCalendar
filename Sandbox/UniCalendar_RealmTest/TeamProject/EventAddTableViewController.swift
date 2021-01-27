@@ -217,6 +217,9 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 // 6시 9시 12시 ...
                 dateComponents.hour = 6 + checkedTime*3
                 
+                // presentation
+                // var dateComponents = DateComponents(year: 2021, month: 1, day: 27, hour: 22, minute: 59, second: offset)
+                
                 let df = DateFormatter()
                 df.dateFormat = "yyyy-MM-dd"
                 
@@ -237,6 +240,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 let notificationContent = UNMutableNotificationContent()
                 notificationContent.title = "\(dDayText) \(event.eventName)"
                 
+                // debug
                 //notificationContent.body = "step: \(step) \(event.eventName) at \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
                 
                 switch step {
@@ -272,7 +276,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     pushAlarm.id = notificationId
                     pushAlarm.title = notificationContent.title
                     pushAlarm.body = notificationContent.body
-                    
+
                     try! api.realm.write() {
                         api.realm.add(pushAlarm)
                         event.pushAlarmID.append(pushAlarm)
@@ -303,13 +307,13 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     case 1:
                         weekdayDate = Date.today().next(.tuesday,  considerToday: true)
                     case 2:
-                        weekdayDate = Date.today().next(.wednesday,  considerToday: true)
+                        weekdayDate = Date.today().next(.wednesday, considerToday: true)
                     case 3:
-                        weekdayDate = Date.today().next(.thursday,  considerToday: true)
+                        weekdayDate = Date.today().next(.thursday, considerToday: true)
                     case 4:
-                        weekdayDate = Date.today().next(.friday,  considerToday: true)
+                        weekdayDate = Date.today().next(.friday, considerToday: true)
                     case 5:
-                        weekdayDate = Date.today().next(.saturday,  considerToday: true)
+                        weekdayDate = Date.today().next(.saturday, considerToday: true)
                     case 6:
                         weekdayDate = Date.today().next(.sunday,  considerToday: true)
                     default:
@@ -317,8 +321,9 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     }
                     
                     let date = calendar.date(byAdding: .day, value: 7*(week), to: weekdayDate)!
+                    // modified for presentation
                     var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
-                    
+
                     dateComponents.hour = 6 + checkedTime * 3
                     
                     let df = DateFormatter()
@@ -336,6 +341,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     } else {
                         dDayText = "D-" + String(d)
                     }
+
                     
                     // notification content
                     let notificationContent = UNMutableNotificationContent()
