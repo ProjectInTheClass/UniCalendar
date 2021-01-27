@@ -143,24 +143,24 @@ class SubEventsTableViewController: UITableViewController {
             print("진행률 변경후: \(afterProcess)")
             print("진행단계 같은가요?: \(isSameStep(before: beforeProcess, after: afterProcess))")
             LocalNotificationManager().printCountOfNotifications()
-            
             // 진행 단계 변경
             if !isSameStep(before: beforeProcess, after: afterProcess) {
                 // 현재 이벤트의 알림 리스트 가져옴
                 let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
                 
                 print("현재이벤트 알림id 개수 \(notificationIDsOfcurrentEvent.count)")
-                // 기존 알림 삭제
+                // 알림 센터에서 기존 알림 삭제
                 EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
-
+                
                 // 새로운 진행 단계에 맞는 알림 설정
-                //EventAddTableViewController().savePushNotification(event: event, step: <#T##Int#>, frequency: <#T##Int#>, time: <#T##Int#>, daysOfWeek: <#T##[Int]?#>)
+                // todo: step value change
+                EventAddTableViewController().savePushNotification(event: self.event, step: 1, pushAlarmSetting: self.event.pushAlarmSetting ?? PushAlarmSetting())
                 
             }
             print("\nStepChanged")
             LocalNotificationManager().printCountOfNotifications()
             
-            if self.event.subEvents.count == numOfIsDone {
+            if self.event.subEvents.count == numOfIsDone && self.event.subEvents.count != 0 {
                 try! api.realm.write(){
                     self.event.eventIsDone = true
                 }

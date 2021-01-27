@@ -196,7 +196,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 let notificationContent = UNMutableNotificationContent()
                 notificationContent.title = "D-\(interval) \(event.eventName)"
                 
-                notificationContent.body = "\(event.eventName) at \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
+                notificationContent.body = "step: \(step) \(event.eventName) at \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
                 
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
@@ -215,6 +215,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                         api.realm.add(pushAlarm)
                         event.pushAlarmID.append(pushAlarm)
                     }
+                    // 로컬 객체에 추가
                     addNotificationToCenter(request: request, event: event)
                 }
             }
@@ -264,7 +265,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     let notificationContent = UNMutableNotificationContent()
                     notificationContent.title = "D-\(interval) \(event.eventName)"
                     
-                    notificationContent.body = "\(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
+                    notificationContent.body = "step: \(step) \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
                     
                     
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
@@ -276,8 +277,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                                                         trigger: trigger)
                     // 알림 등록
                     if interval >= 0 {
-                        addNotificationToCenter(request: request, event: event)
-                        
                         let pushAlarm = PushAlarm()
                         pushAlarm.id = notificationId
                         
@@ -285,14 +284,16 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                             api.realm.add(pushAlarm)
                             event.pushAlarmID.append(pushAlarm)
                         }
-                        // 몇개의 알람 예정되어있는지
-                        LocalNotificationManager().printCountOfNotifications()
+                        
+                        // Local 객체에 추가
+                        addNotificationToCenter(request: request, event: event)
                     }
                 }
             }
         } else {
             print("notification frequency setting error")
         }
+        LocalNotificationManager().printCountOfNotifications()
     }
     
     func addNotificationToCenter(request: UNNotificationRequest, event: Event) {
@@ -305,6 +306,10 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     // if process step is changed
     func removeNotifications(notificationIds: [String]) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: notificationIds)
+        let pushAlarmsToRemove: [PushAlarm] = api.callPushAlarm().filter{ notificationIds.contains($0.id) }
+        try! api.realm.write {
+            api.realm.delete(pushAlarmsToRemove)
+        }
     }
     //----------------------------알림 end--------------------
         

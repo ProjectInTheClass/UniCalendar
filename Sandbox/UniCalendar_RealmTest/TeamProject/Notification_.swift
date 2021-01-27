@@ -55,7 +55,9 @@ class LocalNotificationManager {
             }
         }
     }
-    
+    // 버그: 세부 목표0인 이벤트에 들어갔다 나오면 100%로 완료됨
+    // 예상: isDone: 0, count: 0 => 완료다! 싶은건가
+    // 그치만 세부목표 추가는 가능
     func printCountOfNotifications() {
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
             if requests.count < 1 {
@@ -63,7 +65,8 @@ class LocalNotificationManager {
             } else {
                 print("You Have \(requests.count) pending notifications.")
                 for r in requests {
-                    print(r.content.title)
+                    print("-title: \(r.content.title)")
+                    print("-body: \(r.content.body): ")
                 }
             }
         })
