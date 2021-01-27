@@ -84,7 +84,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         // TODO
         // Add New event to EventList
         
-        if newEventName.hasText == false || categoryLabel.text?.isEmpty == true || settledNotificationInfoLabel.text == "선택 되지 않음"{
+        if newEventName.hasText == false || categoryLabel.text! == "선택" || settledNotificationInfoLabel.text == "선택 되지 않음"{
             let alert = UIAlertController(title: "⚠️이벤트 등록 오류⚠️", message: "선택을 모두 완료해주세요!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("네", comment: "Default action"), style: .default, handler: { _ in
             }))
@@ -161,17 +161,33 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     }
     
     func savePushNotification(event: Event, step: Int, pushAlarmSetting: PushAlarmSetting) {
+        if step == 4 {
+            print("[Step4] event is done by completing all subevents")
+            return
+        }
+        
         // content 내용에 들어감
         var eventProcess: Float = 0.0
         var subEventName: String = ""
         // process 계산
         // 세부목표가 없으면 0, 있으면 (완료개수/ 전체개수)
+        // 아예 없으면 -1?
         eventProcess = !event.subEvents.isEmpty ?
             Float(event.subEvents.filter{$0.subEventIsDone == true}.count) / Float(event.subEvents.count)
             : 0
         
         if event.subEvents.count > 0 {
-            subEventName = event.subEvents.filter{ $0.subEventIsDone == false }.randomElement()!.subEventName
+            // 알림 내용에 전달할 세부목표 이름
+            // isDone이면 세부목표가 있어도 filter에서 걸림
+            if !event.subEvents.filter({ $0.subEventIsDone == false }).isEmpty {
+                subEventName = event.subEvents.filter{ $0.subEventIsDone == false }.randomElement()!.subEventName
+            } else {
+                // all subEvents is Done
+                // do Nothing
+            }
+        } else {
+            // if subEvents empty
+            subEventName = event.eventName
         }
         
         let frequency = pushAlarmSetting.checkedFrequency
@@ -188,23 +204,27 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         
         let dMinusWhenInit: Int = getIntervalDayBetweenDates(from: Date(), to: event.eventDday)
         
+        // todo: timezone (기본값: 서울보다 9시간 느림) -> Calendar가 알아서해줌?
+        // todo: 소목표 없을때 알림
+        
         if frequency == 0 {
             // do nothing
         } else if frequency == 1 { // everyday
             // D-Day 당일까지 포함이므로 offset값에 +1
             for offset in 0..<dMinusWhenInit+1 {
                 let date = calendar.date(byAdding: .day, value: offset, to: Date())!
+                
                 var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
                 // 6시 9시 12시 ...
                 dateComponents.hour = 6 + checkedTime*3
-                
                 let interval = getIntervalDayBetweenDates(from: date, to: event.eventDday)
                 
                 // notification content
                 let notificationContent = UNMutableNotificationContent()
                 notificationContent.title = "D-\(interval) \(event.eventName)"
                 
-                // notificationContent.body = "step: \(step) \(event.eventName) at \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
+                //notificationContent.body = "step: \(step) \(event.eventName) at \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
+                
                 switch step {
                 case 0:
                     notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
@@ -233,6 +253,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 if interval >= 0 {
                     let pushAlarm = PushAlarm()
                     pushAlarm.id = notificationId
+                    pushAlarm.title = notificationContent.title
+                    pushAlarm.body = notificationContent.body
                     
                     try! api.realm.write() {
                         api.realm.add(pushAlarm)
@@ -288,7 +310,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     let notificationContent = UNMutableNotificationContent()
                     notificationContent.title = "D-\(interval) \(event.eventName)"
                     
-                    // notificationContent.body = "step: \(step) \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
+                    //notificationContent.body = "step: \(step) \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
                     
                     switch step {
                     case 0:
@@ -318,7 +340,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     if interval >= 0 {
                         let pushAlarm = PushAlarm()
                         pushAlarm.id = notificationId
-                        
+                        pushAlarm.title = notificationContent.title
+                        pushAlarm.body = notificationContent.body
                         try! api.realm.write() {
                             api.realm.add(pushAlarm)
                             event.pushAlarmID.append(pushAlarm)

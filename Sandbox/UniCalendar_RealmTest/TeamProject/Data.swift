@@ -96,12 +96,15 @@ class SubEvent: Object {
 
 class PushAlarm: Object {
     @objc dynamic var id: String = ""
-    
+    @objc dynamic var title: String = ""
+    @objc dynamic var body: String = ""
     var parentEvent = LinkingObjects(fromType: Event.self, property: "pushAlarmID")
     
-    convenience init(id: String) {
+    convenience init(id: String, title: String, body: String) {
         self.init()
         self.id = id
+        self.title = title
+        self.body = body
     }
 }
 

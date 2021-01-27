@@ -87,6 +87,23 @@
                                             <segue destination="z1F-7w-haP" kind="show" identifier="moveToAboutPage" trigger="accessoryAction" id="3RH-5i-bsR"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VersionCell" textLabel="Qpd-FS-au5" style="IBUITableViewCellStyleDefault" id="1Lp-sJ-TKH" customClass="VersionCell" customModule="UniCalendar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="186" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Lp-sJ-TKH" id="RBV-YE-hto">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="version 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="Qpd-FS-au5" userLabel="aboutLabel">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <sections/>
                             </tableView>
@@ -377,29 +394,56 @@
         <!--aboutPage-->
         <scene sceneID="o8Z-xj-bBN">
             <objects>
-                <viewController title="aboutPage" id="z1F-7w-haP" sceneMemberID="viewController">
+                <viewController title="aboutPage" id="z1F-7w-haP" customClass="AboutViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rUu-XO-Led">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="lHg-S4-XH8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="35" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QmH-df-jbl">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutInfoCell" rowHeight="1338.5" id="z9q-rn-0z1" customClass="AboutInfoCell" customModule="UniCalendar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="1338.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z9q-rn-0z1" id="2Dg-dW-FGL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1338.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about" translatesAutoresizingMaskIntoConstraints="NO" id="25a-wF-RGU">
+                                                    <rect key="frame" x="20" y="11" width="374" height="1316.5"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="25a-wF-RGU" firstAttribute="top" secondItem="2Dg-dW-FGL" secondAttribute="topMargin" id="0g2-xo-dl1"/>
+                                                <constraint firstItem="25a-wF-RGU" firstAttribute="leading" secondItem="2Dg-dW-FGL" secondAttribute="leadingMargin" id="2Mf-4M-0n4"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="25a-wF-RGU" secondAttribute="bottom" id="btv-sV-Rs4"/>
+                                                <constraint firstItem="25a-wF-RGU" firstAttribute="trailing" secondItem="2Dg-dW-FGL" secondAttribute="trailingMargin" id="dJI-eA-EEw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="aboutImage" destination="25a-wF-RGU" id="Mqk-Gt-npe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xbh-Rz-agd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xbh-Rz-agd" firstAttribute="bottom" secondItem="lHg-S4-XH8" secondAttribute="bottom" id="Jha-ah-gKs"/>
-                            <constraint firstItem="lHg-S4-XH8" firstAttribute="leading" secondItem="xbh-Rz-agd" secondAttribute="leading" id="nab-ia-YS3"/>
-                            <constraint firstItem="lHg-S4-XH8" firstAttribute="top" secondItem="xbh-Rz-agd" secondAttribute="top" id="ter-ah-LxY"/>
-                            <constraint firstItem="xbh-Rz-agd" firstAttribute="trailing" secondItem="lHg-S4-XH8" secondAttribute="trailing" id="wFt-GJ-6sV"/>
+                            <constraint firstItem="xbh-Rz-agd" firstAttribute="trailing" secondItem="QmH-df-jbl" secondAttribute="trailing" id="4Ar-Li-B1d"/>
+                            <constraint firstItem="QmH-df-jbl" firstAttribute="top" secondItem="xbh-Rz-agd" secondAttribute="top" id="AOo-UC-JeU"/>
+                            <constraint firstItem="xbh-Rz-agd" firstAttribute="bottom" secondItem="QmH-df-jbl" secondAttribute="bottom" id="FeP-S6-k9z"/>
+                            <constraint firstItem="QmH-df-jbl" firstAttribute="leading" secondItem="xbh-Rz-agd" secondAttribute="leading" id="sn3-4F-gJ5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="XlN-Nq-Edv"/>
+                    <connections>
+                        <outlet property="tableView" destination="QmH-df-jbl" id="E4l-9M-gZK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCZ-M5-IHF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1458" y="817"/>
+            <point key="canvasLocation" x="1457.9710144927537" y="816.96428571428567"/>
         </scene>
         <!--환경설정-->
         <scene sceneID="wqR-4m-Rra">
@@ -782,6 +826,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

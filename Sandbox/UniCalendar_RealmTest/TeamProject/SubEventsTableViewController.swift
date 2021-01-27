@@ -49,6 +49,7 @@ class SubEventsTableViewController: UITableViewController {
             self.tableView.reloadData()
     }
 
+
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,6 +82,7 @@ class SubEventsTableViewController: UITableViewController {
             cell.imageView?.image = UIImage(named: imageName)
 
             let labelText = subEvent.subEventName
+            
             // cell.subEventName.text = subEvents[indexPath.row].eventName
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: labelText)
             // 소목표 완료
@@ -142,28 +144,34 @@ class SubEventsTableViewController: UITableViewController {
             print("진행단계 같은가요?: \(isSameStep(before: beforeProcess, after: afterProcess))")
             LocalNotificationManager().printCountOfNotifications()
             // 진행 단계 변경
+            // ** 만약 세부목표가 전부 체크되었으면
+            // ** 기존 알림 삭제 이후 isDone체크 해서 완료되었으면 이후에도 삭제
+            
             if !isSameStep(before: beforeProcess, after: afterProcess) {
                 // 현재 이벤트의 알림 리스트 가져옴
+                // (db 수정 전)
                 let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
                 
                 print("현재이벤트 알림id 개수 \(notificationIDsOfcurrentEvent.count)")
                 // 알림 센터에서 기존 알림 삭제
                 EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
                 
-                // 새로운 진행 단계에 맞는 알림 설정
-                // todo: step value change
+                // step 0~3 : begin~end
+                // step 4: event is Done, print complete message, return immediately
                 EventAddTableViewController().savePushNotification(event: self.event, step: getStepByProcess(process: afterProcess), pushAlarmSetting: self.event.pushAlarmSetting ?? PushAlarmSetting())
-                
             }
             print("\nStepChanged")
             LocalNotificationManager().printCountOfNotifications()
             
-            if (self.event.subEvents.count == numOfIsDone) && self.event.subEvents.count != 0 {
+            // db 수정 (event.isDone 설정)
+            if self.event.subEvents.count != 0  && (self.event.subEvents.count == numOfIsDone) {
                 try! api.realm.write(){
                     self.event.eventIsDone = true
                 }
                 // 이벤트의 푸쉬알람들 삭제
-                EventAddTableViewController().removeNotifications(notificationIds: self.event.pushAlarmID.map{$0.id})
+                if !self.event.pushAlarmID.isEmpty {
+                    EventAddTableViewController().removeNotifications(notificationIds: self.event.pushAlarmID.map{$0.id})
+                }
             }
             print("event is done?: \(event.eventIsDone)")
             tableView.reloadData()
@@ -208,6 +216,8 @@ class SubEventsTableViewController: UITableViewController {
             step = 2
         } else if process < 1.0 {
             step = 3
+        } else if process == 1.0 {
+            step = 4
         } else {
             step = -1
         }
