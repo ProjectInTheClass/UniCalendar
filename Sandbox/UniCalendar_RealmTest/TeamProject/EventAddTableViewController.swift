@@ -253,6 +253,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 if interval >= 0 {
                     let pushAlarm = PushAlarm()
                     pushAlarm.id = notificationId
+                    pushAlarm.title = notificationContent.title
+                    pushAlarm.body = notificationContent.body
                     
                     try! api.realm.write() {
                         api.realm.add(pushAlarm)
@@ -338,7 +340,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     if interval >= 0 {
                         let pushAlarm = PushAlarm()
                         pushAlarm.id = notificationId
-                        
+                        pushAlarm.title = notificationContent.title
+                        pushAlarm.body = notificationContent.body
                         try! api.realm.write() {
                             api.realm.add(pushAlarm)
                             event.pushAlarmID.append(pushAlarm)
