@@ -216,11 +216,26 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
                 // 6시 9시 12시 ...
                 dateComponents.hour = 6 + checkedTime*3
-                let interval = getIntervalDayBetweenDates(from: date, to: event.eventDday)
+                
+                let df = DateFormatter()
+                df.dateFormat = "yyyy-MM-dd"
+                
+                let today = df.date(from: df.string(from : date))
+                let dDay = df.date(from: df.string(from: event.eventDday))!
+
+                let interval = dDay.timeIntervalSince(today!)
+                let d = Int(interval / 86400)
+                
+                var dDayText: String = ""
+                if d == 0 {
+                    dDayText = "D-DAY"
+                } else {
+                    dDayText = "D-" + String(d)
+                }
                 
                 // notification content
                 let notificationContent = UNMutableNotificationContent()
-                notificationContent.title = "D-\(interval) \(event.eventName)"
+                notificationContent.title = "\(dDayText) \(event.eventName)"
                 
                 //notificationContent.body = "step: \(step) \(event.eventName) at \(dateComponents.month ?? 0)월 \(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시 \(dateComponents.weekday ?? -1)요일"
                 
@@ -334,7 +349,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                         break
                     }
                     notificationContent.body += "\n[at:\(dateComponents.month ?? 0)월\(dateComponents.day ?? 0)일 \(dateComponents.hour ?? -1)시]"
-                    
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
                     
                     let notificationId = UUID().uuidString
