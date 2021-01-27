@@ -117,5 +117,8 @@ class PushAlarmSetting: Object {
         self.init()
         self.checkedTime = checkedTime
         self.checkedFrequency = checkedFrequency
+        for checkedDay in checkedDaysOfWeek {
+            self.checkedDaysOfWeek.append(checkedDay)
+        }
     }
 }
