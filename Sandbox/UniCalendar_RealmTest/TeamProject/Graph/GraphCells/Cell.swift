@@ -21,7 +21,8 @@ class Cell: UICollectionViewCell {
   
     func changeCollectionView(){
         var numOfEvents = 0
-        if categories.count == 0 { return }
+//        if categories.count == 0 { return }
+        
         for i in 0..<categories[numOfCall].eventsInCategory.count{
             let dCalendar = Calendar.current.dateComponents([.year, .month], from: categories[numOfCall].eventsInCategory[i].eventDday)
            
@@ -42,6 +43,8 @@ class Cell: UICollectionViewCell {
     func changeLastCollectionView(){
         var numOfEvents = 0
         
+            print(numOfCall, numOfLastCall)
+            print("---------체인지지난콜렉션 뷰--------")
         for i in 0..<categories[numOfLastCall].eventsInCategory.count{
             let dCalendar = Calendar.current.dateComponents([.year, .month], from: categories[numOfLastCall].eventsInCategory[i].eventDday)
            
@@ -55,16 +58,26 @@ class Cell: UICollectionViewCell {
         eventNumLabel.text = String(numOfEvents) + " 개 "
         addNumOfCall(num: &numOfLastCall)
     }
-    
+//
     func setLayout() {
         categories = api.callCategory()
         events = api.callEvent()
+        print(categories.count)
+//        if categories.count == numOfCall {
+//            numOfCall = 0
+//        }
+        print(numOfCall)
         changeCollectionView()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        categories = api.callCategory()
+        events = api.callEvent()
+        print(categories.count)
         
+        print(numOfCall)
+        changeCollectionView()
     }
 }

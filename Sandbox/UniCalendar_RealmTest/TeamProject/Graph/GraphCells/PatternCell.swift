@@ -23,6 +23,7 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
     var pieDataEntries = [PieChartDataEntry]()
     let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return categories.count
     }
     
@@ -31,13 +32,11 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
         
         if isClicked == false {
             if flag == true {
-                cell.changeCollectionView()
+                cell.setLayout()
             }else{
                 cell.changeLastCollectionView()
             }
-            
         }
-        cell.setLayout()
         return cell
     }
     
@@ -151,16 +150,17 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
         case 0:
             categories = api.callCategory()
             events = api.callEvent()
+            numOfCall = 0
             numOfLastCall = 0
             drawLastPieChart()
             isClicked = false
             flag = false
             collectionView.reloadData()
-            
         case 1:
             categories = api.callCategory()
             events = api.callEvent()
             numOfCall = 0
+            numOfLastCall = 0
             drawPieChart()
             flag = true
             collectionView.reloadData()
@@ -173,16 +173,14 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
         numOfCall = 0
         categories = api.callCategory()
         events = api.callEvent()
-        collectionView.reloadData()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        collectionView.reloadData()
         drawPieChart()
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

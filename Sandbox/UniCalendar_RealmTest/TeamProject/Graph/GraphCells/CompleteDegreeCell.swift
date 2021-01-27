@@ -55,6 +55,7 @@ class CompleteDegreeCell: UITableViewCell {
                 numOfTotal += 1
                 if events[i].eventIsDone {
                     numOfCompletion += 1
+                    
                 }
             }
             if ((dCalendar.year == today.year) && ((dCalendar.month! + 1) == today.month) && today.month != 1) || (((dCalendar.year! + 1) == today.year) && today.month == 1 && dCalendar.month! == 12) {

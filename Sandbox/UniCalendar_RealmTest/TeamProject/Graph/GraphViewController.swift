@@ -14,28 +14,6 @@ class GraphViewController: UIViewController {
     var barDataEntriesOfSubEvents = [BarChartDataEntry]()
     let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
     
-    func updatePieChartData(){
-        pieDataEntries.removeAll()
-        for category in categories{
-            var numOfEvent = 0
-            var isInCategory = false
-            let dataEntry = PieChartDataEntry()
-            for i in 0..<category.eventsInCategory.count {
-                let dCalendar = Calendar.current.dateComponents([.year, .month], from: category.eventsInCategory[i].eventDday)
-                if ((dCalendar.year == today.year) && (dCalendar.month == today.month)){
-                    numOfEvent += 1
-                    isInCategory = true
-                }
-            }
-            
-            if isInCategory == true {
-                dataEntry.value = Double(numOfEvent)
-                dataEntry.label = category.categoryName
-                pieDataEntries.append(dataEntry)
-            }
-        }
-    }
-    
     func updateBarChartData(){
         
         var numOfCompletedEvents = [Int](repeating: 0, count: 12)
