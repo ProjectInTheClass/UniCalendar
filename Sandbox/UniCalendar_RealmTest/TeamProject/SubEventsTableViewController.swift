@@ -49,6 +49,7 @@ class SubEventsTableViewController: UITableViewController {
             self.tableView.reloadData()
     }
 
+
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,6 +82,7 @@ class SubEventsTableViewController: UITableViewController {
             cell.imageView?.image = UIImage(named: imageName)
 
             let labelText = subEvent.subEventName
+            
             // cell.subEventName.text = subEvents[indexPath.row].eventName
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: labelText)
             // 소목표 완료

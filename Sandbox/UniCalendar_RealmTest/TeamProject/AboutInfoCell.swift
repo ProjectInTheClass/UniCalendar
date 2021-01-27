@@ -1,22 +1,18 @@
 //
-//  CalendarEventTableViewCell.swift
-//  TeamProject
+//  AboutInfoCell.swift
+//  UniCalendar
 //
-//  Created by 김준경 on 2021/01/22.
+//  Created by Nayeon Kim on 2021/01/27.
 //
 
 import UIKit
 
-class CalendarEventTableViewCell: UITableViewCell {
+class AboutInfoCell: UITableViewCell {
 
-    @IBOutlet weak var categoryColorImage: UIImageView!
-    @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var subCompletionLabel: UILabel!
-
+    @IBOutlet weak var aboutImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

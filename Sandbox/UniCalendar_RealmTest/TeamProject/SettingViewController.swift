@@ -59,7 +59,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         if (section == 0){ //category section
             return category.count+1
         } else { //about app section
-            return 1
+            return 2
         }
     }
 
@@ -84,12 +84,20 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
             }
 
         } else {
-            //about app section
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for:indexPath) as! AboutCell
+            if indexPath.row == 0 {
+                //about app section
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for:indexPath) as! AboutCell
 
-            cell.aboutLabel.text = about
+                cell.aboutLabel.text = about
 
-            return cell
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "VersionCell", for: indexPath) as! VersionCell
+                
+                
+                return cell
+            }
+            
         }
 
     }

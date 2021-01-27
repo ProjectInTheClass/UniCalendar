@@ -16,13 +16,12 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
     @IBOutlet weak var patternLabel: UILabel!
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var patternTextView: UITextView!
+    
     
     var categories : [Category] = api.callCategory()
     var events: [Event] = api.callEvent()
     var pieDataEntries = [PieChartDataEntry]()
     let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
-    var sentence = ""
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
     }
@@ -38,6 +37,7 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
             }
             
         }
+        cell.setLayout()
         return cell
     }
     
@@ -169,11 +169,8 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func setLayouts() {
         numOfCall = 0
-        numOfLastCall = 0
         categories = api.callCategory()
         events = api.callEvent()
         collectionView.reloadData()
@@ -182,10 +179,15 @@ class PatternCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDa
         drawPieChart()
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

@@ -158,22 +158,6 @@
                                                     <rect key="frame" x="30" y="205" width="354" height="271"/>
                                                     <color key="backgroundColor" red="0.91640943289999999" green="0.44445782420000002" blue="0.87289567030000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </view>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-SM-eQY">
-                                                    <rect key="frame" x="30" y="476" width="354" height="174"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <string key="text">열심히 살아가는 당신😎은
-과제에 가장 많은 노력🔥을 기울이고 있으며,
-대외 활동에도 시간🕙을 투자합니다.
-다양한 경험과 꾸준한 노력이
-분명 좋은 결과를 만들어 낼 것으로 보입니다.🎉
-
-다른 활동에 비해 시험 준비의 빈도가 낮은 편입니다.
-
-오늘도 열공합시다💪🏻</string>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSelectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="TX8-cu-lRV">
                                                     <rect key="frame" x="10" y="64" width="394" height="599"/>
                                                     <constraints>
@@ -188,7 +172,6 @@
                                                 <constraint firstItem="wZI-vJ-HFB" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" constant="10" id="3bc-2v-yxy"/>
                                                 <constraint firstItem="LGD-59-Mgt" firstAttribute="top" secondItem="wZI-vJ-HFB" secondAttribute="bottom" constant="8" id="F2d-9E-V5W"/>
                                                 <constraint firstItem="TX8-cu-lRV" firstAttribute="top" secondItem="Ec8-CJ-nJ0" secondAttribute="bottom" constant="7.5" id="FfN-I0-o8Z"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="VfP-SM-eQY" secondAttribute="bottom" constant="17" id="HlD-MQ-XB2"/>
                                                 <constraint firstItem="wZI-vJ-HFB" firstAttribute="top" secondItem="VAG-dI-0Oc" secondAttribute="bottom" constant="8" id="JeQ-BT-keW"/>
                                                 <constraint firstAttribute="bottom" secondItem="TX8-cu-lRV" secondAttribute="bottom" constant="15" id="JhK-Tu-1bk"/>
                                                 <constraint firstItem="wZI-vJ-HFB" firstAttribute="leading" secondItem="LGD-59-Mgt" secondAttribute="leading" id="KLi-ue-uZA"/>
@@ -201,10 +184,7 @@
                                                 <constraint firstItem="LGD-59-Mgt" firstAttribute="top" secondItem="wZI-vJ-HFB" secondAttribute="bottom" constant="8" id="afB-pp-TRS"/>
                                                 <constraint firstItem="Ec8-CJ-nJ0" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" id="bm2-Jf-ceZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wZI-vJ-HFB" secondAttribute="trailing" constant="10" id="fEe-BH-8oN"/>
-                                                <constraint firstItem="VfP-SM-eQY" firstAttribute="leading" secondItem="bJ4-vv-E8u" secondAttribute="leadingMargin" constant="10" id="gfC-Z8-sre"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wZI-vJ-HFB" secondAttribute="trailing" constant="10" id="lca-6Q-tHn"/>
-                                                <constraint firstItem="VfP-SM-eQY" firstAttribute="top" secondItem="LGD-59-Mgt" secondAttribute="bottom" id="tG5-aR-lEp"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="VfP-SM-eQY" secondAttribute="trailing" constant="10" id="tq4-c1-Bgl"/>
                                                 <constraint firstAttribute="bottom" secondItem="LGD-59-Mgt" secondAttribute="bottom" constant="202" id="vtu-JS-A6z"/>
                                                 <constraint firstAttribute="trailing" secondItem="TX8-cu-lRV" secondAttribute="trailing" constant="10" id="wnE-MJ-U05"/>
                                                 <constraint firstItem="wZI-vJ-HFB" firstAttribute="trailing" secondItem="LGD-59-Mgt" secondAttribute="trailing" id="x3x-1W-BCu"/>
@@ -213,7 +193,6 @@
                                         <connections>
                                             <outlet property="collectionView" destination="wZI-vJ-HFB" id="cfi-Yf-lI7"/>
                                             <outlet property="patternLabel" destination="Ec8-CJ-nJ0" id="SBC-EW-MJC"/>
-                                            <outlet property="patternTextView" destination="VfP-SM-eQY" id="bns-2h-TGI"/>
                                             <outlet property="pieChartView" destination="LGD-59-Mgt" id="WtN-0v-Hms"/>
                                         </connections>
                                     </tableViewCell>

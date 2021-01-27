@@ -21,6 +21,7 @@ class Cell: UICollectionViewCell {
   
     func changeCollectionView(){
         var numOfEvents = 0
+        if categories.count == 0 { return }
         for i in 0..<categories[numOfCall].eventsInCategory.count{
             let dCalendar = Calendar.current.dateComponents([.year, .month], from: categories[numOfCall].eventsInCategory[i].eventDday)
            
@@ -55,12 +56,15 @@ class Cell: UICollectionViewCell {
         addNumOfCall(num: &numOfLastCall)
     }
     
+    func setLayout() {
+        categories = api.callCategory()
+        events = api.callEvent()
+        changeCollectionView()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        categories = api.callCategory()
-        events = api.callEvent()
-        changeCollectionView()
+        
     }
 }
