@@ -228,15 +228,15 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 // 화면 잠그는법: 상태바 -> Device -> Lock
                 
                 // ----------- Release -------------------
-                var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
-
-                dateComponents.hour = 6 + checkedTime*3
+//                var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
+//
+//                dateComponents.hour = 6 + checkedTime*3
                 
                 //  -------- Presentation -------------------
-                // let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 0, minute: 49)
-                // ------------------------------------------
-                let df = DateFormatter()
-                df.dateFormat = "yyyy-MM-dd"
+                let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 13, minute: 44)
+                // ----------------------------------------
+                // let df = DateFormatter()
+                // df.dateFormat = "yyyy-MM-dd"
                 
                 let today = df.date(from: df.string(from : date))
                 let dDay = df.date(from: df.string(from: event.eventDday))!
@@ -301,7 +301,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 // 원랜 설정된 횟수만큼 반복문돌면서 매번 알림을 생성해서 저장하므로
                 // 한 이벤트 알림이 한번만 나오려면 첫 알림 등록 후 바로 리턴 해줘야함!!
                 // 요기 바로 아래 리턴 해제하세욤 (밑에 하나더있음!)
-                // return
+                return
             }
         } else if frequency == 2 { // 사용자 설정
             if checkedDaysOfWeek.isEmpty {
@@ -341,12 +341,12 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     let date = calendar.date(byAdding: .day, value: 7*(week), to: weekdayDate)!
                     // ------------Release----------------------
                     // 여기도 똑같이 두줄 주석처리. 밑에 주석 해제하고 5분정도 뒤 알림 나오게할 시간 입력
-                    var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
+                    // var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
 
-                    dateComponents.hour = 6 + checkedTime * 3
+                    // dateComponents.hour = 6 + checkedTime * 3
                     
-                    // ------------ presentation --------------
-                    // let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 0, minute: 49)
+                    // ------------ presentation ------------
+                    let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 13, minute: 44)
                     // ----------------------------------------
                     let df = DateFormatter()
                     df.dateFormat = "yyyy-MM-dd"
@@ -414,7 +414,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                         // 한 이벤트가 한번만 나오려면 첫 등록 후 바로 리턴 해줘야함!!
                         // 바로 아래 리턴 해제하세욤
                         
-                        // return
+                        return
                     }
                 }
             }
