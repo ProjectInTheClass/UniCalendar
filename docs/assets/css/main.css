@@ -1854,7 +1854,10 @@ input, select, textarea {
 				background:#852da80c;
 				overflow: hidden;
 			}
-
+			.box.style1 .image .two {
+				display: flex;
+				
+			}
 				.box.style1 .image img {
 					position: absolute;
 					top: 0;
@@ -1944,7 +1947,7 @@ input, select, textarea {
 
 		.box.style3 {
 			background: #fff;
-			padding: 3em;
+			
 		}
 
 			.box.style3 header {
