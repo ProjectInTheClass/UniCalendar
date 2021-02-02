@@ -213,31 +213,12 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
             // D-Day 당일까지 포함이므로 offset값에 +1
             for offset in 0..<dMinusWhenInit+1 {
                 let date = calendar.date(byAdding: .day, value: offset, to: Date())!
-                
-                // 아래쪽 Release 밑에 두줄(기존 코드)을 주석처리 하고
-                
-                // Presentation 아래 주석처리된 DateComponents 초기화부분에
-                // 대충 5분? 뒤 시간(밤12시는 hour에 12말고 0 을 넣어야함!)을 넣고
-                // 해당 줄을 주석해제 (dateComponents가 푸쉬알림 날짜 설정값으로 들어감)
-                
-                // 그 다음 빌드하고 시뮬레이터에서 이벤트추가 하고, 각 세부목표까지 추가해서
-                // 진행률 적당히 조정해주세요!
-                
-                // 디데이, 빈도(매일, 사용자선택), 알람시간 은 상관없음
-                // 위에서 정한 시간에 한번만 나올거임 ( 'presentation'으로 마저 검색하면 return 해제할 부분 두군데 써놓음 )
-                // 화면 잠그는법: 상태바 -> Device -> Lock
-                
-                // ----------- Release -------------------
-//                var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
-//
-//                dateComponents.hour = 6 + checkedTime*3
-                
-                //  -------- Presentation -------------------
-                let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 13, minute: 44)
-                // ----------------------------------------
-                // let df = DateFormatter()
-                // df.dateFormat = "yyyy-MM-dd"
-                
+
+                var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
+
+                dateComponents.hour = 6 + checkedTime*3
+
+
                 let today = df.date(from: df.string(from : date))
                 let dDay = df.date(from: df.string(from: event.eventDday))!
 
@@ -297,11 +278,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     // 로컬 객체에 추가
                     addNotificationToCenter(request: request, event: event)
                 }
-                // presentation
-                // 원랜 설정된 횟수만큼 반복문돌면서 매번 알림을 생성해서 저장하므로
-                // 한 이벤트 알림이 한번만 나오려면 첫 알림 등록 후 바로 리턴 해줘야함!!
-                // 요기 바로 아래 리턴 해제하세욤 (밑에 하나더있음!)
-                return
             }
         } else if frequency == 2 { // 사용자 설정
             if checkedDaysOfWeek.isEmpty {
@@ -339,15 +315,11 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     }
                     
                     let date = calendar.date(byAdding: .day, value: 7*(week), to: weekdayDate)!
-                    // ------------Release----------------------
-                    // 여기도 똑같이 두줄 주석처리. 밑에 주석 해제하고 5분정도 뒤 알림 나오게할 시간 입력
-                    // var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
 
-                    // dateComponents.hour = 6 + checkedTime * 3
-                    
-                    // ------------ presentation ------------
-                    let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 13, minute: 44)
-                    // ----------------------------------------
+                     var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .weekday], from: date)
+
+                     dateComponents.hour = 6 + checkedTime * 3
+
                     let df = DateFormatter()
                     df.dateFormat = "yyyy-MM-dd"
                     
@@ -408,13 +380,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                         
                         // Local 객체에 추가
                         addNotificationToCenter(request: request, event: event)
-                        
-                        // presentation
-                        // 원랜 설정된 횟수만큼 알림만들고 저장하는걸 반복하므로
-                        // 한 이벤트가 한번만 나오려면 첫 등록 후 바로 리턴 해줘야함!!
-                        // 바로 아래 리턴 해제하세욤
-                        
-                        return
                     }
                 }
             }
@@ -551,6 +516,4 @@ extension Date {
     func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
         return calendar.component(component, from: self)
     }
-    
-
 }
