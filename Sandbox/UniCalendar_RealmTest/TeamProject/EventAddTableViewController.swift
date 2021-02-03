@@ -233,7 +233,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 dateComponents.hour = 6 + checkedTime*3
                 
                 //  -------- Presentation -------------------
-                // let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 0, minute: 49)
+                //let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 5, minute: 30)
                 // ------------------------------------------
                 let df = DateFormatter()
                 df.dateFormat = "yyyy-MM-dd"
@@ -301,7 +301,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                 // 원랜 설정된 횟수만큼 반복문돌면서 매번 알림을 생성해서 저장하므로
                 // 한 이벤트 알림이 한번만 나오려면 첫 알림 등록 후 바로 리턴 해줘야함!!
                 // 요기 바로 아래 리턴 해제하세욤 (밑에 하나더있음!)
-                // return
+                //return
             }
         } else if frequency == 2 { // 사용자 설정
             if checkedDaysOfWeek.isEmpty {
@@ -346,7 +346,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                     dateComponents.hour = 6 + checkedTime * 3
                     
                     // ------------ presentation --------------
-                    // let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 0, minute: 49)
+                    //let dateComponents = DateComponents(year: 2021, month: 1, day: 28, hour: 5, minute: 30)
                     // ----------------------------------------
                     let df = DateFormatter()
                     df.dateFormat = "yyyy-MM-dd"
@@ -414,7 +414,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                         // 한 이벤트가 한번만 나오려면 첫 등록 후 바로 리턴 해줘야함!!
                         // 바로 아래 리턴 해제하세욤
                         
-                        // return
+                        //return
                     }
                 }
             }

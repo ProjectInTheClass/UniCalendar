@@ -20,12 +20,6 @@ class SubEventsTableViewController: UITableViewController {
     @IBOutlet var subEventTableView: UITableView!
     
     
-    //let subEvents: [SubEvent] = api.callSubEvent()
-    
-    @objc private func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-    
     let subEventCellIdentifier = "SubEventCell"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +28,7 @@ class SubEventsTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
-        let tapGesture = UITapGestureRecognizer(target: self,
-                                                action: #selector(hideKeyboard))
-        tapGesture.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tapGesture)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
