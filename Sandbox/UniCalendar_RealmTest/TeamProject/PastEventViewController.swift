@@ -23,6 +23,9 @@ class PastEventViewController: UIViewController, UITableViewDataSource, UITabBar
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PastEventCell", for: indexPath) as! PastEventCell
+        
+        cell.selectionStyle = .none
+        
         let event = events[indexPath.row]
         
         let df = DateFormatter()

@@ -20,12 +20,6 @@ class SubEventsTableViewController: UITableViewController {
     @IBOutlet var subEventTableView: UITableView!
     
     
-    //let subEvents: [SubEvent] = api.callSubEvent()
-    
-    @objc private func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-    
     let subEventCellIdentifier = "SubEventCell"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +28,7 @@ class SubEventsTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
-        let tapGesture = UITapGestureRecognizer(target: self,
-                                                action: #selector(hideKeyboard))
-        tapGesture.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tapGesture)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +59,8 @@ class SubEventsTableViewController: UITableViewController {
         // return UITableViewCell
         
         let cell = tableView.dequeueReusableCell(withIdentifier: subEventCellIdentifier, for: indexPath) as! SubEventCell
+        
+        cell.selectionStyle = .none
 
         if event.subEvents.count != 0 {
             let subEvent = event.subEvents[indexPath.row]
@@ -121,6 +114,8 @@ class SubEventsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         
         if self.event.subEvents.count >= 1 {
             // let beforeProcess: Float = Float(self.event.subEvents.filter{s in s.subEventIsDone == true}.count) / Float(self.event.subEvents.count)

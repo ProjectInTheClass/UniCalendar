@@ -83,6 +83,8 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
+        
         if indexPath.row == 1 {
             self.performSegue(withIdentifier: "chooseColor", sender: nil)
         }

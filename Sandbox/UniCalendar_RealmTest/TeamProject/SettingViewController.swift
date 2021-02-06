@@ -69,6 +69,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
             //category seciton
             if(indexPath.row < category.count){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
+                
+                cell.selectionStyle = .none
 
                 cell.categoryName.text = category[indexPath.row].categoryName
 
@@ -77,6 +79,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
                 //add category row
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddCategoryCell", for: indexPath) as! AddCategoryCell
 
+                cell.selectionStyle = .none
+                
                 cell.addLabel.text = add
                 cell.addLabel.textColor = UIColor.init(red: 0, green: 0, blue: 1, alpha: 1)
 
@@ -88,6 +92,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
                 //about app section
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for:indexPath) as! AboutCell
 
+                cell.selectionStyle = .none
+                
                 cell.aboutLabel.text = about
 
                 return cell
@@ -104,6 +110,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
 
     //if selected -> perform segue to move to another view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 0:

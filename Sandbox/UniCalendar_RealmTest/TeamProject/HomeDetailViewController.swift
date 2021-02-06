@@ -155,13 +155,19 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         updateProgressBar()
     }
     
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         subEventAddTextField.delegate = self
         
-        
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -70,7 +70,7 @@ class NotificationSettingTableViewController: UITableViewController {
     }
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         // Todo: 탭 선택 변경 가능하게,,
         // 현재 섹션이 체크가 안되어있으면
         if !isSectionChecked[indexPath.section] {

@@ -104,6 +104,9 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = calendarEventTableView.dequeueReusableCell(withIdentifier: "CalendarEventTableViewCell", for: indexPath) as! CalendarEventTableViewCell
+        
+        cell.selectionStyle = .none
+        
         let event = selectedDateEvents[indexPath.row]
         
         cell.eventNameLabel.text = event.eventName
@@ -152,6 +155,7 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
     
     // 날짜 선택 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
         selectedDateEvents.removeAll()
         let today = dateFormatter.date(from: dateFormatter.string(from: Date.init()))!
         if date == today {

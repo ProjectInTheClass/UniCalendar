@@ -38,6 +38,7 @@ class EditColorTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
     
         confirmedColor = indexPath.row
@@ -45,6 +46,7 @@ class EditColorTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     

@@ -74,17 +74,22 @@ class CategorySelectionEditTableViewController: UITableViewController {
         // let cell = tableView.dequeueReusableCell(withIdentifier: "CategorySelectionCell", for: indexPath) as! CategoryCell
         // cell.categoryName.text = categories[indexPath.row].categoryName
         let cell = UITableViewCell()
+        
+        cell.selectionStyle = .none
+        
         cell.textLabel?.text = categories[indexPath.row].categoryName
  
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         selectedCategory = indexPath.row
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     
