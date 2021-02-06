@@ -59,6 +59,8 @@ class SubEventsTableViewController: UITableViewController {
         // return UITableViewCell
         
         let cell = tableView.dequeueReusableCell(withIdentifier: subEventCellIdentifier, for: indexPath) as! SubEventCell
+        
+        cell.selectionStyle = .none
 
         if event.subEvents.count != 0 {
             let subEvent = event.subEvents[indexPath.row]
@@ -112,6 +114,8 @@ class SubEventsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         
         if self.event.subEvents.count >= 1 {
             // let beforeProcess: Float = Float(self.event.subEvents.filter{s in s.subEventIsDone == true}.count) / Float(self.event.subEvents.count)

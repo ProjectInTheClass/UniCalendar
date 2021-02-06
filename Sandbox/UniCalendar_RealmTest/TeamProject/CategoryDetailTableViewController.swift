@@ -47,6 +47,8 @@ class CategoryDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
+        
         if indexPath.row == 1 {
             //1번째 row선택시 EditColorTableView로 넘어감
             performSegue(withIdentifier: "windToEditColor", sender: category[categoryIndex].categoryColor)

@@ -211,7 +211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-58-KSk">
-                                <rect key="frame" x="0.0" y="140" width="390" height="621"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="147" id="W5b-1c-EtI" customClass="EventCell" customModule="UniCalendar" customModuleProvider="target">
@@ -640,7 +640,7 @@
                         <sections>
                             <tableViewSection id="OIS-v9-nS3">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Q12-De-YZa" detailTextLabel="tF9-XE-oaE" style="IBUITableViewCellStyleValue1" id="Pgw-wS-SoU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Q12-De-YZa" detailTextLabel="tF9-XE-oaE" style="IBUITableViewCellStyleValue1" id="Pgw-wS-SoU">
                                         <rect key="frame" x="0.0" y="28" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pgw-wS-SoU" id="s3K-c7-4nu">
@@ -667,7 +667,7 @@
                                             <segue destination="iUK-JG-reS" kind="presentation" identifier="ToCategorySelection" id="1uE-dC-4Ly"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="GDF-iT-GQA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="GDF-iT-GQA">
                                         <rect key="frame" x="0.0" y="71.666667938232422" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GDF-iT-GQA" id="HyL-VH-VGm">
@@ -710,7 +710,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="중요도 및 알람 설정" footerTitle="중요도에 따라 알람 메세지가 달라집니다." id="jbK-he-wzJ">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="nyZ-hu-Y8s" detailTextLabel="k49-hc-NJc" style="IBUITableViewCellStyleValue1" id="BFm-fO-jSO">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="nyZ-hu-Y8s" detailTextLabel="k49-hc-NJc" style="IBUITableViewCellStyleValue1" id="BFm-fO-jSO">
                                         <rect key="frame" x="0.0" y="348.33333587646484" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BFm-fO-jSO" id="9kR-2D-zEe">
@@ -756,7 +756,7 @@
                             </tableViewSection>
                             <tableViewSection id="ejU-f8-q5l">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="R2S-XI-3pP" detailTextLabel="SqH-UH-Sl8" style="IBUITableViewCellStyleValue1" id="Uhj-z1-RNr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="R2S-XI-3pP" detailTextLabel="SqH-UH-Sl8" style="IBUITableViewCellStyleValue1" id="Uhj-z1-RNr">
                                         <rect key="frame" x="0.0" y="491.66667175292969" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uhj-z1-RNr" id="TXd-iO-Tzd">

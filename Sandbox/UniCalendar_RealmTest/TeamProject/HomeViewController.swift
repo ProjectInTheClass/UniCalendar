@@ -58,6 +58,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+        cell.selectionStyle = .none
         let event = events[indexPath.row]
         
         let df = DateFormatter()
@@ -138,6 +139,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         self.performSegue(withIdentifier: "moveToDetail", sender: indexPath.row)
     }
     

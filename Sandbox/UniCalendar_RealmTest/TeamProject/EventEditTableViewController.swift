@@ -160,6 +160,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         if indexPath.row == 0 && tableView.cellForRow(at: indexPath)?.textLabel?.text == "카테고리"{
             performSegue(withIdentifier: "toCategorySelect", sender: nil)
         } else if indexPath.row == 0 && tableView.cellForRow(at: indexPath)?.textLabel?.text == "이 일정 삭제하기" {
