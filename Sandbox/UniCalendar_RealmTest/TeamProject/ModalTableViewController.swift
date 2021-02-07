@@ -36,9 +36,20 @@ class ModalTableViewController: UITableViewController, UITextFieldDelegate {
     
     //'완료'버튼 누를때 action 함수
     @IBAction func completeModal(_ sender: Any) {
-        saveCategory()
-        //unwind실행(SettingViewController로)
-        performSegue(withIdentifier: "unwindToSetting", sender: self)
+        if nameTextField.hasText == true {
+            saveCategory()
+            
+            //unwind실행(SettingViewController로)
+            performSegue(withIdentifier: "unwindToSetting", sender: self)
+        }
+        
+        else {
+            let alert = UIAlertController(title: "⚠️정보 입력 부족⚠️", message: "카테고리 이름이 없어요! 이름을 입력해주세요", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("돌아가기", comment: "Default action"), style: .default, handler: { _ in
+                //NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
         
 
     }
