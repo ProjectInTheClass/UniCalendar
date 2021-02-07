@@ -10,11 +10,20 @@ import UIKit
 class CategorySelectionTableViewController: UITableViewController {
 
     var categories: [Category] = api.callCategory()
-    var selectedCategory: Int = 0
+    var selectedCategory: Int = -1
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if selectedCategory != -1 {
+            tableView.selectRow(at: [0, selectedCategory], animated: false, scrollPosition: .none)
+            tableView.cellForRow(at: [0,selectedCategory])?.accessoryType = .checkmark
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,8 +39,10 @@ class CategorySelectionTableViewController: UITableViewController {
             return
         }
         
-        vc.categoryLabel.text = categories[selectedCategory].categoryName
+
         vc.selectedCategory = selectedCategory
+        //vc.categoryLabel.text = categories[selectedCategory].categoryName
+        
     }
     
     @IBAction func cancelModal(_ sender: Any) {

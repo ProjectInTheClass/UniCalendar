@@ -21,7 +21,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     var checkedTime: Int = 0
     
     var categoryString: String = ""
-    var selectedCategory: Int = 0
+    var selectedCategory: Int = -1
     
     var notificationFrequency: String = ""
     var notificationTime: String = ""
@@ -51,13 +51,28 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
         switch seg.identifier {
         case "unwindToAddEventFromCategory":
-            categoryLabel.text = category[selectedCategory].categoryName
+            if selectedCategory == -1 {
+                categoryLabel.text = "선택"
+            } else {
+                categoryLabel.text = category[selectedCategory].categoryName
+            }
             break
         case "unwindToAddEventFromNotification":
             settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"
             break
         default:
             break
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToCategorySelection" {
+            guard let navigation = segue.destination as? UINavigationController else {return}
+            
+            guard let view = navigation.viewControllers[0] as? CategorySelectionTableViewController else {return}
+            
+            view.selectedCategory = selectedCategory
+    
         }
     }
     
