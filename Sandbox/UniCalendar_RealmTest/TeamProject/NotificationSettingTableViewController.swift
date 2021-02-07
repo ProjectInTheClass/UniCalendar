@@ -20,6 +20,8 @@ class NotificationSettingTableViewController: UITableViewController {
 
     // 각 section별로, 마지막 체크된 셀의 indexPath는 무엇인가
     var lastCheckedIndexPathInSection: [IndexPath] = [IndexPath(), IndexPath()]
+    var lastCheckedFrequency: Int = -1
+    var lastCheckedTime: Int = -1
     
     var isSectionChecked: [Bool] = [false, false]
     
@@ -28,6 +30,11 @@ class NotificationSettingTableViewController: UITableViewController {
         guard let vc = destView as? EventAddTableViewController else {
             return
         }
+        
+        //선택한 값 EventAddTableView에 indexPath로 넘겨서 저장
+        vc.frequencyIndexPathRow = lastCheckedFrequency
+        vc.timeIndexPathRow = lastCheckedTime
+        
         // 0 1 2
         vc.notificationFrequency = getDayFromCheckedRow(row: checkedFrequency)
         
@@ -42,6 +49,33 @@ class NotificationSettingTableViewController: UITableViewController {
             vc.notificationTime = ""
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if lastCheckedFrequency != -1 && lastCheckedTime != -1 {
+            tableView.selectRow(at: [0, lastCheckedFrequency], animated: false, scrollPosition: .none)
+            tableView.selectRow(at: [1, lastCheckedTime], animated: false, scrollPosition: .none)
+            
+            tableView.cellForRow(at: [0, lastCheckedFrequency])?.selectionStyle = .none
+            tableView.cellForRow(at: [1, lastCheckedTime])?.selectionStyle = .none
+            tableView.cellForRow(at: [0, lastCheckedFrequency])?.accessoryType = .checkmark
+            tableView.cellForRow(at: [1, lastCheckedTime])?.accessoryType = .checkmark
+            
+            lastCheckedIndexPathInSection[0] = [0, lastCheckedFrequency]
+            lastCheckedIndexPathInSection[1] = [1, lastCheckedTime]
+            
+            isSectionChecked[0] = true
+            isSectionChecked[1] = true
+        } else if lastCheckedFrequency == 0 {
+            tableView.selectRow(at: [0, lastCheckedFrequency], animated: false, scrollPosition: .none)
+            tableView.cellForRow(at: [0, lastCheckedFrequency])?.selectionStyle = .none
+            tableView.cellForRow(at: [0, lastCheckedFrequency])?.accessoryType = .checkmark
+            
+            lastCheckedIndexPathInSection[0] = [0, lastCheckedFrequency]
+            
+            isSectionChecked[0] = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -55,7 +89,25 @@ class NotificationSettingTableViewController: UITableViewController {
     
     // done button
     @IBAction func goToAddEvent(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToAddEventFromNotification", sender: self)
+        //isSectionChecked에 따라 저장 값 달라짐
+        if isSectionChecked[1] == true { //첫 번째 섹션에서 '없음'이 아닐때 == 시간 선택이 있을 때
+            lastCheckedFrequency = lastCheckedIndexPathInSection[0][1]
+            lastCheckedTime = lastCheckedIndexPathInSection[1][1]
+        } else { //시간 선택이 없을 때
+            lastCheckedFrequency = lastCheckedIndexPathInSection[0][1]
+        }
+        
+        
+        //'없음'이 아닌데 밑에 시간을 선택하지 않았을 때 예외 처리
+        if lastCheckedFrequency != 0 && lastCheckedTime == -1 {
+            let alert = UIAlertController(title: "⚠️알림 시간 설정 오류⚠️", message: "시간 설정하는 걸 잊으신 건 아닌가요?😮 설정을 다시 확인해주세요!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("돌아가기", comment: "Default action"), style: .default, handler: { _ in
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        } else { //정상적으로 작동할때
+            performSegue(withIdentifier: "unwindToAddEventFromNotification", sender: self)
+        }
     }
     
     @IBAction func unwindToNotificationSetting(_ unwindSegue: UIStoryboardSegue) {
@@ -94,7 +146,7 @@ class NotificationSettingTableViewController: UITableViewController {
             
             // 첫 번째 섹션을 눌렀고,
             // '사용자 설정' 셀에 체크가 되어있을때
-            if indexPath.section == 0 && lastCheckedIndexPathInSection[indexPath.section].row == 2 {
+            if indexPath.section == 0 && !lastCheckedIndexPathInSection[indexPath.section].isEmpty && lastCheckedIndexPathInSection[indexPath.section].row == 2 {
                 tableView.cellForRow(at: lastCheckedIndexPathInSection[indexPath.section])?.accessoryType = .disclosureIndicator
                 userSelectDayLabel.text = "요일 선택"
             } else {

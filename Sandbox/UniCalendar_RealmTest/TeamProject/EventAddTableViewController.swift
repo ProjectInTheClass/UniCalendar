@@ -25,6 +25,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     
     var notificationFrequency: String = ""
     var notificationTime: String = ""
+    var frequencyIndexPathRow: Int = -1
+    var timeIndexPathRow: Int = -1
     
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var newEventName: UITextField!
@@ -66,13 +68,19 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navigation = segue.destination as? UINavigationController else {return}
+        
         if segue.identifier == "ToCategorySelection" {
-            guard let navigation = segue.destination as? UINavigationController else {return}
-            
             guard let view = navigation.viewControllers[0] as? CategorySelectionTableViewController else {return}
             
             view.selectedCategory = selectedCategory
     
+        } else if segue.identifier == "ToNotificationSetting" {
+            guard let view = navigation.viewControllers[0] as? NotificationSettingTableViewController else {return}
+            
+            view.lastCheckedFrequency = frequencyIndexPathRow
+            view.lastCheckedTime = timeIndexPathRow
+            
         }
     }
     
