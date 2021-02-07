@@ -12,13 +12,14 @@ class Cell: UICollectionViewCell {
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var eventNumLabel: UILabel!
     
-    func showCollectionView(){
-        
-    }
+    var categories : [Category] = api.callCategory()
+    var events: [Event] = api.callEvent()
+    var category : Category = Category()
     
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    
+        
     }
 }

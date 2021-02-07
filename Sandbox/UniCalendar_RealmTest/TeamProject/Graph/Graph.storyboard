@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfZ-op-e11">
-                                <rect key="frame" x="0.0" y="140" width="390" height="621"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtH-d5-7qG" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="1370"/>
@@ -71,7 +71,19 @@
                                             </segmentedControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWy-lM-aFL" customClass="PieChartView" customModule="Charts">
                                                 <rect key="frame" x="22" y="406" width="346" height="344"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZB-jp-sSz">
+                                                        <rect key="frame" x="173" y="172" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="BZB-jp-sSz" firstAttribute="centerY" secondItem="sWy-lM-aFL" secondAttribute="centerY" id="mcV-be-2ht"/>
+                                                    <constraint firstItem="BZB-jp-sSz" firstAttribute="centerX" secondItem="sWy-lM-aFL" secondAttribute="centerX" id="nS0-ym-LIH"/>
+                                                </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료도 분석📚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugR-Sy-a0h">
                                                 <rect key="frame" x="22" y="810" width="346" height="25"/>
@@ -103,37 +115,37 @@
                                                     <action selector="completionSegdidChanged:" destination="4UQ-A3-Und" eventType="valueChanged" id="JFg-Ah-HqI"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rOY-EF-4Sg">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rOY-EF-4Sg">
                                                 <rect key="frame" x="22" y="338" width="346" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="X3M-sl-ehu"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="E7U-FE-rwa">
-                                                    <size key="itemSize" width="85" height="60"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="E7U-FE-rwa">
+                                                    <size key="itemSize" width="63" height="60"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="QQs-Uu-TH9" customClass="Cell" customModule="UniCalendar" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="63" height="60"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xob-aH-O4Q">
-                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="63" height="60"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="h6W-0O-ojf">
-                                                                    <rect key="frame" x="0.0" y="5" width="85" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="5" width="63" height="50"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="categoryNameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXN-Qf-C6f">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="18"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="63" height="18"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="eventNumLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8B-ib-0ss">
-                                                                            <rect key="frame" x="0.0" y="30" width="85" height="20"/>
+                                                                            <rect key="frame" x="0.0" y="30" width="63" height="20"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                             <color key="textColor" red="0.52442657950000005" green="0.3126676679" blue="0.94518142940000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <nil key="highlightedColor"/>
@@ -144,7 +156,7 @@
                                                                         <constraint firstAttribute="bottom" secondItem="n8B-ib-0ss" secondAttribute="bottom" id="CQf-OL-l0w"/>
                                                                         <constraint firstAttribute="trailing" secondItem="n8B-ib-0ss" secondAttribute="trailing" id="Nn6-ZL-zPp"/>
                                                                         <constraint firstAttribute="trailing" secondItem="zXN-Qf-C6f" secondAttribute="trailing" id="Rka-gy-q3j"/>
-                                                                        <constraint firstAttribute="width" constant="138" id="cZ2-mn-emq"/>
+                                                                        <constraint firstAttribute="width" constant="100" id="cZ2-mn-emq"/>
                                                                         <constraint firstItem="zXN-Qf-C6f" firstAttribute="top" secondItem="h6W-0O-ojf" secondAttribute="top" id="lgW-wJ-EUM"/>
                                                                         <constraint firstItem="n8B-ib-0ss" firstAttribute="top" secondItem="zXN-Qf-C6f" secondAttribute="bottom" constant="12" id="qjX-qC-1jd"/>
                                                                         <constraint firstItem="n8B-ib-0ss" firstAttribute="leading" secondItem="h6W-0O-ojf" secondAttribute="leading" id="xE7-J8-HwX"/>
@@ -158,10 +170,10 @@
                                                                 <constraint firstAttribute="bottom" secondItem="h6W-0O-ojf" secondAttribute="bottom" constant="5" id="oMs-fm-Aho"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
-                                                        <size key="customSize" width="85" height="60"/>
+                                                        <size key="customSize" width="63" height="60"/>
                                                         <connections>
-                                                            <outlet property="categoryNameLabel" destination="zXN-Qf-C6f" id="ryF-9I-9wd"/>
-                                                            <outlet property="eventNumLabel" destination="n8B-ib-0ss" id="DCS-FG-B2d"/>
+                                                            <outlet property="categoryNameLabel" destination="zXN-Qf-C6f" id="Wvb-vF-Udv"/>
+                                                            <outlet property="eventNumLabel" destination="n8B-ib-0ss" id="Oof-hH-03D"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -332,9 +344,10 @@
                         <outlet property="completionRateComparison" destination="ibo-Wd-hr2" id="1Y7-UV-zUF"/>
                         <outlet property="numOfCompletionLabel" destination="Eir-YY-0Hy" id="5Kj-GJ-PwJ"/>
                         <outlet property="numOfTotalLabel" destination="pS1-XC-NMX" id="xb1-JV-eEd"/>
+                        <outlet property="pieChartLabel" destination="BZB-jp-sSz" id="jCK-aQ-NMw"/>
                         <outlet property="pieChartView" destination="sWy-lM-aFL" id="aJh-90-p2S"/>
                         <outlet property="totalLabel" destination="1e8-34-L9j" id="kGS-mn-s8K"/>
-                        <outlet property="upDownLabel" destination="9di-cZ-JWd" id="vMS-yt-IFh"/>
+                        <outlet property="upDownLabel" destination="9di-cZ-JWd" id="L7M-9N-DUl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVl-4S-nVP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -157,6 +157,7 @@ class GraphViewController: UIViewController {
     @IBOutlet weak var comparisonLabel: UILabel!
     @IBOutlet weak var completionRateComparison: UILabel!
     @IBOutlet weak var upDownLabel: UILabel!
+    @IBOutlet weak var pieChartLabel: UILabel!
     
     var pieDataEntries = [PieChartDataEntry]()
     var dataPoints:[String] = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ]
@@ -167,10 +168,36 @@ class GraphViewController: UIViewController {
     var subEvents: [SubEvent] = api.callSubEvent()
     let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
     
+    var patternFlag = true
+    var completionFlag = true
+    
+    override func viewDidAppear(_ animated: Bool) {
+        categories = api.callCategory()
+        events = api.callEvent()
+        subEvents = api.callSubEvent()
+        collectionView.reloadData()
+        if patternFlag {
+            drawPieChart(isLastMonth: false)
+        }
+        else {
+            drawPieChart(isLastMonth: true)
+        }
+        
+        drawBarChart()
+        if completionFlag {
+            countEventsNumAndRate()
+        }else {
+            countSubEventsNumAndRate()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawBarChart()
-        
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+//        drawBarChart()
+//        drawPieChart(isLastMonth: false)
+//        countEventsNumAndRate()
     }
     
     func calculateColor(color: Int) -> String{
@@ -191,13 +218,18 @@ class GraphViewController: UIViewController {
             return "purple"
         }
     }
+    
 
     @IBAction func patternSegDidChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             drawPieChart(isLastMonth: true)
+            patternFlag = false
+            collectionView.reloadData()
         case 1:
             drawPieChart(isLastMonth: false)
+            patternFlag = true
+            collectionView.reloadData()
         default:
             break
         }
@@ -209,8 +241,10 @@ class GraphViewController: UIViewController {
         drawBarChart()
         switch sender.selectedSegmentIndex {
         case 0:
+            completionFlag = true
             countEventsNumAndRate()
         case 1:
+            completionFlag = false
             countSubEventsNumAndRate()
         default:
             break
@@ -219,15 +253,41 @@ class GraphViewController: UIViewController {
     
 }
 
-extension GraphViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension GraphViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        print(categories.count)
         return categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         
+        var numOfEvents = 0
+        
+        if patternFlag {       
+            for i in 0..<categories[indexPath.row].eventsInCategory.count{
+                let dCalendar = Calendar.current.dateComponents([.year, .month], from: categories[indexPath.row].eventsInCategory[i].eventDday)
+               
+                if ((dCalendar.year == today.year) && (dCalendar.month == today.month)){
+                    numOfEvents += 1
+                }
+            }
+        }
+        else {
+            for i in 0..<categories[indexPath.row].eventsInCategory.count{
+                let dCalendar = Calendar.current.dateComponents([.year, .month], from: categories[indexPath.row].eventsInCategory[i].eventDday)
+               
+                if ((dCalendar.year == today.year) && ((dCalendar.month! + 1) == today.month) && today.month != 1) || (((dCalendar.year! + 1) == today.year) && today.month == 1 && dCalendar.month! == 12){
+                    
+                    numOfEvents += 1
+                }
+            }
+        }
+        
+        cell.categoryNameLabel.text = categories[indexPath.row].categoryName
+        cell.eventNumLabel.text = String(numOfEvents) + " 개 "
+        
+        print(categories[indexPath.row].categoryName)
         return cell
     }
     
@@ -279,6 +339,19 @@ extension GraphViewController {
                 colors.append( UIColor(named: color)! )
             }
         }
+        var isEmpty = true
+        for dataEntry in pieDataEntries {
+            if dataEntry.value != 0 {
+                isEmpty = false
+            }
+        }
+        
+        if isEmpty == true {
+            pieChartLabel.text = "아직 등록된 이벤트가 없어요😅"
+        }else {
+            pieChartLabel.text = ""
+        }
+        
         let pieChartDataSet = PieChartDataSet(entries: pieDataEntries, label: nil)
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
 
