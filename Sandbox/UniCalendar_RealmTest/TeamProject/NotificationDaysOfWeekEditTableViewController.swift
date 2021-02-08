@@ -14,5 +14,11 @@ class NotificationDaysOfWeekEditTableViewController: UITableViewController {
 
     }
 
-
+    @IBAction func cancelModal(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func completeModal(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToDetailNotificationSetting:", sender: self)
+    }
 }

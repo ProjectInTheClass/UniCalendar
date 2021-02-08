@@ -32,7 +32,8 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func unwindToEventEdit(segue: UIStoryboardSegue){
         switch segue.identifier {
-        case "unWindToEventEdit":
+        case "unwindToEventEdit":
+            print("unwind to event edit")
             break
         default:
             break

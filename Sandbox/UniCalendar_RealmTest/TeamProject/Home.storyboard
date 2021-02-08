@@ -1716,9 +1716,15 @@
                     <navigationItem key="navigationItem" title="푸시 알림 설정" id="cfO-QW-tbI">
                         <barButtonItem key="leftBarButtonItem" title="취소" id="0hG-wT-EWe">
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="cancelModal:" destination="ex8-59-mvb" id="OLm-qS-PKy"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="완료" id="4Kq-Me-KqE">
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="completeModal:" destination="ex8-59-mvb" id="cjR-5D-j1k"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1871,13 +1877,23 @@
                     <navigationItem key="navigationItem" title="요일 설정" id="E1v-vj-Sl0">
                         <barButtonItem key="leftBarButtonItem" title="취소" id="GTo-ai-Od2">
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="cancelModal:" destination="9Sb-A2-dlc" id="x81-Mj-lcT"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="완료" id="Ryy-SA-Fea">
                             <color key="tintColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="completeModal:" destination="9Sb-A2-dlc" id="TTs-Dm-LfQ"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Igy-Yi-HIx" kind="unwind" identifier="unwindToDetailNotificationSetting:" unwindAction="unwindToDetailNotificationSetting:" id="6A5-FV-vBz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3Z-vB-ZQA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Igy-Yi-HIx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5861" y="1640"/>
         </scene>

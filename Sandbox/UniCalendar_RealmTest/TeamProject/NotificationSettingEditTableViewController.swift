@@ -21,13 +21,21 @@ class NotificationSettingEditTableViewController: UITableViewController {
         cell?.accessoryType = UITableViewCell.AccessoryType.checkmark
 
     }
-    override func viewWillAppear(_ animated: Bool) {
-        print("time \(alarmSetting.checkedTime)")
-        print("freq \(alarmSetting.checkedFrequency)")
-        
-
-
+    @IBAction func cancelModal(_ sender: Any) {
+        print("[Detail]Notification Setting Cancel")
+        self.dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func completeModal(_ sender: Any) {
+        print("[Detail]Notification Setting Done")
+        performSegue(withIdentifier: "unwindToEventEdit", sender: self)
+        
+    }
+    
+    @IBAction func unwindToDetailNotificationSetting(_ unwindSegue: UIStoryboardSegue) {
+        if unwindSegue.identifier == "unwindToDetailNotificationSetting" {
+            print("[Detail]unwind To Detail Notification Setting")
+        }
+    }
+    
 }
