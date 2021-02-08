@@ -16,11 +16,28 @@ class NotificationSettingEditTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let cell = self.tableView.cellForRow(at: IndexPath(row: checkedFrequency, section: 0))
-        cell?.accessoryType = UITableViewCell.AccessoryType.checkmark
-
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("[Detail] NotificationSetting View Will appaar")
+        
+        
+        self.checkedTime = self.alarmSetting.checkedTime
+        self.checkedFrequency = self.alarmSetting.checkedFrequency
+
+        self.checkedDaysOfWeek = Array<Int>(self.alarmSetting.checkedDaysOfWeek)
+        
+        print("\(checkedTime), \(checkedFrequency)")
+        self.tableView.selectRow(at: [0, self.checkedFrequency], animated: false, scrollPosition: UITableView.ScrollPosition.none)
+        
+        // 선택 회색 해제
+        let cell: UITableViewCell = self.tableView.cellForRow(at: [0, self.checkedFrequency])?.selectionStyle = .none
+        self.tableView.cellForRow(at: [0, self.checkedFrequency])?.accessoryType = .checkmark
+        
+        self.tableView.cellForRow(at: [1, self.checkedTime])?.accessoryType = .checkmark
+    }
+    
+    
     @IBAction func cancelModal(_ sender: Any) {
         print("[Detail]Notification Setting Cancel")
         self.dismiss(animated: true, completion: nil)
