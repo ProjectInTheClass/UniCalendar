@@ -1728,6 +1728,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="userSelectDayLabel" destination="yYU-CC-J0S" id="gnb-AH-fTe"/>
                         <segue destination="Vog-hb-ZjS" kind="unwind" identifier="unwindToEventEdit" unwindAction="unwindToEventEditWithSegue:" id="91i-4k-5UG"/>
                     </connections>
                 </tableViewController>

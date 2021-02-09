@@ -9,6 +9,18 @@ import UIKit
 
 class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
 
+    var checkedFrequency: Int = 0
+
+    var checkedDaysOfWeek: [Int] = Array<Int>()
+    var checkedTime: Int = 0
+    
+    var categoryString: String = ""
+    
+    var notificationFrequency: String = ""
+    var notificationTime: String = ""
+    var frequencyIndexPathRow: Int = -1
+    var timeIndexPathRow: Int = -1
+    
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var eventName: UITextField!
     
@@ -33,7 +45,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func unwindToEventEdit(segue: UIStoryboardSegue){
         switch segue.identifier {
         case "unwindToEventEdit":
-            print("unwind to event edit")
+            settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"
             break
         default:
             break
@@ -67,7 +79,6 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
                 }
                 count += 1
             }
-            
         }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -47,7 +47,7 @@ class CategorySelectionEditTableViewController: UITableViewController {
         }
         
         vc.categoryLabel.text = categories[selectedCategory].categoryName
-        vc.selectedCategory = selectedCategory
+        vc.selectedCategory = self.selectedCategory
         vc.changedCategory = true
         //vc.selectedCategory = selectedCategory
     }
