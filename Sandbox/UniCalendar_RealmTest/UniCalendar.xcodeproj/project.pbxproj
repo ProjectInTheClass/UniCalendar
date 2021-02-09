@@ -51,6 +51,8 @@
 		5B6E2D3525C14385001AA417 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E2D3425C14385001AA417 /* AboutViewController.swift */; };
 		5B6E2D3D25C1445C001AA417 /* AboutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E2D3C25C1445C001AA417 /* AboutInfoCell.swift */; };
 		5B6E2D4525C14831001AA417 /* VersionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E2D4425C14831001AA417 /* VersionCell.swift */; };
+		5BE1B89425D3075500E6B6D7 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1B89325D3075500E6B6D7 /* BadgeViewController.swift */; };
+		5BE1B89725D307A700E6B6D7 /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1B89625D307A700E6B6D7 /* BadgeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +103,8 @@
 		5B6E2D3425C14385001AA417 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5B6E2D3C25C1445C001AA417 /* AboutInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInfoCell.swift; sourceTree = "<group>"; };
 		5B6E2D4425C14831001AA417 /* VersionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCell.swift; sourceTree = "<group>"; };
+		5BE1B89325D3075500E6B6D7 /* BadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
+		5BE1B89625D307A700E6B6D7 /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
 		7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -196,6 +200,8 @@
 				0BCA77CF25BEE3610003CDC7 /* Cell.swift */,
 				5B144733259DC26700968770 /* Graph.storyboard */,
 				5B4ED58125B4149900852B04 /* GraphViewController.swift */,
+				5BE1B89325D3075500E6B6D7 /* BadgeViewController.swift */,
+				5BE1B89625D307A700E6B6D7 /* BadgeTableViewCell.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -432,8 +438,10 @@
 				5B64794725BDBC93006F7008 /* CategorySelectionEditTableViewController.swift in Sources */,
 				5B35DCEA25B284DF00A73E9E /* ColorTableViewController.swift in Sources */,
 				0BD91D9725BA929F0096D4B9 /* CalendarEventTableViewCell.swift in Sources */,
+				5BE1B89425D3075500E6B6D7 /* BadgeViewController.swift in Sources */,
 				5B35DCE125B1C81E00A73E9E /* ModalTableViewController.swift in Sources */,
 				5B6E2D3525C14385001AA417 /* AboutViewController.swift in Sources */,
+				5BE1B89725D307A700E6B6D7 /* BadgeTableViewCell.swift in Sources */,
 				185F798525B9F3940091D1D7 /* CategorySelectionTableViewController.swift in Sources */,
 				5B35DCC825B0981100A73E9E /* AddCategoryCell.swift in Sources */,
 			);
