@@ -200,7 +200,71 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
         datePicker.date = selectedEvent.eventDday
         showImportance.text = String(selectedEvent.importance)
         importanceSlider.value = Float(selectedEvent.importance)
-        //settledNotificationInfoLabel.text = 
+        self.notificationFrequency = getDayFromCheckedRow(row: self.checkedFrequency)
+        settledNotificationInfoLabel.text = "\(self.notificationFrequency) \(self.notificationTime)"
     }
     
+    func getTimeFromCheckedRow(row: Int) -> String {
+        switch row {
+        case 0:
+            return "오전 6시"
+        case 1:
+            return "오전 9시"
+        case 2:
+            return "오후 12시"
+        case 3:
+            return "오후 3시"
+        case 4:
+            return "오후 6시"
+        case 5:
+            return "오후 9시"
+        default:
+            return ""
+        }
+    }
+
+    func getDayFromCheckedRow(row: Int) -> String {
+        switch row {
+        case 0:
+            return "없음"
+        case 1:
+            return "매일"
+        case 2:
+            return  getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
+        default:
+            return "선택 되지 않음"
+        }
+    }
+
+    func getDayStringFromDaysArray(dayList: [Int]) -> String {
+        if dayList.isEmpty {
+            return ""
+        }
+        let resultDayString: String = dayList.reduce("매주 ", {(prev: String, day: Int) -> String in
+            var dayString: String {
+                switch day {
+                case 0:
+                    return "월"
+                case 1:
+                    return "화"
+                case 2:
+                    return "수"
+                case 3:
+                    return "목"
+                case 4:
+                    return "금"
+                case 5:
+                    return "토"
+                case 6:
+                    return "일"
+                default:
+                    return ""
+                }
+            }
+            return prev + dayString + " "
+        })
+        return resultDayString
+    }
+ 
+
 }

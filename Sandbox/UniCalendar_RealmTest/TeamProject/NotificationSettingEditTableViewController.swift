@@ -50,8 +50,6 @@ class NotificationSettingEditTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("[Detail] NotificationSetting View Will appaar")
-  
         self.checkedTime = self.alarmSetting.checkedTime
         self.checkedFrequency = self.alarmSetting.checkedFrequency
 

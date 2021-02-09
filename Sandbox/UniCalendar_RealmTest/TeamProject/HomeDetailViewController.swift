@@ -22,6 +22,10 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     
     var staticText : String = ""
     
+    var checkedTime = 0
+    var checkedFrequency = 0
+    var checkedDaysOfWeek = Array<Int>()
+    
     // @IBOutlet weak var detailTableView: UITableView!
     
     @IBOutlet weak var dDayLabel: UILabel!
@@ -103,8 +107,33 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
             view?.event = events[selectedCell]
             view?.belongedContainer = self
         } else if segue.identifier == "ToEdit" {
-            let view = segue.destination as? EventEditTableViewController
-            view?.selected = selectedCell
+            guard let view = segue.destination as? EventEditTableViewController else {
+                return
+            }
+            view.selected = selectedCell
+            
+            checkedTime = self.events[selectedCell].pushAlarmSetting?.checkedTime ?? 0
+            checkedFrequency = self.events[selectedCell].pushAlarmSetting?.checkedFrequency ?? 0
+            
+            // view.notificationFrequency = getDayFromCheckedRow(row: checkedFrequency)
+
+            view.checkedFrequency = checkedFrequency
+            
+            if checkedFrequency == 2 {
+                checkedDaysOfWeek = Array<Int>(self.events[selectedCell].pushAlarmSetting!.checkedDaysOfWeek)
+                
+            view.checkedDaysOfWeek = checkedDaysOfWeek
+            }
+            
+            view.checkedTime = checkedTime
+            
+            
+            // checkedDay가 0이면 빈도: 없음 선택이므로, 시간대도 없음
+            if checkedFrequency != 0 {
+                view.notificationTime = getTimeFromCheckedRow(row: checkedTime )
+            } else {
+                view.notificationTime = ""
+            }
 //        } else if segue.identifier == "unwindToHomeFromDetail" {
 //            let view = segue.destination as? HomeViewController
             
@@ -224,5 +253,68 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         //checkDone()
     }
+
+    func getTimeFromCheckedRow(row: Int) -> String {
+        switch row {
+        case 0:
+            return "오전 6시"
+        case 1:
+            return "오전 9시"
+        case 2:
+            return "오후 12시"
+        case 3:
+            return "오후 3시"
+        case 4:
+            return "오후 6시"
+        case 5:
+            return "오후 9시"
+        default:
+            return ""
+        }
+    }
+
+    func getDayFromCheckedRow(row: Int) -> String {
+        switch row {
+        case 0:
+            return "없음"
+        case 1:
+            return "매일"
+        case 2:
+            return  getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
+        default:
+            return "선택 되지 않음"
+        }
+    }
+
+    func getDayStringFromDaysArray(dayList: [Int]) -> String {
+        if dayList.isEmpty {
+            return ""
+        }
+        let resultDayString: String = dayList.reduce("매주 ", {(prev: String, day: Int) -> String in
+            var dayString: String {
+                switch day {
+                case 0:
+                    return "월"
+                case 1:
+                    return "화"
+                case 2:
+                    return "수"
+                case 3:
+                    return "목"
+                case 4:
+                    return "금"
+                case 5:
+                    return "토"
+                case 6:
+                    return "일"
+                default:
+                    return ""
+                }
+            }
+            return prev + dayString + " "
+        })
+        return resultDayString
+    }
+ 
 
 }
