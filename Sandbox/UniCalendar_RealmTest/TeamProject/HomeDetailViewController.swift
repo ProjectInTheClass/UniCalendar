@@ -176,6 +176,14 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
                 event.eventIsDone = true
             }
         }
+        
+        // 알림 삭제
+        if !event.pushAlarmID.isEmpty {
+            let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
+            
+            EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
+        }
+        
         //buttonPressed = 1
     
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
