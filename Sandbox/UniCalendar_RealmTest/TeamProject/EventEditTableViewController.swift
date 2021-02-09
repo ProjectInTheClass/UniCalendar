@@ -39,6 +39,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     var selected: Int = 0
     var selectedCategory: Int = 0
     var changedCategory: Bool = false
+    var changedNotification:Bool = false
     
     var saveEventName: String = ""
     
@@ -69,7 +70,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
         showImportance.text = String(Int(importanceSlider.value))
     }
     
-    
+
     func removeFromBeforeCategory() {
         let beforeCategory = event[selected].parentCategory[0]
         var count: Int = 0
@@ -130,6 +131,22 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
             
             guard let view = segue.destination as? HomeDetailViewController else {return}
             
+            // 알림 변경시 삭제하고 다시등록
+            if changedNotification == true {
+                let pushAlarmSetting: PushAlarmSetting = PushAlarmSetting(checkedTime: checkedTime, checkedFrequency: checkedFrequency, checkedDaysOfWeek: checkedDaysOfWeek)
+                
+                try? api.realm.write() {
+                    api.callEvent()[selected].pushAlarmSetting = pushAlarmSetting
+                }
+                
+                let eventProcess:Float = view.progressView.progress
+                
+                let notificationIDsOfcurrentEvent: [String] = api.callEvent()[selected].pushAlarmID.map{ $0.id }
+
+                EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
+
+                EventAddTableViewController().savePushNotification(event: api.callEvent()[selected], step: SubEventsTableViewController().getStepByProcess(process: eventProcess), pushAlarmSetting: api.callEvent()[selected].pushAlarmSetting ?? PushAlarmSetting())
+            }
             view.selectedCell = selected
             
             

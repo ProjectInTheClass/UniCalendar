@@ -189,7 +189,7 @@ class SubEventsTableViewController: UITableViewController {
             self.belongedContainer?.updateProgressBar()
             let beforeProcess:Float = self.belongedContainer?.progressView.progress ?? 0.0
             
-            // db에서 알림 삭제
+            // db에서 세부목표 삭제
             if self.event.subEvents.count > 0 {
                 let selectedSubEvent = self.event.subEvents[indexPath.row]
                 try? api.realm.write() {

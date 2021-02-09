@@ -47,6 +47,7 @@ class NotificationSettingEditTableViewController: UITableViewController {
         } else {
             vc.notificationTime = ""
         }
+        vc.changedNotification = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
