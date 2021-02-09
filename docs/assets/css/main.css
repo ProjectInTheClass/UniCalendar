@@ -1954,7 +1954,7 @@ input, select, textarea {
 				text-align: center;
 			}
 
-/* Icons */
+/* Icons */ 
 
 	.icon {
 		text-decoration: none;
@@ -2148,14 +2148,35 @@ input, select, textarea {
 		margin: 4.5em 0 0 0;
 	}
 
+	#footer:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: -4.5em;
+		left: 50%;
+		height: 4.5em;
+		border-left: solid 1px rgba(82, 24, 148, 0.548);
+	}
+
+	#sub {
+		transform: scaleY(0);
+		font-size: smaller;
+		transform-origin: top;
+		transition: all 0.7s;
+	}
+	#footer .icons:hover #sub {
+		transform: scaleY(1);
+		
+	} 
 		#footer a {
-			color: #fff;
+			color:rgba(82, 24, 148, 0.548);
 			text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25);
 			border-bottom-color: rgba(255, 255, 255, 0.5);
+
 		}
 
 			#footer a:hover {
-				color: #35b88f;
+				color: rgb(72, 21, 131);
 				text-shadow: 0 0 0.5px rgba(69, 200, 159, 0.25);
 				border-bottom-color: rgba(53, 184, 143, 0.5);
 			}
