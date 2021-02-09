@@ -154,6 +154,11 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
             try? api.realm.write(){
                 event.eventIsDone = true
             }
+            // 알림 삭제
+            if !event.pushAlarmID.isEmpty {
+                let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
+                EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
+            }
         }
         
         events = api.callEvent()
@@ -180,7 +185,6 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         // 알림 삭제
         if !event.pushAlarmID.isEmpty {
             let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
-            
             EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
         }
         
