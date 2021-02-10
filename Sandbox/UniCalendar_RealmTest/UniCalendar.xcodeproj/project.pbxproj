@@ -21,7 +21,6 @@
 		18B9DF2925A6DE6200F05FFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */; };
 		18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9DF3E25A6F17B00F05FFB /* EventCell.swift */; };
 		18E4DD2425B4409700876183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4DD2325B4409700876183 /* HomeDetailViewController.swift */; };
-		33CC3A331880CC6FA3A263DD /* Pods_TeamProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */; };
 		5B0CB62D25BFD9F300ABEADA /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0CB62C25BFD9F300ABEADA /* Contents.swift */; };
 		5B144714259DB3E700968770 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B144713259DB3E700968770 /* AppDelegate.swift */; };
 		5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B144715259DB3E700968770 /* SceneDelegate.swift */; };
@@ -53,6 +52,7 @@
 		5B6E2D4525C14831001AA417 /* VersionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E2D4425C14831001AA417 /* VersionCell.swift */; };
 		5BE1B89425D3075500E6B6D7 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1B89325D3075500E6B6D7 /* BadgeViewController.swift */; };
 		5BE1B89725D307A700E6B6D7 /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1B89625D307A700E6B6D7 /* BadgeTableViewCell.swift */; };
+		AADCBF4F882493C030D11C74 /* Pods_UniCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDC6F0D4C3182E9D0694F9C /* Pods_UniCalendar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +71,7 @@
 		18B9DF2825A6DE6200F05FFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18B9DF3E25A6F17B00F05FFB /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		18E4DD2325B4409700876183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
+		2F12156173F4F1D0A6246DF2 /* Pods-UniCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniCalendar.release.xcconfig"; path = "Target Support Files/Pods-UniCalendar/Pods-UniCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		50D17F45F44776D1A3AF1C30 /* Pods-TeamProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamProject.release.xcconfig"; path = "Target Support Files/Pods-TeamProject/Pods-TeamProject.release.xcconfig"; sourceTree = "<group>"; };
 		5B0CB62C25BFD9F300ABEADA /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		5B144710259DB3E700968770 /* UniCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +106,8 @@
 		5B6E2D4425C14831001AA417 /* VersionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCell.swift; sourceTree = "<group>"; };
 		5BE1B89325D3075500E6B6D7 /* BadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		5BE1B89625D307A700E6B6D7 /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
-		7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBDC6F0D4C3182E9D0694F9C /* Pods_UniCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC0F2816C3A92805A81464CF /* Pods-UniCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniCalendar.debug.xcconfig"; path = "Target Support Files/Pods-UniCalendar/Pods-UniCalendar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33CC3A331880CC6FA3A263DD /* Pods_TeamProject.framework in Frameworks */,
+				AADCBF4F882493C030D11C74 /* Pods_UniCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +276,7 @@
 		8A30193E11045150ECE92A22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7D14F88C5690CC7C1950140B /* Pods_TeamProject.framework */,
+				BBDC6F0D4C3182E9D0694F9C /* Pods_UniCalendar.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -284,6 +286,8 @@
 			children = (
 				00831C2CA960C3C579C4CB39 /* Pods-TeamProject.debug.xcconfig */,
 				50D17F45F44776D1A3AF1C30 /* Pods-TeamProject.release.xcconfig */,
+				FC0F2816C3A92805A81464CF /* Pods-UniCalendar.debug.xcconfig */,
+				2F12156173F4F1D0A6246DF2 /* Pods-UniCalendar.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -366,15 +370,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TeamProject/Pods-TeamProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-UniCalendar/Pods-UniCalendar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TeamProject/Pods-TeamProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-UniCalendar/Pods-UniCalendar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TeamProject/Pods-TeamProject-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UniCalendar/Pods-UniCalendar-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4F1291B88D5050A337251F78 /* [CP] Check Pods Manifest.lock */ = {
@@ -392,7 +396,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TeamProject-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-UniCalendar-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -587,7 +591,7 @@
 		};
 		5B144725259DB3E900968770 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00831C2CA960C3C579C4CB39 /* Pods-TeamProject.debug.xcconfig */;
+			baseConfigurationReference = FC0F2816C3A92805A81464CF /* Pods-UniCalendar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -607,7 +611,7 @@
 		};
 		5B144726259DB3E900968770 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50D17F45F44776D1A3AF1C30 /* Pods-TeamProject.release.xcconfig */;
+			baseConfigurationReference = 2F12156173F4F1D0A6246DF2 /* Pods-UniCalendar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
