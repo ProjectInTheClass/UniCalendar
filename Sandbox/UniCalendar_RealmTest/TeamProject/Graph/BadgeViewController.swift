@@ -56,9 +56,9 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             switch countCompleteEvents {
             case 0...9:
-                cell.image3.image = UIImage(named: "잠금")
+                cell.image2.image = UIImage(named: "잠금")
             default:
-                cell.image3.image = UIImage(named: "목표_성공_10개")
+                cell.image2.image = UIImage(named: "목표_성공_10개")
             }
             
         case 2:
@@ -96,9 +96,9 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             switch countCompleteEvents {
             case 0...39:
-                cell.image3.image = UIImage(named: "잠금")
+                cell.image2.image = UIImage(named: "잠금")
             default:
-                cell.image3.image = UIImage(named: "목표_성공_40개")
+                cell.image2.image = UIImage(named: "목표_성공_40개")
             }
             
         case 4:
@@ -109,7 +109,10 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.image1.image = UIImage(named: "목표_성공_50개")
             }
             
-            
+            //badge on progress
+            //임시로 lock 걸어둠
+            cell.image2.image = UIImage(named: "잠금")
+            cell.image3.image = UIImage(named: "잠금")
             
         default:
             break
