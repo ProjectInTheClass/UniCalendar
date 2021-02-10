@@ -161,7 +161,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
             
             guard let view = navigation.viewControllers[0] as? NotificationSettingEditTableViewController else {return}
     
-            view.alarmSetting = event[selected].pushAlarmSetting ?? PushAlarmSetting()
+            view.alarmSetting = api.callEvent()[selected].pushAlarmSetting ?? PushAlarmSetting()
         }
     }
     
