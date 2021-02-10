@@ -13,6 +13,10 @@ class BadgeTableViewCell: UITableViewCell {
     @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var image3: UIImageView!
     
+    @IBOutlet weak var text1: UILabel!
+    @IBOutlet weak var text2: UILabel!
+    @IBOutlet weak var text3: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
