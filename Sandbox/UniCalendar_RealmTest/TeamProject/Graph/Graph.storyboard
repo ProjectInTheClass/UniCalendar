@@ -35,13 +35,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectionBox" translatesAutoresizingMaskIntoConstraints="NO" id="YAT-yf-ekP">
-                                                <rect key="frame" x="3.6666666666666572" y="50" width="383" height="130"/>
+                                                <rect key="frame" x="3.6666666666666572" y="50" width="383" height="155"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="kwv-qw-NrF"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대학 생활 패턴 분석🔍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Tr-ea-8lR">
-                                                <rect key="frame" x="22" y="215" width="346" height="25"/>
+                                                <rect key="frame" x="22" y="240" width="346" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="psG-1l-Ora"/>
                                                 </constraints>
@@ -50,13 +50,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="middleSizeBox" translatesAutoresizingMaskIntoConstraints="NO" id="Z0h-Bx-Dks">
-                                                <rect key="frame" x="5" y="250" width="380" height="495"/>
+                                                <rect key="frame" x="5" y="275" width="380" height="495"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="495" id="jVQ-C3-kc5"/>
                                                 </constraints>
                                             </imageView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="7oZ-oy-aio">
-                                                <rect key="frame" x="22" y="280" width="346" height="31"/>
+                                                <rect key="frame" x="22" y="305" width="346" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="NSW-OK-l8K"/>
                                                     <constraint firstAttribute="height" constant="30" id="nwS-gI-cfi"/>
@@ -70,7 +70,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWy-lM-aFL" customClass="PieChartView" customModule="Charts">
-                                                <rect key="frame" x="22" y="391" width="346" height="329"/>
+                                                <rect key="frame" x="22" y="416" width="346" height="329"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZB-jp-sSz">
                                                         <rect key="frame" x="173" y="164.66666666666663" width="0.0" height="0.0"/>
@@ -86,7 +86,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료도 분석📚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugR-Sy-a0h">
-                                                <rect key="frame" x="22" y="780" width="346" height="25"/>
+                                                <rect key="frame" x="22" y="805" width="346" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="RYg-lU-Mc3"/>
                                                     <constraint firstAttribute="height" constant="25" id="Uhb-F1-FNG"/>
@@ -96,13 +96,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="middleSizeBox" translatesAutoresizingMaskIntoConstraints="NO" id="YOa-9C-1iI">
-                                                <rect key="frame" x="5" y="815" width="380" height="495"/>
+                                                <rect key="frame" x="5" y="840" width="380" height="495"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="495" id="SqO-fd-V1M"/>
                                                 </constraints>
                                             </imageView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LoG-97-8fe">
-                                                <rect key="frame" x="22" y="845" width="346" height="31"/>
+                                                <rect key="frame" x="22" y="870" width="346" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="SgM-Zg-RL4"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="bA3-Me-fQQ"/>
@@ -116,7 +116,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rOY-EF-4Sg">
-                                                <rect key="frame" x="22" y="323" width="346" height="60"/>
+                                                <rect key="frame" x="22" y="348" width="346" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="X3M-sl-ehu"/>
@@ -179,14 +179,14 @@
                                                 </cells>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZg-sM-iDG" customClass="BarChartView" customModule="Charts">
-                                                <rect key="frame" x="22" y="940.66666666666674" width="346" height="220"/>
+                                                <rect key="frame" x="22" y="965.66666666666674" width="346" height="220"/>
                                                 <color key="backgroundColor" name="red"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="220" id="XgJ-0d-9HL"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qhs-cl-h1o">
-                                                <rect key="frame" x="35" y="1170.6666666666667" width="141.33333333333334" height="97"/>
+                                                <rect key="frame" x="35" y="1195.6666666666667" width="141.33333333333334" height="97"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 달 평균 성공률" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oa-rq-WPo">
                                                         <rect key="frame" x="0.0" y="0.0" width="131" height="20.333333333333332"/>
@@ -209,7 +209,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WU9-dS-gHN">
-                                                <rect key="frame" x="35" y="1279.6666666666667" width="149.66666666666666" height="32.333333333333258"/>
+                                                <rect key="frame" x="35" y="1304.6666666666667" width="149.66666666666666" height="32.333333333333258"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+5.28%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibo-Wd-hr2">
                                                         <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="32.333333333333336"/>
@@ -226,7 +226,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="s6v-nV-Al6">
-                                                <rect key="frame" x="22" y="890" width="346" height="45.666666666666629"/>
+                                                <rect key="frame" x="22" y="915" width="346" height="45.666666666666629"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="KA1-Qx-hkg">
                                                         <rect key="frame" x="0.0" y="0.0" width="142" height="45.666666666666664"/>
@@ -273,19 +273,22 @@
                                                     <segue destination="h4O-W1-IAp" kind="show" id="5QY-Fn-x4x"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fMb-oh-qd1">
-                                                <rect key="frame" x="21" y="65" width="348" height="100"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="fMb-oh-qd1">
+                                                <rect key="frame" x="21" y="65" width="348" height="125"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wbx-Ly-3Kp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="100"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="처음_깔았을_때" translatesAutoresizingMaskIntoConstraints="NO" id="Wbx-Ly-3Kp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="126" height="125"/>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WlA-fG-E8a">
-                                                        <rect key="frame" x="117" y="0.0" width="114" height="100"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="처음_일정_등록했을_때" translatesAutoresizingMaskIntoConstraints="NO" id="WlA-fG-E8a">
+                                                        <rect key="frame" x="111" y="0.0" width="126" height="125"/>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="biC-Nf-gMD">
-                                                        <rect key="frame" x="234" y="0.0" width="114" height="100"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="처음_일정_끝냈을_때" translatesAutoresizingMaskIntoConstraints="NO" id="biC-Nf-gMD">
+                                                        <rect key="frame" x="222" y="0.0" width="126" height="125"/>
                                                     </imageView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="125" id="KXa-65-foY"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -373,6 +376,9 @@
                         <outlet property="comparisonLabel" destination="YBf-Td-aNE" id="Ctm-Ge-ftq"/>
                         <outlet property="completionLabel" destination="ea2-An-stt" id="dfx-LI-ZAh"/>
                         <outlet property="completionRateComparison" destination="ibo-Wd-hr2" id="1Y7-UV-zUF"/>
+                        <outlet property="image1" destination="Wbx-Ly-3Kp" id="UhK-cF-EF8"/>
+                        <outlet property="image2" destination="WlA-fG-E8a" id="CEm-et-UNr"/>
+                        <outlet property="image3" destination="biC-Nf-gMD" id="kz0-lo-as4"/>
                         <outlet property="numOfCompletionLabel" destination="Eir-YY-0Hy" id="5Kj-GJ-PwJ"/>
                         <outlet property="numOfTotalLabel" destination="pS1-XC-NMX" id="xb1-JV-eEd"/>
                         <outlet property="pieChartLabel" destination="BZB-jp-sSz" id="jCK-aQ-NMw"/>

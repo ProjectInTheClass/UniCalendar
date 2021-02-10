@@ -35,6 +35,7 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.image2.image = UIImage(named: "잠금")
             default:
                 cell.image2.image = UIImage(named: "처음_일정_등록했을_때")
+                badgeIsDone[2] = true
             }
             
             switch countCompleteEvents {
@@ -42,6 +43,7 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.image3.image = UIImage(named: "잠금")
             default:
                 cell.image3.image = UIImage(named: "처음_일정_끝냈을_때")
+                badgeIsDone[3] = true
             }
 
         case 1:
@@ -56,9 +58,14 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
             case 15...29:
                 cell.image1.image = UIImage(named: "일정_등록_15개")
                 cell.image3.image = UIImage(named: "잠금")
+                
+                badgeIsDone[4] = true
             default:
                 cell.image1.image = UIImage(named: "일정_등록_15개")
                 cell.image3.image = UIImage(named: "일정_등록_30개")
+                
+                badgeIsDone[4] = true
+                badgeIsDone[6] = true
             }
             
             switch countCompleteEvents {
@@ -66,6 +73,7 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.image2.image = UIImage(named: "잠금")
             default:
                 cell.image2.image = UIImage(named: "목표_성공_10개")
+                badgeIsDone[5] = true
             }
             
         case 2:
@@ -80,9 +88,14 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
             case 20...29:
                 cell.image1.image = UIImage(named: "목표_성공_20개")
                 cell.image3.image = UIImage(named: "잠금")
+                
+                badgeIsDone[7] = true
             default:
                 cell.image1.image = UIImage(named: "목표_성공_20개")
                 cell.image3.image = UIImage(named: "목표_성공_30개")
+                
+                badgeIsDone[7] = true
+                badgeIsDone[9] = true
             }
             
             switch countEvents {
@@ -90,6 +103,8 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.image2.image = UIImage(named: "잠금")
             default:
                 cell.image2.image = UIImage(named: "일정_등록_45개")
+                
+                badgeIsDone[8] = true
             }
             
         case 3:
@@ -104,9 +119,14 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
             case 70...99:
                 cell.image1.image = UIImage(named: "일정_등록_70개")
                 cell.image3.image = UIImage(named: "잠금")
+                
+                badgeIsDone[10] = true
             default:
                 cell.image1.image = UIImage(named: "일정_등록_70개")
                 cell.image3.image = UIImage(named: "일정_등록_100개")
+                
+                badgeIsDone[10] = true
+                badgeIsDone[12] = true
             }
             
             switch countCompleteEvents {
@@ -114,6 +134,8 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.image2.image = UIImage(named: "잠금")
             default:
                 cell.image2.image = UIImage(named: "목표_성공_40개")
+                
+                badgeIsDone[11] = true
             }
             
         case 4:
@@ -126,6 +148,8 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.image1.image = UIImage(named: "잠금")
             default:
                 cell.image1.image = UIImage(named: "목표_성공_50개")
+                
+                badgeIsDone[13] = true
             }
             
             //badge on progress
