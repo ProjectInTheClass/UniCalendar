@@ -48,13 +48,21 @@ class NotificationSettingEditTableViewController: UITableViewController {
             vc.notificationTime = ""
         }
         vc.changedNotification = true
+        
+        if self.checkedFrequency != alarmSetting.checkedFrequency {
+            self.tableView.cellForRow(at: [0, alarmSetting.checkedTime])?.accessoryType = .none
+        }
+        if self.checkedTime != alarmSetting.checkedTime {
+            self.tableView.cellForRow(at: [1, alarmSetting.checkedTime])?.accessoryType = .none
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.checkedTime = self.alarmSetting.checkedTime
-        self.checkedFrequency = self.alarmSetting.checkedFrequency
+        //self.checkedTime = self.alarmSetting.checkedTime
+        //self.checkedFrequency = self.alarmSetting.checkedFrequency
 
-        self.checkedDaysOfWeek = Array<Int>(self.alarmSetting.checkedDaysOfWeek)
+        //self.checkedDaysOfWeek = Array<Int>(self.alarmSetting.checkedDaysOfWeek)
         
         
         self.tableView.selectRow(at: [0, self.checkedFrequency], animated: false, scrollPosition: UITableView.ScrollPosition.none)
@@ -142,7 +150,6 @@ class NotificationSettingEditTableViewController: UITableViewController {
     }
     
     @IBAction func cancelModal(_ sender: Any) {
-        print("[Detail]Notification Setting Cancel")
         self.dismiss(animated: true, completion: nil)
     }
     

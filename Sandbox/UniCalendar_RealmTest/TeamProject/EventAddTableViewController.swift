@@ -81,6 +81,18 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
             view.lastCheckedFrequency = frequencyIndexPathRow
             view.lastCheckedTime = timeIndexPathRow
             
+            view.tableView.cellForRow(at: [0, frequencyIndexPathRow])?.accessoryType = .checkmark
+            view.tableView.cellForRow(at: [1, timeIndexPathRow])?.accessoryType = .checkmark
+            
+            view.lastCheckedIndexPathInSection[0] = [0, frequencyIndexPathRow]
+            view.lastCheckedIndexPathInSection[1] = [1, timeIndexPathRow]
+            
+            view.isSectionChecked[0] = true
+            view.isSectionChecked[1] = true
+
+            if frequencyIndexPathRow != 2 {
+                view.userSelectDayLabel.text = ""
+            }
         }
     }
     

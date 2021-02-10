@@ -32,8 +32,8 @@ class NotificationSettingTableViewController: UITableViewController {
         }
         
         //선택한 값 EventAddTableView에 indexPath로 넘겨서 저장
-        vc.frequencyIndexPathRow = lastCheckedFrequency
-        vc.timeIndexPathRow = lastCheckedTime
+        vc.frequencyIndexPathRow = lastCheckedIndexPathInSection[0].row
+        vc.timeIndexPathRow = lastCheckedIndexPathInSection[1].row
         
         // 0 1 2
         vc.notificationFrequency = getDayFromCheckedRow(row: checkedFrequency)

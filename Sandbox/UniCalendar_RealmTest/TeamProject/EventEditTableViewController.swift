@@ -84,9 +84,8 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var count : Int = 0
-        
+        let selectedEvent = event[selected]
         if segue.identifier == "unwindToDetail"{
-            let selectedEvent = event[selected]
             let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
             
             try? api.realm.write(){
@@ -136,16 +135,16 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
                 let pushAlarmSetting: PushAlarmSetting = PushAlarmSetting(checkedTime: checkedTime, checkedFrequency: checkedFrequency, checkedDaysOfWeek: checkedDaysOfWeek)
                 
                 try? api.realm.write() {
-                    api.callEvent()[selected].pushAlarmSetting = pushAlarmSetting
+                    selectedEvent.pushAlarmSetting = pushAlarmSetting
                 }
                 
                 let eventProcess:Float = view.progressView.progress
                 
-                let notificationIDsOfcurrentEvent: [String] = api.callEvent()[selected].pushAlarmID.map{ $0.id }
+                let notificationIDsOfcurrentEvent: [String] = selectedEvent.pushAlarmID.map{ $0.id }
 
                 EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
 
-                EventAddTableViewController().savePushNotification(event: api.callEvent()[selected], step: SubEventsTableViewController().getStepByProcess(process: eventProcess), pushAlarmSetting: api.callEvent()[selected].pushAlarmSetting ?? PushAlarmSetting())
+                EventAddTableViewController().savePushNotification(event: selectedEvent, step: SubEventsTableViewController().getStepByProcess(process: eventProcess), pushAlarmSetting: selectedEvent.pushAlarmSetting ?? PushAlarmSetting())
             }
             view.selectedCell = selected
             
@@ -161,7 +160,23 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
             
             guard let view = navigation.viewControllers[0] as? NotificationSettingEditTableViewController else {return}
     
-            view.alarmSetting = api.callEvent()[selected].pushAlarmSetting ?? PushAlarmSetting()
+            view.alarmSetting = selectedEvent.pushAlarmSetting ?? PushAlarmSetting()
+            
+            view.lastCheckedFrequency = frequencyIndexPathRow
+            view.lastCheckedTime = timeIndexPathRow
+            
+            view.tableView.cellForRow(at: [0, frequencyIndexPathRow])?.accessoryType = .checkmark
+            view.tableView.cellForRow(at: [1, timeIndexPathRow])?.accessoryType = .checkmark
+            
+            view.lastCheckedIndexPathInSection[0] = [0, frequencyIndexPathRow]
+            view.lastCheckedIndexPathInSection[1] = [1, timeIndexPathRow]
+            
+            view.isSectionChecked[0] = true
+            view.isSectionChecked[1] = true
+
+            if frequencyIndexPathRow != 2 {
+                view.userSelectDayLabel.text = "요일 선택"
+            }
         }
     }
     
@@ -241,6 +256,7 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     func getDayFromCheckedRow(row: Int) -> String {
+        print("row: \(row)")
         switch row {
         case 0:
             return "없음"
