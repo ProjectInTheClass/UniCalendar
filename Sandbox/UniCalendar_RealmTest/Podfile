@@ -6,8 +6,8 @@ target 'UniCalendar' do
   use_frameworks!
 
   # Pods for UniCalendar
-project 'UniCalendar'
 pod 'FSCalendar'
-pod 'RealmSwift'
 pod 'Charts'
+pod 'RealmSwift'
+
 end
