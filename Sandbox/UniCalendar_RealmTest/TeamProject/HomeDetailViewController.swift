@@ -178,11 +178,15 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             
-            if event.subEvents.count == 0 {
-                try? api.realm.write(){
-                    event.eventIsDone = true
-                }
+            try? api.realm.write() {
+                event.eventIsDone = true
             }
+            
+//            if event.subEvents.count == 0 {
+//                try? api.realm.write(){
+//                    event.eventIsDone = true
+//                }
+//            } else { event.eventIsDone = true }
             
             // 알림 삭제
             if !event.pushAlarmID.isEmpty {
@@ -204,11 +208,11 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             
-            if event.subEvents.count == 0 {
-                try? api.realm.write(){
+            
+            try? api.realm.write(){
                     event.eventIsDone = false
-                }
             }
+            
             
             events = api.callNotPassedEvent()
             updateProgressBar()
