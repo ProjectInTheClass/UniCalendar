@@ -170,30 +170,53 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func checkAllTrue(_ sender: Any) {
         let event = events[selectedCell]
-        for loopSub in event.subEvents {
-            try? api.realm.write(){
-                loopSub.subEventIsDone = true
+        
+        if event.eventIsDone == false {
+            for loopSub in event.subEvents {
+                try? api.realm.write(){
+                    loopSub.subEventIsDone = true
+                }
             }
-        }
-        
-        if event.subEvents.count == 0 {
-            try? api.realm.write(){
-                event.eventIsDone = true
+            
+            if event.subEvents.count == 0 {
+                try? api.realm.write(){
+                    event.eventIsDone = true
+                }
             }
+            
+            // 알림 삭제
+            if !event.pushAlarmID.isEmpty {
+                let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
+                EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
+            }
+            
+            //buttonPressed = 1
+        
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+            
+            events = api.callNotPassedEvent()
+            updateProgressBar()
         }
         
-        // 알림 삭제
-        if !event.pushAlarmID.isEmpty {
-            let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
-            EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
+        else if event.eventIsDone == true {
+            for loopSub in event.subEvents {
+                try? api.realm.write(){
+                    loopSub.subEventIsDone = false
+                }
+            }
+            
+            if event.subEvents.count == 0 {
+                try? api.realm.write(){
+                    event.eventIsDone = false
+                }
+            }
+            
+            events = api.callNotPassedEvent()
+            updateProgressBar()
+            //=============*Need to add notification all agian!*===================
         }
         
-        //buttonPressed = 1
-    
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         
-        events = api.callNotPassedEvent()
-        updateProgressBar()
     }
     
     @objc private func hideKeyboard() {

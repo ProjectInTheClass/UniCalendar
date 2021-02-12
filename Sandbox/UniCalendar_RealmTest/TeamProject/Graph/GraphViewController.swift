@@ -62,12 +62,22 @@ class GraphViewController: UIViewController {
         case 1...14:
             badgeIsDone[1] = true
         case 15...29:
+            badgeIsDone[1] = true
             badgeIsDone[3] = true
         case 30...44:
+            badgeIsDone[1] = true
+            badgeIsDone[3] = true
             badgeIsDone[5] = true
         case 45...69:
+            badgeIsDone[1] = true
+            badgeIsDone[3] = true
+            badgeIsDone[5] = true
             badgeIsDone[7] = true
         case 70...99:
+            badgeIsDone[1] = true
+            badgeIsDone[3] = true
+            badgeIsDone[5] = true
+            badgeIsDone[7] = true
             badgeIsDone[9] = true
         default:
             break
@@ -79,14 +89,29 @@ class GraphViewController: UIViewController {
         case 1...9:
             badgeIsDone[2] = true
         case 10...19:
+            badgeIsDone[2] = true
             badgeIsDone[4] = true
         case 20...29:
+            badgeIsDone[2] = true
+            badgeIsDone[4] = true
             badgeIsDone[6] = true
         case 30...39:
+            badgeIsDone[2] = true
+            badgeIsDone[4] = true
+            badgeIsDone[6] = true
             badgeIsDone[8] = true
         case 40...49:
+            badgeIsDone[2] = true
+            badgeIsDone[4] = true
+            badgeIsDone[6] = true
+            badgeIsDone[8] = true
             badgeIsDone[10] = true
         default:
+            badgeIsDone[2] = true
+            badgeIsDone[4] = true
+            badgeIsDone[6] = true
+            badgeIsDone[8] = true
+            badgeIsDone[10] = true
             badgeIsDone[12] = true
         }
         
@@ -157,6 +182,11 @@ class GraphViewController: UIViewController {
 //        drawBarChart()
 //        drawPieChart(isLastMonth: false)
 //        countEventsNumAndRate()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        countEvents = 0
+        countCompleteEvents = 0
     }
     
     func calculateColor(color: Int) -> String{
