@@ -191,7 +191,11 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: NSLocalizedString("네", comment: "Default action"), style: .default, handler: { _ in
         //NSLog("The \"OK\" alert occured.")
             try? api.realm.write{
+                for subEvents in selectedEvent.subEvents {
+                    api.realm.delete(subEvents)
+                }
                 api.realm.delete(selectedEvent)
+                
             }
             
             self.event = api.callEvent()

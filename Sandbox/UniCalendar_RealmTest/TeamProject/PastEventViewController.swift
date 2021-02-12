@@ -99,6 +99,10 @@ class PastEventViewController: UIViewController, UITableViewDataSource, UITabBar
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete){
             try? api.realm.write(){
+                for subEvents in events[indexPath.row].subEvents {
+                    api.realm.delete(subEvents)
+                    
+                }
                 api.realm.delete(events[indexPath.row])
             }
             events = api.callPassedEvent()
