@@ -147,28 +147,53 @@ class SubEventsTableViewController: UITableViewController {
                 // 알림 센터에서 기존 알림 삭제
                 EventAddTableViewController().removeNotifications(notificationIds: notificationIDsOfcurrentEvent)
                 
-                // step 0~3 : begin~end
-                // step 4: event is Done, print complete message, return immediately
-                EventAddTableViewController().savePushNotification(event: self.event, step: getStepByProcess(process: afterProcess), pushAlarmSetting: self.event.pushAlarmSetting ?? PushAlarmSetting())
+                // step 0~4 : begin~end
+                // step 5: event is Done
+                
+                // 삭제하고, 5(done)이 아니면 다시 등록
+                if getStepByProcess(process: afterProcess) != 5 {
+                    if self.event.eventIsDone == true {
+                        try! api.realm.write() {
+                            self.event.eventIsDone = false
+                        }
+                    }
+                    EventAddTableViewController().savePushNotification(event: self.event, step: getStepByProcess(process: afterProcess), pushAlarmSetting: self.event.pushAlarmSetting ?? PushAlarmSetting())
+                } else { // 5(done)이면 isDone = true로 바꿈
+                    try! api.realm.write(){
+                        self.event.eventIsDone = true
+                    }
+                    // 이벤트의 푸쉬알람들 삭제
+                    if !self.event.pushAlarmID.isEmpty {
+                        EventAddTableViewController().removeNotifications(notificationIds: self.event.pushAlarmID.map{$0.id})
+                    }
+                }
             }
             LocalNotificationManager().printCountOfNotifications()
             
-            var numOfIsDone = 0
-            for i in 0..<self.event.subEvents.count {
-                if self.event.subEvents[i].subEventIsDone == true{
-                    numOfIsDone += 1
-                }
-            }
+//            var numOfIsDone = 0
+//            for i in 0..<self.event.subEvents.count {
+//                if self.event.subEvents[i].subEventIsDone == true{
+//                    numOfIsDone += 1
+//                }
+//            }
             // db 수정 (event.isDone 설정)
-            if self.event.subEvents.count != 0  && (self.event.subEvents.count == numOfIsDone) {
-                try! api.realm.write(){
-                    self.event.eventIsDone = true
-                }
-                // 이벤트의 푸쉬알람들 삭제
-                if !self.event.pushAlarmID.isEmpty {
-                    EventAddTableViewController().removeNotifications(notificationIds: self.event.pushAlarmID.map{$0.id})
-                }
-            }
+//            if self.event.subEvents.count != 0  {
+//
+//                // 서브이벤트가 있고, 전부 완료되었다면
+//                if self.event.subEvents.count == numOfIsDone {
+//                    try! api.realm.write(){
+//                        self.event.eventIsDone = true
+//                    }
+//                    // 이벤트의 푸쉬알람들 삭제
+//                    if !self.event.pushAlarmID.isEmpty {
+//                        EventAddTableViewController().removeNotifications(notificationIds: self.event.pushAlarmID.map{$0.id})
+//                    }
+//                } else {
+//                    try! api.realm.write() {
+//                        self.event.eventIsDone = false
+//                    }
+//                }
+//            }
             print("event is done?: \(event.eventIsDone)")
             tableView.reloadData()
             

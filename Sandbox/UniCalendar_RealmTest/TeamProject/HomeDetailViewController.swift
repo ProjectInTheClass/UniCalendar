@@ -175,6 +175,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
                 loopSub.subEventIsDone = true
             }
         }
+        // event.eventIsDone = true
         
         if event.subEvents.count == 0 {
             try? api.realm.write(){
