@@ -218,7 +218,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
             updateProgressBar()
             //=============*Need to add notification all agian!*===================
         }
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         
     }
     
