@@ -237,7 +237,7 @@ class NotificationSettingTableViewController: UITableViewController {
         case 2:
             return  getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
         default:
-            return "선택 되지 않음"
+            return "선택되지 않음"
         }
     }
     
