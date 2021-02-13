@@ -103,7 +103,7 @@ class NotificationSettingEditTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath == [0,0] {
+        if indexPath == [0,0] && isSectionChecked[1] == true {
             self.tableView.cellForRow(at: lastCheckedIndexPathInSection[1])?.accessoryType = .none
             isSectionChecked[1] = false
             lastCheckedIndexPathInSection[1].row = -1
