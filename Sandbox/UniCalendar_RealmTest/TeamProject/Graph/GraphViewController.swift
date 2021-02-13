@@ -2,7 +2,6 @@
 import UIKit
 import Charts
 
-var badgeIsDone: [Bool] = [true, false, false, false, false, false, false, false, false, false, false, false, false]
 
 class GraphViewController: UIViewController {
     
@@ -36,122 +35,48 @@ class GraphViewController: UIViewController {
     var patternFlag = true
     var completionFlag = true
     
-    let badgeImages: [String] = ["처음_깔았을_때", "처음_일정_등록했을_때", "처음_일정_끝냈을_때", "일정_등록_15개", "목표_성공_10개", "일정_등록_30개", "목표_성공_20개", "일정_등록_45개", "목표_성공_30개", "일정_등록_70개", "목표_성공_40개", "일정_등록_100개", "목표_성공_50개", "잠금"]
-    
-    var countEvents: Int = -3
-    var countCompleteEvents: Int = 0
-    
-    func countTotal(){
-        for _ in events {
-            countEvents += 1
-        }
-    }
-
-    func countComplete() {
-        for event in events{
-            if event.eventIsDone == true {
-                countCompleteEvents += 1
-            }
-        }
-    }
-    
-    func calculateBadge() {
-        switch countEvents {
-        case -3...0:
-            badgeIsDone[1] = false
-        case 1...14:
-            badgeIsDone[1] = true
-        case 15...29:
-            badgeIsDone[1] = true
-            badgeIsDone[3] = true
-        case 30...44:
-            badgeIsDone[1] = true
-            badgeIsDone[3] = true
-            badgeIsDone[5] = true
-        case 45...69:
-            badgeIsDone[1] = true
-            badgeIsDone[3] = true
-            badgeIsDone[5] = true
-            badgeIsDone[7] = true
-        case 70...99:
-            badgeIsDone[1] = true
-            badgeIsDone[3] = true
-            badgeIsDone[5] = true
-            badgeIsDone[7] = true
-            badgeIsDone[9] = true
-        default:
-            break
-        }
-        
-        switch countCompleteEvents {
-        case 0:
-            badgeIsDone[2] = false
-        case 1...9:
-            badgeIsDone[2] = true
-        case 10...19:
-            badgeIsDone[2] = true
-            badgeIsDone[4] = true
-        case 20...29:
-            badgeIsDone[2] = true
-            badgeIsDone[4] = true
-            badgeIsDone[6] = true
-        case 30...39:
-            badgeIsDone[2] = true
-            badgeIsDone[4] = true
-            badgeIsDone[6] = true
-            badgeIsDone[8] = true
-        case 40...49:
-            badgeIsDone[2] = true
-            badgeIsDone[4] = true
-            badgeIsDone[6] = true
-            badgeIsDone[8] = true
-            badgeIsDone[10] = true
-        default:
-            badgeIsDone[2] = true
-            badgeIsDone[4] = true
-            badgeIsDone[6] = true
-            badgeIsDone[8] = true
-            badgeIsDone[10] = true
-            badgeIsDone[12] = true
-        }
-        
-    }
-    
+    var badges: [Badge] = api.callBadge()
     //badge image update
     //제일 최근에 얻은것부터 image1
     override func viewWillAppear(_ animated: Bool) {
         events = api.callEvent()
-        countTotal()
-        countComplete()
+        
+//        countTotal()
+//        countComplete()
+//        calculateBadge()
+        
+        //let testNum = Test(test: 1)
         calculateBadge()
+        badges = api.callBadge()
         
-        var selectedBadges: [Int] = []
-        var count: Int = 0
+        var badgeArray: [String] = []
         
-        for isDone in badgeIsDone {
-            if isDone == true {
-                selectedBadges.append(count)
-            }
-            
-            count += 1
+        for badge in badges {
+            badgeArray.append(badge.badgeImageString)
         }
         
-        selectedBadges = selectedBadges.reversed()
+        badgeArray = badgeArray.reversed()
         
-        switch selectedBadges.count {
+        switch badgeArray.count {
+//        case 0:
+//            image1.image = UIImage(named: "잠금")
+//            image2.image = UIImage(named: "잠금")
+//            image3.image = UIImage(named: "잠금")
         case 1:
-            image1.image = UIImage(named: badgeImages[selectedBadges[0]])
-            image2.image = UIImage(named: badgeImages[badgeImages.endIndex-1])
-            image3.image = UIImage(named: badgeImages[badgeImages.endIndex-1])
+            image1.image = UIImage(named: badgeArray[0])
+            image2.image = UIImage(named: "잠금")
+            image3.image = UIImage(named: "잠금")
         case 2:
-            image1.image = UIImage(named: badgeImages[selectedBadges[0]])
-            image2.image = UIImage(named: badgeImages[selectedBadges[1]])
-            image3.image = UIImage(named: badgeImages[badgeImages.endIndex-1])
+            image1.image = UIImage(named: badgeArray[0])
+            image2.image = UIImage(named: badgeArray[1])
+            image3.image = UIImage(named: "잠금")
+
         default:
-            image1.image = UIImage(named: badgeImages[selectedBadges[0]])
-            image2.image = UIImage(named: badgeImages[selectedBadges[1]])
-            image3.image = UIImage(named: badgeImages[selectedBadges[2]])
+            image1.image = UIImage(named: badgeArray[0])
+            image2.image = UIImage(named: badgeArray[1])
+            image3.image = UIImage(named: badgeArray[2])
         }
+        
         
     }
     
@@ -183,11 +108,7 @@ class GraphViewController: UIViewController {
 //        drawPieChart(isLastMonth: false)
 //        countEventsNumAndRate()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        countEvents = 0
-        countCompleteEvents = 0
-    }
+
     
     func calculateColor(color: Int) -> String{
         switch color {

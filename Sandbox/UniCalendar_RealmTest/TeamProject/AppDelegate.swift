@@ -116,6 +116,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 activityCategory.eventsInCategory.append(defaultEventThree)
             }
 
+            let defaultBadge = Badge.init(badgeImageString: "처음_깔았을_때")
+            
+            
+            try! api.realm.write(){
+                api.realm.add(defaultBadge)
+            }
         }
             
         

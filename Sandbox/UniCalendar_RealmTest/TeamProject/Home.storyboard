@@ -561,6 +561,7 @@
                         <outlet property="containerView" destination="8ic-Ry-QAE" id="50r-DA-8MJ"/>
                         <outlet property="dDayLabel" destination="aYe-aX-YqH" id="oqc-h5-NoH"/>
                         <outlet property="eventNameLabel" destination="Amr-8m-ZUu" id="AbK-Rd-ZWy"/>
+                        <outlet property="navigationItem" destination="rSU-7W-1W7" id="FBs-mn-gYK"/>
                         <outlet property="progressPercentLabel" destination="m8Q-u5-xEs" id="5Qi-sg-rgo"/>
                         <outlet property="progressView" destination="44g-0S-apq" id="uAO-zq-eBu"/>
                         <outlet property="subEventAddButton" destination="iEe-Tz-BVH" id="oUQ-go-P0h"/>

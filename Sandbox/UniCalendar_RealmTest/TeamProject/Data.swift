@@ -41,6 +41,11 @@ class API {
         return r
     }
     
+    func callBadge() -> [Badge] {
+        let r: [Badge] = realm.objects(Badge.self).map { $0 }
+        
+        return r
+    }
 }
 
 class Category: Object {
@@ -123,5 +128,14 @@ class PushAlarmSetting: Object {
         for checkedDay in checkedDaysOfWeek {
             self.checkedDaysOfWeek.append(checkedDay)
         }
+    }
+}
+
+class Badge: Object {
+    @objc dynamic var badgeImageString: String = ""
+    
+    convenience init(badgeImageString: String) {
+        self.init()
+        self.badgeImageString = badgeImageString
     }
 }
