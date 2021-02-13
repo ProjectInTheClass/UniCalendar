@@ -70,7 +70,7 @@ class NotificationSettingTableViewController: UITableViewController {
             } else {
                 tableView.cellForRow(at: [1, lastCheckedTime])?.accessoryType = .none
             }
-        
+            
             lastCheckedIndexPathInSection[0] = [0, lastCheckedFrequency]
             lastCheckedIndexPathInSection[1] = [1, lastCheckedTime]
 
@@ -89,15 +89,14 @@ class NotificationSettingTableViewController: UITableViewController {
             
         } else if lastCheckedFrequency == 0 || lastCheckedFrequency == -1 {
             tableView.selectRow(at: [0, 0], animated: false, scrollPosition: .none)
-            tableView.cellForRow(at: [0, 0])?.selectionStyle = .none
-            if notificationSettingChanged == true {
+            //tableView.cellForRow(at: [0, 0])?.selectionStyle = .none
+            if lastCheckedFrequency == 0 {
                 tableView.cellForRow(at: [0, 0])?.accessoryType = .checkmark
             }
             lastCheckedIndexPathInSection[0] = [0, 0]
 
             isSectionChecked[0] = true
             isSectionChecked[1] = false
-                
         }
     }
     
