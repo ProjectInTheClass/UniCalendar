@@ -52,6 +52,7 @@
 		5B6E2D4525C14831001AA417 /* VersionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E2D4425C14831001AA417 /* VersionCell.swift */; };
 		5BE1B89425D3075500E6B6D7 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1B89325D3075500E6B6D7 /* BadgeViewController.swift */; };
 		5BE1B89725D307A700E6B6D7 /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1B89625D307A700E6B6D7 /* BadgeTableViewCell.swift */; };
+		5BE1B8C125D7906B00E6B6D7 /* CalculateBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1B8C025D7906A00E6B6D7 /* CalculateBadge.swift */; };
 		AADCBF4F882493C030D11C74 /* Pods_UniCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDC6F0D4C3182E9D0694F9C /* Pods_UniCalendar.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		5B6E2D4425C14831001AA417 /* VersionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCell.swift; sourceTree = "<group>"; };
 		5BE1B89325D3075500E6B6D7 /* BadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		5BE1B89625D307A700E6B6D7 /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
+		5BE1B8C025D7906A00E6B6D7 /* CalculateBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateBadge.swift; sourceTree = "<group>"; };
 		BBDC6F0D4C3182E9D0694F9C /* Pods_UniCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0F2816C3A92805A81464CF /* Pods-UniCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniCalendar.debug.xcconfig"; path = "Target Support Files/Pods-UniCalendar/Pods-UniCalendar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +206,7 @@
 				5B4ED58125B4149900852B04 /* GraphViewController.swift */,
 				5BE1B89325D3075500E6B6D7 /* BadgeViewController.swift */,
 				5BE1B89625D307A700E6B6D7 /* BadgeTableViewCell.swift */,
+				5BE1B8C025D7906A00E6B6D7 /* CalculateBadge.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				5B6E2D4525C14831001AA417 /* VersionCell.swift in Sources */,
 				5B144714259DB3E700968770 /* AppDelegate.swift in Sources */,
 				5B5C1DD925BAD18A003D534A /* EditColorTableViewController.swift in Sources */,
+				5BE1B8C125D7906B00E6B6D7 /* CalculateBadge.swift in Sources */,
 				5B144716259DB3E700968770 /* SceneDelegate.swift in Sources */,
 				18B9DF3F25A6F17B00F05FFB /* EventCell.swift in Sources */,
 				185F798A25BAA0160091D1D7 /* NotificationDaysOfWeekTableViewController.swift in Sources */,

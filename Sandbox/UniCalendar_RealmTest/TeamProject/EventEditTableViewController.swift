@@ -84,8 +84,8 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var count : Int = 0
-        let selectedEvent = event[selected]
         if segue.identifier == "unwindToDetail"{
+            let selectedEvent = event[selected]
             let today = Calendar.current.dateComponents([.year, .month, .day], from: Date.init())
             
             try? api.realm.write(){
@@ -159,12 +159,14 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
             
             
         } else if segue.identifier == "toCategorySelect" {
+            let selectedEvent = event[selected]
             guard let navigation = segue.destination as? UINavigationController else {return}
             
             guard let view = navigation.viewControllers[0] as? CategorySelectionEditTableViewController else {return}
     
             view.selected = selected
         } else if segue.identifier == "toNotificationSetting" {
+            let selectedEvent = event[selected]
             guard let navigation = segue.destination as? UINavigationController else {return}
             
             guard let view = navigation.viewControllers[0] as? NotificationSettingEditTableViewController else {return}

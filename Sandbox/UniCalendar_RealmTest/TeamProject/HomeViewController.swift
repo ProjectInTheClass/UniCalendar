@@ -20,18 +20,6 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     var imageStringArray : [String] = ["importance_blank", "importance_filled"]
     
-//    func blankImportance() -> UIImage {
-//        let importanceImage = UIImage(named: "importance_blank")!
-//
-//        return importanceImage
-//    }
-//
-//    func fillImportance() -> UIImage{
-//        let importanceImage = UIImage(named: "importance_filled")!
-//
-//        return importanceImage
-//    }
-//
 
     
     // header
@@ -40,10 +28,12 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         headerCheerUpMessage = "너무 힘들면 쉬어가요🙌"
         return headerCheerUpMessage
     }
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.font = UIFont(name: "System", size: 18)
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(30) // 이게 CGFloat 양수 최소값 상수
     }
@@ -160,6 +150,7 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         events = api.callNotPassedEvent()
         tableView.reloadData()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

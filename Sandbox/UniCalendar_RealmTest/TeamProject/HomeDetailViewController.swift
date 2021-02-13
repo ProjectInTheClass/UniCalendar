@@ -100,6 +100,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         events = api.callNotPassedEvent()
         view.reloadInputViews()
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToSubEventTable" {
@@ -134,11 +135,10 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
             } else {
                 view.notificationTime = ""
             }
-//        } else if segue.identifier == "unwindToHomeFromDetail" {
-//            let view = segue.destination as? HomeViewController
-            
-            
         }
+//        else if segue.identifier == "unwindToHomeFromDetail" {
+//            calculateBadge()
+//        }
     }
     
     func checkDone() {

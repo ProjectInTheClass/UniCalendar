@@ -141,6 +141,8 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
             self.present(alert, animated: true, completion: nil)
         } else {
             save()
+            firstAdd = true
+            //calculateBadge()
             performSegue(withIdentifier: "unwindToHome", sender: (Any).self)
         }
         

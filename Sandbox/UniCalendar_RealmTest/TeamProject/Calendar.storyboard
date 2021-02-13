@@ -52,10 +52,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="EventName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ex-gD-hKq">
-                                                    <rect key="frame" x="46" y="21" width="226" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="226" id="7zL-Pt-Opv"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="46" y="21" width="198.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -63,8 +60,8 @@
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_purple" translatesAutoresizingMaskIntoConstraints="NO" id="bNp-1o-zTo">
                                                     <rect key="frame" x="20" y="23" width="13" height="19"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="세부 목표 2 / 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mD9-0R-1Ft">
-                                                    <rect key="frame" x="293" y="21" width="101" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="세부 목표가 없어요🙅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mD9-0R-1Ft">
+                                                    <rect key="frame" x="244.5" y="21" width="149.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -76,6 +73,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="mD9-0R-1Ft" secondAttribute="trailing" id="DhI-tp-Inm"/>
                                                 <constraint firstAttribute="bottom" secondItem="bNp-1o-zTo" secondAttribute="bottom" constant="21" id="Fab-QL-emc"/>
                                                 <constraint firstItem="mD9-0R-1Ft" firstAttribute="top" secondItem="jsm-Cj-j8g" secondAttribute="topMargin" constant="10" id="Hjj-Fi-l5i"/>
+                                                <constraint firstItem="mD9-0R-1Ft" firstAttribute="leading" secondItem="0Ex-gD-hKq" secondAttribute="trailing" id="R4z-eQ-V93"/>
                                                 <constraint firstItem="0Ex-gD-hKq" firstAttribute="leading" secondItem="bNp-1o-zTo" secondAttribute="trailing" constant="13" id="T02-kl-fKh"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="mD9-0R-1Ft" secondAttribute="bottom" constant="10" id="ccF-LW-qOe"/>
                                                 <constraint firstItem="0Ex-gD-hKq" firstAttribute="top" secondItem="jsm-Cj-j8g" secondAttribute="topMargin" constant="10" id="gCH-aq-tyv"/>
