@@ -10,9 +10,8 @@ import UIKit
 class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var events = api.callEvent()
+    var badges = api.callBadge()
     
-    var countEvents: Int = -3
-    var countCompleteEvents: Int = 0
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,154 +25,97 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
         switch indexPath.row {
         case 0:
             cell.image1.image = UIImage(named: "처음_깔았을_때")
+            cell.image2.image = UIImage(named: "잠금")
+            cell.image3.image = UIImage(named: "잠금")
             
             cell.text1.text = "첫 다운로드"
             cell.text2.text = "첫 목표 등록"
             cell.text3.text = "첫 목표 완료"
             
-            
-            switch countEvents {
-            case -3...0:
-                cell.image2.image = UIImage(named: "잠금")
-            default:
-                cell.image2.image = UIImage(named: "처음_일정_등록했을_때")
-                
-                //isDoneBadgeImages.append("처음_일정_등록했을_때")
-                //badgeIsDone[1] = true
+            for badge in badges {
+                if badge.badgeImageString == "처음_일정_등록했을_때" {
+                    cell.image2.image = UIImage(named: badge.badgeImageString)
+                } else if badge.badgeImageString == "처음_일정_끝냈을_때" {
+                    cell.image3.image = UIImage(named: badge.badgeImageString)
+                }
             }
             
-            switch countCompleteEvents {
-            case 0:
-                cell.image3.image = UIImage(named: "잠금")
-            default:
-                cell.image3.image = UIImage(named: "처음_일정_끝냈을_때")
-                
-                //isDoneBadgeImages.append("처음_일정_끝냈을_때")
-                //badgeIsDone[2] = true
-            }
 
         case 1:
+            cell.image1.image = UIImage(named: "잠금")
+            cell.image2.image = UIImage(named: "잠금")
+            cell.image3.image = UIImage(named: "잠금")
+            
             cell.text1.text = "목표 등록 15개"
             cell.text2.text = "목표 성공 10개"
             cell.text3.text = "목표 등록 30개"
             
-            switch countEvents {
-            case -3...14:
-                cell.image1.image = UIImage(named: "잠금")
-                cell.image3.image = UIImage(named: "잠금")
-            case 15...29:
-                cell.image1.image = UIImage(named: "일정_등록_15개")
-                cell.image3.image = UIImage(named: "잠금")
-                
-                //isDoneBadgeImages.append("일정_등록_15개")
-                //badgeIsDone[3] = true
-            default:
-                cell.image1.image = UIImage(named: "일정_등록_15개")
-                cell.image3.image = UIImage(named: "일정_등록_30개")
-                
-                //isDoneBadgeImages.append("일정_등록_30개")
-                
-                //badgeIsDone[3] = true
-                //badgeIsDone[5] = true
+            for badge in badges {
+                if badge.badgeImageString == "일정_등록_15개" {
+                    cell.image1.image = UIImage(named: badge.badgeImageString)
+                } else if badge.badgeImageString == "목표_성공_10개" {
+                    cell.image2.image = UIImage(named: badge.badgeImageString)
+                } else if badge.badgeImageString == "일정_등록_30개"{
+                    cell.image3.image = UIImage(named: badge.badgeImageString)
+                }
             }
             
-            switch countCompleteEvents {
-            case 0...9:
-                cell.image2.image = UIImage(named: "잠금")
-            default:
-                cell.image2.image = UIImage(named: "목표_성공_10개")
-                
-                //isDoneBadgeImages.append("목표_성공_10개")
-                //badgeIsDone[4] = true
-            }
-            
+
         case 2:
+            cell.image1.image = UIImage(named: "잠금")
+            cell.image2.image = UIImage(named: "잠금")
+            cell.image3.image = UIImage(named: "잠금")
+            
             cell.text1.text = "목표 성공 20개"
             cell.text2.text = "목표 등록 45개"
             cell.text3.text = "목표 성공 30개"
             
-            switch countCompleteEvents {
-            case 0...19:
-                cell.image1.image = UIImage(named: "잠금")
-                cell.image3.image = UIImage(named: "잠금")
-            case 20...29:
-                cell.image1.image = UIImage(named: "목표_성공_20개")
-                cell.image3.image = UIImage(named: "잠금")
-                
-                //isDoneBadgeImages.append("목표_성공_20개")
-                //badgeIsDone[6] = true
-            default:
-                cell.image1.image = UIImage(named: "목표_성공_20개")
-                cell.image3.image = UIImage(named: "목표_성공_30개")
-                
-                //isDoneBadgeImages.append("목표_성공_30개")
-                //badgeIsDone[6] = true
-                //badgeIsDone[8] = true
+            for badge in badges {
+                if badge.badgeImageString == "목표_성공_20개" {
+                    cell.image1.image = UIImage(named: badge.badgeImageString)
+                } else if badge.badgeImageString == "일정_등록_45개" {
+                    cell.image2.image = UIImage(named: badge.badgeImageString)
+                } else if badge.badgeImageString == "목표_성공_30개"{
+                    cell.image3.image = UIImage(named: badge.badgeImageString)
+                }
             }
             
-            switch countEvents {
-            case -3...44:
-                cell.image2.image = UIImage(named: "잠금")
-            default:
-                cell.image2.image = UIImage(named: "일정_등록_45개")
-                
-                //isDoneBadgeImages.append("일정_등록_45개")
-                //badgeIsDone[8] = true
-            }
             
         case 3:
+            cell.image1.image = UIImage(named: "잠금")
+            cell.image2.image = UIImage(named: "잠금")
+            cell.image3.image = UIImage(named: "잠금")
+            
             cell.text1.text = "목표 등록 70개"
             cell.text2.text = "목표 성공 40개"
             cell.text3.text = "목표 등록 100개"
             
-            switch countEvents {
-            case -3...69:
-                cell.image1.image = UIImage(named: "잠금")
-                cell.image3.image = UIImage(named: "잠금")
-            case 70...99:
-                cell.image1.image = UIImage(named: "일정_등록_70개")
-                cell.image3.image = UIImage(named: "잠금")
-                
-                //isDoneBadgeImages.append("일정_등록_70개")
-                //badgeIsDone[9] = true
-            default:
-                cell.image1.image = UIImage(named: "일정_등록_70개")
-                cell.image3.image = UIImage(named: "일정_등록_100개")
-                
-                //isDoneBadgeImages.append("일정_등록_100개")
-                //badgeIsDone[9] = true
-                //badgeIsDone[11] = true
+            for badge in badges {
+                if badge.badgeImageString == "일정_등록_70개" {
+                    cell.image1.image = UIImage(named: badge.badgeImageString)
+                } else if badge.badgeImageString == "목표_성공_40개" {
+                    cell.image2.image = UIImage(named: badge.badgeImageString)
+                } else if badge.badgeImageString == "일정_등록_100개" {
+                    cell.image3.image = UIImage(named: badge.badgeImageString)
+                }
             }
             
-            switch countCompleteEvents {
-            case 0...39:
-                cell.image2.image = UIImage(named: "잠금")
-            default:
-                cell.image2.image = UIImage(named: "목표_성공_40개")
-                
-                //isDoneBadgeImages.append("목표_성공_40개")
-                //badgeIsDone[10] = true
-            }
-            
+
         case 4:
+            cell.image1.image = UIImage(named: "잠금")
+            cell.image2.image = UIImage(named: "잠금")
+            cell.image3.image = UIImage(named: "잠금")
+            
             cell.text1.text = "목표 성공 50개"
             cell.text2.text = "잠금"
             cell.text3.text = "잠금"
             
-            switch countCompleteEvents {
-            case 0...49:
-                cell.image1.image = UIImage(named: "잠금")
-            default:
-                cell.image1.image = UIImage(named: "목표_성공_50개")
-                
-                //isDoneBadgeImages.append("목표_성공_50개")
-                //badgeIsDone[12] = true
+            for badge in badges {
+                if badge.badgeImageString == "목표_성공_50개" {
+                    cell.image1.image = UIImage(named: badge.badgeImageString)
+                }
             }
             
-            //badge on progress
-            //임시로 lock 걸어둠
-            cell.image2.image = UIImage(named: "잠금")
-            cell.image3.image = UIImage(named: "잠금")
             
         default:
             break
@@ -197,25 +139,12 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        countTotal()
-        countComplete()
-        
+        badges = api.callBadge()
         events = api.callEvent()
-    }
-    
-    func countTotal(){
-        for _ in events {
-            countEvents += 1
-        }
+        
+        tableView.reloadData()
     }
 
-    func countComplete() {
-        for event in events{
-            if event.eventIsDone == true {
-                countCompleteEvents += 1
-            }
-        }
-    }
     
     /*
     // MARK: - Navigation
