@@ -164,8 +164,9 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
             guard let view = navigation.viewControllers[0] as? NotificationSettingEditTableViewController else {return}
     
             view.alarmSetting = selectedEvent.pushAlarmSetting ?? PushAlarmSetting()
-            
+
             view.checkedDaysOfWeek = checkedDaysOfWeek
+                
             view.lastCheckedFrequency = checkedFrequency
             view.lastCheckedTime = checkedTime
             

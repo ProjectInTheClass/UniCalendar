@@ -13,12 +13,12 @@ let api = API.shared
 class EventAddTableViewController: UITableViewController, UITextFieldDelegate, UNUserNotificationCenterDelegate {
     // 빈도
     // 0: 없음, 1:매일, 2: 사용자설정
-    var checkedFrequency: Int = 0
+    var checkedFrequency: Int = -1
     
     // checkedFrequency가 2 일때, 월(0)~일(6) 중 선택된 요일값 배열
     // checkedFrequency가 0또는 1이면(없거나 매일이면) 빈 배열
     var checkedDaysOfWeek: [Int] = Array<Int>()
-    var checkedTime: Int = 0
+    var checkedTime: Int = -1
     
     var categoryString: String = ""
     var selectedCategory: Int = -1
@@ -60,7 +60,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
             }
             break
         case "unwindToAddEventFromNotification":
-            if checkedFrequency == 0 {
+            if checkedFrequency == 0 || checkedFrequency == -1 {
                 settledNotificationInfoLabel.text = "없음"
             } else {
                 settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"
@@ -82,24 +82,30 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         } else if segue.identifier == "ToNotificationSetting" {
             guard let view = navigation.viewControllers[0] as? NotificationSettingTableViewController else {return}
             
-            view.lastCheckedFrequency = frequencyIndexPathRow
-            view.lastCheckedTime = timeIndexPathRow
+            view.lastCheckedFrequency = checkedFrequency
+            view.lastCheckedTime = checkedTime
             
-            view.tableView.cellForRow(at: [0, frequencyIndexPathRow])?.accessoryType = .checkmark
-            view.tableView.cellForRow(at: [1, timeIndexPathRow])?.accessoryType = .checkmark
+            if checkedFrequency != -1 {
+                view.tableView.cellForRow(at: [0, checkedFrequency])?.accessoryType = .checkmark
+                view.lastCheckedIndexPathInSection[0] = [0, checkedFrequency]
+            }
             
-            view.lastCheckedIndexPathInSection[0] = [0, frequencyIndexPathRow]
-            view.lastCheckedIndexPathInSection[1] = [1, timeIndexPathRow]
+            if checkedTime != -1 {
+                view.tableView.cellForRow(at: [1, checkedTime])?.accessoryType = .checkmark
+                view.lastCheckedIndexPathInSection[1] = [1, checkedTime]
+                view.checkedDaysOfWeek = self.checkedDaysOfWeek
+            }
             
             view.isSectionChecked[0] = true
-            if(frequencyIndexPathRow == 0) {
+            if (checkedFrequency == 0 || checkedFrequency == -1) {
                 view.isSectionChecked[1] = false
             } else {
                 view.isSectionChecked[1] = true
             }
-            if frequencyIndexPathRow != 2 {
-                view.userSelectDayLabel.text = "요일 선택"
-            }
+            // error
+//            if frequencyIndexPathRow != 2 {
+//                view.userSelectDayLabel.text = "요일 선택"
+//            }
         }
     }
     
@@ -249,7 +255,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         // todo: timezone (기본값: 서울보다 9시간 느림) -> Calendar가 알아서해줌?
         // todo: 소목표 없을때 알림
         
-        if frequency == 0 {
+        if frequency == 0 || frequency == -1 || checkedTime == -1 {
             // do nothing
         } else if frequency == 1 { // everyday
             // D-Day 당일까지 포함이므로 offset값에 +1
@@ -424,7 +430,6 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
                         // Local 객체에 추가
                         addNotificationToCenter(request: request, event: event)
                         
-                       
                     }
                 }
             }
