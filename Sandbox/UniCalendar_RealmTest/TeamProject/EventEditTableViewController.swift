@@ -183,10 +183,6 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
             
             view.isSectionChecked[0] = true
             view.isSectionChecked[1] = true
-
-//            if frequencyIndexPathRow != 2 {
-//                view.userSelectDayLabel.text = "요일 선택"
-//            }
         }
     }
     

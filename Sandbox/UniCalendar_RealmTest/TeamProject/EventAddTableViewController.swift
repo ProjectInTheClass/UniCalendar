@@ -288,7 +288,11 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
 
                 switch step {
                 case 0:
-                    notificationContent.body = BeginningContent.makeContent(subEventName: event.eventName, percentage: Int(eventProcess*100))
+                    if event.subEvents.count <= 0 {
+                        notificationContent.body = BeginningContent.makeContent(subEventName: event.eventName, percentage: Int(eventProcess*100))
+                    } else {
+                        notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                    }
                     break
                 case 1:
                     notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
@@ -393,7 +397,11 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
    
                     switch step {
                     case 0:
-                        notificationContent.body = BeginningContent.makeContent(subEventName: event.eventName, percentage: Int(eventProcess*100))
+                        if event.subEvents.count <= 0 {
+                            notificationContent.body = BeginningContent.makeContent(subEventName: event.eventName, percentage: Int(eventProcess*100))
+                        } else {
+                            notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))
+                        }
                         break
                     case 1:
                         notificationContent.body = BeginningContent.makeContent(subEventName: subEventName, percentage: Int(eventProcess*100))

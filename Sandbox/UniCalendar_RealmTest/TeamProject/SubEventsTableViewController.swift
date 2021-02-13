@@ -209,6 +209,8 @@ class SubEventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             // handle delete (by removing the data from your array and updating the tableview)
+            let beforeSubEventCount:Int = event.subEvents.count
+            
             self.belongedContainer?.updateProgressBar()
             let beforeProcess:Float = self.belongedContainer?.progressView.progress ?? 0.0
             
@@ -222,11 +224,13 @@ class SubEventsTableViewController: UITableViewController {
                 belongedContainer?.updateProgressBar()
             } else { return }
             
+            let afterSubEventCount:Int  = event.subEvents.count
+            
             // 삭제 후 진행률
             let afterProcess:Float = self.belongedContainer?.progressView.progress ?? 0.0
             
             // 진행률이 변했으면 (완료 안된 세부목표를 지운경우)
-            if beforeProcess != afterProcess {
+            if (beforeProcess != afterProcess) || (beforeSubEventCount != afterSubEventCount) {
                 // 현재 이벤트의 알림 리스트 가져옴
                 // (db 수정 전)
                 let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }

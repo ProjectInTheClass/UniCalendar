@@ -25,6 +25,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
     var checkedTime = 0
     var checkedFrequency = 0
     var checkedDaysOfWeek = Array<Int>()
+
     
     // @IBOutlet weak var detailTableView: UITableView!
     
@@ -44,6 +45,8 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         let subEventsVC = SubEventsTableViewController()
         
         let beforeProcess: Float = self.progressView.progress
+        let beforeSubEventCount: Int = events[selectedCell].subEvents.count
+
         
         guard let newSubEventName: String = subEventAddTextField.text, !newSubEventName.isEmpty else {
             return
@@ -68,9 +71,9 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
         }
         
         let afterProcess: Float = self.progressView.progress
+        let afterSubEventCount: Int = events[selectedCell].subEvents.count
         
-        
-        if beforeProcess != afterProcess {
+        if beforeProcess != afterProcess || (beforeSubEventCount == 0 && afterSubEventCount == 1){
             // 현재 이벤트의 알림 리스트 가져옴
             // (db 수정 전)
             let notificationIDsOfcurrentEvent: [String] = event.pushAlarmID.map{ $0.id }
@@ -181,7 +184,7 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
             try? api.realm.write() {
                 event.eventIsDone = true
             }
-            
+
 //            if event.subEvents.count == 0 {
 //                try? api.realm.write(){
 //                    event.eventIsDone = true
@@ -208,11 +211,13 @@ class HomeDetailViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             
-            
             try? api.realm.write(){
                     event.eventIsDone = false
             }
-            
+
+            let subEventsVC = SubEventsTableViewController()
+                
+            EventAddTableViewController().savePushNotification(event: event, step: subEventsVC.getStepByProcess(process: 0), pushAlarmSetting: event.pushAlarmSetting ?? PushAlarmSetting())
             
             events = api.callNotPassedEvent()
             updateProgressBar()
