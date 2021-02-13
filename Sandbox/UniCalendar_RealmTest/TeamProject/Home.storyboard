@@ -224,22 +224,34 @@
                                                 <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GF2-ec-4Y5">
                                                     <rect key="frame" x="40" y="31" width="310" height="85"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleAspectFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="p0j-LB-THK">
+                                                        <stackView opaque="NO" contentMode="scaleAspectFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="p0j-LB-THK">
                                                             <rect key="frame" x="0.0" y="0.0" width="176" height="32.333333333333336"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dDay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQH-Vs-Oqu">
                                                                     <rect key="frame" x="0.0" y="0.0" width="65.666666666666671" height="32.333333333333336"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="10" constant="85" id="jgW-Cm-gu9"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                                                     <color key="textColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eventName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKS-03-aX5">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKS-03-aX5">
                                                                     <rect key="frame" x="75.666666666666686" y="0.0" width="100.33333333333331" height="32.333333333333336"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                    <nil key="textColor"/>
+                                                                    <attributedString key="attributedText">
+                                                                        <fragment content="eventName">
+                                                                            <attributes>
+                                                                                <font key="NSFont" metaFont="system" size="20"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="WKS-03-aX5" firstAttribute="leading" secondItem="hQH-Vs-Oqu" secondAttribute="trailing" constant="10" id="qC4-Vu-ulu"/>
+                                                            </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DYj-YM-UrJ">
                                                             <rect key="frame" x="0.0" y="42.333333333333329" width="310" height="42.666666666666671"/>
@@ -442,7 +454,7 @@
                                             <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-DAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYe-aX-YqH">
                                                 <rect key="frame" x="0.0" y="0.0" width="94.333333333333329" height="36"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="94.329999999999998" id="xdO-kW-JDH"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="10" constant="100" id="xdO-kW-JDH"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <color key="textColor" red="0.52156865600000002" green="0.30980393290000002" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -469,15 +481,11 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="281.33333333333331" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="cUB-9z-tO4"/>
-                                                            <constraint firstAttribute="width" constant="280" id="dBG-qd-d5n"/>
                                                         </constraints>
                                                         <color key="progressTintColor" systemColor="systemPurpleColor"/>
                                                     </progressView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="percent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8Q-u5-xEs">
                                                         <rect key="frame" x="290.33333333333331" y="0.0" width="43.666666666666686" height="15"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="43.670000000000002" id="YPR-jp-5x6"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -538,9 +546,9 @@
                             <constraint firstItem="8bA-gd-zDg" firstAttribute="top" secondItem="MVE-g9-Q6m" secondAttribute="top" constant="20" id="Puw-qv-hHs"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8ic-Ry-QAE" secondAttribute="trailing" constant="44.000000000000057" id="SJ7-LW-XAc"/>
                             <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="gwa-fm-5b9" secondAttribute="trailing" constant="19" id="SfG-v9-3WX"/>
-                            <constraint firstItem="8bA-gd-zDg" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="28" id="Wvs-Rn-YkD"/>
                             <constraint firstItem="8ic-Ry-QAE" firstAttribute="top" secondItem="8bA-gd-zDg" secondAttribute="bottom" constant="41" id="kYd-wE-XRN"/>
-                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8bA-gd-zDg" secondAttribute="trailing" constant="28" id="w23-qb-Fpa"/>
+                            <constraint firstItem="8bA-gd-zDg" firstAttribute="leading" secondItem="MVE-g9-Q6m" secondAttribute="leading" constant="28" id="kim-gK-Pcp"/>
+                            <constraint firstItem="MVE-g9-Q6m" firstAttribute="trailing" secondItem="8bA-gd-zDg" secondAttribute="trailing" constant="28" id="w1i-bY-VxC"/>
                             <constraint firstItem="hwg-Qg-1fB" firstAttribute="top" secondItem="8bA-gd-zDg" secondAttribute="bottom" constant="19" id="x4C-eo-qyE"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
