@@ -60,7 +60,11 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
             }
             break
         case "unwindToAddEventFromNotification":
-            settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"
+            if checkedFrequency == 0 {
+                settledNotificationInfoLabel.text = "없음"
+            } else {
+                settledNotificationInfoLabel.text = "\(notificationFrequency) \(notificationTime)"
+            }
             break
         default:
             break
@@ -88,10 +92,13 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
             view.lastCheckedIndexPathInSection[1] = [1, timeIndexPathRow]
             
             view.isSectionChecked[0] = true
-            view.isSectionChecked[1] = true
-
+            if(frequencyIndexPathRow == 0) {
+                view.isSectionChecked[1] = false
+            } else {
+                view.isSectionChecked[1] = true
+            }
             if frequencyIndexPathRow != 2 {
-                view.userSelectDayLabel.text = ""
+                view.userSelectDayLabel.text = "요일 선택"
             }
         }
     }
@@ -200,7 +207,7 @@ class EventAddTableViewController: UITableViewController, UITextFieldDelegate, U
         // 0~4: noSub, begin, early, late, end
         // 5: Done
         if step == 5 {
-            print("[Step5] event is done by completing all subevents")
+            print("[Step5] event is done by completinㅌg all subevents")
             return
         }
         

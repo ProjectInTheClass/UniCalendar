@@ -132,6 +132,9 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
             
             // 알림 변경시 삭제하고 다시등록
             if changedNotification == true {
+                try? api.realm.write() {
+                    api.realm.delete(selectedEvent.pushAlarmSetting ?? PushAlarmSetting())
+                }
                 let pushAlarmSetting: PushAlarmSetting = PushAlarmSetting(checkedTime: checkedTime, checkedFrequency: checkedFrequency, checkedDaysOfWeek: checkedDaysOfWeek)
                 
                 try? api.realm.write() {
@@ -162,21 +165,19 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
     
             view.alarmSetting = selectedEvent.pushAlarmSetting ?? PushAlarmSetting()
             
-            view.lastCheckedFrequency = frequencyIndexPathRow
-            view.lastCheckedTime = timeIndexPathRow
+            view.checkedDaysOfWeek = checkedDaysOfWeek
+            view.lastCheckedFrequency = checkedFrequency
+            view.lastCheckedTime = checkedTime
             
-            view.tableView.cellForRow(at: [0, frequencyIndexPathRow])?.accessoryType = .checkmark
-            view.tableView.cellForRow(at: [1, timeIndexPathRow])?.accessoryType = .checkmark
-            
-            view.lastCheckedIndexPathInSection[0] = [0, frequencyIndexPathRow]
-            view.lastCheckedIndexPathInSection[1] = [1, timeIndexPathRow]
+            view.lastCheckedIndexPathInSection[0] = [0, checkedFrequency]
+            view.lastCheckedIndexPathInSection[1] = [1, checkedTime]
             
             view.isSectionChecked[0] = true
             view.isSectionChecked[1] = true
 
-            if frequencyIndexPathRow != 2 {
-                view.userSelectDayLabel.text = "요일 선택"
-            }
+//            if frequencyIndexPathRow != 2 {
+//                view.userSelectDayLabel.text = "요일 선택"
+//            }
         }
     }
     

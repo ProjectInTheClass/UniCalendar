@@ -16,7 +16,7 @@ class NotificationSettingTableViewController: UITableViewController {
     
     // 사용자 설정 -> 선택된 요일 값을 배열로 받아옴
     var checkedDaysOfWeek: [Int] = Array<Int>()
-    var checkedTime: Int = 0
+    var checkedTime: Int = -1
 
     // 각 section별로, 마지막 체크된 셀의 indexPath는 무엇인가
     var lastCheckedIndexPathInSection: [IndexPath] = [IndexPath(), IndexPath()]
@@ -36,15 +36,15 @@ class NotificationSettingTableViewController: UITableViewController {
         vc.timeIndexPathRow = lastCheckedIndexPathInSection[1].row
         
         // 0 1 2
-        vc.notificationFrequency = getDayFromCheckedRow(row: checkedFrequency)
+        vc.notificationFrequency = getDayFromCheckedRow(row: lastCheckedIndexPathInSection[0].row)
         
-        vc.checkedFrequency = self.checkedFrequency
+        vc.checkedFrequency = self.lastCheckedIndexPathInSection[0].row
         vc.checkedDaysOfWeek = self.checkedDaysOfWeek
         
-        vc.checkedTime = self.checkedTime
+        vc.checkedTime = self.lastCheckedIndexPathInSection[1].row
         // checkedDay가 0이면 빈도: 없음 선택이므로, 시간대도 없음
-        if checkedFrequency != 0 {
-        vc.notificationTime = getTimeFromCheckedRow(row: checkedTime)
+        if self.lastCheckedIndexPathInSection[0].row != 0 {
+        vc.notificationTime = getTimeFromCheckedRow(row: self.lastCheckedIndexPathInSection[1].row)
         } else {
             vc.notificationTime = ""
         }
@@ -58,20 +58,25 @@ class NotificationSettingTableViewController: UITableViewController {
             tableView.cellForRow(at: [0, lastCheckedFrequency])?.selectionStyle = .none
             tableView.cellForRow(at: [1, lastCheckedTime])?.selectionStyle = .none
             tableView.cellForRow(at: [0, lastCheckedFrequency])?.accessoryType = .checkmark
-            tableView.cellForRow(at: [1, lastCheckedTime])?.accessoryType = .checkmark
             
+            if self.lastCheckedFrequency != 0 {
+                tableView.cellForRow(at: [1, lastCheckedTime])?.accessoryType = .checkmark
+            } else {
+                tableView.cellForRow(at: [1, lastCheckedTime])?.accessoryType = .none
+            }
+
             lastCheckedIndexPathInSection[0] = [0, lastCheckedFrequency]
             lastCheckedIndexPathInSection[1] = [1, lastCheckedTime]
-            
+
             isSectionChecked[0] = true
             isSectionChecked[1] = true
         } else if lastCheckedFrequency == 0 {
             tableView.selectRow(at: [0, lastCheckedFrequency], animated: false, scrollPosition: .none)
             tableView.cellForRow(at: [0, lastCheckedFrequency])?.selectionStyle = .none
             tableView.cellForRow(at: [0, lastCheckedFrequency])?.accessoryType = .checkmark
-            
+
             lastCheckedIndexPathInSection[0] = [0, lastCheckedFrequency]
-            
+
             isSectionChecked[0] = true
         }
     }
@@ -84,7 +89,13 @@ class NotificationSettingTableViewController: UITableViewController {
 
     // cancel button
     @IBAction func cancelModal(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        if isSectionChecked[1] == true { //첫 번째 섹션에서 '없음'이 아닐때 == 시간 선택이 있을 때
+            lastCheckedFrequency = lastCheckedIndexPathInSection[0][1]
+            lastCheckedTime = lastCheckedIndexPathInSection[1][1]
+        } else { //시간 선택이 없을 때
+            lastCheckedFrequency = lastCheckedIndexPathInSection[0][1]
+        }
+        performSegue(withIdentifier: "unwindToAddEventFromNotification", sender: self)
     }
     
     // done button
@@ -114,10 +125,11 @@ class NotificationSettingTableViewController: UITableViewController {
         let userSelectDayString = getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
         if userSelectDayString == "" {
             userSelectDayLabel.text = "요일 선택"
-            checkedFrequency = 0
+            lastCheckedIndexPathInSection[0].row = 0
             self.tableView.cellForRow(at: IndexPath(row: 2, section: 0))?.accessoryType = .disclosureIndicator
         } else {
             userSelectDayLabel.text = userSelectDayString
+            print(userSelectDayLabel.text)
         }
     }
     // MARK: - Table view data source

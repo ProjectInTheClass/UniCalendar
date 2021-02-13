@@ -16,6 +16,11 @@ class NotificationDaysOfWeekEditTableViewController: UITableViewController {
         tableView.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        for day in checkedDayList {
+            self.tableView.cellForRow(at: [0, day])?.accessoryType = .checkmark
+        }
+    }
     @IBAction func cancelModal(_ sender: Any) {
         checkedDayList.removeAll()
         performSegue(withIdentifier: "unwindToDetailNotificationSetting", sender: self)

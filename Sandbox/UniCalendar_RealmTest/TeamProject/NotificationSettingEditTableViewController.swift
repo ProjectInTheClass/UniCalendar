@@ -26,34 +26,36 @@ class NotificationSettingEditTableViewController: UITableViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destView = segue.destination
-        guard let vc = destView as? EventEditTableViewController else {
-            return
-        }
-        
-        //선택한 값 EventAddTableView에 indexPath로 넘겨서 저장
-        vc.frequencyIndexPathRow = lastCheckedFrequency
-        vc.timeIndexPathRow = lastCheckedTime
-        
-        // 0 1 2
-        vc.notificationFrequency = getDayFromCheckedRow(row: checkedFrequency)
-        
-        vc.checkedFrequency = self.checkedFrequency
-        vc.checkedDaysOfWeek = self.checkedDaysOfWeek
-        
-        vc.checkedTime = self.checkedTime
-        // checkedDay가 0이면 빈도: 없음 선택이므로, 시간대도 없음
-        if checkedFrequency != 0 {
-        vc.notificationTime = getTimeFromCheckedRow(row: checkedTime)
-        } else {
-            vc.notificationTime = ""
-        }
-        vc.changedNotification = true
-        
-        if self.checkedFrequency != alarmSetting.checkedFrequency {
-            self.tableView.cellForRow(at: [0, alarmSetting.checkedTime])?.accessoryType = .none
-        }
-        if self.checkedTime != alarmSetting.checkedTime {
-            self.tableView.cellForRow(at: [1, alarmSetting.checkedTime])?.accessoryType = .none
+        if segue.identifier == "unwindToEventEdit" {
+            guard let vc = destView as? EventEditTableViewController else {
+                return
+            }
+            
+            //선택한 값 EventAddTableView에 indexPath로 넘겨서 저장
+            vc.frequencyIndexPathRow = lastCheckedIndexPathInSection[0].row
+            vc.timeIndexPathRow = lastCheckedIndexPathInSection[1].row
+            
+            // 0 1 2
+            vc.notificationFrequency = getDayFromCheckedRow(row: lastCheckedFrequency)
+            
+            vc.checkedFrequency = self.lastCheckedFrequency
+            vc.checkedDaysOfWeek = self.checkedDaysOfWeek
+            
+            vc.checkedTime = self.lastCheckedTime
+   
+            if lastCheckedFrequency != 0 {
+            vc.notificationTime = getTimeFromCheckedRow(row: lastCheckedTime)
+            } else {
+                vc.notificationTime = ""
+            }
+            vc.changedNotification = true
+            
+            if self.lastCheckedFrequency != alarmSetting.checkedFrequency {
+                self.tableView.cellForRow(at: [0, alarmSetting.checkedTime])?.accessoryType = .none
+            }
+            if self.lastCheckedTime != alarmSetting.checkedTime {
+                self.tableView.cellForRow(at: [1, alarmSetting.checkedTime])?.accessoryType = .none
+            }
         }
         
     }
@@ -65,17 +67,17 @@ class NotificationSettingEditTableViewController: UITableViewController {
         //self.checkedDaysOfWeek = Array<Int>(self.alarmSetting.checkedDaysOfWeek)
         
         
-        self.tableView.selectRow(at: [0, self.checkedFrequency], animated: false, scrollPosition: UITableView.ScrollPosition.none)
-        
+        self.tableView.selectRow(at: [0, self.lastCheckedFrequency], animated: false, scrollPosition: UITableView.ScrollPosition.none)
         // 선택 회색 해제
-        self.tableView.cellForRow(at: [0, self.checkedFrequency])?.selectionStyle = .none
+        self.tableView.cellForRow(at: [0, self.lastCheckedFrequency])?.selectionStyle = .none
+        self.tableView.cellForRow(at: [0, self.lastCheckedFrequency])?.accessoryType = .checkmark
         
-        self.tableView.cellForRow(at: [0, self.checkedFrequency])?.accessoryType = .checkmark
-        self.lastCheckedIndexPathInSection[0] = [0, self.checkedFrequency]
+        self.lastCheckedIndexPathInSection[0] = [0, self.lastCheckedFrequency]
         isSectionChecked[0] = true
         
         // 디테일에서 넘어올때 설정된 요일 나오게
         let userSelectDayString = getDayStringFromDaysArray(dayList: self.checkedDaysOfWeek)
+        
         if userSelectDayString == "" {
             userSelectDayLabel.text = "요일 선택"
             checkedFrequency = 0
@@ -83,9 +85,12 @@ class NotificationSettingEditTableViewController: UITableViewController {
         } else {
             userSelectDayLabel.text = userSelectDayString
         }
-        
-        self.tableView.cellForRow(at: [1, self.checkedTime])?.accessoryType = .checkmark
-        self.lastCheckedIndexPathInSection[1] = [1, self.checkedTime]
+        if self.lastCheckedIndexPathInSection[0].row != 0 {
+            self.tableView.cellForRow(at: [1, self.lastCheckedTime])?.accessoryType = .checkmark
+        } else {
+            self.tableView.cellForRow(at: [1, self.lastCheckedTime])?.accessoryType = .none
+        }
+        self.lastCheckedIndexPathInSection[1] = [1, self.lastCheckedTime]
         if self.checkedFrequency != 0 {
             isSectionChecked[1] = true
         }
@@ -150,18 +155,20 @@ class NotificationSettingEditTableViewController: UITableViewController {
     }
     
     @IBAction func cancelModal(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func completeModal(_ sender: Any) {
         if isSectionChecked[1] == true { //첫 번째 섹션에서 '없음'이 아닐때 == 시간 선택이 있을 때
             lastCheckedFrequency = lastCheckedIndexPathInSection[0][1]
             lastCheckedTime = lastCheckedIndexPathInSection[1][1]
         } else { //시간 선택이 없을 때
             lastCheckedFrequency = lastCheckedIndexPathInSection[0][1]
         }
-        
-        
+        performSegue(withIdentifier: "unwindToEventEdit", sender: self)
+    }
+    
+    @IBAction func completeModal(_ sender: Any) {
+
+        lastCheckedFrequency = lastCheckedIndexPathInSection[0][1]
+        lastCheckedTime = lastCheckedIndexPathInSection[1][1]
+            
         //'없음'이 아닌데 밑에 시간을 선택하지 않았을 때 예외 처리
         if lastCheckedFrequency != 0 && lastCheckedTime == -1 {
             let alert = UIAlertController(title: "⚠️알림 시간 설정 오류⚠️", message: "시간 설정하는 걸 잊으신 건 아닌가요?😮 설정을 다시 확인해주세요!", preferredStyle: .alert)
@@ -180,7 +187,7 @@ class NotificationSettingEditTableViewController: UITableViewController {
             let userSelectDayString = getDayStringFromDaysArray(dayList: checkedDaysOfWeek)
             if userSelectDayString == "" {
                 userSelectDayLabel.text = "요일 선택"
-                checkedFrequency = 0
+                lastCheckedIndexPathInSection[0].row = 0
                 self.tableView.cellForRow(at: IndexPath(row: 2, section: 0))?.accessoryType = .disclosureIndicator
             } else {
                 userSelectDayLabel.text = userSelectDayString
