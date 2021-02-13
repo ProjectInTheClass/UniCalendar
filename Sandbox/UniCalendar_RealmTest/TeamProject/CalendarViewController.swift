@@ -59,7 +59,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        
         let today = dateFormatter.date(from: dateFormatter.string(from: Date.init()))!
         
         events = api.callEvent()
@@ -67,6 +68,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         //기존에 저장되어있던 eventDates 모두 삭제
         eventDates.removeAll()
 
+        selectedDateEvents.removeAll()
         //새로 eventDates append해줌
         for event in events {
             let date = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
@@ -81,9 +83,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         }
         //reload data for both calendar & table view, selectedDateEvents data remove
         calendarView.reloadData()
-        
         calendarEventTableView.reloadData()
     }
+   
     
     override func viewWillDisappear(_ animated: Bool) {
         for date in eventDates{
@@ -99,6 +101,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
 extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(selectedDateEvents.count)
         return selectedDateEvents.count
     }
     
@@ -163,8 +166,6 @@ extension CalendarViewController : FSCalendarDelegateAppearance, UITableViewData
         }else{
             isToday = false
         }
-        print(isToday)
-        print("-----------------")
         for event in events {
             let date_ = dateFormatter.date(from: dateFormatter.string(from: event.eventDday))!
             if date_ == date {
