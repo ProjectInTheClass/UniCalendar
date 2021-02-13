@@ -98,8 +98,14 @@ class EventEditTableViewController: UITableViewController, UITextFieldDelegate {
                 selectedEvent.eventName = eventName.text!
                 
                 saveEventName = eventName.text!
-                
+                // 디데이 변경시 알림 변경
+                let dateBefore = selectedEvent.eventDday
                 selectedEvent.eventDday = datePicker.date
+                
+                if dateBefore != datePicker.date {
+                    changedNotification = true
+                }
+                
                 let dCalendar = Calendar.current.dateComponents([.year, .month, .day], from: selectedEvent.eventDday)
 
                 selectedEvent.importance = Int(importanceSlider.value)
