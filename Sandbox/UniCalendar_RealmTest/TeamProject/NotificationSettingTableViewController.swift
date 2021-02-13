@@ -35,6 +35,9 @@ class NotificationSettingTableViewController: UITableViewController {
         
         //선택한 값 EventAddTableView에 indexPath로 넘겨서 저장
         vc.frequencyIndexPathRow = lastCheckedIndexPathInSection[0].row
+        if lastCheckedIndexPathInSection[1].isEmpty {
+            lastCheckedIndexPathInSection[1] = [1, -1]
+        }
         vc.timeIndexPathRow = lastCheckedIndexPathInSection[1].row
         
         // 0 1 2
@@ -79,7 +82,6 @@ class NotificationSettingTableViewController: UITableViewController {
 
             if userSelectDayString == "" || lastCheckedIndexPathInSection[0].row != 2 || checkedDaysOfWeek.isEmpty == true {
                 userSelectDayLabel.text = "요일 선택"
-                lastCheckedIndexPathInSection[0].row = 0
                 self.tableView.cellForRow(at: IndexPath(row: 2, section: 0))?.accessoryType = .disclosureIndicator
             } else {
                 userSelectDayLabel.text = userSelectDayString
@@ -144,7 +146,8 @@ class NotificationSettingTableViewController: UITableViewController {
     }
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        self.tableView.cellForRow(at: indexPath)?.selectionStyle = .none
+        
         if indexPath == [0,0] && isSectionChecked[1] == true {
             self.tableView.cellForRow(at: lastCheckedIndexPathInSection[1])?.accessoryType = .none
             isSectionChecked[1] = false

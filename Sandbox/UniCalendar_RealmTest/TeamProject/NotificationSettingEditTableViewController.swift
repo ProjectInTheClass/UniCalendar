@@ -103,6 +103,7 @@ class NotificationSettingEditTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         if indexPath == [0,0] && isSectionChecked[1] == true {
             self.tableView.cellForRow(at: lastCheckedIndexPathInSection[1])?.accessoryType = .none
             isSectionChecked[1] = false
