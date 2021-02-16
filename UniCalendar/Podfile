@@ -1,14 +1,13 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'TeamProject' do
+target 'UniCalendar' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for TeamProject
-
+  # Pods for UniCalendar
 pod 'FSCalendar'
+pod 'Charts'
 pod 'RealmSwift'
-  # Pods for SampleRealm
 
 end

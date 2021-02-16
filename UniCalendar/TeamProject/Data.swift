@@ -1,82 +1,141 @@
-//
-//  Data.swift
-//  TeamProject
-//
-//  Created by Nayeon Kim on 2021/01/18.
-//
-//
+import Foundation
+import RealmSwift
 
-// UserDefaults: by value
-// Event / Category 함수 따로
-// getX, setX
+class API {
+    static let shared = API()
+    
+    let realm = try! Realm()
+    
+    func callCategory() -> [Category]{
+        let r: [Category] = realm.objects(Category.self).map { $0 }
+        return r
+    }
+    
+    func callEvent() -> [Event] {
+        let r: [Event] = realm.objects(Event.self).map { $0 }
+        return r
+    }
+    
+    func callNotPassedEvent() -> [Event] {
+        let r: [Event] = realm.objects(Event.self).filter("eventIsPassed = false").sorted(byKeyPath: "eventDday").map { $0 }
+        return r
+    }
+    
+    func callPassedEvent() -> [Event] {
+        let r: [Event] = realm.objects(Event.self).filter("eventIsPassed = true").sorted(byKeyPath: "eventDday", ascending: false).map { $0 }
+        return r
+    }
+    
+    func callSubEvent() -> [SubEvent]{
+        let r: [SubEvent] = realm.objects(SubEvent.self).map { $0 }
+        return r
+    }
+    
+    func callPushAlarm() -> [PushAlarm] {
+        let r: [PushAlarm] = realm.objects(PushAlarm.self).map { $0 }
+        return r
+    }
+    
+    func callPushAlarmSetting() -> [PushAlarmSetting] {
+        let r: [PushAlarmSetting] = realm.objects(PushAlarmSetting.self).map { $0 }
+        return r
+    }
+    
+    func callBadge() -> [Badge] {
+        let r: [Badge] = realm.objects(Badge.self).map { $0 }
+        
+        return r
+    }
+}
 
-//import Foundation
-//
-//
-//class API {
-//    static let shared = API()
-//
-//    var eventInfo: EventInfo? = nil
-//
-//    var categoryInfo: Category? = nil
-//    // var userDatabase = UserDefaults.standard
-//
-//    func initDatabase() {
-//        // User Default에서 가져오는 코드
-//        // self.eventInfo = EventInfo(events: [])
-//
-//
-//        /*
-//          // set Info
-//          eventInfo = UserDefaults.object(forKey: "eventInfo")
-//          categoryInfo = UserDefaults.object(forKey: "categoryInfo")
-//        */
-//
-//    }
-//
-//    func saveDatabase() {
-//        // User Default로 저장
-//
-//        /*
-//           // get Info
-//           let encoder = JSONEncoder()
-//           var encodedEventInfo = encoder.encode(eventInfo)
-//
-//           userDatabase.set(encodedEventInfo, forKey: "eventInfo")
-//           userDatabase.set(encodedCategoryInfo
-//
-//        */
-//    }
-//}
-//
-//struct EventInfo: Codable {
-//    var events:[Event]
-//}
-//struct CategoryInfo: Codable {
-//    var categories: [Category]
-//}
-//
-//struct Event: Codable {
-//    var category: Category
-//    var subEvent: [SubEvent]
-//
-//    var eventName: String
-//    var eventDday: Date
-//    var Importance: Int
-//    var eventIsDone: Bool
-//}
-//
-//struct SubEvent: Codable {
-//    var subEventName: String
-//    var subEventIsDone: Bool
-//}
-//
-//enum Color: Int, Codable {
-//    case red, yellow, orange, green, blue, purple
-//}
-//
-//struct Category: Codable {
-//    var categoryName: String
-//    // var categoryName: [String] = ["📓과제", "📝시험", "👥대외활동"]
-//    var categoryColor: Color
-//}
+class Category: Object {
+    @objc dynamic var categoryName: String = ""
+    @objc dynamic var categoryColor: Int = 0
+    
+    let eventsInCategory = List<Event>()
+    
+    convenience init(categoryName: String, categoryColor: Int) {
+        self.init()
+        self.categoryName = categoryName
+        self.categoryColor = categoryColor
+    }
+}
+
+class Event: Object {
+    @objc dynamic var eventName: String = ""
+    @objc dynamic var eventDday: Date = Date.init()
+    @objc dynamic var importance: Int = 0
+    @objc dynamic var eventIsDone: Bool = false
+    @objc dynamic var eventIsPassed: Bool = false
+    @objc dynamic var pushAlarmSetting: PushAlarmSetting?
+    
+    let subEvents = List<SubEvent>()
+    let pushAlarmID = List<PushAlarm>()
+    
+    var parentCategory = LinkingObjects(fromType: Category.self, property: "eventsInCategory")
+    
+    convenience init(eventName: String, eventDday : Date, importance : Int, eventIsDone : Bool, eventIsPassed : Bool, pushAlarmSetting: PushAlarmSetting) {
+        self.init()
+        self.eventName = eventName
+        self.eventDday = eventDday
+        self.importance = importance
+        self.eventIsDone = eventIsDone
+        self.eventIsPassed = eventIsPassed
+        self.pushAlarmSetting = pushAlarmSetting
+    }
+
+}
+
+class SubEvent: Object {
+    @objc dynamic var subEventName: String = ""
+    @objc dynamic var subEventIsDone: Bool = false
+    
+    var parentEvent = LinkingObjects(fromType: Event.self, property:"subEvents")
+    
+    convenience init(subEventName: String, subEventIsDone: Bool) {
+        self.init()
+        self.subEventName = subEventName
+        self.subEventIsDone = subEventIsDone
+    }
+}
+
+class PushAlarm: Object {
+    @objc dynamic var id: String = ""
+    @objc dynamic var title: String = ""
+    @objc dynamic var body: String = ""
+    var parentEvent = LinkingObjects(fromType: Event.self, property: "pushAlarmID")
+    
+    convenience init(id: String, title: String, body: String) {
+        self.init()
+        self.id = id
+        self.title = title
+        self.body = body
+    }
+}
+
+class PushAlarmSetting: Object {
+    @objc dynamic var checkedTime: Int = 0
+    @objc dynamic var checkedFrequency: Int = 0
+    
+    var parentEvent = LinkingObjects(fromType: Event.self, property: "pushAlarmSetting")
+    
+    let checkedDaysOfWeek = List<Int>()
+    
+    convenience init(checkedTime: Int, checkedFrequency: Int, checkedDaysOfWeek: [Int]) {
+        self.init()
+        self.checkedTime = checkedTime
+        self.checkedFrequency = checkedFrequency
+        for checkedDay in checkedDaysOfWeek {
+            self.checkedDaysOfWeek.append(checkedDay)
+        }
+    }
+}
+
+class Badge: Object {
+    @objc dynamic var badgeImageString: String = ""
+    
+    convenience init(badgeImageString: String) {
+        self.init()
+        self.badgeImageString = badgeImageString
+    }
+}

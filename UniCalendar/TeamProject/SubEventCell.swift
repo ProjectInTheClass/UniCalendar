@@ -2,11 +2,12 @@
 //  SubEventCell.swift
 //  TeamProject
 //
-//  Created by KM on 2021/01/20.
+//  Created by KM on 2021/01/22.
 //
-
 import UIKit
+import Foundation
 
 class SubEventCell: UITableViewCell {
-    @IBOutlet weak var subEventName: UILabel!
+    
+    @IBOutlet weak var subEventNameLabel: UILabel!
 }

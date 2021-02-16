@@ -6,70 +6,210 @@
 //
 
 import UIKit
+import RealmSwift
+import Foundation
 
-struct EventItem {
-    var eventName: String
-    var dDay: String
-    var importance: Int
-    var importanceImage: String
-    var progressPercent: Float
-}
-let eventItems: [EventItem] = [
-    EventItem(eventName: "알고리즘 과제",
-              dDay: "D-4",
-              importance: 4,
-              importanceImage: "OOOO",
-              progressPercent: 0.8),
-    EventItem(eventName: "연합 동아리 지원 마감",
-              dDay: "D-7",
-              importance: 3,
-              importanceImage: "OOO",
-              progressPercent: 0.5),
-]
-
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var homeNavigationTitle: UINavigationItem!
+    
+    var headerCheerUpMessage: String = ""
+    var events: [Event] = api.callNotPassedEvent()
+    var selectedCellBefore: Int = 0
+    
+    var imageStringArray : [String] = ["importance_blank", "importance_filled"]
+    
+
+    
+    // header
+    func tableView(_ tableView: UITableView, titleForHeaderInSection
+                                section: Int) -> String? {
+        headerCheerUpMessage = "너무 힘들면 쉬어가요🙌"
+        return headerCheerUpMessage
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "System", size: 18)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(30) // 이게 CGFloat 양수 최소값 상수
+    }
     
     // 섹션당 row 수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventItems.count
+        
+        return events.count
     }
     
     // indexPath 각 (section, row)에 맞는 cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-        let event = eventItems[indexPath.row]
+        cell.selectionStyle = .none
+        let event = events[indexPath.row]
+        
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let today = df.date(from: df.string(from : Date.init()))
+        let dDay = df.date(from: df.string(from: event.eventDday))!
+
+        let interval = dDay.timeIntervalSince(today!)
+        let d = Int(interval / 86400)
+        
+        if d == 0 {
+            cell.dDayLabel.text = "D-DAY"
+        } else {
+            cell.dDayLabel.text = "D-" + String(d)
+        }
+        
+        
         cell.eventNameLabel.text = event.eventName
-        cell.dDayLabel.text = event.dDay
         
         cell.importanceLabel.text = "중요해요"
-        cell.importanceImageLabel.text = event.importanceImage
+        
+        //중요해요 옆 이미지 표현
+        cell.importanceOne.image = UIImage(named: imageStringArray[0])
+        cell.importanceTwo.image = UIImage(named: imageStringArray[0])
+        cell.importanceThree.image = UIImage(named: imageStringArray[0])
+        cell.importanceFour.image = UIImage(named: imageStringArray[0])
+        cell.importanceFive.image = UIImage(named: imageStringArray[0])
+        
+        
+        switch event.importance {
+        case 1:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+        case 2:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+            cell.importanceTwo.image = UIImage(named: imageStringArray[1])
+        case 3:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+            cell.importanceTwo.image = UIImage(named: imageStringArray[1])
+            cell.importanceThree.image = UIImage(named: imageStringArray[1])
+        case 4:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+            cell.importanceTwo.image = UIImage(named: imageStringArray[1])
+            cell.importanceThree.image = UIImage(named: imageStringArray[1])
+            cell.importanceFour.image = UIImage(named: imageStringArray[1])
+        default:
+            cell.importanceOne.image = UIImage(named: imageStringArray[1])
+            cell.importanceTwo.image = UIImage(named: imageStringArray[1])
+            cell.importanceThree.image = UIImage(named: imageStringArray[1])
+            cell.importanceFour.image = UIImage(named: imageStringArray[1])
+            cell.importanceFive.image = UIImage(named: imageStringArray[1])
+        }
+        //cell.importanceImageLabel.text = String(event.events[indexPath.row].)
         
         cell.progressLabel.text = "영차영차"
-        cell.progressView.setProgress(event.progressPercent, animated: false)
-        cell.progressPercentLabel.text = "\(event.progressPercent*100)%"
+        
+        var progressPercent: Float = 0
+        if event.subEvents.count != 0 {
+            var subIsDoneNum = 0
+            
+            subIsDoneNum = event.subEvents.filter(
+                { (sub: SubEvent) -> Bool in return
+                sub.subEventIsDone == true }).count
+            
+            progressPercent = Float(subIsDoneNum) / Float(event.subEvents.count)
+           
+            cell.progressView.setProgress(progressPercent, animated: false)
+        } else if event.subEvents.count == 0 && event.eventIsDone == true {
+            progressPercent = 1
+            cell.progressView.setProgress(progressPercent, animated: false)
+        } else {
+            progressPercent = 0
+            cell.progressView.setProgress(progressPercent, animated: false)
+        }
+        
+        cell.progressPercentLabel.text = String(round(progressPercent*1000)/10) + "%"
+        
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
-        guard let cell: EventCell = sender as? EventCell else { return }
-        
-        
-        
-        destinationController.dDay = cell.dDayLabel.text!
-        destinationController.eventName = cell.eventNameLabel.text!
-        destinationController.progressPercent = cell.progressView.progress
-        
-        // TODO: 디테일 탭으로 소목표 넘기기
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
+        self.performSegue(withIdentifier: "moveToDetail", sender: indexPath.row)
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // DetailView로 데이터 넘기기
+        guard let destinationController: HomeDetailViewController = segue.destination as? HomeDetailViewController else { return }
+        guard let row = sender as? Int else { return }
+
+        destinationController.selectedCell = row
+    
+        tableView.deselectRow(at:tableView.indexPathForSelectedRow!, animated: true)
+
+    }
+
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        print("from Add to Home")
+        events = api.callNotPassedEvent()
+        tableView.reloadData()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // notification permission
+        UNUserNotificationCenter
+            .current()
+            .requestAuthorization(options: [.alert, .badge]) { granted, error in
+                if granted == true && error == nil {
+                    // We have permission!
+                }
+        }
+
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         tableView.dataSource = self
         tableView.delegate = self
+        
     }
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "ko")
+        df.dateFormat = "M월 dd일 eeee"
+        homeNavigationTitle.title = df.string(from: Date.init())
+        
+        print("\nVIEW WILL APPEAR")
+
+        // notification count debug
+        LocalNotificationManager().printCountOfNotifications()
+        let notificationsInRealm = api.callPushAlarm().count
+        print("db 내 알람: \(notificationsInRealm)개")
+        
+        events = api.callNotPassedEvent()
+        tableView.reloadData()
+        
+        // --------- noti test start -----
+
+        //------------------- noti test end -------------
+    }
+    
+//    func filledOne() {
+//
+//    }
+//
+//    func filledTwo() {
+//
+//    }
+//
+//    func filledThree() {
+//
+//    }
+//
+//    func filledFour() {
+//
+//    }
+//
+//    func filledFive() {
+//
+//    }
     
 }

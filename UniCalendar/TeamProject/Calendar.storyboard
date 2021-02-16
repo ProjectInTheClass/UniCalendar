@@ -11,14 +11,17 @@
         <!--캘린더-->
         <scene sceneID="jSZ-Vj-DuC">
             <objects>
-                <viewController storyboardIdentifier="CALENDAR" id="swI-oF-ugd" customClass="CalendarViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CALENDAR" id="swI-oF-ugd" customClass="CalendarViewController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JbS-Xj-Wzk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqM-cn-VP7" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="480"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="480" id="2Rh-xa-IHQ"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
                                         <color key="value" red="0.4186819792" green="0.38698247079999998" blue="0.9177264571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -37,14 +40,65 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YtU-oE-udI">
+                                <rect key="frame" x="0.0" y="532" width="414" height="281"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalendarEventTableViewCell" rowHeight="63" id="BUk-Fx-poH" customClass="CalendarEventTableViewCell" customModule="UniCalendar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="63"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BUk-Fx-poH" id="jsm-Cj-j8g">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="EventName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ex-gD-hKq">
+                                                    <rect key="frame" x="46" y="21" width="198.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category_purple" translatesAutoresizingMaskIntoConstraints="NO" id="bNp-1o-zTo">
+                                                    <rect key="frame" x="20" y="23" width="13" height="19"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="세부 목표가 없어요🙅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mD9-0R-1Ft">
+                                                    <rect key="frame" x="244.5" y="21" width="149.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bNp-1o-zTo" firstAttribute="top" secondItem="jsm-Cj-j8g" secondAttribute="top" constant="23" id="7mJ-xQ-DXA"/>
+                                                <constraint firstItem="bNp-1o-zTo" firstAttribute="leading" secondItem="jsm-Cj-j8g" secondAttribute="leading" constant="20" id="D4f-g6-0AQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mD9-0R-1Ft" secondAttribute="trailing" id="DhI-tp-Inm"/>
+                                                <constraint firstAttribute="bottom" secondItem="bNp-1o-zTo" secondAttribute="bottom" constant="21" id="Fab-QL-emc"/>
+                                                <constraint firstItem="mD9-0R-1Ft" firstAttribute="top" secondItem="jsm-Cj-j8g" secondAttribute="topMargin" constant="10" id="Hjj-Fi-l5i"/>
+                                                <constraint firstItem="mD9-0R-1Ft" firstAttribute="leading" secondItem="0Ex-gD-hKq" secondAttribute="trailing" id="R4z-eQ-V93"/>
+                                                <constraint firstItem="0Ex-gD-hKq" firstAttribute="leading" secondItem="bNp-1o-zTo" secondAttribute="trailing" constant="13" id="T02-kl-fKh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="mD9-0R-1Ft" secondAttribute="bottom" constant="10" id="ccF-LW-qOe"/>
+                                                <constraint firstItem="0Ex-gD-hKq" firstAttribute="top" secondItem="jsm-Cj-j8g" secondAttribute="topMargin" constant="10" id="gCH-aq-tyv"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0Ex-gD-hKq" secondAttribute="bottom" constant="10" id="geK-8S-ta1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryColorImage" destination="bNp-1o-zTo" id="gzV-Nz-omY"/>
+                                            <outlet property="eventNameLabel" destination="0Ex-gD-hKq" id="Ihr-x8-UWk"/>
+                                            <outlet property="subCompletionLabel" destination="mD9-0R-1Ft" id="5y4-RX-Jnm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xml-3A-n4L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nqM-cn-VP7" firstAttribute="leading" secondItem="xml-3A-n4L" secondAttribute="leading" id="S1X-aB-rAf"/>
-                            <constraint firstItem="xml-3A-n4L" firstAttribute="bottom" secondItem="nqM-cn-VP7" secondAttribute="bottom" id="WhU-Xq-qPB"/>
-                            <constraint firstItem="xml-3A-n4L" firstAttribute="trailing" secondItem="nqM-cn-VP7" secondAttribute="trailing" id="iif-W3-OB4"/>
-                            <constraint firstItem="nqM-cn-VP7" firstAttribute="top" secondItem="xml-3A-n4L" secondAttribute="top" id="wH3-SL-UKU"/>
+                            <constraint firstItem="nqM-cn-VP7" firstAttribute="trailing" secondItem="xml-3A-n4L" secondAttribute="trailing" id="44V-Ss-0R5"/>
+                            <constraint firstItem="YtU-oE-udI" firstAttribute="trailing" secondItem="xml-3A-n4L" secondAttribute="trailing" id="8oo-v0-CzC"/>
+                            <constraint firstItem="YtU-oE-udI" firstAttribute="top" secondItem="nqM-cn-VP7" secondAttribute="bottom" constant="8" symbolic="YES" id="OPm-Vc-PmH"/>
+                            <constraint firstItem="YtU-oE-udI" firstAttribute="leading" secondItem="xml-3A-n4L" secondAttribute="leading" id="Rab-uN-aff"/>
+                            <constraint firstItem="nqM-cn-VP7" firstAttribute="leading" secondItem="xml-3A-n4L" secondAttribute="leading" id="bon-Ub-Bun"/>
+                            <constraint firstItem="YtU-oE-udI" firstAttribute="bottom" secondItem="xml-3A-n4L" secondAttribute="bottom" id="nqd-B2-Dff"/>
+                            <constraint firstItem="nqM-cn-VP7" firstAttribute="top" secondItem="xml-3A-n4L" secondAttribute="top" id="sTE-OY-5Vx"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="캘린더" image="calendar" catalog="system" selectedImage="calendar" id="gJz-HB-Mnv">
@@ -52,16 +106,18 @@
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="calendarEventTableView" destination="YtU-oE-udI" id="yiF-2a-NDl"/>
                         <outlet property="calendarView" destination="nqM-cn-VP7" id="nQJ-SM-Ewz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Bx-PW-p1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="40"/>
+            <point key="canvasLocation" x="89.855072463768124" y="39.508928571428569"/>
         </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="category_purple" width="13" height="12"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
