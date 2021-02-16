@@ -1,21 +1,45 @@
+////
+////  SettingViewController.swift
+////  TeamProject
+////
+////  Created by Nayeon Kim on 2021/01/06.
+////
 //
-//  SettingViewController.swift
-//  TeamProject
-//
-//  Created by Nayeon Kim on 2021/01/06.
-//
-
 import Foundation
 import UIKit
+import RealmSwift
 
 
-struct CategoryItem {
-    enum Color {
-        case red, yellow, orange, green, blue, purple
+class SettingViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
+    
+    var category: [Category] = api.callCategory()
+
+    let sectionName: [String] = ["카테고리 관리", "우리 앱은요"]
+    let about = "앱을 소개합니다👐🏻"
+    let add = "카테고리 추가"
+
+    //Setting View Controller로 unwind 해주는 함수 지정
+    @IBAction func unwindToSetting (segue: UIStoryboardSegue){
+        //print("UNWIND PLEASE")
+        //카테고리 데이터 새로고침
+        category = api.callCategory()
+        tableView.reloadData()
     }
     
-    var categoryName: String
-    var categoryColor: Color
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+    }
+    
+
 }
 
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
@@ -29,13 +53,13 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         return sectionName[section]
 
     }
-    
+
     //rows in each section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0){ //category section
-            return items.count+1
+            return category.count+1
         } else { //about app section
-            return 1
+            return 2
         }
     }
 
@@ -43,86 +67,80 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.section == 0){
             //category seciton
-            if(indexPath.row < items.count){
+            if(indexPath.row < category.count){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
-                                
-                let category = items[indexPath.row]
-                    
-                cell.categoryName.text = category.categoryName
                 
+                cell.selectionStyle = .none
+
+                cell.categoryName.text = category[indexPath.row].categoryName
+
                 return cell
             } else {
                 //add category row
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AddCategoryCell", for: indexPath) as! AddCategoryCell
+
+                cell.selectionStyle = .none
                 
                 cell.addLabel.text = add
                 cell.addLabel.textColor = UIColor.init(red: 0, green: 0, blue: 1, alpha: 1)
+
+                return cell
+            }
+
+        } else {
+            if indexPath.row == 0 {
+                //about app section
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for:indexPath) as! AboutCell
+
+                cell.selectionStyle = .none
+                
+                cell.aboutLabel.text = about
+
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "VersionCell", for: indexPath) as! VersionCell
+                
                 
                 return cell
             }
             
-        } else {
-            //about app section
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for:indexPath) as! AboutCell
-            
-            cell.aboutLabel.text = about
-            
-            return cell
         }
-        
+
     }
-    
+
     //if selected -> perform segue to move to another view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 0:
             switch indexPath.row{
-            case items.count:
+            case category.count:
                 self.performSegue(withIdentifier: "addCategoryModal", sender: nil)
             default:
-                self.performSegue(withIdentifier: "moveToDetail", sender: nil)
+                self.performSegue(withIdentifier: "moveToDetail", sender: indexPath.row)
+        
                     break
             }
-            
+
         default:
             self.performSegue(withIdentifier: "moveToAboutPage", sender: nil)
         }
     }
     
-}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let row = sender as? Int else {
+        return
+        }
 
-class SettingViewController: UIViewController {
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    let sectionName: [String] = ["카테고리 관리🔨", "우리 앱은요🔖"]
-    let about = "앱을 소개합니다👐🏻"
-    let add = "카테고리 추가"
-    
-    var items: [CategoryItem] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        tableView.delegate = self
-        tableView.dataSource = self
-//        for count in items {
-//
-//        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        Category.shared.getCategoryItems(completion: { category in
-            self.items = category
-            self.tableView.reloadData()
-        })
         
-        //API.shared.
-    }
-    
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        guard let navigation = segue.destination as? UINavigationController else { return }
         
+        guard let detail = navigation.viewControllers[0] as? CategoryDetailTableViewController else { return }
+        detail.categoryIndex = row
+
     }
 
 }
+

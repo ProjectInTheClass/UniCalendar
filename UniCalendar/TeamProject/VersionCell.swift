@@ -1,16 +1,16 @@
 //
-//  PatternCell.swift
-//  TeamProject
+//  VersionCell.swift
+//  UniCalendar
 //
-//  Created by Nayeon Kim on 2021/01/17.
+//  Created by Nayeon Kim on 2021/01/27.
 //
 
 import UIKit
 
-class PatternCell: UITableViewCell {
+class VersionCell: UITableViewCell {
 
     
-    @IBOutlet weak var patternLabel: UILabel!
+    //@IBOutlet weak var versionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

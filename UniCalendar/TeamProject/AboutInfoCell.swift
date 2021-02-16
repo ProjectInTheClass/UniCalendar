@@ -1,17 +1,15 @@
 //
-//  BadgeCell.swift
-//  TeamProject
+//  AboutInfoCell.swift
+//  UniCalendar
 //
-//  Created by Nayeon Kim on 2021/01/17.
+//  Created by Nayeon Kim on 2021/01/27.
 //
 
 import UIKit
 
-class BadgeCell: UITableViewCell {
+class AboutInfoCell: UITableViewCell {
 
-    @IBOutlet weak var badgeLabel: UILabel!
-    @IBOutlet weak var allButton: UIButton!
-    
+    @IBOutlet weak var aboutImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
