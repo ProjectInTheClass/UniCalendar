@@ -413,17 +413,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="428" height="195"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="xqX-W1-uTL">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="xqX-W1-uTL">
                                                     <rect key="frame" x="0.0" y="0.0" width="428" height="145"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="처음_깔았을_때" translatesAutoresizingMaskIntoConstraints="NO" id="2OQ-m8-ncl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="156" height="145"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="목표_성공_50개" translatesAutoresizingMaskIntoConstraints="NO" id="2OQ-m8-ncl">
+                                                            <rect key="frame" x="0.0" y="0.0" width="144" height="145"/>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="처음_일정_등록했을_때" translatesAutoresizingMaskIntoConstraints="NO" id="kO7-TX-D7X">
-                                                            <rect key="frame" x="136" y="0.0" width="156" height="145"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="일정_등록_100개" translatesAutoresizingMaskIntoConstraints="NO" id="kO7-TX-D7X">
+                                                            <rect key="frame" x="142" y="0.0" width="144" height="145"/>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="처음_일정_끝냈을_때" translatesAutoresizingMaskIntoConstraints="NO" id="7ed-vd-tzP">
-                                                            <rect key="frame" x="272" y="0.0" width="156" height="145"/>
+                                                            <rect key="frame" x="284" y="0.0" width="144" height="145"/>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
@@ -534,6 +534,8 @@
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="middleSizeBox" width="226" height="294.66665649414062"/>
         <image name="selectionBox" width="226" height="78"/>
+        <image name="목표_성공_50개" width="682.66668701171875" height="682.66668701171875"/>
+        <image name="일정_등록_100개" width="682.66668701171875" height="682.66668701171875"/>
         <image name="처음_깔았을_때" width="682.66668701171875" height="682.66668701171875"/>
         <image name="처음_일정_끝냈을_때" width="682.66668701171875" height="682.66668701171875"/>
         <image name="처음_일정_등록했을_때" width="682.66668701171875" height="682.66668701171875"/>
