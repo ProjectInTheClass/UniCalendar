@@ -9,5 +9,4 @@ target 'UniCalendar' do
 pod 'FSCalendar'
 pod 'Charts'
 pod 'RealmSwift'
-
 end
