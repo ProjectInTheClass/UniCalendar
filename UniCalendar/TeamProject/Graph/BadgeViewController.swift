@@ -126,7 +126,6 @@ class BadgeViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         return "업적을 이루고 배지🎖를 모아보세요!"
     }
 
