@@ -39,7 +39,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="HDn-9v-Rj1">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="x7b-Ap-XqL" customClass="TabBarController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="x7b-Ap-XqL" customClass="TabBarController" customModule="UniCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Io4-yg-UHf">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
